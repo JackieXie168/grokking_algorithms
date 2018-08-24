@@ -2,7 +2,7 @@
 
 Here's some example Matlab code that shows KNN in action to guess handwritten digits. Here's what the output looks like:
 
-![](/images/17_correct_500_comparisons.png)
+![](https://github.com/egonSchiele/grokking_algorithms/blob/master/10_knn/images/17_correct_500_comparisons.png)
 
 Each row represents a guess. The last column contains the image that we're trying to guess the digit for. The first three columns show the 3 nearest neighbors for that last image.
 
