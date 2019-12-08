@@ -6,17 +6,16 @@ class Graph < Hash
   def search(name)
     search_queue = []
     search_queue += self[name]
-    # This array is how you keep track of which people you've searched before.
+    # The "searched" Hash is how you keep track of which people you've searched before. We use a hash because hash lookups are fast!
     searched = {}
 
     until search_queue.empty?
-      pp searched
       person = search_queue.shift
       # Only search this person if you haven't already searched them.
       next if searched[person]
       return person if yield person
       search_queue += self[person]
-        # Marks this person as searched
+      # Marks this person as searched
       searched[person] = true
     end
 
@@ -36,4 +35,5 @@ graph["peggy"] = []
 graph["thom"] = []
 graph["jonny"] = []
 
-graph.search("you"){|person| person_is_seller?(person) }.tap{|person| puts "#{person} is a mango seller!" if person}
+# we begin the search from vertex "you" and pass the match criterion in the block, then we tap the search result
+graph.search("you"){|person| person_is_seller?(person)}.tap{|person| puts "#{person} is a mango seller!" if person}
