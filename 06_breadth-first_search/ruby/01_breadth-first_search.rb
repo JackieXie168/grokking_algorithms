@@ -1,4 +1,4 @@
-def person_is_seller(name)
+def person_is_seller?(name)
   name[-1] == "m"
 end
 
@@ -24,17 +24,13 @@ def search(name)
     person = search_queue.shift
     # Only search this person if you haven't already searched them.
     next if searched.member?(person)
-    if person_is_seller(person)
-      puts "#{person} is a mango seller!"
-      return true
-    else
-      search_queue += @graph[person]
+    return person if yield person
+    search_queue += @graph[person]
       # Marks this person as searched
-      searched.push(person)
-    end
+    searched.push(person)
   end
 
   false
 end
 
-search("you")
+search("you"){|person| person_is_seller?(person) }.tap{|person| puts "#{person} is a mango seller!" if person}
