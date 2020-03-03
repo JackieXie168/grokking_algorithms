@@ -56,7 +56,7 @@ object BreadthFirstSearch extends App {
 
     @scala.annotation.tailrec
     def helper(searchQue: immutable.Queue[String], searched: Vector[String] = Vector()): String = {
-      if (searchQue.length > 2) return "No Mango sellers"
+      if (searchQue.length > 1) return "No Mango sellers"
       val person = searchQue.dequeue._1
       if (searched.contains(person))
         helper(searchQue.tail)
