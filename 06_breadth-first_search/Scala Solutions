@@ -18,7 +18,7 @@ object BreadthFirstSearch extends App {
   )
 
   def personIsSeller(name: String): Boolean =
-    name.endsWith("y")
+    name.endsWith("z")
 
   def search(name: String): Unit = {
     var searchQue = mutable.Queue[String]()
@@ -26,16 +26,25 @@ object BreadthFirstSearch extends App {
     var searched = Array()
     var seller = false
     while (!seller) {
-      val person = searchQue.dequeue()
-      if (!searched.contains(person)){
-        if (personIsSeller(person)) {
-          println(person + " is a mango seller!")
-          seller = true
-        }
-        else {
-          searchQue ++= graph(person)
-          searched + person
-        }
+      if (searchQue.isEmpty)
+        println("No Mango Sellers")
+      else {
+        val person = searchQue.dequeue()
+        if (!searched.contains(person)){
+          if (personIsSeller(person)) {
+            println(person + " is a mango seller!")
+            seller = true
+          }
+          else {
+            if (searchQue.isEmpty) {
+              println("No Mango Sellers")
+              seller = true
+            }
+            else
+              searchQue ++= graph(person)
+              searched + person
+          }
+      }
       }
     }
   }
@@ -47,7 +56,7 @@ object BreadthFirstSearch extends App {
 
     @scala.annotation.tailrec
     def helper(searchQue: immutable.Queue[String], searched: Vector[String] = Vector()): String = {
-      if (searchQue.isEmpty) return "No Mango sellers"
+      if (searchQue.length > 2) return "No Mango sellers"
       val person = searchQue.dequeue._1
       if (searched.contains(person))
         helper(searchQue.tail)
