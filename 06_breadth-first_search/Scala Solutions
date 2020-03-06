@@ -26,9 +26,6 @@ object BreadthFirstSearch extends App {
     var searched = Array()
     var seller = false
     while (!seller) {
-      if (searchQue.isEmpty)
-        println("No Mango Sellers")
-      else {
         val person = searchQue.dequeue()
         if (!searched.contains(person)){
           if (personIsSeller(person)) {
@@ -40,12 +37,13 @@ object BreadthFirstSearch extends App {
               println("No Mango Sellers")
               seller = true
             }
-            else
+            else {
               searchQue ++= graph(person)
               searched + person
+              }
           }
       }
-      }
+      
     }
   }
 
