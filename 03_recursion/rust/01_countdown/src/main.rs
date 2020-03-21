@@ -1,10 +1,15 @@
-fn countdown(i: u32) {
+use std::ops::Sub;
+use std::fmt::Display;
+use num_traits::identities::One;
+use num_traits::identities::Zero;
+
+fn countdown<T: Display + One + Zero + Sub<Output = T>>(i: T) {
     println!("{}", i);
-    if i == 0 {
+    if i.is_zero() {
         return
     }
 
-   countdown(i - 1);
+   countdown(i - T::one());
 }
 
 fn main() {
