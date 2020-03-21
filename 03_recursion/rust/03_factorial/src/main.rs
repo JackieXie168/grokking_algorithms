@@ -5,9 +5,7 @@ use num_traits::identities::One;
 fn fact<T: PartialOrd + PartialEq + One + Sub<Output = T> + Copy + Display>(x: T) -> T {
     if x < T::one() {
         panic!("Invalid number: {}", x);
-    }
-
-    if x.is_one() {
+    } else if x.is_one() {
         return T::one();
     }
 
