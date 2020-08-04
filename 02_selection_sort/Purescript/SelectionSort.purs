@@ -37,10 +37,3 @@ main :: Effect Unit
 main = do
   logShow $ selectionsort $ 1 : 2 : 3 : 5 : 4 : Nil
   logShow $ selectionsort' $ 1 : 2 : 3 : 5 : 4 : Nil
-
-
-{-
- -- | Notes
- -- | Array (Reading (O(1))) (Insertion (O(n)))
- -- | Linked List (Reading - O(n)) (Insertion - O(1)) -- Constants in Big O????
- -}
