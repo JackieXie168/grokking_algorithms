@@ -49,6 +49,14 @@ So how to calculate algorithm time increase based on the increase of input popul
 
 ## Big "O" Notation
 
-Big "O" shows how many 'atomic' operations the algorithm will need to complete the execution. The number of the operations increase with the size of the input population.
+Big "O" shows how many 'atomic' operations the algorithm will need to complete the execution. **The number of the operations increase with the size of the input population.**
 
-Big "O" shows the worst time that can be spent on algorithm execution.
+Big "O" shows the worst time that can be spent on algorithm execution. Here are popular time complexities, sorted from fastest to slowest:
+
+- `O(logn)` – logarithmic time; each next iteration cuts the population by 2; example – binary search;
+- `O(n)` – linear time; number of iterations equals the number of input elements; example – linear search;
+- `O(n * logn)` – logarithmic-time operation, repeated n times; example – binary search in n sorted lists;
+- `O(n^2)` – quadratic time; algorithms takes ^2 time for execution; example – nested loops; 
+- `O(n!)` – extremely slow algorithms.
+
+NB – the more input you put to `O(logn)` algorithm – the faster it would be.
