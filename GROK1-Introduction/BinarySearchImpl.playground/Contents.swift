@@ -1,21 +1,20 @@
 import Foundation
-import XCTest
 
 // MARK: - Declare
 
 /// Performs binary in input array
 /// - Parameters:
 ///   - inputArray: Array of random integers, sorted in ascending order
-///   - searchTerm: Some integer that should be present in the array
+///   - searchQuery: Some integer that should be present in the array
 /// - Returns: Integer, if the search term matched / `nil` if nothing is found AND number of tries
-func binarySearch(inputArray: [Int], searchTerm: Int?) -> (result: Int?, attempts: Int) {
+func binarySearch(inputArray: [Int], searchQuery: Int?) -> (result: Int?, attempts: Int) {
     /// Edge case: if the input array is empty, just exit with fatalError
     guard !inputArray.isEmpty else {
         fatalError("Input array should not be empty")
     }
     
     /// Edge case: if search term is nil – fatal error
-    guard let searchTerm = searchTerm else {
+    guard let searchTerm = searchQuery else {
         fatalError("Sarch term should not be nil")
     }
     
@@ -26,7 +25,7 @@ func binarySearch(inputArray: [Int], searchTerm: Int?) -> (result: Int?, attempt
     var upperBound = inputArray.count - 1
     
     /// Counter that keeps track on how many rounds were needed to perform the search
-    var counter = 0
+    var attempt = 0
     
     /// DIsplay welcome message and accompanying text
     print("[BINARY SEARCH] \(Date()): Input size: \(inputArray.count), trying to find: \(searchTerm).")
@@ -34,7 +33,7 @@ func binarySearch(inputArray: [Int], searchTerm: Int?) -> (result: Int?, attempt
     /// Lower bound should not interfere with upper bound
     while lowerBound <= upperBound {
         /// Increment the counter at each step start
-        counter += 1
+        attempt += 1
         
         /// Define the middle index value that will be taken as a match argument
         let midValueIndex = (upperBound + lowerBound) / 2
@@ -44,22 +43,22 @@ func binarySearch(inputArray: [Int], searchTerm: Int?) -> (result: Int?, attempt
         
         /**
          - if guessed value `==`searchTerm – gr8, the value is found;
-
+         
          –  if guessed value `<`searchTerm – the value, next to the currently selected mid
-           index becomes the new upperBound (say, the search area moves lower and narrows);
+         index becomes the new upperBound (say, the search area moves lower and narrows);
          
          –  if guessed value `>`searchTerm – the value, prior to the currently selected mid
-           index becomes the new upperBound (say, the search area moves lower and narrows).
+         index becomes the new upperBound (say, the search area moves lower and narrows).
          */
         if guess == searchTerm {
-            displayMessage(success: true, attempt: counter, low: lowerBound, mid: midValueIndex, up: upperBound)
-            return (guess, counter)
+            displayMessage(success: true, attempt: attempt, low: lowerBound, mid: midValueIndex, up: upperBound)
+            return (guess, attempt)
         } else if guess < searchTerm {
+            displayMessage(success: false, attempt: attempt, low: lowerBound, mid: midValueIndex, up: upperBound)
             lowerBound = midValueIndex + 1
-            displayMessage(success: false, attempt: counter, low: lowerBound, mid: midValueIndex, up: upperBound)
         } else if guess > searchTerm {
+            displayMessage(success: false, attempt: attempt, low: lowerBound, mid: midValueIndex, up: upperBound)
             upperBound = midValueIndex - 1
-            displayMessage(success: false, attempt: counter, low: lowerBound, mid: midValueIndex, up: upperBound)
         }
     }
     return (nil, 0)
@@ -68,8 +67,8 @@ func binarySearch(inputArray: [Int], searchTerm: Int?) -> (result: Int?, attempt
 /// Makes arbitrary-sized array of intergers (sorted)
 /// - Parameter numberOfUnits: Sets how many items user expects to be in the array
 /// - Returns: Arbitrary-sized sorted array of intergers
-func makeRandomarray(numberOfUnits: Int) -> [Int] {
-    return (0..<numberOfUnits).map({ _ in .random(in: 1...100) }).sorted()
+func makeRandomArray(numberOfUnits: Int) -> [Int] {
+    return (0..<numberOfUnits).map({ _ in .random(in: 1...1000) }).sorted()
 }
 
 /// Sends info or success message to console
@@ -84,21 +83,21 @@ func displayMessage(success: Bool, attempt: Int, low: Int, mid: Int, up: Int) {
     case true:
         print("[BINARY SEARCH] \(Date()): Attempt \(attempt): low: \(low), mid: \(mid), up: \(up). Success!")
     default:
-        print("[BINARY SEARCH] \(Date()): Attempt \(attempt): low: \(low), mid: \(mid), up: \(up). Need one more iteration...")
+        print("[BINARY SEARCH] \(Date()): Attempt \(attempt): low: \(low), mid: \(mid), up: \(up). Processing...")
     }
 }
 
 // MARK: - Arrange
 
 /// Make random array of integers, sorted in ascending order
-let randomarray = makeRandomarray(numberOfUnits: 5)
+let randomArray = makeRandomArray(numberOfUnits: 240)
 
 /// Get randomArray count
-let randomarrayCount = randomarray.count
+let randomArrayCount = randomArray.count
 
 /// Pick some random index within the array bounds
 var randomIndex: Int? {
-    if randomarrayCount > 0 { return .random(in: 0...randomarrayCount - 1) }
+    if randomArrayCount > 0 { return .random(in: 0...randomArrayCount - 1) }
     else
     { return nil }
 }
@@ -109,10 +108,10 @@ var randomValuePresentInArray: Int? {
         return nil
     }
     
-    return randomarray[index]
+    return randomArray[index]
 }
 
 // MARK: - Act
 
 /// Perform the search
-binarySearch(inputArray: randomarray, searchTerm: randomValuePresentInArray)
+binarySearch(inputArray: randomArray, searchQuery: randomValuePresentInArray)
