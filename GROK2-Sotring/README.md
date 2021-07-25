@@ -12,23 +12,28 @@ Some pooints of differences below:
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **RAM allocation**                                           | Continuous memory blocks                                     | Anywhere in the memory                                       |
 | **Insertion time**                                           | Linear (`O(n)`) at minimum                                   | Constant (`O(1)`)                                            |
-| **`remove(item: at index:)`,<br />traversing over collection** | Traversing - linear (`O(n)`);<br />Removing - constant (`O(1)`);<br />Recollecting indices - linear (`O(n)`) as <br />all indices should be decremented till the end of the collection. | Traversing - linear (`O(n)`);<br />Removing - constant (`O(1)`);<br />Rearranging list - constant (`O(1)`). |
+| **Removing item at,<br />index traversing <br />over collection** | Traversing - linear (`O(n)`);<br />Removing - constant (`O(1)`);<br />Recollecting indices - linear (`O(n)`) as <br />all indices should be decremented till the <br />end of the collection. | Traversing - linear (`O(n)`);<br />Removing - constant (`O(1)`);<br />Rearranging list - constant (`O(1)`). |
 | **Binary search**                                            | Easy to implement                                            | Shitload of hell                                             |
 | **Ecpensive to cache**                                       | NO                                                           | YES                                                          |
+| **Accessing item at index**                                  | Constant time                                                | Linear                                                       |
 
 
 
 ## Linked Lists
 
-**References:**
+See [Grokking-Algorithms-Study-Notes](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/tree/GROK-2-sorting)/[GROK2-Sotring](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/tree/GROK-2-sorting/GROK2-Sotring)/[LinkedList.playground](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/tree/GROK-2-sorting/GROK2-Sotring/LinkedList.playground)/**Contents.swift** for rough implementation of singly linked list with CRUD suite and reverse option.
 
-- https://www.raywenderlich.com/947-swift-algorithm-club-swift-linked-list-data-structure
-
-Linked list is the linear data structure – the structure where all elements are arranged sequentially (or linearly). Next element is adjacent to previous. Each item in the list is in fact a separate object. But each object is holding a reference to another one. **Thus they're linked by reference field**.
-
-Each item is also referred to as node.
+Linked list is a linear data structure where all elements (hereinafter referred to as nodes) are arranged sequentially (or linearly). Each node of the list refers to the next node. Both of them are fact is separate objects.
 
 Linked lists can be singly-linked (elements holds reference to the next) and doubly-linked (each node has link to next and link to previous).
+
+Linked lists should not be used when the purpose is to randomly access the elements of the collection.
+
+## Sorting
+
+Actually I obtained more about linked lists in this chapter, so I just completed a class with two sort methods – asc and desc.
+
+
 
 
 
