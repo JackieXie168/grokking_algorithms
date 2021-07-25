@@ -2,3 +2,4 @@
 *.xcworkspacedata
 
 *.xcplayground
+.DS_Store
