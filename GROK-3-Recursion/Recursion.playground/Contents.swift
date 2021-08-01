@@ -19,12 +19,17 @@ func makeBox() -> [Int] {
 /// Makes a pseudo-random box of boxes
 /// - Returns: the box of boxes
 func makeNestedBox() -> [Any] {
+	/// Generate random value between 0 and 10
 	let random = Int.random(in: 0...10)
 	
+	/// Create an array of n elements, where n = `random`
 	let array = (0...random).map({ element in
+		/// If the value is even
 		if element % 2 == 0 {
+			/// Append the value
 			return element
 		} else {
+			/// Append the box instead
 			return makeBox()
 		}
 	}) as [Any]
@@ -98,7 +103,7 @@ func factorialIterative(_ number: Int) -> Int {
 	while i != 0 {
 		/// The number by it's subtracted part
 		res *= i
-	
+		
 		/// And decrement the counter
 		i -= 1
 	}
