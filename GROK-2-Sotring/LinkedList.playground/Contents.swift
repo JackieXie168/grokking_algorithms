@@ -384,7 +384,7 @@ class SinglyLinkedList<T: BinaryInteger>: CustomStringConvertible {
 	
 	/// Loops through the list and gets the count in "recursive" style
 	/// - Returns: Number of items in the list
-	public func getCountRecursively() -> Int {
+	public func getCountIteratively() -> Int {
 		/// If `head` has no next item, obviously count will be `1`
 		guard _head.next != nil else {
 			return 1
