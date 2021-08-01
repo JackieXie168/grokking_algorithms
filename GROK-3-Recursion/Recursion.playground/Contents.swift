@@ -40,6 +40,7 @@ func makeNestedBox() -> [Any] {
 /// Calculates and returns total count of boxes recursively
 /// - Parameter boxes: Boxes array, any nestedness
 /// - Returns: Recursive count
+/// - Complexity: O(n)
 func countBoxesRecursively(_ boxes: [Any]) -> Int {
 	/// Counter initialized to get it anywhere from the function
 	var count = 0
@@ -92,6 +93,7 @@ countBoxesRecursively(chests)
 /// Iterative factorial
 /// - Parameter number: Some integer
 /// - Returns: Factorial result for some integer
+/// - Complexity: O(n)
 func factorialIterative(_ number: Int) -> Int {
 	/// The 1nd factor is the input number itself
 	var res = number
@@ -115,6 +117,7 @@ func factorialIterative(_ number: Int) -> Int {
 /// Recursive factorial
 /// - Parameter number: Some integer
 /// - Returns: Factorial result for some integer
+/// - Complexity: O(n)
 func factorialRecursive(_ number: Int) -> Int {
 	/// Base case is when number us `0`
 	if number == 0 {
@@ -129,3 +132,92 @@ func factorialRecursive(_ number: Int) -> Int {
 /// Both of the functions return the same value (`120`)
 let i = factorialIterative(5)
 let r = factorialRecursive(5)
+
+// MARK: - Recursive Sum
+
+/// Sums the values in the array recursively
+/// - Parameter numbers: Array of integers
+/// - Returns: Sum
+/// - Complexity: O(n)
+func sum(_ numbers: [Int]) -> Int {
+	var nums = numbers
+	
+	while numbers.count != 0 {
+		let num = nums[0]
+		nums.remove(at: 0)
+		return num + sum(nums)
+	}
+	
+	return 0
+}
+
+// MARK: - Find Biggest Number
+
+/// Finds maximum value in an integers array
+/// - Parameter sequence: Array of integers
+/// - Returns: Maximum value
+func maxValue(_ sequence: [Int]) -> Int {
+	var nums = sequence
+	
+	/// Base case is when thre's only max value left
+	if nums.count == 1 {
+		return nums[0]
+	}
+	
+	if nums[0] > nums[1] {
+		nums.remove(at: 1)
+		return maxValue(nums)
+	} else {
+		nums.remove(at: 0)
+		return maxValue(nums)
+	}
+}
+
+
+// MARK: - Recursive Binary Search
+
+/// Finds the value in the sequence
+/// - Parameters:
+///   - sequence: Array of Integers
+///   - query: A value to find
+/// - Returns: Tuple, containing value and `true` if the search succeeds
+/// - Note: `(nil, false)` is returned if the search fails
+func binarySearchRecursive(_ sequence: [Int], query: Int) -> (Int?, Bool) {
+	/// Array cannot be empty
+	guard !sequence.isEmpty else {
+		return (nil, false)
+	}
+	
+	/// If the sole item in the array matches the quere – the algorithm finishes
+	if sequence.count == 1 && sequence[0] == query {
+		return (sequence[0], true)
+	} else if sequence.count == 1 {
+		/// Else it is assumed the search have failes
+		return (nil, false)
+	}
+	
+	/// Local variables
+	var array = sequence.sorted()
+	let query = query
+	let lowerBound = 0
+	let upperBound = sequence.count - 1
+	let midIndex = (lowerBound + upperBound) / 2
+	let guess = sequence[midIndex]
+	
+	guard lowerBound <= upperBound else {
+		return sequence[0] == query ? (sequence[0], true) : (nil, false)
+	}
+	
+	/// Binary search imp
+	if guess > query {
+		array = Array(array[0...midIndex - 1])
+		return binarySearchRecursive(array, query: query)
+	} else if guess < query {
+		array = Array(array[midIndex + 1...upperBound])
+		return binarySearchRecursive(array, query: query)
+	} else if guess == query {
+		return (guess, true)
+	}
+	
+	return binarySearchRecursive(array, query: query)
+}

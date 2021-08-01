@@ -4,6 +4,8 @@
 
 Recursion is the special state of program execution when a procedure calls itself until it reaches the termination case. After the case has been reached successive repetitions results are processed until the control returns to the first call.
 
+Generally recursion is widely used in functional programming languages such as Haskell. That language does not have traditional loop features, thus some workarounds are used.
+
 Great example can be the pile of boxes, that contain nested boxes. We are to count all the boxes, including the nested ones.
 
 ```swift
@@ -43,6 +45,8 @@ These are two main counterparts of each recursive function.
 - The recursive case is the iteration on which the procedure should call itself.
 
 See [Grokking-Algorithms-Study-Notes](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/tree/GROK-3-recursion)/[GROK-3-Recursion](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/tree/GROK-3-recursion/GROK-3-Recursion)/[Recursion.playground](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/tree/GROK-3-recursion/GROK-3-Recursion/Recursion.playground)/[Contents.swift](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/find/GROK-3-recursion) -> `Recursion: n!` for iterative and recursive factorial implementation with base and recursive cases explanation.
+
+NB - for recursive methods, working with arrays it is good to put `array.count == 0` as the base case, or just when there's a single item left.
 
 Recursion can cost lots of resources, explained in the end of the **Call Stack** section.
 

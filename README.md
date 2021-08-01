@@ -24,7 +24,5 @@ Interesting things there:
 Interesting things there:
 
 1. [Stack Implementation](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/tree/main/GROK-3-Recursion/Stack.playground)
-2. [Recursive: count and factorial implemetation](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/blob/main/GROK-3-Recursion/Recursion.playground/Contents.swift)
-
-
+2. [Recursive: count / factorial / max / sum / binary search  implemetation](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/blob/main/GROK-3-Recursion/Recursion.playground/Contents.swift)
 
