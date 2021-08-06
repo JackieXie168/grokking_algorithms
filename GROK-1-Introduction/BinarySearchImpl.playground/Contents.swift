@@ -115,3 +115,8 @@ var randomValuePresentInArray: Int? {
 
 /// Perform the search
 binarySearch(inputArray: randomArray, searchQuery: randomValuePresentInArray)
+
+
+let a = (0...100_000_0).map { $0 }
+
+bi

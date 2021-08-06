@@ -221,3 +221,6 @@ func binarySearchRecursive(_ sequence: [Int], query: Int) -> (Int?, Bool) {
 	
 	return binarySearchRecursive(array, query: query)
 }
+
+let a = (0...100000).map { $0 }
+binarySearchRecursive(a, query: 777)

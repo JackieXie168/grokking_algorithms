@@ -17,7 +17,7 @@ Interesting things there:
 Interesting things there:
 
 1. [Singly linked list implementation with CRUD](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/blob/main/GROK-2-Sotring/LinkedList.playground/Contents.swift)
-2. [Asc / desc sorting algorithm for integer arrays](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/blob/main/GROK-2-Sotring/Sorting.playground/Contents.swift)
+2. [Asc / desc selection sorting algorithm for integer arrays](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/blob/main/GROK-2-Sotring/Sorting.playground/Contents.swift)
 
 ### [Chapter 3 - Recursion](https://github.com/DimkaIsALifelongLearner/Grokking-Algorithms-Study-Notes/tree/main/GROK-3-Recursion)
 
