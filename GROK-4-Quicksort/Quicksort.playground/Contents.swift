@@ -25,7 +25,7 @@ func quickSort(_ sequence: [Int]) -> [Int] {
 	return quickSort(smallerNums) + [pivot] + quickSort(biggerNums)
 }
 
-// MARK: - Utility Methods
+// MARK: - Utility Methods [Spin Off Actually]
 
 /// Swaps the elements using the temporary variable
 /// - Parameter lhs: Number
@@ -56,8 +56,8 @@ func xorSwap(_ lhs: inout Int, _ rhs: inout Int) {
 	lhs: Int = 4
 	rhs: Int = 6
 
-	4 			= [00000100]
-	6 			= [00000110]
+	4 		= [00000100]
+	6 		= [00000110]
 	4 ^=  6 	= [00000010]
 	6 ^=  4 	= [00000100]
 	4 ^=  6 	= [00000110]
