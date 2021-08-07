@@ -1,37 +1,73 @@
 import Foundation
 
-func quickSort(_ sequence: [String]) -> [String] {
-	guard !sequence.isEmpty ||
-			sequence.count > 1
-	else {
-		return sequence
-	}
-	
-	var array = sequence
-	
-	if sequence.count == 2, sequence[0] > sequence[1] {
-		return swapElements(&array)
-	}
-	
-	return array
-}
+// MARK: - Quick Sort Imp
 
-func swapElements(_ sequence: inout [String]) -> [String] {
-	guard sequence.count == 2 else {
+/// Implements a quick sort algorithm on an integer array
+/// - Parameter sequence: Array of integers
+/// - Returns: Sorted Array of integers
+/// - Note: Input should not contain duplicates
+/// - Complexity: `O(n logn)`
+func quickSort(_ sequence: [Int]) -> [Int] {
+
+	/// Base case  - empty sequence
+	guard !sequence.isEmpty else {
 		return []
 	}
-	
-	if sequence[0] != sequence[1] {
-		let temp = sequence[0]
-		sequence[0] = sequence[1]
-		sequence[1] = temp
-		
-		return sequence
-	} else {
-		return sequence
+
+	/// Select the support element
+	let pivot = sequence[0]
+
+	/// Divide the input array intp parts smaller and bigger than the support element
+	let smallerNums = sequence.dropFirst().filter { $0 < pivot }
+	let biggerNums = sequence.dropFirst().filter { $0 > pivot }
+
+	/// Apply the function recursively on two sub-arrays on return statement
+	return quickSort(smallerNums) + [pivot] + quickSort(biggerNums)
+}
+
+// MARK: - Utility Methods
+
+/// Swaps the elements using the temporary variable
+/// - Parameter lhs: Number
+/// - Parameter rhs: Number
+func swapViaTemp(_ lhs: inout Int, _ rhs: inout Int) {
+	guard lhs != rhs else {
+		return
+	}
+
+	if lhs != rhs {
+		let temp = lhs
+		lhs = rhs
+		rhs = temp
 	}
 }
 
-var a = ["1","2"]
+/// Swaps the elements uisng exclusive or operation
+/// - Parameter lhs: Number
+/// - Parameter rhs: Number
+/// - Note: This method mutates input
+func xorSwap(_ lhs: inout Int, _ rhs: inout Int) {
 
-swapElements(&a)
+	/**
+	For simplicity pretend 4 and 6 were passed in.
+	They both have bit representation as follows:
+
+	```
+	lhs: Int = 4
+	rhs: Int = 6
+
+	4 			= [00000100]
+	6 			= [00000110]
+	4 ^=  6 	= [00000010]
+	6 ^=  4 	= [00000100]
+	4 ^=  6 	= [00000110]
+	```
+	*/
+
+	if lhs != rhs {
+		lhs ^= rhs
+		rhs ^= lhs
+		lhs ^= rhs
+	}
+
+}
