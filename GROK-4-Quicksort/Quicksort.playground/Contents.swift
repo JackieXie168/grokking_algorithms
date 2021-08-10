@@ -6,7 +6,8 @@ import Foundation
 /// - Parameter sequence: Array of integers
 /// - Returns: Sorted Array of integers
 /// - Note: Input should not contain duplicates
-/// - Complexity: `O(n logn)`
+/// - Complexity: `O(n logn)
+/// - Important: To reach logarithmic cmoplexity (best case) – pivot element should be taken from the middle
 func quickSort(_ sequence: [Int]) -> [Int] {
 
 	/// Base case  - empty sequence
@@ -14,8 +15,11 @@ func quickSort(_ sequence: [Int]) -> [Int] {
 		return []
 	}
 
+	/// Get the middle index of the input
+	let midIdx = sequence.count / 2
+
 	/// Select the support element
-	let pivot = sequence[0]
+	let pivot = sequence[mid]
 
 	/// Divide the input array intp parts smaller and bigger than the support element
 	let smallerNums = sequence.dropFirst().filter { $0 < pivot }
