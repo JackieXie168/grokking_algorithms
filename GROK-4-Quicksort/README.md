@@ -50,3 +50,12 @@ Now consider the same situation, but with pivot element selected from the middle
 But the stack 'height' will be `O(logn)`. Therefore the final formula for the algorithm will be something like: `number of iterations in each call * number of calls` and that is `O(n) * O(n logn) = O(n logn)`. 
 
 The worst case takes `O(n)` levels with `O(n)` iterations: `O(n) * O(n) = O(n^2)`.
+
+## Recap + Some Points
+
+- `[1, 2, 3 ].forEach { print($0) }` is `O(n)`.
+- `[1, 2, 3 ].map { $0 * 2 }` is `O(n)`.
+- `[1, 2, 3 ][1] * 2` is `O(1)`.
+- Divide & Conquer strategy separates the input into chunks. Base case is `chunk.count == 0`.
+- It's great to choose random pivot element when doing quick sort.
+- Constants somtimes count in Big-O, that's why quick sort is faster than merge sort.
