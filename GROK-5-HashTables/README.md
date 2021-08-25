@@ -36,6 +36,18 @@ getIndex(from: djb2Hash("cats"), 5) -> 0
 
 Chaining is the common way to overcome collisioning problems when designing a hash table. When the table is on this technique, each array element acts a role of a bucket with a list of zero to infinity key-value pairs.
 
+Consider the example below:
+
+```ceylon
+[1]: no items
+[2]: no items
+[3]: ––> ["firstName": "Steve"] ––> ["lastName": "Jobs"]
+```
+
+When `hashTable["lastName"]` is called, firstly hashing capabilities of the table engage and calculate the index of the content. But here's the catch – 3rd bucket has two linked items. So the second round will be to step through the list and match the corresponding key. After "lastName" was matched, "Jons" is returned.
+
+
+
 ### Applying Hash Tables
 
 ### Hash Tables Internals: Implementation
