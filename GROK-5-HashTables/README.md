@@ -9,6 +9,10 @@
 
 Hash tables are data structures to provide users with quick insertion and search of items. These tables use hash functions under the hood.
 
+### Hash Table Species: Hash Set
+
+Generally this is a collection of unordered unique elements, that allows for insertion, removal, check element availability and iterate over the elements.
+
 ### Hash Tables Internals: Hash Functions
 
 Hash function in general maps the data of arbitrary size (or type) to a fixed-size values.  For instance it can be a function that accepts a string and returns an integer. 
