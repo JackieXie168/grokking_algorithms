@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2002/06/xhtml2/ http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+<link href="Styles/Style00.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style01.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style02.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style03.css" rel="stylesheet" type="text/css" />
+<style type="text/css" title="ibis-book">
+    #sbo-rt-content .calibre{display:block;font-size:1em;margin-bottom:0;margin-left:5pt;margin-right:5pt;margin-top:0;padding-left:0;padding-right:0}#sbo-rt-content .calibre1{display:block;font-size:2em;font-weight:bold;line-height:1.2;margin-bottom:.67em;margin-left:0;margin-right:0;margin-top:.67em;text-align:center}#sbo-rt-content .calibre10{display:table-row-group;vertical-align:middle}#sbo-rt-content .calibre11{display:table-row;vertical-align:inherit}#sbo-rt-content .calibre12{display:block;font-family:"Liberation Mono",monospace;font-size:.77778em;margin-bottom:1em;margin-left:5px;margin-right:0;margin-top:1em;white-space:pre-wrap}#sbo-rt-content .calibre13{display:block;font-size:1.125em;font-weight:bold;line-height:1.2;margin-bottom:0;margin-left:0;margin-right:0;margin-top:40px}#sbo-rt-content .calibre14{display:block}#sbo-rt-content .calibre15{display:block;margin-bottom:1em;margin-left:1em;margin-right:1em;margin-top:1em}#sbo-rt-content .calibre16{display:block}#sbo-rt-content .calibre17{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em}#sbo-rt-content .calibre18{display:block;list-style-type:disc;margin-bottom:1em;margin-right:0;margin-top:1em}#sbo-rt-content .calibre19{display:list-item}#sbo-rt-content .calibre2{height:auto;width:auto}#sbo-rt-content .calibre20{font-weight:bold}#sbo-rt-content .calibre21{font-family:"Liberation Mono",monospace}#sbo-rt-content .calibre22{display:block;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:30px}#sbo-rt-content .calibre23{display:table-column-group}#sbo-rt-content .calibre24{display:table-cell;padding-bottom:1px;padding-left:1px;padding-right:1px;padding-top:1px;text-align:inherit;vertical-align:inherit}#sbo-rt-content .calibre25{font-size:.75em;line-height:normal;vertical-align:sub}#sbo-rt-content .calibre26{font-size:.75em;line-height:normal;vertical-align:super}#sbo-rt-content .calibre27{display:block;list-style-type:decimal;margin-bottom:1em;margin-right:0;margin-top:1em}#sbo-rt-content .calibre28{font-size:smaller;line-height:normal;vertical-align:super}#sbo-rt-content .calibre29{font-size:.75em}#sbo-rt-content .calibre3{font-family:"Times";line-height:1.2}#sbo-rt-content .calibre30{font-size:.77778em;line-height:normal;vertical-align:super}#sbo-rt-content .calibre31{font-size:.71429em}#sbo-rt-content .calibre4{font-family:"Times"}#sbo-rt-content .calibre5{display:block;font-family:"Liberation Mono",monospace;font-size:.75em;margin-bottom:1em;margin-left:5px;margin-right:0;margin-top:1em;white-space:pre-wrap}#sbo-rt-content .calibre6{font-style:italic}#sbo-rt-content .calibre7{border-collapse:separate;border-spacing:2px;display:table;margin-bottom:0;margin-top:0;text-indent:0}#sbo-rt-content .calibre8{display:table-column-group;text-align:left}#sbo-rt-content .calibre9{display:table-column}#sbo-rt-content .center{display:block;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:30px;text-align:center}#sbo-rt-content .center1{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em;text-align:center}#sbo-rt-content .docTableCell{display:table-cell;font-size:.75em;padding-bottom:1px;padding-left:1px;padding-right:1px;padding-top:1px;text-align:left;vertical-align:inherit}#sbo-rt-content .ind{display:block;margin-bottom:8px;margin-right:0;margin-top:0;text-align:left;text-indent:0}#sbo-rt-content .noind{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:25px;text-indent:0}#sbo-rt-content .noindclose{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em;text-indent:0}#sbo-rt-content .notetitle{display:block;font-size:.75em;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:2px}#sbo-rt-content .part{display:block;font-size:1.41667em;font-weight:bold;line-height:1.2;margin-bottom:0;margin-left:0;margin-right:0;margin-top:.83em}#sbo-rt-content .smaller{display:block;font-size:.75em;margin-bottom:1em;margin-left:1em;margin-right:1em;margin-top:1em}#sbo-rt-content .toc{display:block;margin-bottom:1em;margin-left:15px;margin-right:1em;margin-top:15px;text-indent:0}
+    </style>
+<style type="text/css" title="ibis-book">
+    @page{margin-bottom:5pt;margin-top:5pt}
+    </style>
+<style type="text/css" id="font-styles">#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-size: &lt;%= font_size %&gt; !important; }</style>
+<style type="text/css" id="font-family">#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-family: &lt;%= font_family %&gt; !important; }</style>
+<style type="text/css" id="column-width">#sbo-rt-content { max-width: &lt;%= column_width %&gt;% !important; margin: 0 auto !important; }</style>
+
+<style type="text/css">body{margin:1em;}#sbo-rt-content *{text-indent:0pt!important;}#sbo-rt-content .bq{margin-right:1em!important;}body{background-color:transparent!important;}#sbo-rt-content *{word-wrap:break-word!important;word-break:break-word!important;}#sbo-rt-content table,#sbo-rt-content pre{overflow-x:unset!important;overflow:unset!important;overflow-y:unset!important;white-space:pre-wrap!important;}</style></head>
+<body><div id="sbo-rt-content" class="calibre"><h2 id="ch01" class="part">Chapter 1. <a id="ch01__title" class="calibre3"/>Introduction to Algorithms
+      </h2>
+      
+      
+      
+      <p class="center1"><img src="Images/common.jpg" alt="" class="calibre2" width="134" height="148"/></p>
+      
+      
+      <p class="noind"><b class="calibre20">In this chapter</b></p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">You get a foundation for the rest of the book.
+            
+         </li>
+         
+         <li class="calibre19">You write your first search algorithm (binary search).
+            
+         </li>
+         
+         <li class="calibre19">You learn how to talk about the running time of an algorithm (Big O notation).
+            
+         </li>
+         
+         <li class="calibre19">You’re introduced to a common technique for designing algorithms (recursion).
+            
+         </li>
+         
+      </ul>
+      
+      
+      <h3 id="ch01lev1sec1" class="calibre13"><a id="ch01lev1sec1__title" class="calibre3"/>Introduction
+      </h3>
+      
+      <p class="noind">An <i class="calibre6">algorithm</i> is a set of instructions for accomplishing a task. Every piece of code could be called an algorithm, but this book covers
+         the more interesting bits. I chose the algorithms in this book for inclusion because they’re fast, or they solve interesting
+         problems, or both. Here are some highlights:
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19"><a href="#ch01" class="calibre4">Chapter 1</a> talks about binary search and shows how an algorithm can speed up your code. In one example, the number of steps needed goes
+            from 4 billion down to 32!
+            
+         </li>
+         
+         <li class="calibre19">A GPS device uses graph algorithms (as you’ll learn in <a href="kindle_split_012.xhtml#ch06" class="calibre4">chapters 6</a>, <a href="kindle_split_013.xhtml#ch07" class="calibre4">7</a>, and <a href="kindle_split_014.xhtml#ch08" class="calibre4">8</a>) to calculate the shortest route to your destination.
+            
+         </li>
+         
+         <li class="calibre19">You can use dynamic programming (discussed in <a href="kindle_split_015.xhtml#ch09" class="calibre4">chapter 9</a>) to write an AI algorithm that plays checkers.
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">In each case, I’ll describe the algorithm and give you an example. Then I’ll talk about the running time of the algorithm
+         in Big O notation. Finally, I’ll explore what other types of problems could be solved by the same algorithm.
+      </p>
+      
+      
+      <h4 id="ch01lev2sec1" class="calibre22"><a id="ch01lev2sec1__title" class="calibre4"/>What you’ll learn about performance
+      </h4>
+      
+      <p class="noind">The good news is, an implementation of every algorithm in this book is probably available in your favorite language, so you
+         don’t have to write each algorithm yourself! But those implementations are useless if you don’t understand the trade-offs.
+         In this book, you’ll learn to compare trade-offs between different algorithms: Should you use merge sort or quicksort? Should
+         you use an array or a list? Just using a different data structure can make a big difference.
+      </p>
+      
+      
+      
+      <h4 id="ch01lev2sec2" class="calibre22"><a id="ch01lev2sec2__title" class="calibre4"/>What you’ll learn about solving problems
+      </h4>
+      
+      <p class="noind">You’ll learn techniques for solving problems that might have been out of your grasp until now. For example:</p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">If you like making video games, you can write an AI system that follows the user around using graph algorithms.
+            
+         </li>
+         
+         <li class="calibre19">You’ll learn to make a recommendations system using k-nearest neighbors.
+            
+         </li>
+         
+         <li class="calibre19">Some problems aren’t solvable in a timely manner! The part of this book that talks about NP-complete problems shows you how
+            to identify those problems and come up with an algorithm that gives you an approximate answer.
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">More generally, by the end of this book, you’ll know some of the most widely applicable algorithms. You can then use your
+         new knowledge to learn about more specific algorithms for AI, databases, and so on. Or you can take on bigger challenges at
+         work.
+      </p>
+      
+      
+      <p class="noind"/>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <div class="calibre14">
+         
+         <b id="ch01sb01" class="calibre20">What you need to know</b>
+         
+         <p class="noind"><a id="iddle1015" class="calibre4"/><a id="iddle1018" class="calibre4"/><a id="iddle1082" class="calibre4"/><a id="iddle1085" class="calibre4"/><a id="iddle1307" class="calibre4"/><a id="iddle1310" class="calibre4"/>You’ll need to know basic algebra before starting this book. In particular, take this function: f(<i class="calibre6">x</i>) = <i class="calibre6">x</i> × 2. What is f(5)? If you answered 10, you’re set.
+         </p>
+         
+         <p class="noind">Additionally, this chapter (and this book) will be easier to follow if you’re familiar with one programming language. All
+            the examples in this book are in Python. If you don’t know any programming languages and want to learn one, choose Python—it’s
+            great for beginners. If you know another language, like Ruby, you’ll be fine.
+         </p>
+         
+      </div>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      
+      
+      
+      <h3 id="ch01lev1sec2" class="calibre13"><a id="ch01lev1sec2__title" class="calibre3"/>Binary search
+      </h3>
+      
+      <p class="noind">Suppose you’re searching for a person in the phone book (what an old-fashioned sentence!). Their name starts with <i class="calibre6">K</i>. You could start at the beginning and keep flipping pages until you get to the <i class="calibre6">K</i>s. But you’re more likely to start at a page in the middle, because you know the <i class="calibre6">K</i>s are going to be near the middle of the phone book.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/003fig01.jpg" alt="" class="calibre2" width="175" height="311"/></p>
+      
+      
+      <p class="noind">Or suppose you’re searching for a word in a dictionary, and it starts with <i class="calibre6">O</i>. Again, you’ll start near the middle.
+      </p>
+      
+      <p class="noind">Now suppose you log on to Facebook. When you do, Facebook has to verify that you have an account on the site. So, it needs
+         to search for your username in its database. Suppose your username is karlmageddon. Facebook could start from the <i class="calibre6">A</i>s and search for your name—but it makes more sense for it to begin somewhere in the middle.
+      </p>
+      
+      <p class="noind">This is a search problem. And all these cases use the same algorithm to solve the problem: <i class="calibre6">binary search.</i></p>
+      
+      
+      
+      <p class="center1"><img src="Images/003fig02.jpg" alt="" class="calibre2" width="257" height="187"/></p>
+      
+      
+      <p class="noind">Binary search is an algorithm; its input is a sorted list of elements (I’ll explain later why it needs to be sorted). If an
+         element you’re looking for is in that list, binary search returns the position where it’s located. Otherwise, binary search
+         returns <kbd class="calibre21">null</kbd>.
+      </p>
+      
+      <p class="noind">For example:</p>
+      
+      
+      
+      <p class="center1"><img src="Images/004fig01.jpg" alt="" class="calibre2" width="497" height="317"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">Looking for companies in a phone book with binary search</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">Here’s an example of how binary search works. I’m thinking of a number between 1 and 100.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/004fig02.jpg" alt="" class="calibre2" width="267" height="63"/></p>
+      
+      
+      <p class="noind">You have to try to guess my number in the fewest tries possible. With every guess, I’ll tell you if your guess is too low,
+         too high, or correct.
+      </p>
+      
+      <p class="noind">Suppose you start guessing like this: 1, 2, 3, 4 .... Here’s how it would go.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/004fig03.jpg" alt="" class="calibre2" width="482" height="281"/></p>
+      
+      
+      
+      
+      
+      <p class="center1"><img src="Images/005fig01.jpg" alt="" class="calibre2" width="500" height="135"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind"><a id="iddle1016" class="calibre4"/><a id="iddle1083" class="calibre4"/><a id="iddle1308" class="calibre4"/><a id="iddle1338" class="calibre4"/>A bad approach to number guessing
+         </p>
+      <p class="calibre17"/>
+      
+      <p class="noind">This is <i class="calibre6">simple search</i> (maybe <i class="calibre6">stupid search</i> would be a better term). With each guess, you’re eliminating only one number. If my number was 99, it could take you 99 guesses
+         to get there!
+      </p>
+      
+      
+      <h4 id="ch01lev2sec3" class="calibre22"><a id="ch01lev2sec3__title" class="calibre4"/>A better way to search
+      </h4>
+      
+      <p class="noind">Here’s a better technique. Start with 50.</p>
+      
+      <p class="center1"><img src="Images/005fig02_alt.jpg" alt="" class="calibre2" width="590" height="132"/></p>
+      
+      <p class="noind">Too low, but you just eliminated <i class="calibre6">half</i> the numbers! Now you know that 1–50 are all too low. Next guess: 75.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/005fig03.jpg" alt="" class="calibre2" width="318" height="163"/></p>
+      
+      
+      <p class="noind"><a id="iddle1017" class="calibre4"/><a id="iddle1084" class="calibre4"/><a id="iddle1309" class="calibre4"/>Too high, but again you cut down half the remaining numbers! <i class="calibre6">With binary search, you guess the middle number and eliminate half the remaining numbers every time</i>. Next is 63 (halfway between 50 and 75).
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/006fig01.jpg" alt="" class="calibre2" width="500" height="119"/></p>
+      
+      
+      <p class="noind">This is binary search. You just learned your first algorithm! Here’s how many numbers you can eliminate every time.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/006fig02.jpg" alt="" class="calibre2" width="500" height="93"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">Eliminate half the numbers every time with binary search.</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">Whatever number I’m thinking of, you can guess in a maximum of seven guesses—because you eliminate so many numbers with every
+         guess!
+      </p>
+      
+      <p class="noind">Suppose you’re looking for a word in the dictionary. The dictionary has 240,000 words. <i class="calibre6">In the worst case</i>, how many steps do you think each search will take?
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/006fig03.jpg" alt="" class="calibre2" width="342" height="80"/></p>
+      
+      
+      <p class="noind">Simple search could take 240,000 steps if the word you’re looking for is the very last one in the book. With each step of
+         binary search, you cut the number of words in half until you’re left with only one word.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/006fig04.jpg" alt="" class="calibre2" width="500" height="184"/></p>
+      
+      
+      <p class="noind"><a id="iddle1220" class="calibre4"/><a id="iddle1254" class="calibre4"/><a id="iddle1255" class="calibre4"/><a id="iddle1256" class="calibre4"/>So binary search will take 18 steps—a big difference! In general, for any list of <i class="calibre6">n</i>, binary search will take log<sub class="calibre25">2</sub> <i class="calibre6">n</i> steps to run in the worst case, whereas simple search will take <i class="calibre6">n</i> steps.
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <div class="calibre14">
+         
+         <b id="ch01sb02" class="calibre20">Logarithms</b>
+         
+         <p class="noind">You may not remember what logarithms are, but you probably know what exponentials are. log<sub class="calibre25">10</sub> 100 is like asking, “How many 10s do we multiply together to get 100?” The answer is 2: 10 × 10. So log<sub class="calibre25">10</sub> 100 = 2. Logs are the flip of exponentials.
+         </p>
+         
+         
+         
+         <p class="center1"><img src="Images/007fig01.jpg" alt="" class="calibre2" width="366" height="272"/></p>
+         
+         
+         <p class="calibre17">
+            </p><p class="noind">Logs are the flip of exponentials.</p>
+         <p class="calibre17"/>
+         
+         <p class="noind">In this book, when I talk about running time in Big O notation (explained a little later), log always means log<sub class="calibre25">2</sub>. When you search for an element using simple search, in the worst case you might have to look at every single element. So
+            for a list of 8 numbers, you’d have to check 8 numbers at most. For binary search, you have to check log <i class="calibre6">n</i> elements in the worst case. For a list of 8 elements, log 8 == 3, because 2<sup class="calibre26">3</sup> == 8. So for a list of 8 numbers, you would have to check 3 numbers at most. For a list of 1,024 elements, log 1,024 = 10,
+            because 2<sup class="calibre26">10</sup> == 1,024. So for a list of 1,024 numbers, you’d have to check 10 numbers at most.
+         </p>
+         
+      </div>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <h5 id="ch01note01" class="notetitle">Note</h5>
+      
+      
+      <p class="noindclose">I’ll talk about log time a lot in this book, so you should understand the concept of logarithms. If you don’t, Khan Academy
+         (khanacademy.org) has a nice video that makes it clear.
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <h5 id="ch01note02" class="notetitle">Note</h5>
+      
+      
+      <p class="noindclose">Binary search only works when your list is in sorted order. For example, the names in a phone book are sorted in alphabetical
+         order, so you can use binary search to look for a name. What would happen if the names weren’t sorted?
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      <p class="noind">Let’s see how to write binary search in Python. The code sample here uses arrays. If you don’t know how arrays work, don’t
+         worry; they’re covered in the next chapter. You just need to know that you can store a sequence of elements in a row of consecutive
+         buckets called an array. The buckets are numbered starting with 0: the first bucket is at position #0, the second is #1, the
+         third is #2, and so on.
+      </p>
+      
+      <p class="noind">The <kbd class="calibre21">binary_search</kbd> function takes a sorted array and an item. If the item is in the array, the function returns its position. You’ll keep track
+         of what part of the array you have to search through. At the beginning, this is the entire array:
+      </p>
+      
+      <pre id="PLd0e991" class="calibre5">low = 0
+high = len(list) - 1</pre>
+      
+      
+      
+      <p class="center1"><img src="Images/008fig01.jpg" alt="" class="calibre2" width="221" height="250"/></p>
+      
+      
+      <p class="noind">Each time, you check the middle element:</p>
+      
+      <p class="center1"><img src="Images/008fig02_alt.jpg" alt="" class="calibre2" width="590" height="57"/></p>
+      
+      <p class="noind">If the guess is too low, you update <kbd class="calibre21">low</kbd> accordingly:
+      </p>
+      
+      <pre id="PLd0e1018" class="calibre5"><b class="calibre20">if</b> guess &lt; item:
+  low = mid + 1</pre>
+      
+      
+      
+      
+      <p class="center1"><img src="Images/009fig01.jpg" alt="" class="calibre2" width="241" height="152"/></p>
+      
+      
+      <p class="noind">And if the guess is too high, you update <kbd class="calibre21">high</kbd>. Here’s the full code:
+      </p>
+      
+      <p class="center1"><img src="Images/009fig02_alt.jpg" alt="" class="calibre2" width="590" height="322"/></p>
+      
+      
+      
+      
+      <h3 id="ch01lev1sec3" class="calibre13"><a id="ch01lev1sec3__title" class="calibre3"/>Exercises
+      </h3>
+      
+      <p class="calibre17"><a id="ch01qa1" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch01qa1qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch01qa1q1" class="calibre4"/><b class="calibre20">1.1 </b></p><p class="noind">Suppose you have a sorted list of 128 names, and you’re searching through it using binary search. What’s the maximum number
+               of steps it would take?
+            </p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch01qa1qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch01qa1q2" class="calibre4"/><b class="calibre20">1.2 </b></p><p class="noind">Suppose you double the size of the list. What’s the maximum number of steps now?</p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      
+      
+      
+      <h4 id="ch01lev2sec4" class="calibre22"><a id="ch01lev2sec4__title" class="calibre4"/>Running time
+      </h4>
+      
+      <p class="noind"><a id="iddle1007" class="calibre4"/><a id="iddle1012" class="calibre4"/><a id="iddle1019" class="calibre4"/><a id="iddle1069" class="calibre4"/><a id="iddle1074" class="calibre4"/><a id="iddle1086" class="calibre4"/><a id="iddle1242" class="calibre4"/><a id="iddle1257" class="calibre4"/><a id="iddle1306" class="calibre4"/><a id="iddle1311" class="calibre4"/>Any time I talk about an algorithm, I’ll discuss its running time. Generally you want to choose the most efficient algorithm—whether
+         you’re trying to optimize for time or space.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/010fig01.jpg" alt="" class="calibre2" width="151" height="198"/></p>
+      
+      
+      <p class="noind">Back to binary search. How much time do you save by using it? Well, the first approach was to check each number, one by one.
+         If this is a list of 100 numbers, it takes up to 100 guesses. If it’s a list of 4 billion numbers, it takes up to 4 billion
+         guesses. So the maximum number of guesses is the same as the size of the list. This is called <i class="calibre6">linear time</i>.
+      </p>
+      
+      <p class="noind">Binary search is different. If the list is 100 items long, it takes at most 7 guesses. If the list is 4 billion items, it
+         takes at most 32 guesses. Powerful, eh? Binary search runs in <i class="calibre6">logarithmic time</i> (or <i class="calibre6">log time</i>, as the natives call it). Here’s a table summarizing our findings today.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/010fig02.jpg" alt="" class="calibre2" width="438" height="396"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">Run times for search algorithms</p>
+      <p class="calibre17"/>
+      
+      
+      
+      
+      <h3 id="ch01lev1sec4" class="calibre13"><a id="ch01lev1sec4__title" class="calibre3"/>Big O notation
+      </h3>
+      
+      <p class="noind"><i class="calibre6">Big O</i> notation is special notation that tells you how fast an algorithm is. Who cares? Well, it turns out that you’ll use other
+         people’s algorithms often—and when you do, it’s nice to understand how fast or slow they are. In this section, I’ll explain
+         what Big O notation is and give you a list of the most common running times for algorithms using it.
+      </p>
+      
+      
+      
+      <h4 id="ch01lev2sec5" class="calibre22"><a id="ch01lev2sec5__title" class="calibre4"/>Algorithm running times grow at different rates
+      </h4>
+      
+      <p class="noind"><a id="iddle1011" class="calibre4"/><a id="iddle1073" class="calibre4"/><a id="iddle1305" class="calibre4"/><a id="iddle1339" class="calibre4"/>Bob is writing a search algorithm for NASA. His algorithm will kick in when a rocket is about to land on the Moon, and it
+         will help calculate where to land.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/011fig01.jpg" alt="" class="calibre2" width="226" height="277"/></p>
+      
+      
+      <p class="noind">This is an example of how the run time of two algorithms can grow at different rates. Bob is trying to decide between simple
+         search and binary search. The algorithm needs to be both fast and correct. On one hand, binary search is faster. And Bob has
+         only <i class="calibre6">10 seconds</i> to figure out where to land—otherwise, the rocket will be off course. On the other hand, simple search is easier to write,
+         and there is less chance of bugs being introduced. And Bob <i class="calibre6">really</i> doesn’t want bugs in the code to land a rocket! To be extra careful, Bob decides to time both algorithms with a list of 100
+         elements.
+      </p>
+      
+      <p class="noind">Let’s assume it takes 1 millisecond to check one element. With simple search, Bob has to check 100 elements, so the search
+         takes 100 ms to run. On the other hand, he only has to check 7 elements with binary search (log<sub class="calibre25">2</sub> 100 is roughly 7), so that search takes 7 ms to run. But realistically, the list will have more like a billion elements.
+         If it does, how long will simple search take? How long will binary search take? Make sure you have an answer for each question
+         before reading on.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/011fig02.jpg" alt="" class="calibre2" width="313" height="309"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">Running time for simple search vs. binary search, with a list of 100 elements</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">Bob runs binary search with 1 billion elements, and it takes 30 ms (log<sub class="calibre25">2</sub> 1,000,000,000 is roughly 30). “32 ms!” he thinks. “Binary search is about 15 times faster than simple search, because simple
+         search took 100 ms with 100 elements, and binary search took 7 ms. So simple search will take 30 × 15 = 450 ms, right? Way
+         under my threshold of 10 seconds.” Bob decides to go with simple search. Is that the right choice?
+      </p>
+      
+      <p class="noind"><a id="iddle1272" class="calibre4"/>No. Turns out, Bob is wrong. Dead wrong. The run time for simple search with 1 billion items will be 1 billion ms, which is
+         11 days! The problem is, the run times for binary search and simple search <i class="calibre6">don’t grow at the same rate</i>.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/012fig01.jpg" alt="" class="calibre2" width="500" height="143"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">Run times grow at very different speeds!</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">That is, as the number of items increases, binary search takes a little more time to run. But simple search takes a <i class="calibre6">lot</i> more time to run. So as the list of numbers gets bigger, binary search suddenly becomes a <i class="calibre6">lot</i> faster than simple search. Bob thought binary search was 15 times faster than simple search, but that’s not correct. If the
+         list has 1 billion items, it’s more like 33 million times faster. That’s why it’s not enough to know how long an algorithm
+         takes to run—you need to know how the running time increases as the list size increases. That’s where Big O notation comes
+         in.
+      </p>
+      
+      <p class="noind">Big O notation tells you how fast an algorithm is. For example, suppose you have a list of size <i class="calibre6">n</i>. Simple search needs to check each element, so it will take <i class="calibre6">n</i> operations. The run time in Big O notation is O(<i class="calibre6">n</i>). Where are the seconds? There are none—Big O doesn’t tell you the speed in seconds. <i class="calibre6">Big O notation lets you compare the number of operations.</i> It tells you how fast the algorithm grows.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/012fig02.jpg" alt="" class="calibre2" width="288" height="283"/></p>
+      
+      
+      <p class="noind"><a id="iddle1009" class="calibre4"/><a id="iddle1071" class="calibre4"/>Here’s another example. Binary search needs log <i class="calibre6">n</i> operations to check a list of size <i class="calibre6">n</i>. What’s the running time in Big O notation? It’s O(log <i class="calibre6">n</i>). In general, Big O notation is written as follows.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/013fig01.jpg" alt="" class="calibre2" width="346" height="132"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">What Big O notation looks like</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">This tells you the number of operations an algorithm will make. It’s called Big O notation because you put a “big O” in front
+         of the number of operations (it sounds like a joke, but it’s true!).
+      </p>
+      
+      <p class="noind">Now let’s look at some examples. See if you can figure out the run time for these algorithms.</p>
+      
+      
+      
+      <h4 id="ch01lev2sec6" class="calibre22"><a id="ch01lev2sec6__title" class="calibre4"/>Visualizing different Big O run times
+      </h4>
+      
+      <p class="noind">Here’s a practical example you can follow at home with a few pieces of paper and a pencil. Suppose you have to draw a grid
+         of 16 boxes.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/013fig02.jpg" alt="" class="calibre2" width="288" height="256"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">What’s a good algorithm to draw this grid?</p>
+      <p class="calibre17"/>
+      
+      
+      <h5 id="ch01lev3sec1" class="notetitle"><a id="ch01lev3sec1__title" class="calibre4"/>Algorithm 1
+      </h5>
+      
+      <p class="noind">One way to do it is to draw 16 boxes, one at a time. Remember, Big O notation counts the number of operations. In this example,
+         drawing one box is one operation. You have to draw 16 boxes. How many operations will it take, drawing one box at a time?
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/013fig03.jpg" alt="" class="calibre2" width="500" height="122"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">Drawing a grid one box at a time</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">It takes 16 steps to draw 16 boxes. What’s the running time for this algorithm?</p>
+      
+      
+      
+      
+      <h5 id="ch01lev3sec2" class="notetitle"><a id="ch01lev3sec2__title" class="calibre4"/>Algorithm 2
+      </h5>
+      
+      <p class="noind">Try this algorithm instead. Fold the paper.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/014fig01.jpg" alt="" class="calibre2" width="115" height="150"/></p>
+      
+      
+      <p class="noind">In this example, folding the paper once is an operation. You just made two boxes with that operation!</p>
+      
+      <p class="noind">Fold the paper again, and again, and again.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/014fig02.jpg" alt="" class="calibre2" width="335" height="194"/></p>
+      
+      
+      <p class="noind">Unfold it after four folds, and you’ll have a beautiful grid! Every fold doubles the number of boxes. You made 16 boxes with
+         4 operations!
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/014fig03.jpg" alt="" class="calibre2" width="500" height="165"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">Drawing a grid in four folds</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">You can “draw” twice as many boxes with every fold, so you can draw 16 boxes in 4 steps. What’s the running time for this
+         algorithm? Come up with running times for both algorithms before moving on.
+      </p>
+      
+      <p class="noind"><i class="calibre6">Answers:</i> Algorithm 1 takes O(<i class="calibre6">n</i>) time, and algorithm 2 takes O(log <i class="calibre6">n</i>) time.
+      </p>
+      
+      
+      
+      
+      
+      <h4 id="ch01lev2sec7" class="calibre22"><a id="ch01lev2sec7__title" class="calibre4"/>Big O establishes a worst-case run time
+      </h4>
+      
+      <p class="noind"><a id="iddle1008" class="calibre4"/><a id="iddle1014" class="calibre4"/><a id="iddle1070" class="calibre4"/><a id="iddle1081" class="calibre4"/><a id="iddle1243" class="calibre4"/><a id="iddle1258" class="calibre4"/><a id="iddle1304" class="calibre4"/>Suppose you’re using simple search to look for a person in the phone book. You know that simple search takes O(<i class="calibre6">n</i>) time to run, which means in the worst case, you’ll have to look through every single entry in your phone book. In this case,
+         you’re looking for Adit. This guy is the first entry in your phone book. So you didn’t have to look at every entry—you found
+         it on the first try. Did this algorithm take O(<i class="calibre6">n</i>) time? Or did it take O(1) time because you found the person on the first try?
+      </p>
+      
+      <p class="noind">Simple search still takes O(<i class="calibre6">n</i>) time. In this case, you found what you were looking for instantly. That’s the best-case scenario. But Big O notation is
+         about the <i class="calibre6">worst-case</i> scenario. So you can say that, in the <i class="calibre6">worst case</i>, you’ll have to look at every entry in the phone book once. That’s O(<i class="calibre6">n</i>) time. It’s a reassurance—you know that simple search will never be slower than O(<i class="calibre6">n</i>) time.
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <h5 id="ch01note03" class="notetitle">Note</h5>
+      
+      
+      <p class="noindclose">Along with the worst-case run time, it’s also important to look at the average-case run time. Worst case versus average case
+         is discussed in <a href="kindle_split_010.xhtml#ch04" class="calibre4">chapter 4</a>.
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      
+      
+      <h4 id="ch01lev2sec8" class="calibre22"><a id="ch01lev2sec8__title" class="calibre4"/>Some common Big O run times
+      </h4>
+      
+      <p class="noind">Here are five Big O run times that you’ll encounter a lot, sorted from fastest to slowest:</p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">O(log <i class="calibre6">n</i>), also known as <i class="calibre6">log time.</i> Example: Binary search.
+            
+         </li>
+         
+         <li class="calibre19">O(<i class="calibre6">n</i>), also known as <i class="calibre6">linear time</i>. Example: Simple search.
+            
+         </li>
+         
+         <li class="calibre19">O(<i class="calibre6">n</i> * log <i class="calibre6">n</i>). Example: A fast sorting algorithm, like quicksort (coming up in <a href="kindle_split_010.xhtml#ch04" class="calibre4">chapter 4</a>).
+            
+         </li>
+         
+         <li class="calibre19">O(<i class="calibre6">n</i><sup class="calibre26">2</sup>). Example: A slow sorting algorithm, like selection sort (coming up in <a href="kindle_split_008.xhtml#ch02" class="calibre4">chapter 2</a>).
+            
+         </li>
+         
+         <li class="calibre19">O(<i class="calibre6">n</i>!). Example: A really slow algorithm, like the traveling salesperson (coming up next!).
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">Suppose you’re drawing a grid of 16 boxes again, and you can choose from 5 different algorithms to do so. If you use the first
+         algorithm, it will take you O(log <i class="calibre6">n</i>) time to draw the grid. You can do 10 operations per second. With O(log <i class="calibre6">n</i>) time, it will take you 4 operations to draw a grid of 16 boxes (log 16 is 4). So it will take you 0.4 seconds to draw the
+         grid. What if you have to draw 1,024 boxes? It will take you log 1,024 = 10 operations, or 1 second to draw a grid of 1,024
+         boxes. These numbers are using the first algorithm.
+      </p>
+      
+      <p class="noind">The second algorithm is slower: it takes O(<i class="calibre6">n</i>) time. It will take 16 operations to draw 16 boxes, and it will take 1,024 operations to draw 1,024 boxes. How much time
+         is that in seconds?
+      </p>
+      
+      <p class="noind">Here’s how long it would take to draw a grid for the rest of the algorithms, from fastest to slowest:</p>
+      
+      <p class="center1"><img src="Images/016fig01_alt.jpg" alt="" class="calibre2" width="590" height="185"/></p>
+      
+      <p class="noind">There are other run times, too, but these are the five most common.</p>
+      
+      <p class="noind">This is a simplification. In reality you can’t convert from a Big O run time to a number of operations this neatly, but this
+         is good enough for now. We’ll come back to Big O notation in <a href="kindle_split_010.xhtml#ch04" class="calibre4">chapter 4</a>, after you’ve learned a few more algorithms. For now, the main takeaways are as follows:
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Algorithm speed isn’t measured in seconds, but in growth of the number of operations.
+            
+         </li>
+         
+         <li class="calibre19">Instead, we talk about how quickly the run time of an algorithm increases as the size of the input increases.
+            
+         </li>
+         
+         <li class="calibre19">Run time of algorithms is expressed in Big O notation.
+            
+         </li>
+         
+         <li class="calibre19">O(log <i class="calibre6">n</i>) is faster than O(<i class="calibre6">n</i>), but it gets a lot faster as the list of items you’re searching grows.
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      
+      
+      <h3 id="ch01lev1sec5" class="calibre13"><a id="ch01lev1sec5__title" class="calibre3"/>Exercises
+      </h3>
+      
+      <p class="noind"><a id="iddle1010" class="calibre4"/><a id="iddle1013" class="calibre4"/><a id="iddle1072" class="calibre4"/><a id="iddle1080" class="calibre4"/>Give the run time for each of these scenarios in terms of Big O.
+      </p>
+      
+      <p class="calibre17"><a id="ch01qa2" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch01qa2qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch01qa2q1" class="calibre4"/><b class="calibre20">1.3 </b></p><p class="noind">You have a name, and you want to find the person’s phone number in the phone book.</p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch01qa2qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch01qa2q2" class="calibre4"/><b class="calibre20">1.4 </b></p><p class="noind">You have a phone number, and you want to find the person’s name in the phone book. (Hint: You’ll have to search through the
+               whole book!)
+            </p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch01qa2qe3" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch01qa2q3" class="calibre4"/><b class="calibre20">1.5 </b></p><p class="noind">You want to read the numbers of every person in the phone book.</p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch01qa2qe4" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch01qa2q4" class="calibre4"/><b class="calibre20">1.6 </b></p><p class="noind">You want to read the numbers of just the <i class="calibre6">A</i>s. (This is a tricky one! It involves concepts that are covered more in <a href="kindle_split_010.xhtml#ch04" class="calibre4">chapter 4</a>. Read the answer—you may be surprised!)
+            </p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      
+      
+      <h4 id="ch01lev2sec9" class="calibre22"><a id="ch01lev2sec9__title" class="calibre4"/>The traveling salesperson
+      </h4>
+      
+      <p class="noind">You might have read that last section and thought, “There’s no way I’ll ever run into an algorithm that takes O(<i class="calibre6">n</i>!) time.” Well, let me try to prove you wrong! Here’s an example of an algorithm with a really bad running time. This is a
+         famous problem in computer science, because its growth is appalling and some very smart people think it can’t be improved.
+         It’s called the <i class="calibre6">traveling salesperson</i> problem.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/017fig01.jpg" alt="" class="calibre2" width="197" height="328"/></p>
+      
+      
+      <p class="noind">You have a salesperson.</p>
+      
+      <p class="noind">The salesperson has to go to five cities.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/018fig01.jpg" alt="" class="calibre2" width="277" height="278"/></p>
+      
+      
+      <p class="noind">This salesperson, whom I’ll call Opus, wants to hit all five cities while traveling the minimum distance. Here’s one way to
+         do that: look at every possible order in which he could travel to the cities.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/018fig02.jpg" alt="" class="calibre2" width="500" height="188"/></p>
+      
+      
+      <p class="noind">He adds up the total distance and then picks the path with the lowest distance. There are 120 permutations with 5 cities,
+         so it will take 120 operations to solve the problem for 5 cities. For 6 cities, it will take 720 operations (there are 720
+         permutations). For 7 cities, it will take 5,040 operations!
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/018fig03.jpg" alt="" class="calibre2" width="500" height="324"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">The number of operations increases drastically.</p>
+      <p class="calibre17"/>
+      
+      <p class="noind"><a id="iddle1170" class="calibre4"/><a id="iddle1269" class="calibre4"/>In general, for <i class="calibre6">n</i> items, it will take <i class="calibre6">n</i>! (<i class="calibre6">n</i> factorial) operations to compute the result. So this is O(<i class="calibre6">n</i>!) time, or <i class="calibre6">factorial time</i>. It takes a lot of operations for everything except the smallest numbers. Once you’re dealing with 100+ cities, it’s impossible
+         to calculate the answer in time—the Sun will collapse first.
+      </p>
+      
+      <p class="noind">This is a terrible algorithm! Opus should use a different one, right? But he can’t. This is one of the unsolved problems in
+         computer science. There’s no fast known algorithm for it, and smart people think it’s <i class="calibre6">impossible</i> to have a smart algorithm for this problem. The best we can do is come up with an approximate solution; see <a href="kindle_split_016.xhtml#ch10" class="calibre4">chapter 10</a> for more.
+      </p>
+      
+      <p class="noind">One final note: if you’re an advanced reader, check out binary search trees! There’s a brief description of them in the last
+         chapter.
+      </p>
+      
+      
+      
+      
+      <h3 id="ch01lev1sec6" class="calibre13"><a id="ch01lev1sec6__title" class="calibre3"/>Recap
+      </h3>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Binary search is a lot faster than simple search.
+            
+         </li>
+         
+         <li class="calibre19">O(log <i class="calibre6">n</i>) is faster than O(<i class="calibre6">n</i>), but it gets a lot faster once the list of items you’re searching through grows.
+            
+         </li>
+         
+         <li class="calibre19">Algorithm speed isn’t measured in seconds.
+            
+         </li>
+         
+         <li class="calibre19">Algorithm times are measured in terms of <i class="calibre6">growth</i> of an algorithm.
+            
+         </li>
+         
+         <li class="calibre19">Algorithm times are written in Big O notation.
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      
+      <div class="calibre16" id="calibre_pb_10"/>
+</div>
+
+
+
+  </body>
+</html>

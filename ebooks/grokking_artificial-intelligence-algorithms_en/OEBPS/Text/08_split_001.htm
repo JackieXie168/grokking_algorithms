@@ -1,0 +1,4471 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" class="calibre">
+  <head>
+    <meta content="Microsoft Word 15 (filtered)" name="Generator"/>
+    <title>Style A ReadMe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre8">
+<div class="wordsection">
+    <h3 class="head1" id="sigil_toc_id_138">8.3.3<span class="calibre15">  </span> Training a model: Predict with linear regression</h3>
+
+    <p class="body1">Choosing an algorithm to use is based largely on two factors: the question that is being asked and the nature of the data that is available.</p>
+
+    <p class="body1">If the question is to make a prediction of the price of a diamond with a specific carat weight, regression algorithms can be useful. The algorithm choice also depends on the number of features in the dataset and the relationships among those features. If the data has many dimensions (there are many features to consider to make a prediction), we can consider several algorithms and approaches in for the data.</p>
+
+    <p class="body1">Regression means predicting a continuous value, such as the Price or Carat of the diamond. Continuous means that the values can be any number in a range. The price of $2,271, for example, is a continuous value between 0 and the maximum price of any diamond that regression can help predict.</p>
+
+    <p class="body1">Linear regression is one of the simplest machine learning algorithms; it finds relationships between two variables and allows us to predict one variable given the other. An example is predicting the price of a diamond based on its carat value. By looking at many examples of known diamonds, including their price and carat values, we can teach a model the relationship and ask it to estimate predictions.</p>
+
+    <p class="head2">Fitting a line to the data</p>
+
+    <p class="body1">Let’s start trying to find a trend in the data and attempt to make some predictions.</p>
+
+    <p class="body1">For exploring linear regression, the question we’re asking is “Is there a correlation between the carats of a diamond and its price, and if there is, can we make accurate predictions?”</p>
+
+    <p class="body1">We start by isolating the carat and price features and plotting the data on a graph. Because we want to find the price based on carat value, we will treat carats as x and price as y. Why did we choose this approach?</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Carat as the independent variable (x)</span>—An <span class="italics">independent variable</span> is one that is changed in an experiment to determine the effect on a dependent variable. In this example, the value for Carats will be adjusted to determine the price of a diamond with that value.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Price as the dependent variable (y)</span>—A <span class="italics">dependent variable</span> is one that is being tested. It is affected by the independent variable and changes in the dependent variable is measured. In our example, we are interested in the price given a specific carat value.</p>
+
+    <p class="body1"><span class="bold3">Figure 8.6 shows the carat and price data plotted on a graph.</span></p>
+
+    <p class="figure"><img alt="08_06" class="calibre11" src="../Images/08_06.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.6 A scatter plot of carat and price data</p>
+
+    <p class="tablecaption">Table 8.8 Carat and price data</p>
+
+    <div class="calibre3">
+      <table border="1" cellpadding="0" cellspacing="0" char="120" class="msotablegrid7">
+        <tr class="calibre54">
+          <td char="28" class="calibre80">
+            <div class="calibre26">
+              <p class="tablehead"> </p>
+            </div>
+          </td>
+
+          <td char="47" class="calibre98">
+            <div class="calibre26">
+              <p class="tablehead">Carat (x)</p>
+            </div>
+          </td>
+
+          <td char="46" class="calibre87">
+            <div class="calibre26">
+              <p class="tablehead">Price (y)</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">1</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="wordsection">
+    <div class="calibre3">
+      <table border="1" cellpadding="0" cellspacing="0" char="120" class="msotablegrid7">
+        <tr class="calibre54">
+          <td char="47" class="calibre101">
+            <p class="tablebody">0.30</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">339</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">2</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">0.41</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">561</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">3</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">0.75</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">2760</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">4</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">0.91</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">2763</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">5</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">1.20</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">2809</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">6</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">1.31</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">3697</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">7</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">1.50</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">4022</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">8</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">1.74</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">4677</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">9</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">1.96</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">6147</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">10</p>
+          </td>
+
+          <td char="47" class="calibre101">
+            <p class="tablebody">2.21</p>
+          </td>
+
+          <td char="46" class="calibre96">
+            <p class="tablebody">6535</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="body1"><span class="bold3">Notice that compared with Price, the Carat values are tiny. The price goes into the thousands, and carats are in the range of decimals. To make the calculations easier to understand for the purposes of learning in this chapter, we can scale the carat values to be comparable to the price values. By multiplying every carat value by 1,000, we get numbers that are easier to compute by hand in the upcoming walkthroughs. Note that by scaling all the rows, we are not affecting the relationships in the data, because every example has the same operation applied to it. The resulting data is represented in table 8.9.</span></p>
+
+    <p class="figure"><img alt="08_07" class="calibre11" src="../Images/08_07.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.7 A scatter plot of carat and price data</p>
+
+    <p class="tablecaption">Table 8.9 Carat and price data</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="120" class="msotablegrid8">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"><span xml:lang="EN-ZA"> </span></p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat (x)</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre87">
+          <div class="calibre26">
+            <p class="tablehead">Price (y)</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">300</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">339</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">410</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">561</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">750</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2760</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">910</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2763</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1200</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2809</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1310</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">3697</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1500</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">4022</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1740</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">4677</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1960</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">6147</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">2210</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">6535</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="head2">Finding the mean of the features</p>
+
+    <p class="body1">The first thing we need to do to find a regression line is find the mean for each feature. The mean is the sum of all values divided by the number of values. The mean is 1229 for carats, represented by the vertical line on the x axis. The mean is 3431 for price, represented by the horizontal line on the y axis.</p>
+
+    <p class="figure"><img alt="08_08" class="calibre11" src="../Images/08_08.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.8 The means of x and y represented by vertical and horizontal lines</p>
+
+    <p class="body1">The mean is important because, mathematically, any regression line we find will pass through the intersection of the mean of x and the mean of y. Many lines may pass through this point. Some regression lines might be better than others at fitting the data. The <span class="italics">method of least squares</span> aims to create a line that minimizes the distances between the line and among all the points in the dataset. The method of least squares is a popular method for finding regression lines. Figure 8.9 illustrates examples of regression lines.</p>
+
+    <p class="figure"><img alt="08_09" class="calibre11" src="../Images/08_09.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.9 Possible regression lines</p>
+
+    <p class="head2">Finding regression lines with the least-squares method</p>
+
+    <p class="body1">But what is the regression line’s purpose? Suppose that we’re building a subway that tries to be as close as possible to all major office buildings. It will not be feasible to have a subway line that visits every building; there will be too many stations and cost. So, we will try to create a straight-line route that minimizes the distance to each building. Some commuters may have to walk farther than others, but the straight-line is optimized for everyone’s office. This goal is exactly what a regression line aims to achieve; the buildings are data points, and the line is the straight subway path.</p>
+
+    <p class="figure"><img alt="08_10" class="calibre11" src="../Images/08_10.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.10 Intuition of regression lines</p>
+
+    <p class="body1">Linear regression will always find a straight line that fits the data to minimize distance among points overall. Understanding the equation for a line is important because we will be learning how to find the values for the variables that describe a line.</p>
+
+    <p class="body1">A straight line is represented by the equation y = c + mx:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> y: The dependent variable</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> x: The independent variable</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> m: The slope of the line</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> c: The y-value where the line intercepts the y axis</p>
+
+    <p class="figure"><img alt="08_11" class="calibre11" src="../Images/08_11.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.11 Intuition of the equation that represents a line</p>
+
+    <p class="body1">The method of least squares is used to find the regression line. At a high level, the process involves the steps depicted in figure 8.12. Don’t worry if the figure looks a bit daunting; we will work through each step.</p>
+
+    <p class="figure"><img alt="08_12" class="calibre11" src="../Images/08_12.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.12 The basic workflow for calculating a regression line</p>
+
+    <p class="body1">Thus far, our line has some known variables. We know that a x value is 1229 and a y value is 3431, as shown in step 2.</p>
+
+    <p class="body1">Next, we calculate the difference between every Carat value and the Carat mean, as well as the difference between every Price value and the Price mean, to find (x – mean of x) and (y – mean of y), which is used in step 3.</p>
+
+    <p class="tablecaption">Table 8.10 The diamond dataset and calculations</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="376" class="msotablegrid9">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="45" class="calibre81">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+
+            <p class="tablehead">(x)</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre128">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+
+            <p class="tablehead">(y)</p>
+          </div>
+        </td>
+
+        <td char="83" class="calibre129">
+          <div class="calibre26">
+            <p class="tablehead">x – mean of x</p>
+          </div>
+        </td>
+
+        <td char="40" class="calibre130">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre122">
+          <div class="calibre26">
+            <p class="tablehead">y – mean of y</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre131">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">300</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">300 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-929</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">339 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-3092</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">410</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">410 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-819</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">561 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-2870</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">750</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">750 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-479</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2760 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-671</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">910</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">910 - 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-319</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2763 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-668</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1200</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">2100 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-29</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2809 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-622</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1310</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1310 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">81</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">3697 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">266</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1500</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1500 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">271</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">4022 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">591</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1740</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1740 -1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">511</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">4677 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">1246</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1960</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1960 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">731</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">6147 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">2716</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">2210</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">2210 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">981</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">6535 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">3104</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1229</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">3431</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="93" class="calibre136" colspan="2">
+          <p class="tablebody"><span class="bold">Means</span></p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">For step 3, we also need to calculate the square of the difference between every carat and the Carat mean to find (x – mean of x)^2. We also need to sum these values to minimize, which equals 3703690.</p>
+
+    <p class="tablecaption">Table 8.11 The diamond dataset and calculations</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="439" class="msotablegrid10">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="45" class="calibre81">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+
+            <p class="tablehead">(x)</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre128">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+
+            <p class="tablehead">(y)</p>
+          </div>
+        </td>
+
+        <td char="83" class="calibre129">
+          <div class="calibre26">
+            <p class="tablehead">x – mean of x</p>
+          </div>
+        </td>
+
+        <td char="40" class="calibre130">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre122">
+          <div class="calibre26">
+            <p class="tablehead">y – mean of y</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre131">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="63" class="calibre137">
+          <div class="calibre26">
+            <p class="tablehead">(x – mean of x)^2</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">300</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">300 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-929</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">339 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-3092</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">863041</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">410</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">410 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-819</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">561 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-2870</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">670761</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">750</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">750 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-479</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2760 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-671</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">229441</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">910</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">910 - 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-319</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2763 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-668</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">101761</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1200</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">2100 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-29</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2809 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-622</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">841</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1310</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1310 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">81</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">3697 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">266</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">6561</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1500</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1500 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">271</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">4022 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">591</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">73441</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1740</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1740 -1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">511</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">4677 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">1246</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">261121</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1960</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1960 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">731</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">6147 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">2716</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">534361</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">2210</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">2210 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">981</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">6535 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">3104</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">962361</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1229</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">3431</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">3703690</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="93" class="calibre136" colspan="2">
+          <p class="tablebody"><span class="bold">Means</span></p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody"><span class="bold">Sums</span></p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">The last missing value for the equation in step 3 is the value for (x – mean of x) * (y – mean of y). Again, the sum of the values is required. The sum equals 11624370.</p>
+
+    <p class="tablecaption">Table 8.12 The diamond dataset and calculations</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="508" class="msotablegrid11">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="45" class="calibre81">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+
+            <p class="tablehead">(x)</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre128">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+
+            <p class="tablehead">(y)</p>
+          </div>
+        </td>
+
+        <td char="83" class="calibre129">
+          <div class="calibre26">
+            <p class="tablehead">x – mean of x</p>
+          </div>
+        </td>
+
+        <td char="40" class="calibre130">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre122">
+          <div class="calibre26">
+            <p class="tablehead">y – mean of y</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre131">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="63" class="calibre137">
+          <div class="calibre26">
+            <p class="tablehead">(x – mean of x)^2</p>
+          </div>
+        </td>
+
+        <td char="69" class="calibre139">
+          <div class="calibre26">
+            <p class="tablehead">(x – mean of x) * (y – mean of y)</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">300</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">300 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-929</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">339 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-3092</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">863041</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">2872468</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">410</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">410 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-819</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">561 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-2870</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">670761</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">2350530</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">750</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">750 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-479</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2760 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-671</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">229441</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">321409</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">910</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">910 - 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-319</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2763 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-668</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">101761</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">213092</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1200</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">2100 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">-29</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">2809 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-622</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">841</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">18038</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1310</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1310 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">81</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">3697 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">266</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">6561</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">21546</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1500</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1500 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">271</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">4022 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">591</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">73441</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">160161</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1740</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1740 -1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">511</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">4677 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">1246</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">261121</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">636706</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1960</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">1960 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">731</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">6147 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">2716</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">534361</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">1985396</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">2210</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody">2210 – 1229</p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody">981</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">6535 – 3431</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">3104</p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">962361</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">3045024</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1229</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">3431</p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="63" class="calibre138">
+          <p class="tablebody">3703690</p>
+        </td>
+
+        <td char="69" class="calibre140">
+          <p class="tablebody">11624370</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="93" class="calibre136" colspan="2">
+          <p class="tablebody"><span class="bold">Means</span></p>
+        </td>
+
+        <td char="83" class="calibre133">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="40" class="calibre134">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="132" class="calibre141" colspan="2">
+          <p class="tablebody"><span class="bold">Sums</span></p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">Now we can plug in the calculated values to the least-squares equation to calculate m.</p>
+
+    <p class="figure"><img alt="08_12a" class="calibre11" src="../Images/08_12a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">Now that we have a value for m, we can calculate c by substituting the mean values for x and y. Remember that all regression lines will pass this point, so it is a known point within the regression line:</p>
+
+    <p class="figure"><img alt="08_12b" class="calibre11" src="../Images/08_12b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">Finally, we can plot the line by generating some values for carats between the minimum value and maximum value, plugging them into the equation that represents the regression line and then plotting it.</p>
+
+    <p class="figure"><img alt="08_13" class="calibre11" src="../Images/08_13.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.13 A regression line plotted with the data points</p>
+
+    <p class="body1">We’ve trained a linear regression line based on our dataset that accurately fits the data, so we’ve done some machine learning by hand.</p>
+
+    <p class="head2">Exercise: Calculate a regression line using the least-squares method</p>
+
+    <p class="body1">Following the steps described and using the following dataset, calculate the regression line with the least-squares method.</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="119" class="msotablegrid12">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat (x)</p>
+          </div>
+        </td>
+
+        <td char="45" class="calibre142">
+          <div class="calibre26">
+            <p class="tablehead">Price (y)</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">320</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">350</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">460</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">560</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">800</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">2760</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">910</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">2800</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1350</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">2900</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1390</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">3600</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1650</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">4000</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1700</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">4650</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1950</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">6100</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">2000</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">6500</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="head2">Solution: Calculate a regression line using the least-squares method</p>
+
+    <p class="body1">The means for each dimension need to be calculated. The means are 1253 for x, and 3422 for y. The next step is calculating the difference between each value and its mean. Next, the square of the difference between x and the mean of x is calculated and summed, which results in 3251610. Finally, the difference between x and the mean of x is multiplied by the difference between y and the mean of y and summed, resulting in 10566940.</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="376" class="msotablegrid9">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat (x)</p>
+          </div>
+        </td>
+
+        <td char="45" class="calibre142">
+          <div class="calibre26">
+            <p class="tablehead">Price (y)</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre144">
+          <div class="calibre26">
+            <p class="tablehead">x – mean of x</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre144">
+          <div class="calibre26">
+            <p class="tablehead">y – mean of y</p>
+          </div>
+        </td>
+
+        <td char="86" class="calibre145">
+          <div class="calibre26">
+            <p class="tablehead">(x – mean of x)^2</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead">(x – mean of x) * (y – mean of y)</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">320</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">350</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-933</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-3072</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">870489</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2866176</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">460</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">560</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-793</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-2862</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">628849</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2269566</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">800</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-453</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-662</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">205209</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">299886</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">910</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">2800</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-343</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-622</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">117649</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">213346</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1350</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">2900</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">97</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">-522</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">9409</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">-50634</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1390</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">3600</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">137</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">178</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">18769</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">24386</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1650</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">4000</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">397</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">578</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">157609</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">229466</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1700</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">4650</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">447</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">1228</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">199809</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">548916</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1950</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">6100</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">697</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">2678</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">485809</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">1866566</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">2000</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">6500</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">747</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody">3078</p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">558009</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2299266</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1253</p>
+        </td>
+
+        <td char="45" class="calibre143">
+          <p class="tablebody">3422</p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="48" class="calibre147">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="86" class="calibre148">
+          <p class="tablebody">3251610</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">10566940</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">The values can be used to calculate the slope, m:</p><code class="codebcxspfirst"><span class="calibre19">m = 10566940 / 3251610</span></code> <code class="codebcxsplast"><span class="calibre19">m = 3.25</span></code>
+
+    <p class="body1">Remember the equation for a line:</p><code class="codeb"><span class="calibre19">y = c + mx</span></code>
+
+    <p class="body1">Substitute the mean values for x and y and the newly calculated m:</p><code class="codebcxspfirst"><span class="calibre19">3422 = c + 3.35 * 1253</span></code> <code class="codebcxsplast"><span class="calibre19">c = -775.55</span></code>
+
+    <p class="body1">Substitute the minimum and maximum values for x to calculate points to plot a line:</p><code class="codebcxspfirst"><span><code class="codeinitalic"><span class="calibre19">Point 1, we use the minimum value for Carat: x = 320</span></code></span></code> <code class="codebcxspmiddle"><span class="calibre19">y = 775.55 + 3.25 * 320</span></code> <code class="codebcxspmiddle"><span class="calibre19">y = 1 815.55</span></code> <code class="codebcxspmiddle"> </code> <code class="codebcxspmiddle"><span><code class="codeinitalic"><span class="calibre19">Point 2, we use the maximum value for Carat: x = 2000</span></code></span></code> <code class="codebcxspmiddle"><span class="calibre19">y = 775.55 + 3.25 * 2000</span></code> <code class="codebcxsplast"><span class="calibre19">y = 7 275.55</span></code>
+
+    <p class="body1">Now that we have an intuition about how to use linear regression and how regression lines are calculated, take a look at the pseudocode.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The code is similar to the steps that we walked through. The only interesting aspects are the two <span><code class="codeintext"><span class="calibre21">for</span></code></span> loops used to calculate summed values by iterating every element in the dataset.</p>
+
+    <p class="figure"><img alt="08_13a" class="calibre11" src="../Images/08_13a.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_139">8.3.4<span class="calibre15">  </span> Testing the model: Determine the accuracy of the model</h3>
+
+    <p class="body1">Now that we have determined a regression line, we can use it to make price predictions for other carat values. We can measure the performance of the regression line with new examples in which we know the actual price and determine how accurate the linear regression model is.</p>
+
+    <p class="body1">We can’t test the model with the same data that we used to train it. This approach would result in high accuracy and be meaningless. The trained model must be tested with real data that it hasn’t been trained with.</p>
+
+    <p class="head2">Separating training and testing data</p>
+
+    <p class="body1">Training and testing data are usually split 80/20, with 80 percent of the available data used as training data and 20 percent used to test the model. Percentages are used because the number of examples needed to train a model accurately is difficult to know; different contexts and questions being asked may need more or less data.</p>
+
+    <p class="body1">Figure 8.14 and table 8.13 represent a set of testing data for the diamond example. Remember that we scaled the Carat values to be similar-size numbers to the Price values (all Carat values have been multiplied by 1000) – to make them easier to read and work with. The dots represent the testing data points, and the line represents the trained regression line.</p>
+
+    <p class="figure"><img alt="08_14" class="calibre11" src="../Images/08_14.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.14 A regression line plotted with the data points</p>
+
+    <p class="tablecaption">Table 8.13 The carat and price data</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="120" class="msotablegrid8">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre87">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">220</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">342</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">330</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">403</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">710</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2772</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">810</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2789</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1080</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2869</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1390</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">3914</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1500</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">4022</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1640</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">4849</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1850</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">5688</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1910</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">6632</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">Testing a model involves making predictions with unseen training data and then comparing the accuracy of the model’s prediction with the actual values. In the diamond example, we have the actual price values, so we will determine what the model predicts and compare the difference.</p>
+
+    <p class="head2">Measuring performance of the line</p>
+
+    <p class="body1">In linear regression, a common method of measuring the accuracy of the model is calculating R<sup class="calibre150">2</sup> (R squared). R<sup class="calibre150">2</sup> is used to determine the variance between the actual value and a predicted value. The following equation is used to calculate the R<sup class="calibre150">2</sup> score:</p>
+
+    <p class="figure"><img alt="08_14a" class="calibre11" src="../Images/08_14a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">The first things we need to do, similar to the training step, are calculate the mean of the actual price values, calculate the distances between the actual price values and the mean of the prices, and then calculate the square of those values. We are using the values plotted as dots in figure 8.14 earlier in this chapter.</p>
+
+    <p class="tablecaption">Table 8.14 The diamond dataset and calculations</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="253" class="msotablegrid13">
+      <tr class="calibre54">
+        <td char="28" class="calibre151">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+
+            <p class="tablehead">(x)</p>
+          </div>
+        </td>
+
+        <td char="55" class="calibre152">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+
+            <p class="tablehead">(y)</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre131">
+          <div class="calibre26">
+            <p class="tablehead">y – mean of y</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead">(y – mean of y)^2</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">220</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">342</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-3086</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">9523396</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">330</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">403</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-3025</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">9150625</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">710</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">2772</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-656</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">430336</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">810</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">2789</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-639</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">408321</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1080</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">2869</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-559</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">312481</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1390</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">3914</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">486</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">236196</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1500</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">4022</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">594</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">352836</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1640</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">4849</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">1421</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2019241</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1850</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">5688</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">2260</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">5107600</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1910</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="italics">6632</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">3204</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">10265616</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="bold">3428</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">37806648</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="bold">Mean</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold">Sum</span></p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">The next step is calculating the predicted Price value for every Carat value, square the values, and calculating the sum of all those values.</p>
+
+    <p class="tablecaption">Table 8.15 The diamond dataset and calculations</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="433" class="msotablegrid14">
+      <tr class="calibre54">
+        <td char="28" class="calibre151">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+
+            <p class="tablehead">(x)</p>
+          </div>
+        </td>
+
+        <td char="55" class="calibre152">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+
+            <p class="tablehead">(y)</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre131">
+          <div class="calibre26">
+            <p class="tablehead">y – mean of y</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead">(y – mean of y)^2</p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre128">
+          <div class="calibre26">
+            <p class="tablehead">Predicted y</p>
+          </div>
+        </td>
+
+        <td char="57" class="calibre155">
+          <div class="calibre26">
+            <p class="tablehead">Predicted y – mean of y</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre156">
+          <div class="calibre26">
+            <p class="tablehead">(Predicted y – mean of y)^2</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">220</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">342</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-3086</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">9523396</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">264</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">-3164</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">10009876</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">330</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">403</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-3025</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">9150625</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">609</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">-2819</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">7944471</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">710</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">2772</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-656</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">430336</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">1802</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">-1626</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">2643645</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">810</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">2789</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-639</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">408321</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2116</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">-1312</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">1721527</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1080</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">2869</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">-559</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">312481</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">2963</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">-465</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">215900</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1390</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">3914</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">486</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">236196</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">3936</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">508</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">258382</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1500</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">594</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">352836</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">4282</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">854</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">728562</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1640</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">4849</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">1421</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2019241</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">4721</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">1293</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">1671748</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1850</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">5688</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">2260</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">5107600</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">5380</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">1952</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">3810559</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1910</p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">6632</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody">3204</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">10265616</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody">5568</p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody">2140</p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">4581230</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody">3428</p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">37806648</p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody">33585901</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre153">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="55" class="calibre154">
+          <p class="tablebody"><span class="bold">Mean</span></p>
+        </td>
+
+        <td char="47" class="calibre135">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold">Sum</span></p>
+        </td>
+
+        <td char="47" class="calibre132">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="57" class="calibre157">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="76" class="calibre158">
+          <p class="tablebody"><span class="bold">Sum</span></p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">Using the sum of the square of the difference between the predicted price and mean, and the sum of the square of the difference between the actual price and mean, we can calculate the R<span class="superscript">2</span> score:</p>
+
+    <p class="figure"><img alt="08_14b" class="calibre11" src="../Images/08_14b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">The result—0.88—means that the model is 88 percent accurate to the new unseen data. This result is a fairly good one, showing that the linear regression model is fairly accurate. For the diamond example, this result is satisfactory. Determining whether the accuracy is satisfactory for the problem we’re trying to solve depends on the domain of the problem. We will be exploring performance of machine learning models in section 8.3.5.</p>
+
+    <p class="body1">Additional information: Linear regression can be applied to more dimensions. We can determine the relationship among Carat values, prices, and cut of diamonds, for example, through a process called <span class="italics">multiple regression</span>. This process adds some complexity to the calculations, but the fundamental principles remain the same.</p>
+
+    <h3 class="head1" id="sigil_toc_id_140">8.3.5<span class="calibre15">  </span> Improving accuracy</h3>
+
+    <p class="body1">After training a model on data and measuring how well it performs on new testing data, we have an idea of how well the model performs. Often, models don’t perform as well as desired, and additional work needs to be done to improve the model, if possible. This improvement involves iterating on the various steps in the machine learning life cycle.</p>
+
+    <p class="figure"><img alt="08_15" class="calibre11" src="../Images/08_15.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.15 A refresher on a machine learning life cycle</p>
+
+    <p class="body1">The results may require us to pay attention to one or more of the following areas. Machine learning is experimental work in which different tactics at different stages are tested before settling on the best-performing approach. In the diamond example, if the model that used Carat values to predict price performed poorly, we might use the dimensions of the diamond that indicates size, coupled with the Carat value, to try predict the price more accurately. Here are some ways to improve the accuracy of the model.</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Collect more data.</span> One solution may be to collect more data related to the dataset that is being explored, perhaps augmenting the data with relevant external data or including data that previously was not considered.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Prepare data differently.</span> The data used for training may need to be prepared in a different way. Referring to the techniques used to fix data in section 8.3.2, there may be errors in the approach. We may need to use different techniques to find values for missing data, replace ambiguous data, and encode categorical data.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Choose different features in the data.</span> Other features in the dataset may be better suited to predicting the dependent variable. The X dimension value might be a good choice to predict the Table value, for example, because it has a physical relationship with it, as shown in the diamond terminology figure (figure 8.5), whereas predicting Clarity with the X dimension is meaningless.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Use a different algorithm to train the model.</span> Sometimes, the selected algorithm is not suited to the problem being solved or the nature of the data. We can use a different algorithm to accomplish different goals, as discussed in the following material, in section 8.4.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Dealing with false-positive tests.</span> Tests can be deceiving. A good test score may show that the model performs well, but when the model is presented with unseen data, it might perform poorly. This problem can be due to overfitting the data. Overfitting is when the model is too closely aligned with the training data and is not flexible to dealing with new data with more variance. This approach is usually applicable to classification problems, which we dive into in section 8.4.</p>
+
+    <p class="body1">If linear regression didn’t provide useful results, or if we had a different question to ask, we can try a range of other algorithms. The next two sections will explore algorithms to use when the question is different in its nature.</p>
+
+    <h2 class="head" id="sigil_toc_id_141">8.4<span class="calibre10">     </span> Classification with decision trees</h2>
+
+    <p class="body1">Simply put, classification problems involve assigning a label to an example based on its attributes. This is different to regression where a value is estimated. Let’s dive into classification problems and how to solve them.</p>
+
+    <h3 class="head1" id="sigil_toc_id_142">8.4.1<span class="calibre15">  </span> Classification problems: Either this or that</h3>
+
+    <p class="body1">We have learned that regression involves predicting a value based on one or more other variables, such as predicting the price of a diamond given its carat value. Classification is similar in that it aims to predict a value but predicts discrete classes instead of continuous values. Discrete values are categorical features of a dataset such as Cut, Color, or Clarity in the diamond dataset, as opposed to continuous values such as Price or Depth.</p>
+
+    <p class="body1">Here’s another example. Suppose that we have several vehicles that are cars and trucks. We will measure the weight of each vehicle and the number of wheels of each vehicle. We also forget for now that cars and trucks look different. Almost all cars have four wheels, and many large trucks have more than four wheels. Trucks are usually heavier than cars, but a large sport-utility vehicle may be as heavy as a small truck. We could find relationships between the weight and number of wheels of vehicles to predict whether a vehicle is a car or a truck.</p>
+
+    <p class="figure"><img alt="08_16" class="calibre11" src="../Images/08_16.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.16 Example vehicles for potential classification based on the number of wheels and weight</p>
+
+    <p class="head2">Exercise: Regression vs Classification</p>
+
+    <p class="body1">Consider the following scenarios, and determine whether each one is a regression or classification problem.</p>
+
+    <p class="listnumbered">1.<span class="calibre14">  </span> Based on data about rats, we have a life-expectancy feature, and an obesity feature. We’re trying to find a correlation between the two features.</p>
+
+    <p class="listnumbered">2.<span class="calibre14">  </span> Based on data about animals, we have the weight of each animal and whether or not it has wings. We’re trying to determine which animals are birds.</p>
+
+    <p class="listnumbered">3.<span class="calibre14">  </span> Based on data about computing devices, we have the screen size, weight, and operating system of several devices. We want to determine which devices are tablets, laptops, or phones.</p>
+
+    <p class="listnumbered">4.<span class="calibre14">  </span> Based on data about weather, we have the amount of rainfall and a humidity value. We want to determine the humidity in different rainfall seasons.</p>
+
+    <p class="head2">Solution: Regression vs Classification</p>
+
+    <p class="listnumbered4">1.<span class="calibre14">    </span> <span class="italics">Regression</span>—The relationship between two variables is being explored. Life expectancy is the dependent variable, and obesity is the independent variable.</p>
+
+    <p class="listnumbered4">2.<span class="calibre14">    </span> <span class="italics">Classification</span>—Classifying an example as either a bird or not using the weight and the wing characteristic of the examples.</p>
+
+    <p class="listnumbered4">3.<span class="calibre14">    </span> <span class="italics">Classification</span>—An example is being classified as a tablet, laptop, or phone by using its other characteristics.</p>
+
+    <p class="listnumbered4">4.<span class="calibre14">    </span> <span class="italics">Regression</span>—The relationship between rainfall and humidity is being explored. Humidity is the dependent variable, and rainfall is the independent variable.</p>
+
+    <h3 class="head1" id="sigil_toc_id_143">8.4.2<span class="calibre15">  </span> The basics of decision trees</h3>
+
+    <p class="body1">Different algorithms are used for regression and classification problems. Some popular algorithms include support vector machines, decision trees, and random forests. In this section, we will be looking at a decision-tree algorithm to learn classification.</p>
+
+    <p class="body1"><span class="italics">Decision trees</span> are structures that describe a series of decisions that are made to find a solution to a problem. If we’re deciding whether to wear shorts for the day, we might make a series of decisions to inform the outcome. Will it be cold during the day? If not, will we be out late in the evening, when it does get cold? We might decide to wear shorts on a warm day, but not if we will be out when it gets cold.</p>
+
+    <p class="figure"><img alt="08_17" class="calibre11" src="../Images/08_17.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.17 Example of a basic decision tree</p>
+
+    <p class="body1">For the diamond example, we will try to predict the cut of a diamond based on the Carat and Price values by using a decision tree. To simplify this example, assume that we’re a diamond dealer who doesn’t care about each specific cut. We will group the different cuts into two broader categories. Fair and Good cuts will be grouped into a category called Okay, and Very Good, Premium, and Ideal cuts will be grouped into a category called Perfect.</p>
+
+    <div class="calibre3">
+      <table border="1" cellpadding="0" cellspacing="0" class="msotablegrid15">
+        <tr class="calibre54">
+          <td char="26" class="calibre159">
+            <p class="tablebody">1</p>
+          </td>
+
+          <td char="76" class="calibre146">
+            <p class="tablebody">Fair</p>
+          </td>
+
+          <td char="28" class="calibre160" rowspan="2">
+            <p class="tablebody">1</p>
+          </td>
+
+          <td char="76" class="calibre146" rowspan="2">
+            <p class="tablebody">Okay</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="26" class="calibre161">
+            <p class="tablebody">2</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Good</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="26" class="calibre161">
+            <p class="tablebody">3</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Very Good</p>
+          </td>
+
+          <td char="28" class="calibre162" rowspan="3">
+            <p class="tablebody">2</p>
+          </td>
+
+          <td char="76" class="calibre149" rowspan="3">
+            <p class="tablebody">Perfect</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="26" class="calibre161">
+            <p class="tablebody">4</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Premium</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="26" class="calibre161">
+            <p class="tablebody">5</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Ideal</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="body1">Our sample dataset now looks like table 8.16.</p>
+
+    <p class="tablecaption">Table 8.16 The dataset used for the classification example</p>
+
+    <div class="calibre3">
+      <table border="1" cellpadding="0" cellspacing="0" class="msotablegrid15">
+        <tr class="calibre54">
+          <td char="28" class="calibre80">
+            <div class="calibre26">
+              <p class="tablehead"> </p>
+            </div>
+          </td>
+
+          <td char="64" class="calibre163">
+            <div class="calibre26">
+              <p class="tablehead">Carat</p>
+            </div>
+          </td>
+
+          <td char="76" class="calibre146">
+            <div class="calibre26">
+              <p class="tablehead">Price</p>
+            </div>
+          </td>
+
+          <td char="76" class="calibre146">
+            <div class="calibre26">
+              <p class="tablehead">Cut</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">1</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">0.21</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">327</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Okay</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">2</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">0.39</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">897</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Perfect</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">3</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">0.50</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">1122</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Perfect</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">4</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">0.76</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">907</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Okay</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">5</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">0.87</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">2757</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Okay</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">6</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">0.98</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">2865</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Okay</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">7</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">1.13</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">3045</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Perfect</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">8</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">1.34</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">3914</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Perfect</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">9</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">1.67</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">4849</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Perfect</p>
+          </td>
+        </tr>
+
+        <tr class="calibre54">
+          <td char="28" class="calibre89">
+            <p class="tablebody">10</p>
+          </td>
+
+          <td char="64" class="calibre164">
+            <p class="tablebody">1.81</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">5688</p>
+          </td>
+
+          <td char="76" class="calibre149">
+            <p class="tablebody">Perfect</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="body1">By looking at the values in this small example and intuitively looking for patterns, we might notice some patterns. The price seems to spike significantly after 0.98 carats, and the increased price seems to correlate with the diamonds that are Perfect, whereas diamonds with smaller carat values tend to be Average. But example 3, which is Perfect, has a small carat value. Figure 8.18 shows what would happen if we were to create questions to filter the data and categorize it by hand.</p>
+
+    <p class="figure"><img alt="08_18" class="calibre11" src="../Images/08_18.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.18 Example of a decision tree designed through human intuition</p>
+
+    <p class="body1">With the small dataset, we could easily categorize the diamonds by hand. In real-world datasets, however, there are thousands of examples to work through, with possibly thousands of features, making it close to impossible for a person to create a decision tree by hand. This is where decision tree algorithms come in. Decision trees can create the questions that filter the examples. A decision tree finds the patterns that we might miss and is more accurate in its filtering.</p>
+
+    <h3 class="head1" id="sigil_toc_id_144">8.4.3<span class="calibre15">  </span> Training decision trees</h3>
+
+    <p class="body1">To create a tree that is intelligent in making the right decisions to classify diamonds, we need a training algorithm to learn from the data. There is a family of algorithms for decision tree learning, and we will use a specific one named CART (Classification And Regression Tree). The foundation of CART and the other tree learning algorithms is this: Decide what questions to ask and when to ask those questions to best filter the examples into their respective categories. In the diamond example, the algorithm must learn the best questions to ask about the Carat and Price values, and when to ask them, to best segment Average and Perfect diamonds.</p>
+
+    <p class="head2">Data structures for decision trees</p>
+
+    <p class="body1">To help us understand how the decisions of the tree will be structured, we can review the following data structures, which organize logic and data in a way that’s suitable for the decision tree learning algorithm:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Map of classes/label groupings</span>—A map is a key-value pair of elements that cannot have two keys that are the same. This structure is useful for storing the number of examples that match a specific label and will be useful to store the values required for calculating entropy, also known as uncertainty. We’ll learn about entropy soon.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Tree of nodes</span>—As depicted in the previous tree figure (figure 8.18), several nodes are linked to compose a tree. This example may be familiar from some of the earlier chapters. The nodes in the tree are important for filtering/partitioning the examples into categories:</p>
+
+    <p class="listbulletcxspmiddle3"><span class="calibre79">o<span class="calibre14">   </span></span> <span class="italics">Decision node</span>—A node in which the dataset is being split or filtered.</p>
+
+    <p class="listbulletcxspmiddle4"><span class="calibre13">ü<span class="calibre14"> </span></span> Question: What question is being asked? (See the Question point coming up).</p>
+
+    <p class="listbulletcxspmiddle4"><span class="calibre13">ü<span class="calibre14"> </span></span> True examples: The examples that satisfy the question.</p>
+
+    <p class="listbulletcxspmiddle4"><span class="calibre13">ü<span class="calibre14"> </span></span> False examples: The examples that don’t satisfy the question.</p>
+
+    <p class="listbulletcxspmiddle3"><span class="calibre79">o<span class="calibre14">   </span></span> <span class="italics">Examples node/leaf node</span>—A node containing a list of examples only. All examples in this list would have been categorized correctly.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Question</span>—A question can be represented differently depending on how flexible it can be. We could ask, “Is the carat value &gt; 0.5 and &lt; 1.13?”. To keep this example simple to understand, the question is a variable feature, a variable value, and the &gt;= operator: “Is carat &gt;= 0.5?” or “Is price &gt;=3045?”.</p>
+
+    <p class="listbulletcxspmiddle3"><span class="calibre79">o<span class="calibre14">   </span></span> <span class="italics">Feature</span>—The feature that is being interrogated.</p>
+
+    <p class="listbulletcxsplast3"><span class="calibre79">o<span class="calibre14">   </span></span> <span class="italics">Value</span>—The constant value to which the comparing value must be greater or equal.</p>
+
+    <p class="head2">Decision-tree learning life cycle</p>
+
+    <p class="body1">This section discusses how a decision-tree algorithm filters data with decisions to classify a dataset correctly. Figure 8.19 shows the steps involved in training a decision tree.</p>
+
+    <p class="figure"><img alt="08_19" class="calibre11" src="../Images/08_19.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.19 A basic flow for building a decision tree</p>
+
+    <p class="body1">The flow described in figure 8.19 is covered throughout the rest of this section.</p>
+
+    <p class="body1">In building a decision tree, we test all possible questions to determine which one is the best question to ask at a specific point in the decision tree. To test a question, we use the concept of <span class="italics">entropy—</span>the measurement of uncertainty of a dataset. If we had five Perfect diamonds and five Okay diamonds, and tried to pick a Perfect diamond by randomly selecting a diamond from the ten, what are the chances that the diamond will be Perfect?</p>
+
+    <p class="figure"><img alt="08_20" class="calibre11" src="../Images/08_20.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.20 Example of uncertainty</p>
+
+    <p class="body1">Given an initial dataset of diamonds with the Carat, Price, and Cut features, we can determine the uncertainty of the dataset by using the Gini index. A Gini index of 0 means that the dataset has no uncertainty and is pure; for example, it might have 10 Perfect diamonds. Figure 8.21 describes how the Gini index is calculated.</p>
+
+    <p class="figure"><img alt="08_21" class="calibre11" src="../Images/08_21.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.21 The Gini index calculation</p>
+
+    <p class="body1">The Gini index is 0.5, so there’s a 50 percent chance of choosing an incorrectly labeled example if one is randomly selected, as seen a bit earlier in figure 8.20.</p>
+
+    <p class="body1">The next step is creating a decision node to split the data. The decision node includes a question that can be used to split the data in a sensible way and decrease the uncertainty. Remember that 0 means no uncertainty. We aim to partition the dataset into subsets with zero uncertainty.</p>
+
+    <p class="body1">Many questions are generated based on every feature of each example to split the data and determine the best split outcome. Because we have 2 features and 10 examples, the total number of questions generated would be 20.</p>
+
+    <p class="body1">Figure 8.22 depicts some of the questions asked—simple questions about whether the value of a feature is greater than or equal to a specific value.</p>
+
+    <p class="figure"><img alt="08_22" class="calibre11" src="../Images/08_22.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.22 An example of questions asked to split the data with a decision node</p>
+
+    <p class="body1">Uncertainty in a dataset is determined by the <span class="italics">Gini index</span>, and questions aim to reduce uncertainty. <span class="italics">Entropy</span> is another concept that measures disorder using the Gini index for a specific split of data based on a question asked. We must have a way to determine how well a question reduced uncertainty, and we accomplish this task by measuring information gain. <span class="italics">Information gain</span> describes the amount of information gained by asking a specific question. If a lot of information is gained, the uncertainty is smaller.</p>
+
+    <p class="body1">Information gain is calculated by the subtracting the entropy before the question is asked by the entropy after the question is asked, following these steps:</p>
+
+    <p class="listnumbered">1.<span class="calibre14">  </span> Split the dataset by asking a question.</p>
+
+    <p class="listnumbered">2.<span class="calibre14">  </span> Measure the Gini index for the left split.</p>
+
+    <p class="listnumbered">3.<span class="calibre14">  </span> Measure the entropy for the left split compared with the dataset before the split.</p>
+
+    <p class="listnumbered">4.<span class="calibre14">  </span> Measure the Gini index for the right split.</p>
+
+    <p class="listnumbered">5.<span class="calibre14">  </span> Measure the entropy for the right split compared with the dataset before the split.</p>
+
+    <p class="listnumbered">6.<span class="calibre14">  </span> Calculate the total entropy after by adding the left entropy and right entropy.</p>
+
+    <p class="listnumbered">7.<span class="calibre14">  </span> Calculate the information gain by subtracting the total entropy after from the total entropy before.</p>
+
+    <p class="body1">Figure 8.23 illustrates the data split and information gain for the question “Is Price &gt;= 3914?”</p>
+
+    <p class="figure"><img alt="08_23" class="calibre11" src="../Images/08_23.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.23 Illustration of data split and information gain based on a question</p>
+
+    <p class="body1">In the example in figure 8.23, the information gain for all questions is calculated, and the question with the highest information gain is selected as the best question to ask at that point in the tree. Then the original dataset is split based on the decision node with the question “Is Price &gt;= 3914?” A decision node containing this question is added to the decision tree, and the left and right split stem from that node.</p>
+
+    <p class="body1">In figure 8.24, after the dataset is split, the left side contains a pure dataset of Perfect diamonds only, and the right side contains a dataset with mixed diamond classifications, including two Perfect diamonds and five Okay diamonds. Another question must be asked on the right side of the dataset to split the dataset further.</p>
+
+    <p class="body1">Again, several questions are generated by using the features of each example in the dataset.</p>
+
+    <p class="figure"><img alt="08_24" class="calibre11" src="../Images/08_24.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.24 The resulting decision tree after the first decision node and possible questions</p>
+
+    <p class="head2">Exercise: Calculating uncertainty and information gain for a question</p>
+
+    <p class="body1">Using the knowledge gained and figure 8.23 as a guide, calculate the information gain for the question “Is Carat &gt;= 0.76?”</p>
+
+    <p class="head2">Solution: Calculating uncertainty and information gain for a question</p>
+
+    <p class="body1">The solution depicted in figure 8.25 highlights the reuse of the pattern of calculations that determine the entropy and information gain, given a question. Feel free to practice more questions and compare the results with the information-gain values in the figure.</p>
+
+    <p class="figure"><img alt="08_25" class="calibre11" src="../Images/08_25.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.25 Illustration of data split and information gain based on a question at the second level</p>
+
+    <p class="body1">The process of splitting, generating questions, and determining information gained happens recursively until the dataset is completely categorized by questions. Figure 8.26 shows the complete decision tree, including all the questions asked and the resulting splits.</p>
+
+    <p class="figure"><img alt="08_26" class="calibre11" src="../Images/08_26.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.26 The complete trained decision tree</p>
+
+    <p class="body1">It is important to note that decision trees are usually trained with a much larger sample of data. The questions asked need to be more general to accommodate a wider variety of data and, thus, would need a variety of examples to learn from.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">When programming a decision tree from scratch, the first step is counting the number of examples of each class—in this case, the number of Okay diamonds and the number of Perfect diamonds.</p>
+
+    <p class="figure"><img alt="08_26a" class="calibre11" src="../Images/08_26a.png"/><br class="calibre12"/></p>
+
+    <p class="body1"><span xml:lang="EN-ZA">Next, examples are split based on a question. Examples that satisfy the question are stored in</span> <span><code class="codeintext"><span class="calibre21">examples_true</span></code></span><span xml:lang="EN-ZA">, and the rest are stored in</span> <span><code class="codeintext"><span class="calibre21">examples_false</span></code></span><span xml:lang="EN-ZA">.</span></p>
+
+    <p class="figure"><img alt="08_26b" class="calibre11" src="../Images/08_26b.png"/><br class="calibre12"/></p>
+
+    <p class="body1"><span xml:lang="EN-ZA">We need a function that calculates the Gini index for a set of examples. The next function calculates the Gini index by using the method described in figure 8.23.</span></p>
+
+    <p class="figure"><img alt="08_26c" class="calibre11" src="../Images/08_26c.png"/><br class="calibre12"/></p>
+
+    <p class="body1"><span><code class="codeintext"><span class="calibre21">information_gain</span></code></span> <span xml:lang="EN-ZA">uses the left and right splits and the current certainty to determine the information gain:</span></p>
+
+    <p class="figure"><img alt="08_26d" class="calibre11" src="../Images/08_26d.png"/><br class="calibre12"/></p>
+
+    <p class="body1"><span xml:lang="EN-ZA">The next function may look daunting, but it’s iterating over all the features and their values in the dataset, finding the best information gain to determine the best question to ask:</span></p>
+
+    <p class="figure"><img alt="08_26e" class="calibre11" src="../Images/08_26e.png"/><br class="calibre12"/></p>
+
+    <p class="body1"><span xml:lang="EN-ZA">The next function ties everything together, using the functions defined previously to build a decision tree:</span></p>
+
+    <p class="figure"><img alt="08_26f" class="calibre11" src="../Images/08_26f.png"/><br class="calibre12"/></p>
+
+    <p class="body1"><span xml:lang="EN-ZA">Note that this function is recursive. It splits the data and recursively splits the resulting dataset until there is no information gain, indicating that the examples cannot be split any further. As a reminder, decision nodes are used to split the examples, and examples nodes are used to store split sets of examples.</span></p>
+
+    <p class="body1">We’ve now learned how to build a decision-tree classifier. Remember that the trained decision-tree model will be tested with unseen data, similar to the linear regression approach explored in section 8.3.3.</p>
+
+    <p class="body1">One problem with decision trees is overfitting, which occurs when the model is trained too well on several examples but performs poorly for new examples. Overfitting happens when the model learns the patterns of the training data but new real-world data is slightly different and doesn’t meet the splitting criteria of the trained model. A model with 100 percent accuracy is usually overfitted to the data. Some examples are classified incorrectly in an ideal model as a consequence of the model’s being more general to support different cases. Overfitting can happen with any machine learning model, not just decision trees.</p>
+
+    <p class="body1">Figure 8.27 illustrates the concept of overfitting. Underfitting includes too many incorrect classifications, and overfitting includes no incorrect classifications; the ideal is somewhere in between.</p>
+
+    <p class="figure"><img alt="08_27" class="calibre11" src="../Images/08_27.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.27 Underfitting, ideal, and overfitting</p>
+
+    <h3 class="head1" id="sigil_toc_id_145">8.4.4<span class="calibre15">  </span> Classifying examples with decision trees</h3>
+
+    <p class="body1">Now that a decision tree has been trained and the right questions have been determined, we can test it by providing it new data to classify. The model that we’re referring to is the decision tree of questions that was created by the training step.</p>
+
+    <p class="body1">To test the model, we provide several new examples of data and measure whether they have been classified correctly, so we need to know the labeling of the testing data. In the diamond example, we need more diamond data, including the Cut feature, to test the decision tree.</p>
+
+    <p class="tablecaption">Table 8.17 The diamond dataset for classification</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" class="msotablegrid2">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="64" class="calibre163">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead">Cut</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.26</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">689</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">967</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.52</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">1012</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.76</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">907</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.81</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2650</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.90</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2634</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">1.24</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2999</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">1.42</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">3850</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">1.61</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">4345</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">1.78</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">3100</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">Figure 8.28 illustrates the decision-tree model that we trained, which will be used to process the new examples. Each example is fed through the tree and classified.</p>
+
+    <p class="figure"><img alt="08_28" class="calibre11" src="../Images/08_28.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.28 The decision tree model that will process new examples</p>
+
+    <p class="body1">The resulting predicted classifications are detailed in table 8.18. Assume that we’re trying to predict Okay diamonds. Notice that three examples are incorrect. That result is 3 of 10, which means that the model predicted 7 of 10, or 70 percent of the testing data correctly. This performance isn’t terrible, but it illustrates how examples can be misclassified.</p>
+
+    <p class="tablecaption">Table 8.18 The diamond dataset for classification</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" class="msotablegrid2">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="64" class="calibre163">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead">Cut</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead">Prediction</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre146">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.26</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">689</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="calibre165">✓</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">880</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="calibre165">✓</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.52</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">1012</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="calibre165">✓</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.76</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">907</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="calibre165">✓</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.81</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2650</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="calibre165">✓</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">0.90</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2634</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Okay</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="calibre165">✓</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">1.24</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">2999</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold">Perfect</span></p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold">Okay</span></p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold4">✗</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">1.42</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">3850</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold">Perfect</span></p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold">Okay</span></p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold4">✗</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">1.61</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">4345</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">Perfect</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="calibre165">✓</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="64" class="calibre164">
+          <p class="tablebody">1.78</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody">3100</p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold">Okay</span></p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold">Perfect</span></p>
+        </td>
+
+        <td char="76" class="calibre149">
+          <p class="tablebody"><span class="bold4">✗</span></p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">A confusion matrix is often used to measure the performance of a model with testing data. A confusion matrix describes the performance by the following metrics:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">True positive (TP)—</span>Correctly classified examples as Okay</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">True negative (TN)—</span>Correctly classified examples as Perfect</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">False positive (FP)—</span>Perfect examples classified as Okay</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">False negative (FN)—</span>Okay examples classified as Perfect</p>
+
+    <p class="figure"><img alt="08_29" class="calibre11" src="../Images/08_29.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.29 A confusion matrix</p>
+
+    <p class="body1">The outcomes of testing the model with unseen examples can be used to deduce several measurements:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Precision</span>—How often Okay examples are classified correctly</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Negative precision</span>—How often Perfect examples are classified correctly</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Sensitivity or recall</span>—Also known as the true-positive rate; the ratio of correctly classified Okay diamonds to all the actual Okay diamonds in the training set</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Specificity</span>—Also known as the true-negative rate; the ratio of correctly classified Perfect diamonds to all actual Perfect diamonds in the training set</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Accuracy</span>—How often the classifier is correct overall between classes</p>
+
+    <p class="body1">Figure 8.30 shows the resulting confusion matrix, with the results of the diamond example listed as input. Accuracy is important but the other measurements can unveil additional useful information about the model’s performance.</p>
+
+    <p class="figure"><img alt="08_30" class="calibre11" src="../Images/08_30.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.30 Confusion matrix for the diamond test example</p>
+
+    <p class="body1">By using these measurements, we can make more-informed decisions in a machine learning life cycle to improve the performance of the model. As mentioned throughout this chapter, machine learning is an experimental exercise involving some trial and error. These metrics are guides in this process.</p>
+
+    <h2 class="head" id="sigil_toc_id_146">8.5<span class="calibre10">     </span> Other popular machine learning algorithms</h2>
+
+    <p class="body1">This chapter explores two popular and fundamental machine learning algorithms. The linear-regression algorithm is used for regression problems in which the relationships between features is discovered. The decision-tree algorithm is used for classification problems in which the relationships between features and categories of examples are discovered. But many other machine learning algorithms are suitable in different contexts and for solving different problems. Figure 8.31 illustrates some popular algorithms and shows how they fit into the machine learning landscape.</p>
+
+    <p class="figure"><img alt="08_31" class="calibre11" src="../Images/08_31.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.31 A map of popular machine learning algorithms</p>
+
+    <p class="body1">The classification and regression algorithms satisfy problems similar to the ones explored in this chapter. Unsupervised learning contains algorithms that can help with some of the data preparation steps, find hidden underlying relationships in data, and inform what questions can be asked in a machine learning experiment.</p>
+
+    <p class="body1">Notice the introduction of deep learning in figure 8.31. Chapter 9 covers artificial neural networks—a key concept in deep learning. This chapter will give us a better understanding of the types of problems that can be solved with these approaches and how the algorithms are implemented.</p>
+
+    <h2 class="head" id="sigil_toc_id_147">8.6<span class="calibre10">     </span> Use cases for machine learning algorithms</h2>
+
+    <p class="body1">Machine learning can be applied in almost every industry to solve a plethora of problems in different domains. Given the right data and the right questions, the possibilities are potentially endless. We have all interacted with a product or service that uses some aspect of machine learning and data modeling in our everyday lives. This section highlights some of the popular ways machine learning can be used to address to solve real-world problems at scale</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Fraud and threat detection</span>—Machine learning has been used to detect and prevent fraudulent transactions in the finance industry. Financial institutions have gained a wealth of transactional information over the years, including fraudulent transaction reports from their customers. These fraud reports are an input to labelling and characterizing fraudulent transactions. The models might consider the location of the transaction, the amount, the merchant, and so on to classify transactions, saving consumers from potential losses and the financial institution from insurance losses. The same model can applied to network threat detection to detect and prevent attacks based on known network use and reported unusual behavior.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Product and content recommendations</span>—Many of us use e-commerce sites to purchase goods or media streaming services for audio and video consumption. Products may be recommended to us based on what we’re purchasing, or content may be recommended based on our interests. This functionality is usually enabled by machine learning, in which patterns in purchase or viewing behavior is derived from people’s interactions. Recommender systems are being used in more and more industries and applications to enable more sales or provide a better user experience.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Dynamic product and service pricing</span>—Products and services are often priced based on what someone is willing to pay for it or based on risk. For a ride-sharing system, it might make sense to hike the price if there are fewer available cars than the demand for a ride – sometimes referred to as surge pricing. In the insurance industry, a price might be hiked if a person is categorized as high-risk. Machine learning is used to find the attributes and relationships between the attributes that influence pricing based on dynamic conditions and details about a unique individual.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Health-condition risk prediction</span>—The medical industry requires health professionals to acquire an abundance of knowledge so that they can diagnose and treat patients. Over the years, they have gained a vast amount of data about patients: blood types, DNA, family-illness history, geographic location, lifestyle, and more. This data can be used to find potential patterns that can guide diagnosis of illness. The power of using data to find diagnoses is that we can treat conditions before they mature. Additionally, by feeding the outcomes back into the machine learning system, we can strengthen its reliability in making predictions.</p>
+
+    <p class="figure"><img alt="08_32" class="calibre11" src="../Images/08_32.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.32 Summary of Machine learning</p>
+  </div>
+</body>
+</html>

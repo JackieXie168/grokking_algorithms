@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" class="calibre">
+  <head>
+    <meta content="Microsoft Word 15 (filtered)" name="Generator"/>
+    <title>Style A ReadMe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre8">
+  <div class="wordsection">
+    <h1 class="cochapternumber">1<span class="calibre16">  </span> Intuition of artificial intelligence</h1>
+
+    <p class="cosummaryhead">This chapter covers</p>
+
+    <p class="cosummarybulletcxspfirst"><span class="calibre17">·<span class="calibre14">    </span></span> Definition of AI as we know it</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Intuition of concepts that are applicable to AI</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Problem types in computer science and AI, and their properties</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Overview of the AI algorithms discussed in this book</p>
+
+    <p class="cosummarybulletcxsplast"><span class="calibre17">·<span class="calibre14">    </span></span> Real-world uses for AI</p>
+
+    <h2 class="head" id="sigil_toc_id_10">1.1<span class="calibre10">           </span> What is artificial intelligence?</h2>
+
+    <p class="body1">Intelligence is a mystery—a concept that has no agreed-upon definition. Philosophers, psychologists, scientists, and engineers all have different opinions about what it is and how it emerges. We see intelligence in nature around us, such as groups of living creatures working together, and we see intelligence in the way that humans think and behave. In general, things that are autonomous yet adaptive are considered to be intelligent. <span class="italics">Autonomous</span> means that somthing does not need to be provided constant instructions; and <span class="italics">adaptive</span> means that it can change its behavior as the environment or problem space changes. When we look at living organisms and machines, we see that the core element for operation is data. Visuals that we see are data; sounds that we hear are data; measurements of the things around us are data. We consume data, process it all, and make decisions based on it; so a fundamental understanding of the concepts surrounding data is important for understanding Artificial Intelligence (AI) algorithms.</p>
+
+    <h3 class="head1" id="sigil_toc_id_11">1.1.1<span class="calibre15">  </span> Defining AI</h3>
+
+    <p class="body1">Some people argue that we don’t understand what AI is because we struggle to define intelligence itself. Salvador Dalí believed that ambition is an attribute of intelligence; he said, “Intelligence without ambition is a bird without wings.” Albert Einstein believed that imagination is a big factor in intelligence; he said, “The true sign of intelligence is not knowledge, but imagination.” And Stephen Hawking said, “Intelligence is the ability to adapt,” which focuses on being able to adapt to changes in the world. These three great minds had different outlooks on intelligence. With no true definitive answer to intelligence yet, we at least know that we base our understanding of intelligence on humans as being the dominant (and most intelligent) species.</p>
+
+    <p class="body1">For the sake of our sanity, and to stick to the practical applications in this book, we will loosely define AI as a synthetic system that exhibits “intelligent” behavior. Instead of trying to define something as AI or not AI, let’s refer to the AI-likeness of it. Something might exhibit some aspects of intelligence because it helps us solve hard problems and provides value and utility. Usually, AI implementations that simulate vision, hearing, and other natural senses are seen to be AI-like. Solutions that are able to learn autonomously while adapting to new data and environments are also seen to be AI-like.</p>
+
+    <p class="body1">Here are some examples of things that exhibit AI-ness:</p>
+
+    <p class="listbulletcxspfirst2"><span class="calibre17">·<span class="calibre14">     </span></span> A system that succeeds at playing many types of complex games</p>
+
+    <p class="listbulletcxspmiddle1"><span class="calibre17">·<span class="calibre14">     </span></span> A cancer tumor detection system</p>
+
+    <p class="listbulletcxspmiddle1"><span class="calibre17">·<span class="calibre14">     </span></span> A system that generates artwork based on little input</p>
+
+    <p class="listbulletcxsplast1"><span class="calibre17">·<span class="calibre14">     </span></span> A self-driving car</p>
+
+    <p class="body1">Douglas Hofstadter said, "AI is whatever hasn't been done yet." In the examples just mentioned, a self-driving car may seem to be intelligent because it hasn’t been perfected yet. Similarly, a computer that adds numbers was seen to be intelligent a while ago but is taken for granted now.</p>
+
+    <p class="body1">The bottom line is that <span class="italics">AI</span> is an ambiguous term that means different things to different people, industries, and disciplines. The algorithms in this book have been classified as AI algorithms in the past or present; whether or not they enable a specific definition of AI or not doesn’t really matter. What matters is that they are useful for solving hard problems.</p>
+
+    <h3 class="head1" id="sigil_toc_id_12">1.1.2<span class="calibre10">     </span> Understanding that data is core to AI algorithms</h3>
+
+    <p class="body1">Data is the input to the wonderful algorithms that perform feats which almost appear to be magic. With the incorrect choice of data, poorly represented data, or missing data, algorithms perform poorly, so the outcome is only as good as the data provided. The world is filled with data, and that data exists in forms we can’t even sense. Data can represent values that are measured numerically, such as the current temperature in the Arctic, the number of fish in a pond, or your current age in days. All these examples involve capturing accurate numeric values based on facts. It’s difficult to misinterpret this data. The temperature at a specific location at a specific point in time is absolutely true and is not subject to any bias. This type of data is known as <span class="italics">quantitative data</span>.</p>
+
+    <p class="body1">Data can also represent values of observations, such as the smell of a flower or one’s level of agreement with a politician’s policies. This type of data is known as <span class="italics">qualitative data</span> and is sometimes difficult to interpret because it’s not an absolute truth, but a perception of someone’s truth. Figure 1.1 illustrates some examples of the quantitative and qualitative data around us.</p>
+
+    <p class="figure"><img alt="01_01" class="calibre11" src="../Images/01_01.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.1 Examples of data around us</p>
+
+    <p class="body1">Data are raw facts about things, so recordings of it usually have no bias. In the real world, however, data is collected, recorded, and related by people based on a specific context with a specific understanding of how the data may be used. The act of constructing meaningful insights to answer questions based on data is creating <span class="italics">information</span>. Furthermore, the act of utilizing information with experiences and consciously applying it creates <span class="italics">knowledge</span>. This is partly what we try to simulate with AI algorithms.</p>
+
+    <p class="body1">Figure 1.2 shows how quantitative and qualitative data can be interpreted. Standardized instruments such as clocks, calculators, and scales are usually used to measure quantitative data, whereas our senses of smell, sound, taste, touch, and sight, as well as our opinionated thoughts, are usually used to create qualitative data.</p>
+
+    <p class="figure"><img alt="01_02" class="calibre11" src="../Images/01_02.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.2 Qualitative data versus quantitative data</p>
+
+    <p class="body1">Data, information, and knowledge can be interpreted differently by different people, based their level of understanding of that domain and their outlook on the world, and this fact has consequences for the quality of solutions - making the scientific aspect of creating technology hugely important. By following repeatable scientific processes to capture data, conduct experiments, and accurately report findings, we can ensure more accurate results and better solutions to problems when processing data with algorithms.</p>
+
+    <h3 class="head1" id="sigil_toc_id_13">1.1.3<span class="calibre10">     </span> Viewing algorithms as instructions in recipes</h3>
+
+    <p class="body1">We now have a loose definition of AI and an understanding of the importance of data. Because we will be exploring several useful AI algorithms throughout this book, it is useful to understand exactly what an algorithm is. An <span class="italics">algorithm</span> is a set of instructions and rules provided as a specification to accomplish a specific goal. Algorithms typically accept inputs, and after several finite steps in which the algorithm progresses through varying states, an output is produced.</p>
+
+    <p class="body1">Even something as simple as reading a book can be represented as an algorithm. Here’s an example of the steps involved in reading this book:</p>
+
+    <p class="listnumbered">1.<span class="calibre14">  </span> Find the book <span class="italics">Grokking Artificial Intelligence Algorithms</span>.</p>
+
+    <p class="listnumbered">2.<span class="calibre14">  </span> Open the book.</p>
+
+    <p class="listnumbered">3.<span class="calibre14">  </span> While unread pages remain,</p>
+
+    <p class="listnumberedsub">a.<span class="calibre14">    </span> Read page.</p>
+
+    <p class="listnumberedsub">b.<span class="calibre14">    </span> Turn to next page.</p>
+
+    <p class="listnumberedsub">c.<span class="calibre14">    </span> Think about what you have learned.</p>
+
+    <p class="listnumbered">4.<span class="calibre14">  </span> Think about how you can apply your knowledge in the real-world.</p>
+
+    <p class="body1">An algorithm can be viewed as a recipe as seen in figure 1.3. Given some ingredients and tools as inputs, and instructions for creating a specific dish, a meal is the output.</p>
+
+    <p class="figure"><img alt="01_03" class="calibre11" src="../Images/01_03.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.3 An example showing that an algorithm is like a recipe</p>
+
+    <p class="body1">Algorithms are used for many different solutions. For example, we can enable live video chat across the world through compression algorithms, and we can navigate cities through map applications that use real-time routing algorithms. Even a simple “Hello World” program has many algorithms at play to translate the human-readable programming language into machine code and execute the instructions on the hardware. You can find algorithms everywhere if you look closely enough.</p>
+
+    <p class="body1">To illustrate something more closely related to the algorithms in this book, figure 1.4 shows a number-guessing-game algorithm represented as a flow chart. The computer generates a random number in a given, range and the player attempts to guess that number. Notice that the algorithm has discrete steps that perform an action or determine a decision before moving to the next operation.</p>
+
+    <p class="figure"><img alt="01_04" class="calibre11" src="../Images/01_04.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.4 A number-guessing-game algorithm flow chart</p>
+
+    <p class="body1">Given our understanding gained of technology, data, intelligence, and algorithms; AI algorithms are sets of instructions that use data to create systems that exhibit intelligent behavior and solve hard problems.</p>
+
+    <h2 class="head" id="sigil_toc_id_14">1.2<span class="calibre10">     </span> A brief history of artificial intelligence</h2>
+
+    <p class="body1">A brief look back at the strides made in AI is useful for understanding that old techniques and new ideas can be harnessed to solve problems in innovative ways. AI is not a new idea. History is filled with myths of mechanical men and autonomous “thinking” machines. Looking back, we find that we’re standing on the shoulders of giants. Perhaps we ourselves can contribute to the pool of knowledge in a small way.</p>
+
+    <p class="body1">Looking at past developments highlights the importance of understanding the fundamentals of AI; algorithms from decades ago are critical in many modern AI implementations. This book starts with fundamental algorithms that help build the intuition of problem-solving and gradually moves to more interesting and modern approaches.</p>
+
+    <p class="body1">Figure 1.5 isn’t an exhaustive list of achievements in AI—simply a set of examples. History is filled with many more breakthroughs!</p>
+
+    <p class="figure"><img alt="01_05" class="calibre11" src="../Images/01_05.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.5 The evolution of AI</p>
+
+    <h2 class="head" id="sigil_toc_id_15">1.3<span class="calibre10">     </span> Problem types and problem-solving paradigms</h2>
+
+    <p class="body1">AI algorithms are powerful, but they are not silver bullets that can solve any problem. But what are problems? This section looks at different types of problems that we usually experience in computer science, showing how we can start gaining intuition about these problems. This intuition can help us identify these problems in the real world and guide the choice of algorithms used in the solution.</p>
+
+    <p class="body1">Several terms in computer science and AI are used to describe problems. Problems are classified based on the <span class="italics">context</span> and the <span class="italics">goal</span>.</p>
+
+    <h3 class="head1" id="sigil_toc_id_16">1.3.1<span class="calibre10">     </span> Search problems: Find a path to a solution</h3>
+
+    <p class="body1">A <span class="italics">search problem</span> involves a situation that has multiple possible solutions, each of which represents a sequence of steps(path) toward a goal. Some solutions contain overlapping subsets of paths; some are better than others; and some are cheaper to achieve than others. A “better” solution is determined by the specific problem at hand; a “cheaper” solution means computationally cheaper to execute. An example is determining the shortest path between cities on a map. Many routes may be available, with different distances and traffic conditions, but some routes are better than others. Many AI algorithms are based on the concept of searching a solution space.</p>
+
+    <h3 class="head1" id="sigil_toc_id_17">1.3.2<span class="calibre10">     </span> Optimization problems: Find a good solution</h3>
+
+    <p class="body1">An <span class="italics">optimization problem</span> involves a situation in which there are a vast number of valid solutions and the absolute-best solution is difficult to find. Optimization problems usually have an enormous number of possibilities, each of which differs in how well it solves the problem. An example is packing luggage in the trunk of a car in such a way as to maximize the use of space. Many combinations are available, and if the trunk is packed effectively, more luggage can fit in it.</p>
+
+    <div class="calibre18">
+      <p class="sidebarhead">Local best versus global best</p>
+    </div>
+
+    <p class="sidebara"><span class="calibre19">Because optimization problems have many solutions, and because these solutions exist at different points in the search space, the concept of local bests and global bests comes into play. A <span class="italics">local best</span> solution is the best solution within a specific area in the search space, and a <span class="italics">global best</span> is the best solution in the entire search space. Usually, there are many local best solutions and one global best solution. Consider searching for the best restaurant, for example. You may find the best restaurant in your local area, but it may not necessarily be the best restaurant in the country or the best restaurant in the world.</span></p>
+
+    <div class="calibre20">
+      <p class="sidebaraend"> </p>
+    </div>
+
+    <h3 class="head1" id="sigil_toc_id_18">1.3.3<span class="calibre10">     </span> Prediction and classification problems: Learn from patterns in data</h3>
+
+    <p class="body1"><span class="italics">Prediction problems</span> are problems in which we have data about something and want to try find patterns. For example, we might have data about different vehicles and their engine sizes, as well as each vehicle’s fuel consumption. Can we predict the fuel consumption of a new model of vehicle, given its engine size? If there’s a correlation in the data between engine sizes and fuel consumption, this prediction is possible.</p>
+
+    <p class="body1"><span class="italics">Classification problems</span> are similar to prediction problems, but instead of trying to find an exact prediction such as fuel consumption, we try to find a category of something based on its features. Given the dimensions of a vehicle, its engine size, and number of seats, can we predict whether that vehicle is a motorcycle, sedan, or sport-utility vehicle? Classification problems require finding patterns in the data that group examples into categories. Interpolation is an important concept when finding patterns in data since we estimate new data points based on the known data.</p>
+
+    <h3 class="head1" id="sigil_toc_id_19">1.3.4<span class="calibre10">     </span> Clustering problems: Identify patterns in data</h3>
+
+    <p class="body1"><span class="italics">Clustering problems</span> include scenarios in which trends and relationships are uncovered from data. Different aspects of the data are used to group examples in different ways. Given cost and location data about restaurants, for example, we may find that younger people tend to frequent locations where the food is cheaper.</p>
+
+    <p class="body1">Clustering aims to find relationships in data even when a precise question is not being asked. This approach is also useful for gaining better understanding of data to inform what you might be able to do with it.</p>
+
+    <h3 class="head1" id="sigil_toc_id_20">1.3.5<span class="calibre10"> </span> Deterministic models: Same result each time it’s calculated</h3>
+
+    <p class="body1"><span class="italics">Deterministic models</span> are models that, given a specific input, return a consistent output. Given the time as noon in a specific city, for example, we can always expect there to be daylight, and given the time as midnight, we can always expect darkness. Obviously this simple example doesn’t take into account the unusual daylight durations near the poles of the planet.</p>
+
+    <h3 class="head1" id="sigil_toc_id_21">1.3.6<span class="calibre10"> </span> Stochastic/probabilistic models: Potentially different result each time it’s calculated</h3>
+
+    <p class="body1"><span class="italics">Probabilistic models</span> are models that, given a specific input, return an outcome from a set of possible outcomes. Probabilistic models usually have an element of controlled randomness that contributes to the possible set of outcomes. Given the time as noon, for example, we can expect the weather to be sunny, cloudy, or rainy – there is no fixed weather at this time.</p>
+
+    <h2 class="head" id="sigil_toc_id_22">1.4<span class="calibre10"> </span> Intuition of artificial intelligence concepts</h2>
+
+    <p class="body1">AI is a hot topic, as are machine learning and deep learning. Trying to make sense of these different but similar concepts can be a daunting experience. Additionally, within the domain of AI, distinctions exist among different levels of intelligence.</p>
+
+    <p class="body1">In this section, we demystify some of these concepts. The section is also a road map of the topics covered throughout this book.</p>
+
+    <p class="body1">Let’s dive into the different levels of AI, introduced with figure 1.6.</p>
+
+    <p class="figure"><img alt="01_06" class="calibre11" src="../Images/01_06.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.6 Levels of AI</p>
+
+    <h3 class="head1" id="sigil_toc_id_23">1.4.1<span class="calibre10"> </span> Narrow intelligence: Specific-purpose solutions</h3>
+
+    <p class="body1"><span class="italics">Narrow intelligence</span> systems solve problems in a specific context or domain. These systems usually cannot solve a problem in one context and apply that same understanding in another. A system developed to understand customer interactions and spending behavior, for example, would not be capable of identifying cats in an image. Usually, for something to be effective in solving a problem, it needs to be quite specialized in the domain of the problem, which makes it difficult to adapt to other problems.</p>
+
+    <p class="body1">Different narrow intelligence systems can be combined in sensible ways to create something greater that seems to be more general in its intelligence. An example is a voice assistant. This system can understand natural language, which alone is a narrow problem, but through integration with other narrow intelligence systems, such as web searches and music recommenders, it can exhibit qualities of general intelligence.</p>
+
+    <h3 class="head1" id="sigil_toc_id_24">1.4.2<span class="calibre10"> </span> General intelligence: Humanlike solutions</h3>
+
+    <p class="body1"><span class="italics">General intelligence</span> is humanlike intelligence. As humans, we are able to learn from various experiences and interactions in the world and apply that understanding from one problem to another. If you felt pain when touching something hot as a child, for example, you can extrapolate and know that other things that are hot may have a chance of hurting you. General intelligence in humans, however, is more than just reasoning something like “Hot things may be harmful.” General intelligence encompasses memory, spatial reasoning through visual inputs, use of knowledge, and reasoning. Achieving general intelligence in a machine seems to be an unlikely feat in the short term, but advancements in quantum computing, data processing, and AI algorithms could make it a reality in the future.</p>
+
+    <h3 class="head1" id="sigil_toc_id_25">1.4.3<span class="calibre10"> </span> Super intelligence: The great unknown</h3>
+
+    <p class="body1">Some ideas of super intelligence appear in science-fiction movies set in postapocalyptic worlds, in which all machines are connected, are able to reason about things beyond our understanding, and dominate humans. There are many philosophical differences about whether humans could create something more intelligent than ourselves and, if we could, whether we’d even know. Super intelligence is the great unknown, and for a long time, any definitions will be speculation.</p>
+
+    <h3 class="head1" id="sigil_toc_id_26">1.4.4<span class="calibre10"> </span> Old AI and new AI</h3>
+
+    <p class="body1">Sometimes, the notions of old AI and new AI are used. <span class="italics">Old AI</span> is often understood as being systems in which people encoded the rules that cause an algorithm to exhibit intelligent behavior - via in-depth knowledge of the problem or by trial and error. An example of old AI is a person manually creating a decision tree and the rules and options in the entire decision tree. <span class="italics">New AI</span> aims to create algorithms and models that learn from data and create their own rules that perform as accurately as, or better than, human-created rules. The difference is that the latter may find important patterns in the data that a person may never find or that would take a person much longer to find. Search algorithms are often seen as old AI, but a robust understanding of them is useful in learning more complex approaches. This book aims to introduce the most popular AI algorithms and gradually build on each concept.</p>
+
+    <p class="figure"><img alt="01_07" class="calibre11" src="../Images/01_07.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.7 Categorization of concepts within AI</p>
+
+    <h3 class="head1" id="sigil_toc_id_27">1.4.5<span class="calibre10"> </span> Search algorithms</h3>
+
+    <p class="body1"><span class="italics">Search algorithms</span> are useful for solving problems in which several actions are required to achieve a goal, such as finding a path through a maze or determining the best move to make in a game. Search algorithms evaluate future states and attempt to find the optimal path to the most valuable goal. Typically, we have too many possible solutions to brute-force each one. Even small search spaces could result in thousands of hours of computing to find the best solution. Search algorithms provide smart ways to evaluate the search space. Search algorithms are used in online search engines, map routing applications, and even game-playing agents.</p>
+
+    <h3 class="head1" id="sigil_toc_id_28">1.4.6<span class="calibre10"> </span> Biology-inspired algorithms</h3>
+
+    <p class="body1">When we look at the world around us, we notice incredible things in various creatures, plants, and other living organisms. Examples include the cooperation of ants in gathering food, the flocking of birds when migrating, estimating how brains work, and the evolution of different organisms to produce stronger offspring. By observing and learning from various phenomena, we’ve gained knowledge of how these organic systems operate and of how simple rules can result in emergent intelligent behavior. Some of these phenomena have inspired algorithms that are useful in AI, such as evolutionary algorithms and swarm intelligence algorithms.</p>
+
+    <p class="body1"><span class="italics">Evolutionary algorithms</span> are inspired by the theory of evolution defined by Charles Darwin. The concept is that a population reproduces to create new individuals and that through this process, the mixture of genes and mutation produces individuals that perform better than their ancestors. <span class="italics">Swarm intelligence</span> is a group of seemingly “dumb” individuals exhibiting intelligent behavior. Ant-colony optimization and particle-swarm optimization are two popular algorithms that we will be exploring in this book.</p>
+
+    <h3 class="head1" id="sigil_toc_id_29">1.4.7<span class="calibre10"> </span> Machine learning algorithms</h3>
+
+    <p class="body1">Machine learning takes a statistical approach to training models to learn from data. The umbrella of machine learning has a variety of algorithms that can be harnessed to improve understanding of relationships in data, to make decisions, and to make predictions based on that data.</p>
+
+    <p class="body1">There are three main approaches in machine learning: supervised learning, unsupervised learning, and reinforcement learning.</p>
+
+    <p class="listbulletcxspfirst2"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Supervised learning</span> means training models with algorithms when the training data has known outcomes for a question being asked, such as determining the type of fruit if we have a set of data that includes the weight, color, texture, and fruit label for each example.</p>
+
+    <p class="listbulletcxspmiddle1"><span class="italics1">·<span class="calibre14">     </span></span> <span class="italics">Unsupervised learning</span> uncovers hidden relationships and structures within the data that guide us in asking the dataset relevant questions. It may find patterns in properties of similar fruits and group them accordingly, which can inform the exact questions we want to ask the data. These core concepts and algorithms helps us create a foundation for exploring advanced algorithms in the future.</p>
+
+    <p class="listbulletcxsplast1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Reinforcement learning</span> is inspired by behavioral psychology. In short, it describes rewarding an individual if a useful action was performed and penalizing that individual if a useful action was not performed. To explore a human example, when a child achieves good results on their report card, they are usually rewarded, but poor performance sometimes results in punishment, reinforcing the behavior of achieving good results. Reinforcement learning is useful for exploring how computer programs or robots interact with dynamic environments. An example is a robot that is tasked to open doors; it is penalized when it doesn’t open a door and rewarded when it does. Over time, after many attempts, the robot “learns” the sequence of actions required to open a door.</p>
+
+    <h3 class="head1" id="sigil_toc_id_30">1.4.8<span class="calibre10"> </span> Deep learning algorithms</h3>
+
+    <p class="body1">Deep learning, which stems from machine learning, is a broader family of approaches and algorithms that are used to achieve narrow intelligence and strive towards general intelligence. Deep learning usually implies that the approach is attempting to solve a problem in a more general way like spatial reasoning, or it is being applied to problems that require more generalization such as computer vision and speech recognition. General problems are things humans are good at solving. For example, we can match visual patterns in almost any context. Deep learning also concerns itself with supervised learning, unsupervised learning, and reinforcement learning (section 1.4.7). Deep learning approaches usually employ many layers of artificial neural networks. By leveraging different layers of intelligent components, each layer solves specialized problems; together, the layers solve complex problems toward a greater goal. Identifying any object in an image, for example, is a general problem, but it can be broken into understanding color, recognizing shapes of objects, and identifying relationships among objects to achieve a goal.</p>
+
+    <h2 class="head" id="sigil_toc_id_31">1.5<span class="calibre10"> </span> Uses for artificial intelligence algorithms</h2>
+
+    <p class="body1">The uses for AI techniques are potentially endless. Where there are data and problems to solve, there are potential applications of AI. Given the ever-changing environment, the evolution of interactions among humans, and the changes in what people and industries demand, AI can be applied in innovative ways to solve real-world problems. This section describes the application of AI in various industries.</p>
+
+    <h3 class="head1" id="sigil_toc_id_32">1.5.1<span class="calibre10"> </span> Agriculture: Optimal plant growth</h3>
+
+    <p class="body1">One of the most important industries that sustain human life is agriculture. We need to be able to grow quality crops for mass consumption economically. Many farmers grow crops on a commercial scale to enable us to purchase fruit and vegetables at stores conveniently. Crops grow differently based on the type of crop, the nutrients in the soil, the water content of the soil, the bacteria in the water, and the weather conditions in the area, among other things. The goal is to grow as much high-quality produce as possible within a season, because specific crops generally grow well only during specific seasons.</p>
+
+    <p class="body1">Farmers and other agriculture organizations have captured data about their farms and crops over the years. Using that data, we can leverage machines to find patterns and relationships among the variables in the crop-growing process and identify the factors that contribute most to successful growth. Furthermore, with modern digital sensors, we can record weather conditions, soil attributes, water conditions, and crop growth in real time. This data, combined with intelligent algorithms, can enable real-time recommendations and adjustments for optimal growth (figure 1.8).</p>
+
+    <p class="figure"><img alt="01_08" class="calibre11" src="../Images/01_08.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.8 Using data to optimize crop farming</p>
+
+    <h3 class="head1" id="sigil_toc_id_33">1.5.2<span class="calibre10"> </span> Banking: Fraud detection</h3>
+
+    <p class="body1">The need for banking became obvious when we had to find a common consistent currency for trading goods and services. Banks have changed over the years to offer different options for storing money, investing money, and making payments. One thing that hasn’t changed over time is people finding creative ways to cheat the system. One of the biggest problems—not only in banking, but also in most financial institutions, such as insurance companies—is fraud. <span class="italics">Fraud</span> occurs when someone is dishonest or does something illegal to acquire something for themselves. Fraud usually happens when loopholes in a process are exploited or a scam fools someone into divulging information. Because the financial-services industry is highly connected through the internet and personal devices, more transactions happen electronically over a computer network than in person, with physical money. With the vast amounts of transaction data available, we can, in real time, find patterns of transactions specific to an individual’s spending behavior that may be out of the ordinary. This data helps save financial institutions enormous amounts of money and protects unsuspecting consumers from being robbed.</p>
+
+    <h3 class="head1" id="sigil_toc_id_34">1.5.3<span class="calibre10"> </span> Cybersecurity: Attack detection and handling</h3>
+
+    <p class="body1">One of the interesting side effects of the internet boom is cybersecurity. We send and receive sensitive information over the internet all the time—instant messages, credit-card details, emails, and other important confidential information that could be misused if it fell into the wrong hands. Thousands of servers across the globe receive data, process it, and store it. Attackers attempt to compromise these systems to gain access to the data, devices, or even facilities.</p>
+
+    <p class="body1">By using AI, we can identify and block potential attacks on servers. Some large internet companies store data about how specific individuals interact with their service, including their device IDs, geolocations, and usage behavior; when unusual behavior is detected, security measures limit access. Some internet companies can also block and redirect malicious traffic during a distributed denial of service (DDoS) attack, which involves overloading a service with bogus requests in attempt to bring it down or prevent access by authentic users. These unauthentic requests can be identified and rerouted to minimize the impact of the attack by understanding the users’ usage data, the systems, and the network.</p>
+
+    <h3 class="head1" id="sigil_toc_id_35">1.5.4<span class="calibre10"> </span> Health care: Diagnosis of patients</h3>
+
+    <p class="body1">Health care has been a constant concern throughout human history. We need access to diagnosis and treatment of different ailments in different locations in varying windows of time before a problem becomes more severe or even fatal. When we look at diagnosis of a patient, we may look at the vast amounts of knowledge recorded about the human body, known problems, experience in dealing with these problems, and a myriad of scans of the body. Traditionally, doctors were required to analyze images of scans to detect the presence of tumors, but this approach resulted in the detection of only the largest, most advanced tumors. Advances in deep learning have improved the detection of tumors in images generated by scans. Now doctors can detect cancer earlier, which means that a patient can get the required treatment in time and have a higher chance of recovery.</p>
+
+    <p class="body1">Furthermore, AI can be used to find patterns in symptoms, ailments, hereditary genes, geographic locations, and the like. We could potentially know that someone has a high probability of developing a specific ailment and be prepared to manage that ailment before it develops.</p>
+
+    <p class="figure"><img alt="01_09" class="calibre11" src="../Images/01_09.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.9 Using machine learning for feature recognition in brain scans</p>
+
+    <h3 class="head1" id="sigil_toc_id_36">1.5.5<span class="calibre10"> </span> Logistics: Routing and optimization</h3>
+
+    <p class="body1">The logistics industry is a huge market of different types of vehicles delivering different types of goods to different locations, with different demands and deadlines. Imagine the complexity in a large e-commerce site’s delivery planning. Whether the deliverables are consumer goods, construction equipment, parts for machinery, or fuel, the system aims to be as optimal as possible to ensure that demand is met and costs are minimized.</p>
+
+    <p class="body1">You may have heard of the traveling-salesperson problem: a salesperson needs to visit several locations to complete their job, and the aim is to find the shortest distance to accomplish this task. Logistics problems are similar but usually immensely more complex due to the changing environment of the real world. Through AI, we can find optimal routes between locations in terms of time and distance. Furthermore, we can find the best routes based on traffic patterns, construction blockages, and even road types based on the vehicle being used. Additionally, we can compute the best way to pack each vehicle and what to pack in each vehicle in such a way that each delivery is optimized.</p>
+
+    <h3 class="head1" id="sigil_toc_id_37">1.5.6<span class="calibre10"> </span> Telecoms: Optimizing networks</h3>
+
+    <p class="body1">The telecommunications industry has played a huge role in connecting the world. These companies lay expensive infrastructure of cables, towers, and satellites to create a network that many consumers and organizations can use to communicate via the internet or private networks. Operating this equipment is expensive, so optimization of a network allows for more connections, which allows more people to access high-speed connections. AI can be used to monitor behavior on a network and optimize routing (much like the logistics example in section 1.5.5). Additionally, these networks record requests and responses; this data can be used to optimize the networks based on known load from certain individuals, areas, and specific local networks. The network data can also be instrumental for understanding where people are and who they are, which is useful for city planning.</p>
+
+    <h3 class="head1" id="sigil_toc_id_38">1.5.7<span class="calibre10"> </span> Games: Creating AI agents</h3>
+
+    <p class="body1">Since home and personal computers first became widely available, games have been a selling point for computer systems. Games were popular very early in the history of personal computers. If we think back, we may remember arcade machines, television consoles, and personal computers with gaming capabilities. The games of chess, backgammon, and others have been dominated by AI machines. If the complexity of a game is low enough, a computer can potentially find all possibilities and make a decision based on that knowledge faster than a human can. Recently, a computer was able to defeat human champions in the strategic game, Go. Go has simple rules for territory control but has huge complexity in terms of the decisions that need to be made for a winning scenario. A computer can’t generate all possibilities for beating the best human players because the search space is so large; instead, it calls for a more-general algorithm that can “think” abstractly, strategize, and plan moves toward a goal. That algorithm has already been invented and has succeeded in defeating world champions. It has also been adapted to other applications, such as playing Atari games and modern multiplayer games. This system is called is Alpha Go.</p>
+
+    <p class="body1">Several research organizations have developed AI systems that are capable of playing highly complex games better than human players and teams. The goal of this work is to create general approaches that can adapt to different contexts. At face value, these game-playing AI algorithms may seem unimportant, but the consequence of developing these systems is that the approach can be applied effectively in other important problem spaces.</p>
+
+    <p class="figure"><img alt="01_10" class="calibre11" src="../Images/01_10.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.10 Using neural networks to learn how to play games</p>
+
+    <h3 class="head1" id="sigil_toc_id_39">1.5.8<span class="calibre10"> </span> Art: Creating masterpieces</h3>
+
+    <p class="body1">Unique, interesting artists have created beautiful paintings. Each artist had their own way of expressing the world around them. We also have amazing music compositions that were appreciated by the masses. In both cases, the quality of the art could not be measured quantitatively; rather, it was measured qualitatively (by how much people enjoyed the piece). The factors involved are difficult to understand and capture; the concept is driven by emotion.</p>
+
+    <p class="body1">Many research projects aim to build AI that generates art. The concept involves generalization. An algorithm would need to have a broad and general understanding of the subject to create something that fits those parameters. A Van Gogh AI, for example, would need to understand all of Van Gogh’s work and extract the style and “feel” so that it can apply that data to other images. The same thinking can be applied to extracting hidden patterns in areas such as health care, cybersecurity, and finance.</p>
+
+    <p class="body1">Now that we have abstract intuition about what AI is, the categorization of themes within it, the problems it aims to solve, and some use cases, we will be diving into one of the oldest and simplest forms of mimicking intelligence: search algorithms. Search algorithms provide a good grounding in some concepts that are employed by other, more sophisticated AI algorithms explored throughout this book.</p>
+
+    <p class="figure"><img alt="01_11" class="calibre11" src="../Images/01_11.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 1.11 Summary of Intuition of artificial intelligence</p>
+  </div>
+</body>
+</html>

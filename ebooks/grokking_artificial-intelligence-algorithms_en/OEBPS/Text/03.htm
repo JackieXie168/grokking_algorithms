@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" class="calibre">
+  <head>
+    <meta content="Microsoft Word 15 (filtered)" name="Generator"/>
+    <title>Style A ReadMe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre8">
+  <div class="wordsection">
+    <h1 class="cochapternumber">3<span class="calibre16">  </span> Intelligent search</h1>
+
+    <p class="cosummaryhead">This chapter covers</p>
+
+    <p class="cosummarybulletcxspfirst"><span class="calibre17">·<span class="calibre14">    </span></span> Understanding and designing heuristics for guided search</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Identifying problems suited to being solved with guided search approaches</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Understanding and designing a guided search algorithm</p>
+
+    <p class="cosummarybulletcxsplast"><span class="calibre17">·<span class="calibre14">    </span></span> Designing a search algorithm to play a two-player game</p>
+
+    <h2 class="head" id="sigil_toc_id_55">3.1<span class="calibre10">     </span> Defining heuristics: Designing educated guesses</h2>
+
+    <p class="body1">Now that we have an idea of how uninformed search algorithms work from chapter 2, we can explore how they can be improved by seeing more information about the problem. For this purpose, we use informed search. <span class="italics">Informed search</span> means that the algorithm has some context of the specific problem being solved. Heuristics are a way to represent this context. Often described as a <span class="italics">rule of thumb</span>, a <span class="italics">heuristic</span> is a rule or set of rules used to evaluate a state. It can be used to define criteria that a state must satisfy or measure the performance of a specific state. A heuristic is used when a clear method of finding an optimal solution is not possible. A heuristic can be interpreted as an educated guess in social terms and should be seen more as a guideline than as a scientific truth with respect to the problem that is being solved.</p>
+
+    <p class="body1">When you’re ordering a pizza at a restaurant, for example, your heuristic of how good it is, may be defined by the ingredients and type of base used. If you enjoy extra tomato sauce, extra cheese, mushrooms, and pineapple on a thick base with crunchy crust, a pizza that includes more of these attributes will be more appealing to you and achieve a better score for your heuristic. A pizza that contains fewer of those attributes will be less appealing to you and achieve a poorer score.</p>
+
+    <p class="body1">Another example is writing algorithms to solve a GPS routing problem. The heuristic may be “Good paths minimize time in traffic and minimize distance traveled” or “Good paths minimize toll fees and maximize good road conditions.” A poor heuristic for a GPS routing program would minimizing straight-line distance between two points. This heuristic might work for birds or planes, but in reality, we walk or drive; these methods of transport bind us to roads and paths between buildings and obstacles. Heuristics need to make sense for the context of use.</p>
+
+    <p class="body1">Take the example of checking whether an uploaded audio clip is an audio clip in a library of copyrighted content. Because audio clips are frequencies of sound, one way to achieve this goal is to search every time slice of the uploaded clip with every clip in the library. This task will require an extreme amount of computation. A primitive start to building a better search could be defining a heuristic that minimizes the difference of distribution of frequencies between the two clips, as seen in figure 3.1 – notice that the frequencies are identical apart from the time difference, they don’t have differences in their frequency distributions. This solution may not be perfect, but it is a good start towards a less-expensive algorithm.</p>
+
+    <p class="figure"><img alt="03_01" class="calibre11" src="../Images/03_01.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.1 Comparison of two audio clips using frequency distribution</p>
+
+    <p class="body1">Heuristics are context-specific, and a good heuristic can help optimize solutions substantially.</p>
+
+    <p class="body1">The maze scenario from chapter 2 will be adjusted to demonstrate the concept of creating heuristics by introducing an interesting dynamic. Instead of treating all movements the same way and measuring better solutions purely by paths with fewer actions (shallow depth in the tree), movements in different directions now cost different amounts to execute. There’s been some strange shift in the gravity of our maze, and moving north or south now costs five times as much as moving east or west.</p>
+
+    <p class="figure"><img alt="03_02" class="calibre11" src="../Images/03_02.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.2 Adjustments to the maze example: gravity</p>
+
+    <p class="body1">In the adjusted maze scenario, the factors influencing the best possible path to the goal are the number of actions taken and the sum of the cost for each action in a respective path.</p>
+
+    <p class="body1">In figure 3.3, all possible paths in the tree are represented to highlight the options available, indicating the costs of the respective actions. Again, this example demonstrates the search space in the trivial maze scenario and does not often apply to real-life scenarios. The algorithm will be generating the tree as part of the search.</p>
+
+    <p class="figure"><img alt="03_03" class="calibre11" src="../Images/03_03.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.3 All possible movement options represented as a tree</p>
+
+    <p class="body1">A heuristic for the maze problem can be defined as follows: “Good paths minimize cost of movement and minimize total moves to reach the goal.” This simple heuristic helps guide which nodes are visited because we are applying some domain knowledge to solve the problem.</p>
+
+    <p class="head2">Thought Experiment: Given the following scenario, what heuristic can you imagine?</p>
+
+    <p class="body1">Several miners specialize in different types of mining, including diamond, gold, and platinum. All the miners are productive in any mine, but they mine faster in mines that align with their specialties. Several mines that can contain diamonds, gold, and platinum are spread across an area, and depots appear at different distances between mines. If the problem is to distribute miners to maximize their efficiency and reduce travel time, what could a heuristic be?</p>
+
+    <p class="head2">Thought Experiment: Possible solution</p>
+
+    <p class="body1">A sensible heuristic would include assigning each miner to a mine of their specialty and task them with traveling to the depot closest to that mine. This can also be interpreted as minimizing assigning miners to mines that are not their specialty and minimizing the distance traveled to depots.</p>
+
+    <h2 class="head" id="sigil_toc_id_56">3.2<span class="calibre10">     </span> Informed search: Looking for solutions with guidance</h2>
+
+    <p class="body1"><span class="italics">Informed search</span>, also known as <span class="italics">heuristic search</span>, is an algorithm that uses both breadth-first search and depth-first search approaches combined with some intelligence. The search is guided by heuristics, given some predefined knowledge of the problem at hand.</p>
+
+    <p class="body1">We can employ several informed search algorithms, depending on the nature of the problem, including Greedy Search (also known as Best-first Search). The most popular and useful informed search algorithm, however, is A*.</p>
+
+    <h3 class="head1" id="sigil_toc_id_57">3.2.1<span class="calibre15">  </span> A* search</h3>
+
+    <p class="body1"><span class="italics">A* search</span> is pronounced <span class="italics">A star search</span>. The A* algorithm usually improves performance by estimating heuristics to minimize the cost of the next node visited.</p>
+
+    <p class="body1">Total cost is calculated with two metrics: the total distance from the start node to the current node and the estimated cost of moving to a specific node by using a heuristic. When we are attempting to minimize cost, a lower value indicates a better-performing solution.</p>
+
+    <p class="figure"><img alt="03_04" class="calibre11" src="../Images/03_04.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.4 The function for the A* Search algorithm</p>
+
+    <p class="body1">The following example of processing is an abstract example of how a tree is visited using heuristics to guide the search. The focus is on the heuristic calculations for the different nodes in the tree.</p>
+
+    <p class="body1">Breadth-first search visits all nodes on each depth before moving to the next depth. Depth-first search visits all nodes down to the final depth before traversing back to the root and visiting the next path. A* search is different, in that it does not have a predefined pattern to follow; nodes are visited in the order based on their heuristic costs. Note that the algorithm does not know the costs of all nodes up front. Costs are calculated as the tree is explored or generated, and each node visited is added to a stack, which means that nodes that cost more than nodes already visited are ignored, saving computation time.</p>
+
+    <p class="figure"><img alt="03_05" class="calibre11" src="../Images/03_05.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.5 The sequence of tree processing using A* search (part 1)</p>
+
+    <p class="figure"><img alt="03_06" class="calibre11" src="../Images/03_06.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.6 The sequence of tree processing using A* search (part 2)</p>
+
+    <p class="figure"><img alt="03_07" class="calibre11" src="../Images/03_07.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.7 Flow for the A* search algorithm</p>
+
+    <p class="body1">Let’s walk through the flow of the A* search algorithm:</p>
+
+    <p class="listnumbered2">1.<span class="calibre14">    </span> <span class="italics">Add root node to stack.</span> The A* search algorithm can be implemented with a stack in which the last object added is processed first (last-in, first-out, or LIFO). The first step is adding the root node to the stack.</p>
+
+    <p class="listnumbered2">2.<span class="calibre14">    </span> <span class="italics">Is stack empty?</span> If the stack is empty, and no path has been returned in step 8 of the algorithm, there is no path to the goal. If there are still nodes in the queue, the algorithm can continue its search.</p>
+
+    <p class="listnumbered2">3.<span class="calibre14">    </span> <span class="italics">Return</span> <span><code class="codeintext"><span class="calibre21">No path to goal</span></code></span><span class="italics">.</span> This step is the one possible exit from the algorithm if no path to the goal exists.</p>
+
+    <p class="listnumbered2">4.<span class="calibre14">    </span> <span class="italics">Pop node from stack as current node.</span> By pulling the next object from the stack and setting it as the current node of interest, we can explore its possibilities.</p>
+
+    <p class="listnumbered2">5.<span class="calibre14">    </span> <span class="italics">Is current node visited?</span> If the current node has not been visited, it hasn’t been explored yet and can be processed now.</p>
+
+    <p class="listnumbered2">6.<span class="calibre14">    </span> <span class="italics">Mark current node as visited.</span> This step indicates that this node has been visited to prevent unnecessary repeat processing.</p>
+
+    <p class="listnumbered2">7.<span class="calibre14">    </span> <span class="italics">Is goal reached?</span> This step determines whether the current neighbor contains the goal that the algorithm is searching for.</p>
+
+    <p class="listnumbered2">8.<span class="calibre14">    </span> <span class="italics">Return path using current node</span><span class="bold">.</span> By referencing the parent of the current node, then the parent of that node, and so on, the path from the goal to the root is described. The root node will be a node without a parent.</p>
+
+    <p class="listnumbered2">9.<span class="calibre14">    </span> <span class="italics">Current has next neighbor.</span> If the current node has more possible moves to make in the maze example, that move can be added to be processed. Otherwise, the algorithm can jump to step 2, in which the next object in the stack can be processed if it is not empty. The nature of the LIFO stack allows the algorithm to process all nodes to a leaf-node depth before backtracking to visit other children of the root node.</p>
+
+    <p class="listnumbered2">10.<span class="calibre14"> </span> <span class="italics">Sort stack by cost ascending</span><span class="bold">.</span> When the stack is sorted by the cost of each node in the stack ascending, the lowest-cost node is processed next, allowing the cheapest node always to be visited.</p>
+
+    <p class="listnumbered2">11.<span class="calibre14"> </span> <span class="italics">Set current node as parent of neighbor.</span> Set the origin node as the parent of the current neighbor. This step is important for tracing the path from the current neighbor to the root node. From a map perspective, the origin is the position that the player moved from, and the current neighbor is the position that the player moved to.</p>
+
+    <p class="listnumbered2">12.<span class="calibre14"> </span> <span class="italics">Calculate cost for neighbor.</span> The cost function is critical for guiding the A* algorithm. The cost is calculated by summing the distance from the root node with the heuristic score for the next move. More-intelligent heuristics will directly influence the A* algorithm for better performance.</p>
+
+    <p class="listnumbered2">13.<span class="calibre14"> </span> <span class="italics">Add neighbor to stack.</span> The neighbor node is added to the stack for its children to be explored later. Again, this stacking mechanism allows nodes to be processed to the utmost depth before processing neighbors at shallow depths.</p>
+
+    <p class="body1">Similarly to depth-first search, the order of child nodes influences the path selected, but less drastically. If two nodes have the same cost, the first node is visited before the second.</p>
+
+    <p class="figure"><img alt="03_08" class="calibre11" src="../Images/03_08.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.8 The sequence of tree processing using A* search (part 1)</p>
+
+    <p class="figure"><img alt="03_09" class="calibre11" src="../Images/03_09.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.9 The sequence of tree processing using A* search (part 2)</p>
+
+    <p class="figure"><img alt="03_10" class="calibre11" src="../Images/03_10.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.10 Nodes visited in the entire tree after A* search</p>
+
+    <p class="body1">Notice that there are several paths to the goal, but the A* algorithm finds a path to the goal while minimizing the cost to achieve it, with fewer moves and cheaper move costs based on north and south moves being more expensive.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The A* algorithm uses a similar approach to the depth-first search algorithm but intentionally targets nodes that are cheaper to visit. A stack is used to process the nodes, but the stack is ordered by cost ascending every time a new calculation happens. This order ensures that the object popped from the stack is always the cheapest, because the cheapest is first in the stack after ordering.</p>
+
+    <p class="figure"><img alt="03_10a" class="calibre11" src="../Images/03_10a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">The functions for calculating the cost are critical to the operation of A* search. The cost function provides the information for the algorithm to seek the cheapest path. In our adjusted maze example, a higher cost is associated with moving up or down. If there is a problem with the cost function, the algorithm may not work.</p>
+
+    <p class="body1">The following two functions describe how cost is calculated. The distance from the root node is added to the cost of the next movement. Based on our hypothetical example, the cost of moving north or south influences the total cost of visiting that node.</p>
+
+    <p class="figure"><img alt="03_10b" class="calibre11" src="../Images/03_10b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">Uniformed search algorithms such as breadth-first search and depth-first search explore every possibility exhaustively and result in the optimal solution. A* search is a good approach when a sensible heuristic can be created to guide the search. It computes more efficiently than uninformed search algorithms, because it ignores nodes that cost more than nodes already visited. If the heuristic is flawed, however, and doesn’t make sense for the problem and context, poor solutions will be found instead of optimal ones.</p>
+
+    <h3 class="head1" id="sigil_toc_id_58">3.2.2<span class="calibre15">  </span> Use cases for informed search algorithms</h3>
+
+    <p class="body1">Informed search algorithms are versatile and useful for several real-world use cases in which heuristics can be defined, such as the following:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Path finding for autonomous game characters in video games</span>—Game developers often use this algorithm to control the movement of enemy units in a game in which the goal is to find the human player within an environment.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Parsing paragraphs in natural language processing (NLP)—</span>The meaning of a paragraph can be broken into a composition of phrases, which can be broken into a composition of words of different types (like nouns and verbs), creating a tree structure that can be evaluated. Informed search can be useful in extracting meaning.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Telecommunications network routing</span>—Guided search algorithms can be used to find the shortest paths for network traffic in telecommunications networks to improve performance. Servers/network nodes and connections can be represented as searchable graphs of nodes and edges.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Single-player games and puzzles</span>—Informed search algorithms can be used to solve single-player games and puzzles such as the Rubik’s Cube, because each move is a decision in a tree of possibilities until the goal state is found.</p>
+
+    <h2 class="head" id="sigil_toc_id_59">3.3<span class="calibre10">     </span> Adversarial search: Looking for solutions in a changing environment</h2>
+
+    <p class="body1">The search example of the maze game involves a single actor: the player. The environment is affected only by the single player; thus, that player generates all possibilities. The goal until now was to maximize the benefit for the player: choosing paths to the goal with the shortest distance and cost.</p>
+
+    <p class="body1"><span class="italics">Adversarial search</span> is characterized by opposition or conflict. Adversarial problems require us to anticipate, understand, and counteract the actions of the opponent in pursuit of a goal. Examples of adversarial problems include two-player turn-based games like such as Tic-Tac-Toe and Connect Four. The players take turns for the opportunity to change the state of the environment of the game to their favor. A set of rules dictates how the environment may be changed and what the winning and end states are.</p>
+
+    <h3 class="head1" id="sigil_toc_id_60">3.3.1<span class="calibre15">  </span> A simple adversarial problem</h3>
+
+    <p class="body1">This section uses the game of Connect Four to explore adversarial problems.</p>
+
+    <p class="body1">Connect Four is a game consisting of a grid in which players take turns dropping tokens into a specific column. The tokens in a specific column pile up, and any player who manages to create four adjacent sequences of their tokens—vertically, horizontally, or diagonally—wins. If the grid is full, with no winner, the game results in a draw.</p>
+
+    <p class="figure"><img alt="03_11_1" class="calibre11" src="../Images/03_11_1.png"/><br class="calibre12"/></p>
+
+    <p class="figure"><img alt="03_11_2" class="calibre11" src="../Images/03_11_2.png"/><br class="calibre12"/></p>
+
+    <p class="figure"><img alt="03_11_3" class="calibre11" src="../Images/03_11_3.png"/><br class="calibre12"/></p>
+
+    <p class="figure"><img alt="03_11_4" class="calibre11" src="../Images/03_11_4.png"/><br class="calibre12"/></p>
+
+    <p class="figure"><img alt="03_11_5" class="calibre11" src="../Images/03_11_5.png"/><br class="calibre12"/></p>
+
+    <p class="figure"><img alt="03_11_6" class="calibre11" src="../Images/03_11_6.png"/><br class="calibre12"/></p>
+
+    <p class="figure"><img alt="03_11_7" class="calibre11" src="../Images/03_11_7.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.11 The game of Connect Four</p>
+
+    <h3 class="head1" id="sigil_toc_id_61">3.3.2<span class="calibre15">  </span> Min-max search: Simulate actions and choose the best future</h3>
+
+    <p class="body1"><span class="italics">Min-max search</span> aims to build a tree of possible outcomes based on moves that each player could make and favor paths that are advantageous to the agent while avoiding paths that are favorable to the opponent. To do so, this type of search simulates possible moves and scores the state based on a heuristic after making the respective move. Min-max search attempts to discover as many states in the future as possible, but due to memory and computation limitations, discovering the entire game tree may not be realistic, so it searches to a specified depth. Min-max search simulates the turns taken by each player, so the depth specified is directly linked to the number of turns between both players. A depth of 4, for example, means that each player has had 2 turns. Player A makes a move, player B makes a move, player A makes another move, and Player B makes another move.</p>
+
+    <p class="head2">Heuristics</p>
+
+    <p class="body1">The Min-max algorithm uses a heuristic score to make decisions. This score is defined by a crafted heuristic and is not learned by the algorithm. If we have a specific game state, every possible valid outcome of a move from that state will comprise child nodes in the game tree.</p>
+
+    <p class="body1">Assume that we have a heuristic that provides a score in which positive numbers are better than negative numbers. By simulating every possible valid move, the min-max search algorithm tries to minimize making moves where the opponent will have an advantage or a winning state and maximize making moves that gives the agent an advantage or a winning state.</p>
+
+    <p class="body1">Figure 3.12 illustrates a min-max search tree. In this figure, the leaf nodes are the only nodes where the heuristic score is calculated, since these states indicate a winner or a draw. The other nodes in the tree indicate states that are in progress. Starting at the depth where the heuristic is calculated and moving upward, either the child with the minimum score or the child with the maximum score is chosen, depending on whose turn is next in the future simulated states. Starting at the top, the agent attempts to maximize its score, and after each alternating turn, the intention changes, because the aim is to maximize the score for the agent and minimize the score for the opponent.</p>
+
+    <p class="figure"><img alt="03_12" class="calibre11" src="../Images/03_12.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.12 The sequence of tree processing using min-max search</p>
+
+    <p class="head2">Exercise: What values would propagate in the following Min-max tree?</p>
+
+    <p class="figure"><img alt="03_12a" class="calibre11" src="../Images/03_12a.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: What values would propagate in the following Min-max tree?</p>
+
+    <p class="figure"><img alt="03_12b" class="calibre11" src="../Images/03_12b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">Because the min-max search algorithm simulates possible outcomes, in games that offer a multitude of choices, the game tree explodes, and it quickly becomes too computationally expensive to explore the entire tree. In the simple example of Connect Four played on a 5x4 block board, the number of possibilities already makes exploring the entire game tree on every turn inefficient.</p>
+
+    <p class="figure"><img alt="03_13" class="calibre11" src="../Images/03_13.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.13 The explosion of possibilities while searching the game tree</p>
+
+    <p class="body1">To use Min-max search in the Connect Four example, the algorithm essentially makes all possible moves from a current game state; then it determines all possible moves from each of those states until it finds the path that is most favorable. Game states that result in a win for the agent return a score of 10, and states that result in a win for the opponent return a score of -10. Min-max search tries to maximize the positive score for the agent.</p>
+
+    <p class="figure"><img alt="03_14" class="calibre11" src="../Images/03_14.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.14 Scoring for the agent versus scoring for the opponent</p>
+
+    <p class="figure"><img alt="03_15" class="calibre11" src="../Images/03_15.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.15 Flow for the min-max search algorithm</p>
+
+    <p class="body1">Although the flow chart for the min-max search algorithm looks complex due to its size, it really isn’t. The number of conditions that check whether the current state is to maximize or minimize causes the chart to bloat.</p>
+
+    <p class="body1">Let’s walk through the flow of the min-max search algorithm:</p>
+
+    <p class="listnumbered3">1.<span class="calibre14">  </span> <span class="italics">Given a game state, whether the current mode is minimization or maximization, and a current depth, the algorithm can start.</span> It is important to understand the inputs for the algorithm, as the min-max search algorithm is recursive. A recursive algorithm calls itself in one or more of its steps. It is important for a recursive algorithm to have an exit condition to prevent it from calling itself forever.</p>
+
+    <p class="listnumbered3">2.<span class="calibre14">  </span> <span class="italics">Is current an end state or depth is 0?</span> This condition determines whether the current state of the game is a terminal state or whether the desired depth has been reached. A terminal state is one in which one of the players has won or the game is a draw. A score of 10 represents a win for the agent, and a score of -10 represents a win for the opponent, and a score of 0 indicates a draw. A depth is specified, because traversing the entire tree of possibilities to all end states is computationally expensive and will likely take too long on the average computer. By specifying a depth, the algorithm can look a few turns into the future to determine whether a terminal state exists.</p>
+
+    <p class="listnumbered3">3.<span class="calibre14">  </span> <span class="italics">Return the current score and last move.</span> The score for the current state is returned if the current state is a terminal game state or if the specified depth has been reached.</p>
+
+    <p class="listnumbered3">4.<span class="calibre14">  </span> <span class="italics">Is current mode MAX?</span> If the current iteration of the algorithm is in the maximize state, it tries to maximize the score for the agent.</p>
+
+    <p class="listnumbered3">5.<span class="calibre14">  </span> <span class="italics">Set best known score as ∞.</span> If the current mode is to minimize the score, the best score is set to positive infinity, because we know that the scores returned by the game states will always be less. In actual implementation, a really large number is used rather than infinity.</p>
+
+    <p class="listnumbered3">6.<span class="calibre14">  </span> <span class="italics">Set best known score as -∞.</span> If the current mode is to maximize the score, the best score is set to negative infinity, because we know that the scores returned by the game states will always be more. In actual implementation, a really large negative number is used rather than infinity.</p>
+
+    <p class="listnumbered3">7.<span class="calibre14">  </span> <span class="italics">Get all possible moves, given current game state.</span> This step specifies a list of possible moves that can be made, given the current game state. As the game progresses, not all moves available at the start may be available anymore. In the Connect Four example, a column may be filled; therefore, a move selecting that column is invalid.</p>
+
+    <p class="listnumbered3">8.<span class="calibre14">  </span> <span class="italics">Has next valid move.</span> If any possible moves have not been simulated yet and there are no more valid moves to make, the algorithm short-circuits to returning the best move in that instance of the function call.</p>
+
+    <p class="listnumbered3">9.<span class="calibre14">  </span> <span class="italics">Copy current game state as game_n.</span> A copy of the current game state is required to perform simulations of possible future moves on it.</p>
+
+    <p class="listnumbered3">10.<span class="italics">Simulate by applying move to game state game_n.</span> This step applies the current move of interest to the copied game state.</p>
+
+    <p class="listnumbered3">11.<span class="italics">Set best_n as the result of running this algorithm recursively.</span> Here’s where recursion comes into play. <span class="italics">best_n</span> is a variable used to store the next best move, and we’re making the algorithm explore future possibilities from this move.</p>
+
+    <p class="listnumbered3">12.<span class="italics">If current mode is MAX.</span> When the recursive call returns a best candidate, this condition determines whether the current mode is to maximize the score.</p>
+
+    <p class="listnumbered3">13.<span class="italics">Is best_n less than known best?</span> This step determines whether the algorithm has found a better score than one previously found if the mode is to maximize the score.</p>
+
+    <p class="listnumbered3">14.<span class="italics">Is best_n greater than known best?</span> This step determines whether the algorithm has found a better score than one previously found if the mode is to minimize the score.</p>
+
+    <p class="listnumbered3">15.<span class="italics">Set known best to best_n.</span> If the new best score is found, set the known best as that score.</p>
+
+    <p class="body1">Given the Connect Four example at a specific state, the min-max search algorithm generates the tree shown in figure 3.16. From the start state, every possible move is explored. Then each move from that state is explored until a terminal state is found - either the board is full or a player has won.</p>
+
+    <p class="figure"><img alt="03_16" class="calibre11" src="../Images/03_16.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.16 A representation of the possible states in a Connect Four game</p>
+
+    <p class="body1">The highlighted nodes in figure 3.17 are terminal state nodes in which draws are scored as 0, losses are scored as -10, and wins are scored as 10. Because the algorithm aims to maximize its score, a positive number is required, whereas opponent wins are scored with a negative number.</p>
+
+    <p class="figure"><img alt="03_17" class="calibre11" src="../Images/03_17.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.17 The possible end states in a Connect Four game</p>
+
+    <p class="body1">When these scores are known, the min-max algorithm starts at the lowest depth and chooses the node whose score is the minimum value.</p>
+
+    <p class="figure"><img alt="03_18" class="calibre11" src="../Images/03_18.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.18 The possible scores for end states in a Connect Four game (part 1)</p>
+
+    <p class="body1">Then, at the next depth, the algorithm chooses the node whose score is the maximum value.</p>
+
+    <p class="figure"><img alt="03_19" class="calibre11" src="../Images/03_19.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.19 The possible scores for end states in a Connect Four game (part 2)</p>
+
+    <p class="body1">Finally, at the next depth, nodes whose score is the minimum are chosen, and the root node chooses the maximum of the options. By following the nodes and score selected and intuitively applying ourselves to the problem, we see that the algorithm selects a path to a draw to avoid a loss. If the algorithm selects the path to the win, there is a high likelihood of a loss in the next turn. The algorithm assumes that the opponent will always make the smartest move to maximize their chance of winning.</p>
+
+    <p class="figure"><img alt="03_20" class="calibre11" src="../Images/03_20.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.20 The possible scores for end states in a Connect Four game (part 3)</p>
+
+    <p class="body1">The simplified tree in figure 3.21 represents the outcome of the min-max search algorithm for the given game state example.</p>
+
+    <p class="figure"><img alt="03_21" class="calibre11" src="../Images/03_21.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.21 Simplified game tree with min-max scoring</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The min-max search algorithm is implemented to be a recursive function. The function is provided with the current state, desired depth to search, minimization or maximization mode, and the last move. The algorithm terminates by returning the best move and score for every child at every depth in the tree. Comparing the code with the flow chart in figure 3.15, we notice that the tedious conditions of checking whether the current mode is maximizing or minimizing are not as apparent. In the pseudocode, 1 or -1 represents the intention to maximize or minimize, respectively. By using some clever logic, the best score, conditions, and switching states can be done via the principle of negative multiplication, in which a negative number multiplied by another negative number results in a positive. So if -1 indicates the opponent’s turn, multiplying it by -1 results in 1, which indicates the agent’s turn. Then, for the next turn, 1 multiplied by -1 results in -1 to indicate the opponent’s turn again.</p>
+
+    <p class="figure"><img alt="03_21a" class="calibre11" src="../Images/03_21a.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_62">3.3.3<span class="calibre15">  </span> Alpha-beta pruning: Optimize by exploring the sensible paths only</h3>
+
+    <p class="body1"><span class="italics">Alpha-beta pruning</span> is a technique used with the min-max search algorithm to short-circuit exploring areas of the game tree that are known to produce poor solutions. This technique optimizes the min-max search algorithm to save computation, because insignificant paths are ignored. Because we know how the Connect Four example game tree explodes, we clearly see that ignoring more paths will improve performance significantly.</p>
+
+    <p class="figure"><img alt="03_22" class="calibre11" src="../Images/03_22.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.22 An example of alpha-beta pruning</p>
+
+    <p class="body1">The alpha-beta pruning algorithm works by storing the best score for the maximizing player and the best score for the minimizing player as alpha and beta, respectively. Initially, alpha is set as -∞, and beta is set as ∞—the worst score for each player. If the best score of the minimizing player is less than the best score of the maximizing player, it is logical that other child paths of the nodes already visited would not affect the best score.</p>
+
+    <p class="body1">Figure 3.23 illustrates the changes made in the min-max search flow to accommodate the optimization of alpha-beta pruning. The highlighted blocks are the additional steps in the min-max search algorithm flow.</p>
+
+    <p class="figure"><img alt="03_23" class="calibre11" src="../Images/03_23.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.23 Flow for the min-max search algorithm with alpha-beta pruning</p>
+
+    <p class="body1">The following steps are additional to the min-max search algorithm. These conditions allow termination of exploration of paths when the best score found will not change the outcome.</p>
+
+    <p class="listnumbered3">1.<span class="calibre14">  </span> <span class="italics">Is current mode MAX?</span> Again, determine whether the algorithm is currently attempting to maximize or minimize the score.</p>
+
+    <p class="listnumbered3">2.<span class="calibre14">  </span> <span class="italics">Is best_n greater than or equal to alpha?</span> If the current mode is to maximize the score and the current best score is greater than or equal to alpha, no better scores are contained in that node’s children, allowing the algorithm to ignore that node.</p>
+
+    <p class="listnumbered3">3.<span class="calibre14">  </span> <span class="italics">Set alpha as best_n.</span> Set the variable alpha as best_n.</p>
+
+    <p class="listnumbered3">4.<span class="calibre14">  </span> <span class="italics">Is alpha greater than or equal to beta?</span> The score is as good as other scores found, and the rest of the exploration of that node can be ignored by breaking.</p>
+
+    <p class="listnumbered3">5.<span class="calibre14">  </span> <span class="italics">Is best_n less than or equal to beta?</span> If the current mode is to minimize the score and the current best score is less than or equal to beta, no better scores are contained in that node’s children, allowing the algorithm to ignore that node.</p>
+
+    <p class="listnumbered3">6.<span class="calibre14">  </span> <span class="italics">Set alpha as best_n.</span> Set the variable alpha as best_n.</p>
+
+    <p class="listnumbered3">7.<span class="calibre14">  </span> <span class="italics">Is alpha greater than or equal to beta?</span> The score is as good as other scores found, and the rest of the exploration of that node can be ignored by breaking.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The pseudocode for achieving alpha-beta pruning is largely the same as the code for min-max search, with the addition of keeping track of the alpha and beta values and maintaining those values as the tree is traversed.</p>
+
+    <p class="figure"><img alt="03_23a" class="calibre11" src="../Images/03_23a.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_63">3.3.4<span class="calibre15">  </span> Use cases for adversarial search algorithms</h3>
+
+    <p class="body1">Informed search algorithms are versatile and useful in real-world use cases such as the following:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Creating game-playing agents for turn-based games with perfect information</span>—In some games, two or more players act on the same environment. There have been successful implementations of chess, checkers, and other classic games. Games with perfect information are games that do not have hidden information or random chance involved.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Creating game-playing agents for turn-based games with imperfect information</span>—Unknown future options exist in these games, including games like poker and Scrabble.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Adversarial search and Ant Colony Optimization (ACO) for route optimization</span>—Adversarial search is used in combination with the ACO algorithm (discussed in chapter 6) to optimize package-delivery routes in cities.</p>
+
+    <p class="figure"><img alt="03_24" class="calibre11" src="../Images/03_24.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 3.24 Summary of Intelligent search</p>
+  </div>
+</body>
+</html>

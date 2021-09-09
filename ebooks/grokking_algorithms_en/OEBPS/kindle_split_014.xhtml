@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2002/06/xhtml2/ http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+<link href="Styles/Style00.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style01.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style02.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style03.css" rel="stylesheet" type="text/css" />
+<style type="text/css" title="ibis-book">
+    #sbo-rt-content .calibre{display:block;font-size:1em;margin-bottom:0;margin-left:5pt;margin-right:5pt;margin-top:0;padding-left:0;padding-right:0}#sbo-rt-content .calibre1{display:block;font-size:2em;font-weight:bold;line-height:1.2;margin-bottom:.67em;margin-left:0;margin-right:0;margin-top:.67em;text-align:center}#sbo-rt-content .calibre10{display:table-row-group;vertical-align:middle}#sbo-rt-content .calibre11{display:table-row;vertical-align:inherit}#sbo-rt-content .calibre12{display:block;font-family:"Liberation Mono",monospace;font-size:.77778em;margin-bottom:1em;margin-left:5px;margin-right:0;margin-top:1em;white-space:pre-wrap}#sbo-rt-content .calibre13{display:block;font-size:1.125em;font-weight:bold;line-height:1.2;margin-bottom:0;margin-left:0;margin-right:0;margin-top:40px}#sbo-rt-content .calibre14{display:block}#sbo-rt-content .calibre15{display:block;margin-bottom:1em;margin-left:1em;margin-right:1em;margin-top:1em}#sbo-rt-content .calibre16{display:block}#sbo-rt-content .calibre17{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em}#sbo-rt-content .calibre18{display:block;list-style-type:disc;margin-bottom:1em;margin-right:0;margin-top:1em}#sbo-rt-content .calibre19{display:list-item}#sbo-rt-content .calibre2{height:auto;width:auto}#sbo-rt-content .calibre20{font-weight:bold}#sbo-rt-content .calibre21{font-family:"Liberation Mono",monospace}#sbo-rt-content .calibre22{display:block;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:30px}#sbo-rt-content .calibre23{display:table-column-group}#sbo-rt-content .calibre24{display:table-cell;padding-bottom:1px;padding-left:1px;padding-right:1px;padding-top:1px;text-align:inherit;vertical-align:inherit}#sbo-rt-content .calibre25{font-size:.75em;line-height:normal;vertical-align:sub}#sbo-rt-content .calibre26{font-size:.75em;line-height:normal;vertical-align:super}#sbo-rt-content .calibre27{display:block;list-style-type:decimal;margin-bottom:1em;margin-right:0;margin-top:1em}#sbo-rt-content .calibre28{font-size:smaller;line-height:normal;vertical-align:super}#sbo-rt-content .calibre29{font-size:.75em}#sbo-rt-content .calibre3{font-family:"Times";line-height:1.2}#sbo-rt-content .calibre30{font-size:.77778em;line-height:normal;vertical-align:super}#sbo-rt-content .calibre31{font-size:.71429em}#sbo-rt-content .calibre4{font-family:"Times"}#sbo-rt-content .calibre5{display:block;font-family:"Liberation Mono",monospace;font-size:.75em;margin-bottom:1em;margin-left:5px;margin-right:0;margin-top:1em;white-space:pre-wrap}#sbo-rt-content .calibre6{font-style:italic}#sbo-rt-content .calibre7{border-collapse:separate;border-spacing:2px;display:table;margin-bottom:0;margin-top:0;text-indent:0}#sbo-rt-content .calibre8{display:table-column-group;text-align:left}#sbo-rt-content .calibre9{display:table-column}#sbo-rt-content .center{display:block;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:30px;text-align:center}#sbo-rt-content .center1{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em;text-align:center}#sbo-rt-content .docTableCell{display:table-cell;font-size:.75em;padding-bottom:1px;padding-left:1px;padding-right:1px;padding-top:1px;text-align:left;vertical-align:inherit}#sbo-rt-content .ind{display:block;margin-bottom:8px;margin-right:0;margin-top:0;text-align:left;text-indent:0}#sbo-rt-content .noind{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:25px;text-indent:0}#sbo-rt-content .noindclose{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em;text-indent:0}#sbo-rt-content .notetitle{display:block;font-size:.75em;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:2px}#sbo-rt-content .part{display:block;font-size:1.41667em;font-weight:bold;line-height:1.2;margin-bottom:0;margin-left:0;margin-right:0;margin-top:.83em}#sbo-rt-content .smaller{display:block;font-size:.75em;margin-bottom:1em;margin-left:1em;margin-right:1em;margin-top:1em}#sbo-rt-content .toc{display:block;margin-bottom:1em;margin-left:15px;margin-right:1em;margin-top:15px;text-indent:0}
+    </style>
+<style type="text/css" title="ibis-book">
+    @page{margin-bottom:5pt;margin-top:5pt}
+    </style>
+<style type="text/css" id="font-styles">#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-size: &lt;%= font_size %&gt; !important; }</style>
+<style type="text/css" id="font-family">#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-family: &lt;%= font_family %&gt; !important; }</style>
+<style type="text/css" id="column-width">#sbo-rt-content { max-width: &lt;%= column_width %&gt;% !important; margin: 0 auto !important; }</style>
+
+<style type="text/css">body{margin:1em;}#sbo-rt-content *{text-indent:0pt!important;}#sbo-rt-content .bq{margin-right:1em!important;}body{background-color:transparent!important;}#sbo-rt-content *{word-wrap:break-word!important;word-break:break-word!important;}#sbo-rt-content table,#sbo-rt-content pre{overflow-x:unset!important;overflow:unset!important;overflow-y:unset!important;white-space:pre-wrap!important;}</style></head>
+<body><div id="sbo-rt-content" class="calibre"><h2 id="ch08" class="part">Chapter 8. <a id="ch08__title" class="calibre3"/>Greedy algorithms
+      </h2>
+      
+      
+      
+      <p class="center1"><img src="Images/common.jpg" alt="" class="calibre2" width="134" height="148"/></p>
+      
+      
+      <p class="noind"><a id="iddle1033" class="calibre4"/><a id="iddle1038" class="calibre4"/><a id="iddle1189" class="calibre4"/><b class="calibre20">In this chapter</b></p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">You learn how to tackle the impossible: problems that have no fast algorithmic solution (NP-complete problems).
+            
+         </li>
+         
+         <li class="calibre19">You learn how to identify such problems when you see them, so you don’t waste time trying to find a fast algorithm for them.
+            
+         </li>
+         
+         <li class="calibre19">You learn about approximation algorithms, which you can use to find an approximate solution to an NP-complete problem quickly.
+            
+         </li>
+         
+         <li class="calibre19">You learn about the greedy strategy, a very simple problem-solving strategy.
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      <h3 id="ch08lev1sec1" class="calibre13"><a id="ch08lev1sec1__title" class="calibre3"/>The classroom scheduling problem
+      </h3>
+      
+      
+      
+      <p class="center1"><img src="Images/142fig03.jpg" alt="" class="calibre2" width="214" height="294"/></p>
+      
+      
+      <p class="noind"><a id="iddle1034" class="calibre4"/><a id="iddle1110" class="calibre4"/><a id="iddle1190" class="calibre4"/>Suppose you have a classroom and want to hold as many classes here as possible. You get a list of classes.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/142fig01.jpg" alt="" class="calibre2" width="264" height="229"/></p>
+      
+      
+      <p class="noind">You can’t hold <i class="calibre6">all</i> of these classes in there, because some of them overlap.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/142fig02.jpg" alt="" class="calibre2" width="500" height="221"/></p>
+      
+      
+      <p class="noind">You want to hold as many classes as possible in this classroom. How do you pick what set of classes to hold, so that you get
+         the biggest set of classes possible?
+      </p>
+      
+      <p class="noind">Sounds like a hard problem, right? Actually, the algorithm is so easy, it might surprise you. Here’s how it works:</p>
+      
+      <p class="calibre17"/>
+      <ol class="calibre27">
+         
+         <li class="calibre19">Pick the class that ends the soonest. This is the first class you’ll hold in this classroom.
+            
+         </li>
+         
+         <li class="calibre19">Now, you have to pick a class that starts after the first class. Again, pick the class that ends the soonest. This is the
+            second class you’ll hold.
+            
+         </li>
+         
+      </ol>
+      
+      <p class="noind">Keep doing this, and you’ll end up with the answer! Let’s try it out. Art ends the soonest, at 10:00 a.m., so that’s one of
+         the classes you pick.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/143fig01.jpg" alt="" class="calibre2" width="271" height="225"/></p>
+      
+      
+      <p class="noind">Now you need the next class that starts after 10:00 a.m. and ends the soonest.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/143fig02.jpg" alt="" class="calibre2" width="270" height="217"/></p>
+      
+      
+      <p class="noind">English is out because it conflicts with Art, but Math works.</p>
+      
+      <p class="noind">Finally, CS conflicts with Math, but Music works.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/143fig03.jpg" alt="" class="calibre2" width="270" height="217"/></p>
+      
+      
+      <p class="noind">So these are the three classes you’ll hold in this classroom.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/143fig04.jpg" alt="" class="calibre2" width="500" height="90"/></p>
+      
+      
+      <p class="noind"><a id="iddle1036" class="calibre4"/><a id="iddle1192" class="calibre4"/><a id="iddle1230" class="calibre4"/>A lot of people tell me that this algorithm seems easy. It’s too obvious, so it must be wrong. But that’s the beauty of greedy
+         algorithms: they’re easy! A greedy algorithm is simple: at each step, pick the optimal move. In this case, each time you pick
+         a class, you pick the class that ends the soonest. In technical terms: <i class="calibre6">at each step you pick the locally optimal solution</i>, and in the end you’re left with the globally optimal solution. Believe it or not, this simple algorithm finds the optimal
+         solution to this scheduling problem!
+      </p>
+      
+      <p class="noind">Obviously, greedy algorithms don’t always work. But they’re simple to write! Let’s look at another example.</p>
+      
+      
+      
+      <h3 id="ch08lev1sec2" class="calibre13"><a id="ch08lev1sec2__title" class="calibre3"/>The knapsack problem
+      </h3>
+      
+      
+      
+      <p class="center1"><img src="Images/144fig01.jpg" alt="" class="calibre2" width="228" height="194"/></p>
+      
+      
+      <p class="noind">Suppose you’re a greedy thief. You’re in a store with a knapsack, and there are all these items you can steal. But you can
+         only take what you can fit in your knapsack. The knapsack can hold 35 pounds.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/144fig02.jpg" alt="" class="calibre2" width="146" height="161"/></p>
+      
+      
+      <p class="noind">You’re trying to maximize the value of the items you put in your knapsack. What algorithm do you use?</p>
+      
+      <p class="noind">Again, the greedy strategy is pretty simple:</p>
+      
+      <p class="calibre17"/>
+      <ol class="calibre27">
+         
+         <li class="calibre19">Pick the most expensive thing that will fit in your knapsack.
+            
+         </li>
+         
+         <li class="calibre19">Pick the next most expensive thing that will fit in your knapsack. And so on.
+            
+         </li>
+         
+      </ol>
+      
+      <p class="noind">Except this time, it doesn’t work! For example, suppose there are three items you can steal.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/144fig03.jpg" alt="" class="calibre2" width="500" height="194"/></p>
+      
+      
+      <p class="noind"><a id="iddle1035" class="calibre4"/><a id="iddle1191" class="calibre4"/>Your knapsack can hold 35 pounds of items. The stereo system is the most expensive, so you steal that. Now you don’t have
+         space for anything else.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/145fig01.jpg" alt="" class="calibre2" width="325" height="185"/></p>
+      
+      
+      <p class="noind">You got $3,000 worth of goods. But wait! If you’d picked the laptop and the guitar instead, you could have had $3,500 worth
+         of loot!
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/145fig02.jpg" alt="" class="calibre2" width="253" height="181"/></p>
+      
+      
+      <p class="noind">Clearly, the greedy strategy doesn’t give you the optimal solution here. But it gets you pretty close. In the next chapter,
+         I’ll explain how to calculate the correct solution. But if you’re a thief in a shopping center, you don’t care about perfect.
+         “Pretty good” is good enough.
+      </p>
+      
+      <p class="noind">Here’s the takeaway from this second example: sometimes, perfect is the enemy of good. Sometimes all you need is an algorithm
+         that solves the problem pretty well. And that’s where greedy algorithms shine, because they’re simple to write and usually
+         get pretty close.
+      </p>
+      
+      
+      
+      <h3 id="ch08lev1sec3" class="calibre13"><a id="ch08lev1sec3__title" class="calibre3"/>Exercises
+      </h3>
+      
+      <p class="calibre17"><a id="ch08qa1" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch08qa1qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch08qa1q1" class="calibre4"/><b class="calibre20">8.1 </b></p><p class="noind">You work for a furniture company, and you have to ship furniture all over the country. You need to pack your truck with boxes.
+               All the boxes are of different sizes, and you’re trying to maximize the space you use in each truck. How would you pick boxes
+               to maximize space? Come up with a greedy strategy. Will that give you the optimal solution?
+            </p>
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch08qa1qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch08qa1q2" class="calibre4"/><b class="calibre20">8.2 </b></p><p class="noind">You’re going to Europe, and you have seven days to see everything you can. You assign a point value to each item (how much
+               you want <a id="iddle1039" class="calibre4"/><a id="iddle1194" class="calibre4"/><a id="iddle1198" class="calibre4"/><a id="iddle1317" class="calibre4"/><a id="iddle1322" class="calibre4"/>to see it) and estimate how long it takes. How can you maximize the point total (seeing all the things you really want to
+               see) during your stay? Come up with a greedy strategy. Will that give you the optimal solution?
+            </p>
+         <p class="calibre17"/>
+      </blockquote>
+      
+      <p class="noind">Let’s look at one last example. This is an example where greedy algorithms are absolutely necessary.</p>
+      
+      
+      
+      <h3 id="ch08lev1sec4" class="calibre13"><a id="ch08lev1sec4__title" class="calibre3"/>The set-covering problem
+      </h3>
+      
+      
+      
+      <p class="center1"><img src="Images/146fig01.jpg" alt="" class="calibre2" width="276" height="205"/></p>
+      
+      
+      <p class="noind">Suppose you’re starting a radio show. You want to reach listeners in all 50 states. You have to decide what stations to play
+         on to reach all those listeners. It costs money to be on each station, so you’re trying to minimize the number of stations
+         you play on. You have a list of stations.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/146fig02.jpg" alt="" class="calibre2" width="203" height="315"/></p>
+      
+      
+      <p class="noind">Each station covers a region, and there’s overlap.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/146fig03.jpg" alt="" class="calibre2" width="235" height="314"/></p>
+      
+      
+      <p class="noind">How do you figure out the smallest set of stations you can play on to cover all 50 states? Sounds easy, doesn’t it? Turns
+         out it’s extremely hard. Here’s how to do it:
+      </p>
+      
+      <p class="calibre17"/>
+      <ol class="calibre27">
+         
+         <li class="calibre19">List every possible subset of stations. This is called the <i class="calibre6">power set</i>. There are 2^<i class="calibre6">n</i> possible subsets.
+            
+            
+            
+            <p class="center1"><img src="Images/146fig04.jpg" alt="" class="calibre2" width="500" height="229"/></p>
+            
+            
+         </li>
+         
+         <li class="calibre19"><a id="iddle1002" class="calibre4"/><a id="iddle1004" class="calibre4"/><a id="iddle1053" class="calibre4"/><a id="iddle1055" class="calibre4"/><a id="iddle1195" class="calibre4"/><a id="iddle1319" class="calibre4"/>From these, pick the set with the smallest number of stations that covers all 50 states.
+            
+         </li>
+         
+      </ol>
+      
+      <p class="noind">The problem is, it takes a long time to calculate every possible subset of stations. It takes O(2^<i class="calibre6">n</i>) time, because there are 2^<i class="calibre6">n</i> stations. It’s possible to do if you have a small set of 5 to 10 stations. But with all the examples here, think about what
+         will happen if you have a lot of items. It takes much longer if you have more stations. Suppose you can calculate 10 subsets
+         per second.
+      </p>
+      
+      <p class="noind">There’s <i class="calibre6">no algorithm that solves it fast enough!</i> What can you do?
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/147fig01.jpg" alt="" class="calibre2" width="282" height="205"/></p>
+      
+      
+      
+      <h4 id="ch08lev2sec1" class="calibre22"><a id="ch08lev2sec1__title" class="calibre4"/>Approximation algorithms
+      </h4>
+      
+      <p class="noind">Greedy algorithms to the rescue! Here’s a greedy algorithm that comes pretty close:</p>
+      
+      <p class="calibre17"/>
+      <ol class="calibre27">
+         
+         <li class="calibre19">Pick the station that covers the most states that haven’t been covered yet. It’s OK if the station covers some states that
+            have been covered already.
+            
+         </li>
+         
+         <li class="calibre19">Repeat until all the states are covered.
+            
+         </li>
+         
+      </ol>
+      
+      <p class="noind">This is called an <i class="calibre6">approximation algorithm.</i> When calculating the exact solution will take too much time, an approximation algorithm will work. Approximation algorithms
+         are judged by
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">How fast they are
+            
+         </li>
+         
+         <li class="calibre19">How close they are to the optimal solution
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">Greedy algorithms are a good choice because not only are they simple to come up with, but that simplicity means they usually
+         run fast, too. In this case, the greedy algorithm runs in O(<i class="calibre6">n</i>^2) time, where <i class="calibre6">n</i> is the number of radio stations.
+      </p>
+      
+      <p class="noind"><a id="iddle1325" class="calibre4"/>Let’s see how this problem looks in code.
+      </p>
+      
+      
+      <h5 id="ch08lev3sec1" class="notetitle"><a id="ch08lev3sec1__title" class="calibre4"/>Code for setup
+      </h5>
+      
+      <p class="noind">For this example, I’m going to use a subset of the states and the stations to keep things simple.</p>
+      
+      <p class="noind">First, make a list of the states you want to cover:</p>
+      
+      <p class="center1"><img src="Images/148fig01_alt.jpg" alt="" class="calibre2" width="589" height="43"/></p>
+      
+      <p class="noind">I used a set for this. A set is like a list, except that each item can show up only once in a set. <i class="calibre6">Sets can’t have duplicates.</i> For example, suppose you had this list:
+      </p>
+      
+      <pre id="PLd0e9950" class="calibre5">&gt;&gt;&gt; arr = [1, 2, 2, 3, 3, 3]</pre>
+      
+      <p class="noind">And you converted it to a set:</p>
+      
+      <pre id="PLd0e9959" class="calibre5">&gt;&gt;&gt; set(arr)
+set([1, 2, 3])</pre>
+      
+      <p class="noind">1, 2, and 3 all show up just once in a set.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/148fig02.jpg" alt="" class="calibre2" width="500" height="77"/></p>
+      
+      
+      <p class="noind">You also need the list of stations that you’re choosing from. I chose to use a hash for this:</p>
+      
+      <pre id="PLd0e9978" class="calibre5">stations = {}
+stations["kone"] = set(["id", "nv", "ut"])
+stations["ktwo"] = set(["wa", "id", "mt"])
+stations["kthree"] = set(["or", "nv", "ca"])
+stations["kfour"] = set(["nv", "ut"])
+stations["kfive"] = set(["ca", "az"])</pre>
+      
+      <p class="noind">The keys are station names, and the values are the states they cover. So in this example, the kone station covers Idaho, Nevada,
+         and Utah. All the values are sets, too. Making everything a set will make your life easier, as you’ll see soon.
+      </p>
+      
+      <p class="noind">Finally, you need something to hold the final set of stations you’ll use:</p>
+      
+      <pre id="PLd0e9990" class="calibre5">final_stations = set()</pre>
+      
+      
+      
+      
+      <h5 id="ch08lev3sec2" class="notetitle"><a id="ch08lev3sec2__title" class="calibre4"/>Calculating the answer
+      </h5>
+      
+      <p class="noind"><a id="iddle1003" class="calibre4"/><a id="iddle1005" class="calibre4"/><a id="iddle1054" class="calibre4"/><a id="iddle1056" class="calibre4"/><a id="iddle1178" class="calibre4"/><a id="iddle1318" class="calibre4"/><a id="iddle1320" class="calibre4"/><a id="iddle1348" class="calibre4"/>Now you need to calculate what stations you’ll use. Take a look at the image at right, and see if you can predict what stations
+         you should use.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/149fig01.jpg" alt="" class="calibre2" width="260" height="349"/></p>
+      
+      
+      <p class="noind">There can be more than one correct solution. You need to go through every station and pick the one that covers the most uncovered
+         states. I’ll call this <kbd class="calibre21">best_station</kbd>:
+      </p>
+      
+      <pre id="PLd0e10090" class="calibre5">best_station = None
+states_covered = set()
+<b class="calibre20">for</b> station, states_for_station in stations.items():</pre>
+      
+      <p class="noind"><kbd class="calibre21">states_covered</kbd> is a set of all the states this station covers that haven’t been covered yet. The <kbd class="calibre21">for</kbd> loop allows you to loop over every station to see which one is the best station. Let’s look at the body of the <kbd class="calibre21">for</kbd> loop:
+      </p>
+      
+      <p class="center1"><img src="Images/149fig02_alt.jpg" alt="" class="calibre2" width="590" height="63"/></p>
+      
+      <p class="noind">There’s a funny-looking line here:</p>
+      
+      <pre id="PLd0e10118" class="calibre5">covered = states_needed &amp; states_for_station</pre>
+      
+      <p class="noind">What’s going on?</p>
+      
+      
+      
+      <h5 id="ch08lev3sec3" class="notetitle"><a id="ch08lev3sec3__title" class="calibre4"/>Sets
+      </h5>
+      
+      <p class="noind">Suppose you have a set of fruits.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/149fig03.jpg" alt="" class="calibre2" width="196" height="159"/></p>
+      
+      
+      <p class="noind">You also have a set of vegetables.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/149fig04.jpg" alt="" class="calibre2" width="188" height="128"/></p>
+      
+      
+      <p class="noind">When you have two sets, you can do some fun things with them.</p>
+      
+      <p class="noind"><a id="iddle1323" class="calibre4"/><a id="iddle1324" class="calibre4"/><a id="iddle1326" class="calibre4"/>Here are some things you can do with sets.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/150fig01.jpg" alt="" class="calibre2" width="500" height="486"/></p>
+      
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">A set union means “combine both sets.”
+            
+         </li>
+         
+         <li class="calibre19">A set intersection means “find the items that show up in both sets” (in this case, just the tomato).
+            
+         </li>
+         
+         <li class="calibre19">A set difference means “subtract the items in one set from the items in the other set.”
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">For example:</p>
+      
+      <p class="center1"><img src="Images/150fig02_alt.jpg" alt="" class="calibre2" width="590" height="157"/></p>
+      
+      <p class="noind"><a id="iddle1067" class="calibre4"/><a id="iddle1114" class="calibre4"/><a id="iddle1196" class="calibre4"/><a id="iddle1349" class="calibre4"/><a id="iddle1350" class="calibre4"/>To recap:
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Sets are like lists, except sets can’t have duplicates.
+            
+         </li>
+         
+         <li class="calibre19">You can do some interesting operations on sets, like union, intersection, and difference.
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      <h5 id="ch08lev3sec4" class="notetitle"><a id="ch08lev3sec4__title" class="calibre4"/>Back to the code
+      </h5>
+      
+      <p class="noind">Let’s get back to the original example.</p>
+      
+      <p class="noind">This is a set intersection:</p>
+      
+      <pre id="PLd0e10268" class="calibre5">covered = states_needed &amp; states_for_station</pre>
+      
+      <p class="noind"><kbd class="calibre21">covered</kbd> is a set of states that were in both <kbd class="calibre21">states_needed</kbd> and <kbd class="calibre21">states_for_station</kbd>. So <kbd class="calibre21">covered</kbd> is the set of uncovered states that this station covers! Next you check whether this station covers more states than the
+         current <kbd class="calibre21">best_station</kbd>:
+      </p>
+      
+      <pre id="PLd0e10291" class="calibre5"><b class="calibre20">if</b> len(covered) &gt; len(states_covered):
+  best_station = station
+  states_covered = covered</pre>
+      
+      
+      
+      <p class="center1"><img src="Images/151fig01.jpg" alt="" class="calibre2" width="261" height="347"/></p>
+      
+      
+      <p class="noind">If so, this station is the new <kbd class="calibre21">best_station</kbd>. Finally, after the <kbd class="calibre21">for</kbd> loop is over, you add <kbd class="calibre21">best_station</kbd> to the final list of stations:
+      </p>
+      
+      <pre id="PLd0e10318" class="calibre5">final_stations.add(best_station)</pre>
+      
+      <p class="noind">You also need to update <kbd class="calibre21">states_needed</kbd>. Because this station covers some states, those states aren’t needed anymore:
+      </p>
+      
+      <pre id="PLd0e10330" class="calibre5">states_needed -= states_covered</pre>
+      
+      <p class="noind">And you loop until <kbd class="calibre21">states_needed</kbd> is empty. Here’s the full code for the loop:
+      </p>
+      
+      <pre id="PLd0e10342" class="calibre5"><b class="calibre20">while</b> states_needed:
+  best_station = None
+  states_covered = set()
+  <b class="calibre20">for</b> station, states in stations.items():
+    covered = states_needed &amp; states
+    <b class="calibre20">if</b> len(covered) &gt; len(states_covered):
+     best_station = station
+     states_covered = covered
+
+states_needed -= states_covered
+final_stations.add(best_station)</pre>
+      
+      <p class="noind"><a id="iddle1037" class="calibre4"/><a id="iddle1193" class="calibre4"/><a id="iddle1197" class="calibre4"/><a id="iddle1273" class="calibre4"/><a id="iddle1321" class="calibre4"/>Finally, you can print <kbd class="calibre21">final_stations</kbd>, and you should see this:
+      </p>
+      
+      <pre id="PLd0e10403" class="calibre5">&gt;&gt;&gt; print final_stations
+set(['ktwo', 'kthree', 'kone', 'kfive'])</pre>
+      
+      <p class="noind">Is that what you expected? Instead of stations 1, 2, 3, and 5, you could have chosen stations 2, 3, 4, and 5. Let’s compare
+         the run time of the greedy algorithm to the exact algorithm.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/152fig01.jpg" alt="" class="calibre2" width="496" height="238"/></p>
+      
+      
+      
+      
+      
+      
+      <h3 id="ch08lev1sec5" class="calibre13"><a id="ch08lev1sec5__title" class="calibre3"/>Exercises
+      </h3>
+      
+      <p class="noind">For each of these algorithms, say whether it’s a greedy algorithm or not.</p>
+      
+      <p class="calibre17"><a id="ch08qa2" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch08qa2qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch08qa2q1" class="calibre4"/><b class="calibre20">8.3 </b></p><p class="noind">Quicksort</p>
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch08qa2qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch08qa2q2" class="calibre4"/><b class="calibre20">8.4 </b></p><p class="noind">Breadth-first search</p>
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch08qa2qe3" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch08qa2q3" class="calibre4"/><b class="calibre20">8.5 </b></p><p class="noind">Dijkstra’s algorithm</p>
+         <p class="calibre17"/>
+      </blockquote>
+      
+      
+      
+      <h3 id="ch08lev1sec6" class="calibre13"><a id="ch08lev1sec6__title" class="calibre3"/>NP-complete problems
+      </h3>
+      
+      <p class="noind">To solve the set-covering problem, you had to calculate every possible set.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/152fig02.jpg" alt="" class="calibre2" width="500" height="228"/></p>
+      
+      
+      <p class="noind">Maybe you were reminded of the traveling salesperson problem from <a href="kindle_split_007.xhtml#ch01" class="calibre4">chapter 1</a>. In this problem, a salesperson has to visit five different cities.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/153fig01.jpg" alt="" class="calibre2" width="245" height="230"/></p>
+      
+      
+      <p class="noind">And he’s trying to figure out the shortest route that will take him to all five cities. To find the shortest route, you first
+         have to calculate every possible route.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/153fig02.jpg" alt="" class="calibre2" width="471" height="165"/></p>
+      
+      
+      <p class="noind">How many routes do you have to calculate for five cities?</p>
+      
+      
+      <h4 id="ch08lev2sec2" class="calibre22"><a id="ch08lev2sec2__title" class="calibre4"/>Traveling salesperson, step by step
+      </h4>
+      
+      <p class="noind">Let’s start small. Suppose you only have two cities. There are two routes to choose from.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/153fig03.jpg" alt="" class="calibre2" width="369" height="322"/></p>
+      
+      
+      
+      <p class="noind"/>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <div class="calibre14">
+         
+         <b id="ch08sb01" class="calibre20">Same route or different?</b>
+         
+         <p class="noind">You may think this should be the same route. After all, isn’t SF &gt; Marin the same distance as Marin &gt; SF? Not necessarily.
+            Some cities (like San Francisco) have a lot of one-way streets, so you can’t go back the way you came. You might also have
+            to go 1 or 2 miles out of the way to find an on-ramp to a highway. So these two routes aren’t necessarily the same.
+         </p>
+         
+      </div>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      <p class="noind">You may be wondering, “In the traveling salesperson problem, is there a specific city you need to start from?” For example,
+         let’s say I’m the traveling salesperson. I live in San Francisco, and I need to go to four other cities. San Francisco would
+         be my start city.
+      </p>
+      
+      <p class="noind">But sometimes the start city isn’t set. Suppose you’re FedEx, trying to deliver a package to the Bay Area. The package is
+         being flown in from Chicago to one of 50 FedEx locations in the Bay Area. Then that package will go on a truck that will travel
+         to different locations delivering packages. Which location should it get flown to? Here the start location is unknown. It’s
+         up to you to compute the optimal path and start location for the traveling salesperson.
+      </p>
+      
+      <p class="noind">The running time for both versions is the same. But it’s an easier example if there’s no defined start city, so I’ll go with
+         that version.
+      </p>
+      
+      <p class="noind">Two cities = two possible routes.</p>
+      
+      
+      <h5 id="ch08lev3sec5" class="notetitle"><a id="ch08lev3sec5__title" class="calibre4"/>3 cities
+      </h5>
+      
+      <p class="noind">Now suppose you add one more city. How many possible routes are there?</p>
+      
+      <p class="noind">If you start at Berkeley, you have two more cities to visit.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/154fig01.jpg" alt="" class="calibre2" width="426" height="285"/></p>
+      
+      
+      <p class="noind">There are six total routes, two for each city you can start at.</p>
+      
+      <p class="center1"><img src="Images/155fig01_alt.jpg" alt="" class="calibre2" width="590" height="383"/></p>
+      
+      <p class="noind">So three cities = six possible routes.</p>
+      
+      
+      
+      <h5 id="ch08lev3sec6" class="notetitle"><a id="ch08lev3sec6__title" class="calibre4"/>4 cities
+      </h5>
+      
+      <p class="noind">Let’s add another city, Fremont. Now suppose you start at Fremont.</p>
+      
+      <p class="center1"><img src="Images/155fig02_alt.jpg" alt="" class="calibre2" width="590" height="517"/></p>
+      
+      <p class="noind">There are six possible routes starting from Fremont. And hey! They look a lot like the six routes you calculated earlier,
+         when you had only three cities. Except now all the routes have an additional city, Fremont! There’s a pattern here. Suppose
+         you have four cities, and you pick a start city, Fremont. There are three cities left. And you know that if there are three
+         cities, there are six different routes for getting between those cities. If you start at Fremont, there are six possible routes.
+         You could also start at one of the other cities.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/156fig01.jpg" alt="" class="calibre2" width="500" height="228"/></p>
+      
+      
+      <p class="noind">Four possible start cities, with six possible routes for each start city = 4 * 6 = 24 possible routes.</p>
+      
+      <p class="noind">Do you see a pattern? Every time you add a new city, you’re increasing the number of routes you have to calculate.</p>
+      
+      <p class="center1"><img src="Images/156fig02_alt.jpg" alt="" class="calibre2" width="590" height="211"/></p>
+      
+      <p class="noind">How many possible routes are there for six cities? If you guessed 720, you’re right. 5,040 for 7 cities, 40,320 for 8 cities.</p>
+      
+      <p class="noind">This is called the <i class="calibre6">factorial function</i> (remember reading about this in <a href="kindle_split_009.xhtml#ch03" class="calibre4">chapter 3</a>?). So 5! = 120. Suppose you have 10 cities. How many possible routes are there? 10! = 3,628,800. You have to calculate over
+         3 <i class="calibre6">million</i> possible routes for 10 cities. As you can see, the number of possible routes becomes big very fast! This is why it’s impossible
+         to compute the “correct” solution for the traveling-salesperson problem if you have a large number of cities.
+      </p>
+      
+      <p class="noind">The traveling-salesperson problem and the set-covering problem both have something in common: you calculate every possible
+         solution and pick the smallest/shortest one. Both of these problems are <i class="calibre6">NP-complete</i>.
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <div class="calibre14">
+         
+         <b id="ch08sb02" class="calibre20">Approximating</b>
+         
+         <p class="noind">What’s a good approximation algorithm for the traveling salesperson? Something simple that finds a short path. See if you
+            can come up with an answer before reading on.
+         </p>
+         
+         <p class="noind">Here’s how I would do it: arbitrarily pick a start city. Then, each time the salesperson has to pick the next city to visit,
+            they pick the closest unvisited city. Suppose they start in Marin.
+         </p>
+         
+         
+         
+         <p class="center1"><img src="Images/157fig01.jpg" alt="" class="calibre2" width="364" height="468"/></p>
+         
+         
+         <p class="noind">Total distance: 71 miles. Maybe it’s not the shortest path, but it’s still pretty short.</p>
+         
+      </div>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      <p class="noind">Here’s the short explanation of NP-completeness: some problems are famously hard to solve. The traveling salesperson and the
+         set-covering problem are two examples. A lot of smart people think that it’s not possible to write an algorithm that will
+         solve these problems quickly.
+      </p>
+      
+      
+      
+      
+      
+      <h4 id="ch08lev2sec3" class="calibre22"><a id="ch08lev2sec3__title" class="calibre4"/>How do you tell if a problem is NP-complete?
+      </h4>
+      
+      <p class="noind">Jonah is picking players for his fantasy football team. He has a list of abilities he wants: good quarterback, good running
+         back, good in rain, good under pressure, and so on. He has a list of players, where each player fulfills some abilities.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/158fig01.jpg" alt="" class="calibre2" width="228" height="126"/></p>
+      
+      
+      
+      
+      <p class="center1"><img src="Images/158fig02.jpg" alt="" class="calibre2" width="413" height="240"/></p>
+      
+      
+      <p class="noind">Jonah needs a team that fulfills all his abilities, and the team size is limited. “Wait a second,” Jonah realizes. “This is
+         a set-covering problem!”
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/158fig03.jpg" alt="" class="calibre2" width="279" height="197"/></p>
+      
+      
+      <p class="noind">Jonah can use the same approximation algorithm to create his team:</p>
+      
+      <p class="calibre17"/>
+      <ol class="calibre27">
+         
+         <li class="calibre19">Find the player who fulfills the most abilities that haven’t been fulfilled yet.
+            
+         </li>
+         
+         <li class="calibre19">Repeat until the team fulfills all abilities (or you run out of space on the team).
+            
+         </li>
+         
+      </ol>
+      
+      <p class="noind">NP-complete problems show up everywhere! It’s nice to know if the problem you’re trying to solve is NP-complete. At that point,
+         you can stop trying to solve it perfectly, and solve it using an approximation algorithm instead. But it’s hard to tell if
+         a problem you’re working on is NP-complete. Usually there’s a very small difference between a problem that’s easy to solve
+         and an NP-complete problem. For example, in the previous chapters, I talked a lot about shortest paths. You know how to calculate
+         the shortest way to get from point A to point B.
+      </p>
+      
+      
+      <p class="center1"><img src="Images/159fig01_alt.jpg" alt="" class="calibre2" width="590" height="252"/></p>
+      
+      <p class="noind">But if you want to find the shortest path that connects several points, that’s the traveling-salesperson problem, which is
+         NP-complete. The short answer: there’s no easy way to tell if the problem you’re working on is NP-complete. Here are some
+         giveaways:
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Your algorithm runs quickly with a handful of items but really slows down with more items.
+            
+         </li>
+         
+         <li class="calibre19">“All combinations of X” usually point to an NP-complete problem.
+            
+         </li>
+         
+         <li class="calibre19">Do you have to calculate “every possible version” of X because you can’t break it down into smaller sub-problems? Might be
+            NP-complete.
+            
+         </li>
+         
+         <li class="calibre19">If your problem involves a sequence (such as a sequence of cities, like traveling salesperson), and it’s hard to solve, it
+            might be NP-complete.
+            
+         </li>
+         
+         <li class="calibre19">If your problem involves a set (like a set of radio stations) and it’s hard to solve, it might be NP-complete.
+            
+         </li>
+         
+         <li class="calibre19">Can you restate your problem as the set-covering problem or the traveling-salesperson problem? Then your problem is definitely
+            NP-complete.
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      
+      <h3 id="ch08lev1sec7" class="calibre13"><a id="ch08lev1sec7__title" class="calibre3"/>Exercises
+      </h3>
+      
+      <p class="calibre17"><a id="ch08qa3" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch08qa3qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch08qa3q1" class="calibre4"/><b class="calibre20">8.6 </b></p><p class="noind">A postman needs to deliver to 20 homes. He needs to find the shortest route that goes to all 20 homes. Is this an NP-complete
+               problem?
+            </p>
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch08qa3qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch08qa3q2" class="calibre4"/><b class="calibre20">8.7 </b></p><p class="noind">Finding the largest clique in a set of people (a <i class="calibre6">clique</i> is a set of people who all know each other). Is this an NP-complete problem?
+            </p>
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch08qa3qe3" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch08qa3q3" class="calibre4"/><b class="calibre20">8.8 </b></p><p class="noind">You’re making a map of the USA, and you need to color adjacent states with different colors. You have to find the minimum
+               number of colors you need so that no two adjacent states are the same color. Is this an NP-complete problem?
+            </p>
+         <p class="calibre17"/>
+      </blockquote>
+      
+      
+      
+      
+      <h3 id="ch08lev1sec8" class="calibre13"><a id="ch08lev1sec8__title" class="calibre3"/>Recap
+      </h3>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Greedy algorithms optimize locally, hoping to end up with a global optimum.
+            
+         </li>
+         
+         <li class="calibre19">NP-complete problems have no known fast solution.
+            
+         </li>
+         
+         <li class="calibre19">If you have an NP-complete problem, your best bet is to use an approximation algorithm.
+            
+         </li>
+         
+         <li class="calibre19">Greedy algorithms are easy to write and fast to run, so they make good approximation algorithms.
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      
+      <div class="calibre16" id="calibre_pb_24"/>
+</div>
+
+
+
+  </body>
+</html>

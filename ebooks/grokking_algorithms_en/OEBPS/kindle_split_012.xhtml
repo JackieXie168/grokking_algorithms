@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2002/06/xhtml2/ http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+<link href="Styles/Style00.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style01.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style02.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style03.css" rel="stylesheet" type="text/css" />
+<style type="text/css" title="ibis-book">
+    #sbo-rt-content .calibre{display:block;font-size:1em;margin-bottom:0;margin-left:5pt;margin-right:5pt;margin-top:0;padding-left:0;padding-right:0}#sbo-rt-content .calibre1{display:block;font-size:2em;font-weight:bold;line-height:1.2;margin-bottom:.67em;margin-left:0;margin-right:0;margin-top:.67em;text-align:center}#sbo-rt-content .calibre10{display:table-row-group;vertical-align:middle}#sbo-rt-content .calibre11{display:table-row;vertical-align:inherit}#sbo-rt-content .calibre12{display:block;font-family:"Liberation Mono",monospace;font-size:.77778em;margin-bottom:1em;margin-left:5px;margin-right:0;margin-top:1em;white-space:pre-wrap}#sbo-rt-content .calibre13{display:block;font-size:1.125em;font-weight:bold;line-height:1.2;margin-bottom:0;margin-left:0;margin-right:0;margin-top:40px}#sbo-rt-content .calibre14{display:block}#sbo-rt-content .calibre15{display:block;margin-bottom:1em;margin-left:1em;margin-right:1em;margin-top:1em}#sbo-rt-content .calibre16{display:block}#sbo-rt-content .calibre17{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em}#sbo-rt-content .calibre18{display:block;list-style-type:disc;margin-bottom:1em;margin-right:0;margin-top:1em}#sbo-rt-content .calibre19{display:list-item}#sbo-rt-content .calibre2{height:auto;width:auto}#sbo-rt-content .calibre20{font-weight:bold}#sbo-rt-content .calibre21{font-family:"Liberation Mono",monospace}#sbo-rt-content .calibre22{display:block;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:30px}#sbo-rt-content .calibre23{display:table-column-group}#sbo-rt-content .calibre24{display:table-cell;padding-bottom:1px;padding-left:1px;padding-right:1px;padding-top:1px;text-align:inherit;vertical-align:inherit}#sbo-rt-content .calibre25{font-size:.75em;line-height:normal;vertical-align:sub}#sbo-rt-content .calibre26{font-size:.75em;line-height:normal;vertical-align:super}#sbo-rt-content .calibre27{display:block;list-style-type:decimal;margin-bottom:1em;margin-right:0;margin-top:1em}#sbo-rt-content .calibre28{font-size:smaller;line-height:normal;vertical-align:super}#sbo-rt-content .calibre29{font-size:.75em}#sbo-rt-content .calibre3{font-family:"Times";line-height:1.2}#sbo-rt-content .calibre30{font-size:.77778em;line-height:normal;vertical-align:super}#sbo-rt-content .calibre31{font-size:.71429em}#sbo-rt-content .calibre4{font-family:"Times"}#sbo-rt-content .calibre5{display:block;font-family:"Liberation Mono",monospace;font-size:.75em;margin-bottom:1em;margin-left:5px;margin-right:0;margin-top:1em;white-space:pre-wrap}#sbo-rt-content .calibre6{font-style:italic}#sbo-rt-content .calibre7{border-collapse:separate;border-spacing:2px;display:table;margin-bottom:0;margin-top:0;text-indent:0}#sbo-rt-content .calibre8{display:table-column-group;text-align:left}#sbo-rt-content .calibre9{display:table-column}#sbo-rt-content .center{display:block;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:30px;text-align:center}#sbo-rt-content .center1{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em;text-align:center}#sbo-rt-content .docTableCell{display:table-cell;font-size:.75em;padding-bottom:1px;padding-left:1px;padding-right:1px;padding-top:1px;text-align:left;vertical-align:inherit}#sbo-rt-content .ind{display:block;margin-bottom:8px;margin-right:0;margin-top:0;text-align:left;text-indent:0}#sbo-rt-content .noind{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:25px;text-indent:0}#sbo-rt-content .noindclose{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em;text-indent:0}#sbo-rt-content .notetitle{display:block;font-size:.75em;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:2px}#sbo-rt-content .part{display:block;font-size:1.41667em;font-weight:bold;line-height:1.2;margin-bottom:0;margin-left:0;margin-right:0;margin-top:.83em}#sbo-rt-content .smaller{display:block;font-size:.75em;margin-bottom:1em;margin-left:1em;margin-right:1em;margin-top:1em}#sbo-rt-content .toc{display:block;margin-bottom:1em;margin-left:15px;margin-right:1em;margin-top:15px;text-indent:0}
+    </style>
+<style type="text/css" title="ibis-book">
+    @page{margin-bottom:5pt;margin-top:5pt}
+    </style>
+<style type="text/css" id="font-styles">#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-size: &lt;%= font_size %&gt; !important; }</style>
+<style type="text/css" id="font-family">#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-family: &lt;%= font_family %&gt; !important; }</style>
+<style type="text/css" id="column-width">#sbo-rt-content { max-width: &lt;%= column_width %&gt;% !important; margin: 0 auto !important; }</style>
+
+<style type="text/css">body{margin:1em;}#sbo-rt-content *{text-indent:0pt!important;}#sbo-rt-content .bq{margin-right:1em!important;}body{background-color:transparent!important;}#sbo-rt-content *{word-wrap:break-word!important;word-break:break-word!important;}#sbo-rt-content table,#sbo-rt-content pre{overflow-x:unset!important;overflow:unset!important;overflow-y:unset!important;white-space:pre-wrap!important;}</style></head>
+<body><div id="sbo-rt-content" class="calibre"><h2 id="ch06" class="part">Chapter 6. <a id="ch06__title" class="calibre3"/>Breadth-first Search
+      </h2>
+      
+      
+      
+      <p class="center1"><img src="Images/common.jpg" alt="" class="calibre2" width="134" height="148"/></p>
+      
+      
+      <p class="noind"><a id="iddle1089" class="calibre4"/><a id="iddle1100" class="calibre4"/><b class="calibre20">In this chapter</b></p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">You learn how to model a network using a new, abstract data structure: graphs.
+            
+         </li>
+         
+         <li class="calibre19">You learn breadth-first search, an algorithm you can run on graphs to answer questions like, “What’s the shortest path to
+            go to X?”
+            
+         </li>
+         
+         <li class="calibre19">You learn about directed versus undirected graphs.
+            
+         </li>
+         
+         <li class="calibre19">You learn topological sort, a different kind of sorting algorithm that exposes dependencies between nodes.
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">This chapter introduces graphs. First, I’ll talk about what graphs are (they don’t involve an X or Y axis). Then I’ll show
+         you your first graph algorithm. It’s called <i class="calibre6">breadth-first search</i> (BFS).
+      </p>
+      
+      <p class="noind">Breadth-first search allows you to find the shortest distance between two things. But shortest distance can mean a lot of
+         things! You can use breadth-first search to
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Write a checkers AI that calculates the fewest moves to victory
+            
+         </li>
+         
+         <li class="calibre19"><a id="iddle1187" class="calibre4"/>Write a spell checker (fewest edits from your misspelling to a real word—for example, READED -&gt; READER is one edit)
+            
+         </li>
+         
+         <li class="calibre19">Find the doctor closest to you in your network
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">Graph algorithms are some of the most useful algorithms I know. Make sure you read the next few chapters carefully—these are
+         algorithms you’ll be able to apply again and again.
+      </p>
+      
+      
+      <h3 id="ch06lev1sec1" class="calibre13"><a id="ch06lev1sec1__title" class="calibre3"/>Introduction to graphs
+      </h3>
+      
+      
+      
+      <p class="center1"><img src="Images/096fig01.jpg" alt="" class="calibre2" width="322" height="411"/></p>
+      
+      
+      <p class="noind">Suppose you’re in San Francisco, and you want to go from Twin Peaks to the Golden Gate Bridge. You want to get there by bus,
+         with the minimum number of transfers. Here are your options.
+      </p>
+      
+      <p class="center1"><img src="Images/096fig02_alt.jpg" alt="" class="calibre2" width="590" height="249"/></p>
+      
+      <p class="noind">What’s your algorithm to find the path with the fewest steps?</p>
+      
+      <p class="noind">Well, can you get there in one step? Here are all the places you can get to in one step.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/097fig01.jpg" alt="" class="calibre2" width="448" height="199"/></p>
+      
+      
+      <p class="noind">The bridge isn’t highlighted; you can’t get there in one step. Can you get there in two steps?</p>
+      
+      
+      
+      <p class="center1"><img src="Images/097fig02.jpg" alt="" class="calibre2" width="500" height="171"/></p>
+      
+      
+      <p class="noind">Again, the bridge isn’t there, so you can’t get to the bridge in two steps. What about three steps?</p>
+      
+      
+      
+      <p class="center1"><img src="Images/097fig03.jpg" alt="" class="calibre2" width="434" height="185"/></p>
+      
+      
+      <p class="noind"><a id="iddle1333" class="calibre4"/>Aha! Now the Golden Gate Bridge shows up. So it takes three steps to get from Twin Peaks to the bridge using this route.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/098fig01.jpg" alt="" class="calibre2" width="438" height="163"/></p>
+      
+      
+      <p class="noind">There are other routes that will get you to the bridge too, but they’re longer (four steps). The algorithm found that the
+         shortest route to the bridge is three steps long. This type of problem is called a <i class="calibre6">shortest-path problem</i>. You’re always trying to find the shortest something. It could be the shortest route to your friend’s house. It could be
+         the smallest number of moves to checkmate in a game of chess. The algorithm to solve a shortest-path problem is called <i class="calibre6">breadth-first search</i>.
+      </p>
+      
+      <p class="noind">To figure out how to get from Twin Peaks to the Golden Gate Bridge, there are two steps:</p>
+      
+      <p class="calibre17"><a id="ch06pro01" class="calibre4"/></p>
+      
+      <blockquote class="calibre15">
+         <p class="calibre17"><b class="calibre20">1</b>.  Model the problem as a graph.
+            
+         </p>
+      </blockquote>
+      
+      <blockquote class="calibre15">
+         <p class="calibre17"><b class="calibre20">2</b>.  Solve the problem using breadth-first search.
+            
+         </p>
+      </blockquote>
+      
+      
+      <p class="noind">Next I’ll cover what graphs are. Then I’ll go into breadth-first search in more detail.</p>
+      
+      
+      
+      <h3 id="ch06lev1sec2" class="calibre13"><a id="ch06lev1sec2__title" class="calibre3"/>What is a graph?
+      </h3>
+      
+      
+      
+      <p class="center1"><img src="Images/098fig02.jpg" alt="" class="calibre2" width="346" height="275"/></p>
+      
+      
+      <p class="noind">A graph models a set of connections. For example, suppose you and your friends are playing poker, and you want to model who
+         owes whom money. Here’s how you could say, “Alex owes Rama money.”
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/098fig03.jpg" alt="" class="calibre2" width="301" height="99"/></p>
+      
+      
+      <p class="noind"><a id="iddle1090" class="calibre4"/><a id="iddle1159" class="calibre4"/><a id="iddle1182" class="calibre4"/><a id="iddle1185" class="calibre4"/><a id="iddle1268" class="calibre4"/><a id="iddle1270" class="calibre4"/><a id="iddle1312" class="calibre4"/>The full graph could look something like this.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/099fig01.jpg" alt="" class="calibre2" width="407" height="227"/></p>
+      
+      
+      <p class="calibre17">
+         </p><p class="noind">Graph of people who owe other people poker money</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">Alex owes Rama money, Tom owes Adit money, and so on. Each graph is made up of <i class="calibre6">nodes</i> and <i class="calibre6">edges</i>.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/099fig02.jpg" alt="" class="calibre2" width="255" height="126"/></p>
+      
+      
+      <p class="noind">That’s all there is to it! Graphs are made up of nodes and edges. A node can be directly connected to many other nodes. Those
+         nodes are called its <i class="calibre6">neighbors</i>. In this graph, Rama is Alex’s neighbor. Adit isn’t Alex’s neighbor, because they aren’t directly connected. But Adit is
+         Rama’s and Tom’s neighbor.
+      </p>
+      
+      <p class="noind">Graphs are a way to model how different things are connected to one another. Now let’s see breadth-first search in action.</p>
+      
+      
+      
+      <h3 id="ch06lev1sec3" class="calibre13"><a id="ch06lev1sec3__title" class="calibre3"/>Breadth-first search
+      </h3>
+      
+      <p class="noind">We looked at a search algorithm in <a href="kindle_split_007.xhtml#ch01" class="calibre4">chapter 1</a>: binary search. Breadth-first search is a different kind of search algorithm: one that runs on graphs. It can help answer
+         two types of questions:
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Question type 1: Is there a path from node A to node B?
+            
+         </li>
+         
+         <li class="calibre19">Question type 2: What is the shortest path from node A to node B?
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">You already saw breadth-first search once, when you calculated the shortest route from Twin Peaks to the Golden Gate Bridge.
+         That was a question of type 2: “What is the shortest path?” Now let’s look at the algorithm in more detail. You’ll ask a question
+         of type 1: “Is there a path?”
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/100fig01.jpg" alt="" class="calibre2" width="173" height="194"/></p>
+      
+      
+      <p class="noind">Suppose you’re the proud owner of a mango farm. You’re looking for a mango seller who can sell your mangoes. Are you connected
+         to a mango seller on Facebook? Well, you can search through your friends.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/100fig02.jpg" alt="" class="calibre2" width="252" height="302"/></p>
+      
+      
+      <p class="noind">This search is pretty straightforward. First, make a list of friends to search.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/100fig03.jpg" alt="" class="calibre2" width="160" height="160"/></p>
+      
+      
+      <p class="noind">Now, go to each person in the list and check whether that person sells mangoes.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/101fig01.jpg" alt="" class="calibre2" width="433" height="434"/></p>
+      
+      
+      <p class="noind">Suppose none of your friends are mango sellers. Now you have to search through your friends’ friends.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/101fig02.jpg" alt="" class="calibre2" width="377" height="297"/></p>
+      
+      
+      <p class="noind">Each time you search for someone from the list, add all of their friends to the list.</p>
+      
+      
+      <p class="center1"><img src="Images/102fig01_alt.jpg" alt="" class="calibre2" width="590" height="165"/></p>
+      
+      <p class="noind"><a id="iddle1092" class="calibre4"/><a id="iddle1184" class="calibre4"/>This way, you not only search your friends, but you search their friends, too. Remember, the goal is to find one mango seller
+         in your network. So if Alice isn’t a mango seller, you add her friends to the list, too. That means you’ll eventually search
+         her friends—and then their friends, and so on. With this algorithm, you’ll search your entire network until you come across
+         a mango seller. This algorithm is breadth-first search.
+      </p>
+      
+      
+      <h4 id="ch06lev2sec1" class="calibre22"><a id="ch06lev2sec1__title" class="calibre4"/>Finding the shortest path
+      </h4>
+      
+      <p class="noind">As a recap, these are the two questions that breadth-first search can answer for you:</p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Question type 1: Is there a path from node A to node B? (Is there a mango seller in your network?)
+            
+         </li>
+         
+         <li class="calibre19">Question type 2: What is the shortest path from node A to node B? (Who is the closest mango seller?)
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">You saw how to answer question 1; now let’s try to answer question 2. Can you find the closest mango seller? For example,
+         your friends are first-degree connections, and their friends are second-degree connections.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/102fig02.jpg" alt="" class="calibre2" width="500" height="390"/></p>
+      
+      
+      <p class="noind"><a id="iddle1094" class="calibre4"/><a id="iddle1177" class="calibre4"/><a id="iddle1186" class="calibre4"/><a id="iddle1355" class="calibre4"/>You’d prefer a first-degree connection to a second-degree connection, and a second-degree connection to a third-degree connection,
+         and so on. So you shouldn’t search any second-degree connections before you make sure you don’t have a first-degree connection
+         who is a mango seller. Well, breadth-first search already does this! The way breadth-first search works, the search radiates
+         out from the starting point. So you’ll check first-degree connections before second-degree connections. Pop quiz: who will
+         be checked first, Claire or Anuj? Answer: Claire is a first-degree connection, and Anuj is a second-degree connection. So
+         Claire will be checked before Anuj.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/103fig01.jpg" alt="" class="calibre2" width="179" height="280"/></p>
+      
+      
+      <p class="noind">Another way to see this is, first-degree connections are added to the search list before second-degree connections.</p>
+      
+      <p class="noind">You just go down the list and check people to see whether each one is a mango seller. The first-degree connections will be
+         searched before the second-degree connections, so you’ll find the mango seller closest to you. Breadth-first search not only
+         finds a path from A to B, it also finds the shortest path.
+      </p>
+      
+      <p class="noind">Notice that this only works if you search people in the same order in which they’re added. That is, if Claire was added to
+         the list before Anuj, Claire needs to be searched before Anuj. What happens if you search Anuj before Claire, and they’re
+         both mango sellers? Well, Anuj is a second-degree contact, and Claire is a first-degree contact. You end up with a mango seller
+         who isn’t the closest to you in your network. So you need to search people in the order that they’re added. There’s a data
+         structure for this: it’s called <i class="calibre6">a queue</i>.
+      </p>
+      
+      
+      
+      <h4 id="ch06lev2sec2" class="calibre22"><a id="ch06lev2sec2__title" class="calibre4"/>Queues
+      </h4>
+      
+      
+      
+      <p class="center1"><img src="Images/103fig02.jpg" alt="" class="calibre2" width="440" height="316"/></p>
+      
+      
+      <p class="noind">A queue works exactly like it does in real life. Suppose you and your friend are queueing up at the bus stop. If you’re before
+         him in the queue, you get on the bus first. A queue works the same way. Queues are similar to stacks. You can’t access random
+         elements in the queue. Instead, there are two only operations, <i class="calibre6">enqueue</i> and <i class="calibre6">dequeue</i>.
+      </p>
+      
+      
+      
+      
+      <p class="center1"><img src="Images/104fig01.jpg" alt="" class="calibre2" width="396" height="174"/></p>
+      
+      
+      <p class="noind"><a id="iddle1091" class="calibre4"/><a id="iddle1164" class="calibre4"/><a id="iddle1174" class="calibre4"/><a id="iddle1183" class="calibre4"/><a id="iddle1240" class="calibre4"/>If you enqueue two items to the list, the first item you added will be dequeued before the second item. You can use this for
+         your search list! People who are added to the list first will be dequeued and searched first.
+      </p>
+      
+      <p class="noind">The queue is called a <i class="calibre6">FIFO</i> data structure: First In, First Out. In contrast, a stack is a <i class="calibre6">LIFO</i> data structure: Last In, First Out.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/104fig02.jpg" alt="" class="calibre2" width="360" height="133"/></p>
+      
+      
+      <p class="noind">Now that you know how a queue works, let’s implement breadth-first search!</p>
+      
+      
+      
+      
+      <h3 id="ch06lev1sec4" class="calibre13"><a id="ch06lev1sec4__title" class="calibre3"/>Exercises
+      </h3>
+      
+      <p class="noind">Run the breadth-first search algorithm on each of these graphs to find the solution.</p>
+      
+      <p class="calibre17"><a id="ch06qa1" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch06qa1qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch06qa1q1" class="calibre4"/><b class="calibre20">6.1 </b></p><p class="noind">Find the length of the shortest path from start to finish.</p>
+            
+            
+            
+            <p class="center1"><img src="Images/104fig03.jpg" alt="" class="calibre2" width="247" height="175"/></p>
+            
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch06qa1qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch06qa1q2" class="calibre4"/><b class="calibre20">6.2 </b></p><p class="noind">Find the length of the shortest path from “cab” to “bat”.</p>
+            
+            
+            
+            <p class="center1"><img src="Images/104fig04.jpg" alt="" class="calibre2" width="273" height="239"/></p>
+            
+            
+         <p class="calibre17"/>
+      </blockquote>
+      
+      
+      
+      
+      <h3 id="ch06lev1sec5" class="calibre13"><a id="ch06lev1sec5__title" class="calibre3"/>Implementing the graph
+      </h3>
+      
+      <p class="noind"><a id="iddle1095" class="calibre4"/><a id="iddle1271" class="calibre4"/><a id="iddle1313" class="calibre4"/>First, you need to implement the graph in code. A graph consists of several nodes.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/105fig01.jpg" alt="" class="calibre2" width="289" height="349"/></p>
+      
+      
+      <p class="noind">And each node is connected to neighboring nodes. How do you express a relationship like “you -&gt; bob”? Luckily, you know a
+         data structure that lets you express relationships: <i class="calibre6">a hash table</i>!
+      </p>
+      
+      <p class="noind">Remember, a hash table allows you to map a key to a value. In this case, you want to map a node to all of its neighbors.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/105fig02.jpg" alt="" class="calibre2" width="152" height="110"/></p>
+      
+      
+      <p class="noind">Here’s how you’d write it in Python:</p>
+      
+      <pre id="PLd0e7269" class="calibre5">graph = {}
+graph["you"] = ["alice", "bob", "claire"]</pre>
+      
+      <p class="noind">Notice that “you” is mapped to an array. So <kbd class="calibre21">graph["you"]</kbd> will give you an array of all the neighbors of “you”.
+      </p>
+      
+      <p class="noind">A graph is just a bunch of nodes and edges, so this is all you need to have a graph in Python. What about a bigger graph,
+         like this one?
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/105fig03.jpg" alt="" class="calibre2" width="434" height="343"/></p>
+      
+      
+      <p class="noind"><a id="iddle1131" class="calibre4"/>Here it is as Python code:
+      </p>
+      
+      <pre id="PLd0e7300" class="calibre5">graph = {}
+graph["you"] = ["alice", "bob", "claire"]
+graph["bob"] = ["anuj", "peggy"]
+graph["alice"] = ["peggy"]
+graph["claire"] = ["thom", "jonny"]
+graph["anuj"] = []
+graph["peggy"] = []
+graph["thom"] = []
+graph["jonny"] = []</pre>
+      
+      <p class="noind">Pop quiz: does it matter what order you add the key/value pairs in? Does it matter if you write</p>
+      
+      <pre id="PLd0e7309" class="calibre5">graph["claire"] = ["thom", "jonny"]
+graph["anuj"] = []</pre>
+      
+      <p class="noind">instead of</p>
+      
+      <pre id="PLd0e7318" class="calibre5">graph["anuj"] = []
+graph["claire"] = ["thom", "jonny"]</pre>
+      
+      <p class="noind">Think back to the previous chapter. Answer: It doesn’t matter. Hash tables have no ordering, so it doesn’t matter what order
+         you add key/value pairs in.
+      </p>
+      
+      <p class="noind">Anuj, Peggy, Thom, and Jonny don’t have any neighbors. They have arrows pointing to them, but no arrows from them to someone
+         else. This is called a <i class="calibre6">directed graph</i>—the relationship is only one way. So Anuj is Bob’s neighbor, but Bob isn’t Anuj’s neighbor. An undirected graph doesn’t have
+         any arrows, and both nodes are each other’s neighbors. For example, both of these graphs are equal.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/106fig01.jpg" alt="" class="calibre2" width="500" height="125"/></p>
+      
+      
+      
+      
+      
+      <h3 id="ch06lev1sec6" class="calibre13"><a id="ch06lev1sec6__title" class="calibre3"/>Implementing the algorithm
+      </h3>
+      
+      <p class="noind"><a id="iddle1020" class="calibre4"/><a id="iddle1093" class="calibre4"/><a id="iddle1096" class="calibre4"/><a id="iddle1098" class="calibre4"/><a id="iddle1121" class="calibre4"/><a id="iddle1135" class="calibre4"/><a id="iddle1314" class="calibre4"/>To recap, here’s how the implementation will work.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/107fig01.jpg" alt="" class="calibre2" width="500" height="621"/></p>
+      
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <h5 id="ch06note01" class="notetitle">Note</h5>
+      
+      
+      <p class="noindclose">When updating queues, I use the terms <i class="calibre6">enqueue</i> and <i class="calibre6">dequeue</i>. You’ll also encounter the terms <i class="calibre6">push</i> and <i class="calibre6">pop</i>. <i class="calibre6">Push</i> is almost always the same thing as <i class="calibre6">enqueue</i>, and <i class="calibre6">pop</i> is almost always the same thing as <i class="calibre6">dequeue</i>.
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      <p class="noind">Make a queue to start. In Python, you use the double-ended queue <kbd class="calibre21">(deque</kbd>) function for this:
+      </p>
+      
+      <p class="center1"><img src="Images/107fig02_alt.jpg" alt="" class="calibre2" width="590" height="47"/></p>
+      
+      <p class="noind">Remember, <kbd class="calibre21">graph</kbd>[<kbd class="calibre21">"you"</kbd>] will give you a list of all your neighbors, like [<kbd class="calibre21">"alice", "bob", "claire"</kbd>]. Those all get added to the search queue.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/107fig03.jpg" alt="" class="calibre2" width="185" height="187"/></p>
+      
+      
+      <p class="noind"><a id="iddle1277" class="calibre4"/>Let’s see the rest:
+      </p>
+      
+      <p class="center1"><img src="Images/108fig01_alt.jpg" alt="" class="calibre2" width="590" height="143"/></p>
+      
+      <p class="noind">One final thing: you still need a <kbd class="calibre21">person_is_seller</kbd> function to tell you when someone is a mango seller. Here’s one:
+      </p>
+      
+      <pre id="PLd0e7496" class="calibre5"><b class="calibre20">def</b> person_is_seller(name):
+    return name[-1] == 'm'</pre>
+      
+      <p class="noind">This function checks whether the person’s name ends with the letter <i class="calibre6">m</i>. If it does, they’re a mango seller. Kind of a silly way to do it, but it’ll do for this example. Now let’s see the breadth-first
+         search in action.
+      </p>
+      
+      <p class="center1"><img src="Images/108fig02_alt.jpg" alt="" class="calibre2" width="590" height="675"/></p>
+      
+      <p class="noind">And so on. The algorithm will keep going until either</p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">A mango seller is found, or
+            
+         </li>
+         
+         <li class="calibre19">The queue becomes empty, in which case there is no mango seller.
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">Alice and Bob share a friend: Peggy. So Peggy will be added to the queue twice: once when you add Alice’s friends, and again
+         when you add Bob’s friends. You’ll end up with two Peggys in the search queue.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/109fig01.jpg" alt="" class="calibre2" width="245" height="187"/></p>
+      
+      
+      <p class="noind">But you only need to check Peggy once to see whether she’s a mango seller. If you check her twice, you’re doing unnecessary,
+         extra work. So once you search a person, you should mark that person as searched and not search them again.
+      </p>
+      
+      <p class="noind">If you don’t do this, you could also end up in an infinite loop. Suppose the mango seller graph looked like this.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/109fig02.jpg" alt="" class="calibre2" width="206" height="72"/></p>
+      
+      
+      <p class="noind">To start, the search queue contains all of your neighbors.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/109fig03.jpg" alt="" class="calibre2" width="139" height="91"/></p>
+      
+      
+      <p class="noind">Now you check Peggy. She isn’t a mango seller, so you add all of her neighbors to the search queue.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/109fig04.jpg" alt="" class="calibre2" width="125" height="90"/></p>
+      
+      
+      <p class="noind">Next, you check yourself. You’re not a mango seller, so you add all of your neighbors to the search queue.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/110fig01.jpg" alt="" class="calibre2" width="140" height="91"/></p>
+      
+      
+      <p class="noind">And so on. This will be an infinite loop, because the search queue will keep going from you to Peggy.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/110fig02.jpg" alt="" class="calibre2" width="188" height="187"/></p>
+      
+      
+      <p class="noind">Before checking a person, it’s important to make sure they haven’t been checked already. To do that, you’ll keep a list of
+         people you’ve already checked.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/110fig03.jpg" alt="" class="calibre2" width="135" height="124"/></p>
+      
+      
+      <p class="noind">Here’s the final code for breadth-first search, taking that into account:</p>
+      
+      <p class="center1"><img src="Images/110fig04_alt.jpg" alt="" class="calibre2" width="590" height="253"/></p>
+      
+      <p class="noind"><a id="iddle1021" class="calibre4"/><a id="iddle1022" class="calibre4"/><a id="iddle1097" class="calibre4"/><a id="iddle1099" class="calibre4"/><a id="iddle1278" class="calibre4"/>Try running this code yourself. Maybe try changing the <kbd class="calibre21">person_is_seller</kbd> function to something more meaningful, and see if it prints what you expect.
+      </p>
+      
+      
+      <h4 id="ch06lev2sec3" class="calibre22"><a id="ch06lev2sec3__title" class="calibre4"/>Running time
+      </h4>
+      
+      <p class="noind">If you search your entire network for a mango seller, that means you’ll follow each edge (remember, an edge is the arrow or
+         connection from one person to another). So the running time is at least O(number of edges).
+      </p>
+      
+      <p class="noind">You also keep a queue of every person to search. Adding one person to the queue takes constant time: O(1). Doing this for
+         every person will take O(number of people) total. Breadth-first search takes O(number of people + number of edges), and it’s
+         more commonly written as O(V+E) (V for number of vertices, E for number of edges).
+      </p>
+      
+      
+      
+      
+      <h3 id="ch06lev1sec7" class="calibre13"><a id="ch06lev1sec7__title" class="calibre3"/>Exercise
+      </h3>
+      
+      <p class="noind">Here’s a small graph of my morning routine.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/111fig01.jpg" alt="" class="calibre2" width="358" height="189"/></p>
+      
+      
+      <p class="noind">It tells you that I can’t eat breakfast until I’ve brushed my teeth. So “eat breakfast” <i class="calibre6">depends on</i> “brush teeth”.
+      </p>
+      
+      <p class="noind">On the other hand, showering doesn’t depend on brushing my teeth, because I can shower before I brush my teeth. From this
+         graph, you can make a list of the order in which I need to do my morning routine:
+      </p>
+      
+      <p class="calibre17"/>
+      <ol class="calibre27">
+         
+         <li class="calibre19">Wake up.
+            
+         </li>
+         
+         <li class="calibre19">Shower.
+            
+         </li>
+         
+         <li class="calibre19">Brush teeth.
+            
+         </li>
+         
+         <li class="calibre19">Eat breakfast.
+            
+         </li>
+         
+      </ol>
+      
+      <p class="noind"><a id="iddle1356" class="calibre4"/>Note that “shower” can be moved around, so this list is also valid:
+      </p>
+      
+      <p class="calibre17"/>
+      <ol class="calibre27">
+         
+         <li class="calibre19">Wake up.
+            
+         </li>
+         
+         <li class="calibre19">Brush teeth.
+            
+         </li>
+         
+         <li class="calibre19">Shower.
+            
+         </li>
+         
+         <li class="calibre19">Eat breakfast.
+            
+         </li>
+         
+      </ol>
+      
+      <p class="calibre17"><a id="ch06qa2" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch06qa2qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch06qa2q1" class="calibre4"/><b class="calibre20">6.3 </b></p><p class="noind">For these three lists, mark whether each one is valid or invalid.</p>
+            
+            
+            
+            <p class="center1"><img src="Images/112fig01.jpg" alt="" class="calibre2" width="500" height="159"/></p>
+            
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch06qa2qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch06qa2q2" class="calibre4"/><b class="calibre20">6.4 </b></p><p class="noind">Here’s a larger graph. Make a valid list for this graph.</p>
+            
+            
+            
+            <p class="center1"><img src="Images/112fig02.jpg" alt="" class="calibre2" width="428" height="247"/></p>
+            
+            
+         <p class="calibre17"/>
+      </blockquote>
+      
+      <p class="noind">You could say that this list is sorted, in a way. If task A depends on task B, task A shows up later in the list. This is
+         called a <i class="calibre6">topological sort</i>, and it’s a way to make an ordered list out of a graph. Suppose you’re planning a wedding and have a large graph full of
+         tasks to do—and you’re not sure where to start. You could <i class="calibre6">topologically sort</i> the graph and get a list of tasks to do, in order.
+      </p>
+      
+      <p class="noind"><a id="iddle1160" class="calibre4"/>Suppose you have a family tree.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/113fig01.jpg" alt="" class="calibre2" width="352" height="279"/></p>
+      
+      
+      <p class="noind">This is a graph, because you have nodes (the people) and edges. The edges point to the nodes’ parents. But all the edges go
+         down—it wouldn’t make sense for a family tree to have an edge pointing back up! That would be meaningless—your dad can’t be
+         your grandfather’s dad!
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/113fig02.jpg" alt="" class="calibre2" width="387" height="283"/></p>
+      
+      
+      <p class="noind">This is called a <i class="calibre6">tree</i>. A tree is a special type of graph, where no edges ever point back.
+      </p>
+      
+      <p class="calibre17"><a id="ch06qa3" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch06qa3qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch06qa3q1" class="calibre4"/><b class="calibre20">6.5 </b></p><p class="noind">Which of the following graphs are also trees?</p>
+            
+            
+            
+            <p class="center1"><img src="Images/113fig03.jpg" alt="" class="calibre2" width="496" height="200"/></p>
+            
+            
+         <p class="calibre17"/>
+      </blockquote>
+      
+      
+      
+      
+      <h3 id="ch06lev1sec8" class="calibre13"><a id="ch06lev1sec8__title" class="calibre3"/>Recap
+      </h3>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">Breadth-first search tells you if there’s a path from A to B.
+            
+         </li>
+         
+         <li class="calibre19">If there’s a path, breadth-first search will find the shortest path.
+            
+         </li>
+         
+         <li class="calibre19">If you have a problem like “find the shortest X,” try modeling your problem as a graph, and use breadth-first search to solve.
+            
+         </li>
+         
+         <li class="calibre19">A directed graph has arrows, and the relationship follows the direction of the arrow (rama -&gt; adit means “rama owes adit money”).
+            
+         </li>
+         
+         <li class="calibre19">Undirected graphs don’t have arrows, and the relationship goes both ways (ross - rachel means “ross dated rachel and rachel
+            dated ross”).
+            
+         </li>
+         
+         <li class="calibre19">Queues are FIFO (First In, First Out).
+            
+         </li>
+         
+         <li class="calibre19">Stacks are LIFO (Last In, First Out).
+            
+         </li>
+         
+         <li class="calibre19">You need to check people in the order they were added to the search list, so the search list needs to be a queue. Otherwise,
+            you won’t get the shortest path.
+            
+         </li>
+         
+         <li class="calibre19">Once you check someone, make sure you don’t check them again. Otherwise, you might end up in an infinite loop.
+            
+            
+            
+            <p class="center1"><img src="Images/114fig01.jpg" alt="" class="calibre2" width="327" height="307"/></p>
+            
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      
+      <div class="calibre16" id="calibre_pb_20"/>
+</div>
+
+
+
+  </body>
+</html>

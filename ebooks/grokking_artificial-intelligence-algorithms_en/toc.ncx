@@ -1,0 +1,1185 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="eng">
+  <head>
+    <meta content="0f8226c8-3f08-49f6-a18a-97e9f8afe4a0" name="dtb:uid"/>
+    <meta content="4" name="dtb:depth"/>
+    <meta content="calibre (4.11.2)" name="dtb:generator"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Grokking Artificial Intelligence Algorithms MEAP V05</text>
+  </docTitle>
+  <navMap>
+    <navPoint class="chapter" id="navPoint-1" playOrder="1">
+      <navLabel>
+        <text>Copyright 2020 Manning Publications</text>
+      </navLabel>
+      <content src="OEBPS/Text/Copyright1.htm#sigil_toc_id_1"/>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-2" playOrder="2">
+      <navLabel>
+        <text>welcome</text>
+      </navLabel>
+      <content src="OEBPS/Text/WL.xhtml"/>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-3" playOrder="3">
+      <navLabel>
+        <text>brief contents</text>
+      </navLabel>
+      <content src="OEBPS/Text/toc.htm"/>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-4" playOrder="4">
+      <navLabel>
+        <text>preface</text>
+      </navLabel>
+      <content src="OEBPS/Text/00.htm"/>
+      <navPoint class="chapter" id="navPoint-5" playOrder="5">
+        <navLabel>
+          <text>0.1 Our obsession with technology and automation</text>
+        </navLabel>
+        <content src="OEBPS/Text/00.htm#sigil_toc_id_2"/>
+        <navPoint class="chapter" id="navPoint-6" playOrder="6">
+          <navLabel>
+            <text>0.1.1 We’re wired to automate</text>
+          </navLabel>
+          <content src="OEBPS/Text/00.htm#sigil_toc_id_3"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-7" playOrder="7">
+        <navLabel>
+          <text>0.2 Ethics, legal matters, and our responsibility</text>
+        </navLabel>
+        <content src="OEBPS/Text/00.htm#sigil_toc_id_4"/>
+        <navPoint class="chapter" id="navPoint-8" playOrder="8">
+          <navLabel>
+            <text>0.2.1 Intention and impact: Understanding your vision and goals</text>
+          </navLabel>
+          <content src="OEBPS/Text/00.htm#sigil_toc_id_5"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-9" playOrder="9">
+          <navLabel>
+            <text>0.2.2 Unintended use: Protecting against malicious use</text>
+          </navLabel>
+          <content src="OEBPS/Text/00.htm#sigil_toc_id_6"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-10" playOrder="10">
+          <navLabel>
+            <text>0.2.3 Unintended bias: Building solutions for everyone</text>
+          </navLabel>
+          <content src="OEBPS/Text/00.htm#sigil_toc_id_7"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-11" playOrder="11">
+          <navLabel>
+            <text>0.2.4 The law, privacy, and consent: Knowing the importance of core values</text>
+          </navLabel>
+          <content src="OEBPS/Text/00.htm#sigil_toc_id_8"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-12" playOrder="12">
+          <navLabel>
+            <text>0.2.5 Singularity: Exploring the unknown</text>
+          </navLabel>
+          <content src="OEBPS/Text/00.htm#sigil_toc_id_9"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-13" playOrder="13">
+      <navLabel>
+        <text>1 Intuition of artificial intelligence</text>
+      </navLabel>
+      <content src="OEBPS/Text/01.htm"/>
+      <navPoint class="chapter" id="navPoint-14" playOrder="14">
+        <navLabel>
+          <text>1.1 What is artificial intelligence?</text>
+        </navLabel>
+        <content src="OEBPS/Text/01.htm#sigil_toc_id_10"/>
+        <navPoint class="chapter" id="navPoint-15" playOrder="15">
+          <navLabel>
+            <text>1.1.1 Defining AI</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_11"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-16" playOrder="16">
+          <navLabel>
+            <text>1.1.2 Understanding that data is core to AI algorithms</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_12"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-17" playOrder="17">
+          <navLabel>
+            <text>1.1.3 Viewing algorithms as instructions in recipes</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_13"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-18" playOrder="18">
+        <navLabel>
+          <text>1.2 A brief history of artificial intelligence</text>
+        </navLabel>
+        <content src="OEBPS/Text/01.htm#sigil_toc_id_14"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-19" playOrder="19">
+        <navLabel>
+          <text>1.3 Problem types and problem-solving paradigms</text>
+        </navLabel>
+        <content src="OEBPS/Text/01.htm#sigil_toc_id_15"/>
+        <navPoint class="chapter" id="navPoint-20" playOrder="20">
+          <navLabel>
+            <text>1.3.1 Search problems: Find a path to a solution</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_16"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-21" playOrder="21">
+          <navLabel>
+            <text>1.3.2 Optimization problems: Find a good solution</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_17"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-22" playOrder="22">
+          <navLabel>
+            <text>1.3.3 Prediction and classification problems: Learn from patterns in data</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_18"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-23" playOrder="23">
+          <navLabel>
+            <text>1.3.4 Clustering problems: Identify patterns in data</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_19"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-24" playOrder="24">
+          <navLabel>
+            <text>1.3.5 Deterministic models: Same result each time it’s calculated</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_20"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-25" playOrder="25">
+          <navLabel>
+            <text>1.3.6 Stochastic/probabilistic models: Potentially different result each time it’s calculated</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_21"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-26" playOrder="26">
+        <navLabel>
+          <text>1.4 Intuition of artificial intelligence concepts</text>
+        </navLabel>
+        <content src="OEBPS/Text/01.htm#sigil_toc_id_22"/>
+        <navPoint class="chapter" id="navPoint-27" playOrder="27">
+          <navLabel>
+            <text>1.4.1 Narrow intelligence: Specific-purpose solutions</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_23"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-28" playOrder="28">
+          <navLabel>
+            <text>1.4.2 General intelligence: Humanlike solutions</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_24"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-29" playOrder="29">
+          <navLabel>
+            <text>1.4.3 Super intelligence: The great unknown</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_25"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-30" playOrder="30">
+          <navLabel>
+            <text>1.4.4 Old AI and new AI</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_26"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-31" playOrder="31">
+          <navLabel>
+            <text>1.4.5 Search algorithms</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_27"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-32" playOrder="32">
+          <navLabel>
+            <text>1.4.6 Biology-inspired algorithms</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_28"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-33" playOrder="33">
+          <navLabel>
+            <text>1.4.7 Machine learning algorithms</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_29"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-34" playOrder="34">
+          <navLabel>
+            <text>1.4.8 Deep learning algorithms</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_30"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-35" playOrder="35">
+        <navLabel>
+          <text>1.5 Uses for artificial intelligence algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/01.htm#sigil_toc_id_31"/>
+        <navPoint class="chapter" id="navPoint-36" playOrder="36">
+          <navLabel>
+            <text>1.5.1 Agriculture: Optimal plant growth</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_32"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-37" playOrder="37">
+          <navLabel>
+            <text>1.5.2 Banking: Fraud detection</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_33"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-38" playOrder="38">
+          <navLabel>
+            <text>1.5.3 Cybersecurity: Attack detection and handling</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_34"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-39" playOrder="39">
+          <navLabel>
+            <text>1.5.4 Health care: Diagnosis of patients</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_35"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-40" playOrder="40">
+          <navLabel>
+            <text>1.5.5 Logistics: Routing and optimization</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_36"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-41" playOrder="41">
+          <navLabel>
+            <text>1.5.6 Telecoms: Optimizing networks</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_37"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-42" playOrder="42">
+          <navLabel>
+            <text>1.5.7 Games: Creating AI agents</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_38"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-43" playOrder="43">
+          <navLabel>
+            <text>1.5.8 Art: Creating masterpieces</text>
+          </navLabel>
+          <content src="OEBPS/Text/01.htm#sigil_toc_id_39"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-44" playOrder="44">
+      <navLabel>
+        <text>2 Search fundamentals</text>
+      </navLabel>
+      <content src="OEBPS/Text/02.htm"/>
+      <navPoint class="chapter" id="navPoint-45" playOrder="45">
+        <navLabel>
+          <text>2.1 What is planning and searching?</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_40"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-46" playOrder="46">
+        <navLabel>
+          <text>2.2 Cost of computation: The reason for smart algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_41"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-47" playOrder="47">
+        <navLabel>
+          <text>2.3 Problems applicable to searching algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_42"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-48" playOrder="48">
+        <navLabel>
+          <text>2.4 Representing state: Creating a framework to represent problem spaces and solutions</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_43"/>
+        <navPoint class="chapter" id="navPoint-49" playOrder="49">
+          <navLabel>
+            <text>2.4.1 Graphs: Representing search problems and solutions</text>
+          </navLabel>
+          <content src="OEBPS/Text/02.htm#sigil_toc_id_44"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-50" playOrder="50">
+          <navLabel>
+            <text>2.4.2 Representing a graph as a concrete data structure</text>
+          </navLabel>
+          <content src="OEBPS/Text/02.htm#sigil_toc_id_45"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-51" playOrder="51">
+          <navLabel>
+            <text>2.4.3 Trees: The concrete structures used to represent search solutions</text>
+          </navLabel>
+          <content src="OEBPS/Text/02.htm#sigil_toc_id_46"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-52" playOrder="52">
+        <navLabel>
+          <text>2.5 Uninformed search: Looking blindly for solutions</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_47"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-53" playOrder="53">
+        <navLabel>
+          <text>2.6 Breadth-first search: Looking wide before looking deep</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_48"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-54" playOrder="54">
+        <navLabel>
+          <text>2.7 Depth-first search: Looking deep before looking wide</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_49"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-55" playOrder="55">
+        <navLabel>
+          <text>2.8 Use cases for uninformed search algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_50"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-56" playOrder="56">
+        <navLabel>
+          <text>2.9 Optional: More about graph categories</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_51"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-57" playOrder="57">
+        <navLabel>
+          <text>2.10 Optional: More ways to represent graphs</text>
+        </navLabel>
+        <content src="OEBPS/Text/02.htm#sigil_toc_id_52"/>
+        <navPoint class="chapter" id="navPoint-58" playOrder="58">
+          <navLabel>
+            <text>2.10.1 Incidence matrix</text>
+          </navLabel>
+          <content src="OEBPS/Text/02.htm#sigil_toc_id_53"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-59" playOrder="59">
+          <navLabel>
+            <text>2.10.2 Adjacency list</text>
+          </navLabel>
+          <content src="OEBPS/Text/02.htm#sigil_toc_id_54"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-60" playOrder="60">
+      <navLabel>
+        <text>3 Intelligent search</text>
+      </navLabel>
+      <content src="OEBPS/Text/03.htm"/>
+      <navPoint class="chapter" id="navPoint-61" playOrder="61">
+        <navLabel>
+          <text>3.1 Defining heuristics: Designing educated guesses</text>
+        </navLabel>
+        <content src="OEBPS/Text/03.htm#sigil_toc_id_55"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-62" playOrder="62">
+        <navLabel>
+          <text>3.2 Informed search: Looking for solutions with guidance</text>
+        </navLabel>
+        <content src="OEBPS/Text/03.htm#sigil_toc_id_56"/>
+        <navPoint class="chapter" id="navPoint-63" playOrder="63">
+          <navLabel>
+            <text>3.2.1 A* search</text>
+          </navLabel>
+          <content src="OEBPS/Text/03.htm#sigil_toc_id_57"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-64" playOrder="64">
+          <navLabel>
+            <text>3.2.2 Use cases for informed search algorithms</text>
+          </navLabel>
+          <content src="OEBPS/Text/03.htm#sigil_toc_id_58"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-65" playOrder="65">
+        <navLabel>
+          <text>3.3 Adversarial search: Looking for solutions in a changing environment</text>
+        </navLabel>
+        <content src="OEBPS/Text/03.htm#sigil_toc_id_59"/>
+        <navPoint class="chapter" id="navPoint-66" playOrder="66">
+          <navLabel>
+            <text>3.3.1 A simple adversarial problem</text>
+          </navLabel>
+          <content src="OEBPS/Text/03.htm#sigil_toc_id_60"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-67" playOrder="67">
+          <navLabel>
+            <text>3.3.2 Min-max search: Simulate actions and choose the best future</text>
+          </navLabel>
+          <content src="OEBPS/Text/03.htm#sigil_toc_id_61"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-68" playOrder="68">
+          <navLabel>
+            <text>3.3.3 Alpha-beta pruning: Optimize by exploring the sensible paths only</text>
+          </navLabel>
+          <content src="OEBPS/Text/03.htm#sigil_toc_id_62"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-69" playOrder="69">
+          <navLabel>
+            <text>3.3.4 Use cases for adversarial search algorithms</text>
+          </navLabel>
+          <content src="OEBPS/Text/03.htm#sigil_toc_id_63"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-70" playOrder="70">
+      <navLabel>
+        <text>4 Evolutionary algorithms</text>
+      </navLabel>
+      <content src="OEBPS/Text/04.htm"/>
+      <navPoint class="chapter" id="navPoint-71" playOrder="71">
+        <navLabel>
+          <text>4.1 What is evolution?</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_64"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-72" playOrder="72">
+        <navLabel>
+          <text>4.2 Problems applicable to evolutionary algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_65"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-73" playOrder="73">
+        <navLabel>
+          <text>4.3 Genetic algorithm: Life cycle</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_66"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-74" playOrder="74">
+        <navLabel>
+          <text>4.4 Encoding the solution space</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_67"/>
+        <navPoint class="chapter" id="navPoint-75" playOrder="75">
+          <navLabel>
+            <text>4.4.1 Binary encoding: Representing possible solutions with zeros and ones</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_68"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-76" playOrder="76">
+        <navLabel>
+          <text>4.5 Creating a population of solutions</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_69"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-77" playOrder="77">
+        <navLabel>
+          <text>4.6 Measuring fitness of individuals in a population</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_70"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-78" playOrder="78">
+        <navLabel>
+          <text>4.7 Selecting parents based on their fitness</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_71"/>
+        <navPoint class="chapter" id="navPoint-79" playOrder="79">
+          <navLabel>
+            <text>4.7.1 Steady state: Replacing a portion of the population each generation</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_72"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-80" playOrder="80">
+          <navLabel>
+            <text>4.7.2 Generational: Replacing the entire population each generation</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_73"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-81" playOrder="81">
+          <navLabel>
+            <text>4.7.3 Roulette Wheel: Selecting parents and surviving individuals</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_74"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-82" playOrder="82">
+        <navLabel>
+          <text>4.8 Reproducing individuals from parents</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_75"/>
+        <navPoint class="chapter" id="navPoint-83" playOrder="83">
+          <navLabel>
+            <text>4.8.1 Single-point crossover: Inheriting one part from each parent</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_76"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-84" playOrder="84">
+          <navLabel>
+            <text>4.8.2 Two-point crossover: Inheriting more parts from each parent</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_77"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-85" playOrder="85">
+          <navLabel>
+            <text>4.8.3 Uniform crossover: Inheriting many parts from each parent</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_78"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-86" playOrder="86">
+          <navLabel>
+            <text>4.8.4 Bit-string mutation for binary encoding</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_79"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-87" playOrder="87">
+          <navLabel>
+            <text>4.8.5 Flip-bit mutation for binary encoding</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_80"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-88" playOrder="88">
+        <navLabel>
+          <text>4.9 Populating the next generation</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_81"/>
+        <navPoint class="chapter" id="navPoint-89" playOrder="89">
+          <navLabel>
+            <text>4.9.1 Exploration vs. exploitation</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_82"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-90" playOrder="90">
+          <navLabel>
+            <text>4.9.2 Stopping conditions</text>
+          </navLabel>
+          <content src="OEBPS/Text/04.htm#sigil_toc_id_83"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-91" playOrder="91">
+        <navLabel>
+          <text>4.10 Configuring the parameters of a genetic algorithm</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_84"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-92" playOrder="92">
+        <navLabel>
+          <text>4.11 Use cases for evolutionary algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/04.htm#sigil_toc_id_85"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-93" playOrder="93">
+      <navLabel>
+        <text>5 Advanced evolutionary approaches</text>
+      </navLabel>
+      <content src="OEBPS/Text/05.htm"/>
+      <navPoint class="chapter" id="navPoint-94" playOrder="94">
+        <navLabel>
+          <text>5.1 Evolutionary algorithm life cycle</text>
+        </navLabel>
+        <content src="OEBPS/Text/05.htm#sigil_toc_id_86"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-95" playOrder="95">
+        <navLabel>
+          <text>5.2 Alternative selection strategies</text>
+        </navLabel>
+        <content src="OEBPS/Text/05.htm#sigil_toc_id_87"/>
+        <navPoint class="chapter" id="navPoint-96" playOrder="96">
+          <navLabel>
+            <text>5.2.1 Rank selection: Even the playing field</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_88"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-97" playOrder="97">
+          <navLabel>
+            <text>5.2.2 Tournament selection: Let them fight</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_89"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-98" playOrder="98">
+          <navLabel>
+            <text>5.2.3 Elitism selection: Choose only the best</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_90"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-99" playOrder="99">
+        <navLabel>
+          <text>5.3 Real-value encoding: Working with real numbers</text>
+        </navLabel>
+        <content src="OEBPS/Text/05.htm#sigil_toc_id_91"/>
+        <navPoint class="chapter" id="navPoint-100" playOrder="100">
+          <navLabel>
+            <text>5.3.1 Real-value encoding at its core</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_92"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-101" playOrder="101">
+          <navLabel>
+            <text>5.3.2 Arithmetic crossover: Reproduce with math</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_93"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-102" playOrder="102">
+          <navLabel>
+            <text>5.3.3 Boundary mutation</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_94"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-103" playOrder="103">
+          <navLabel>
+            <text>5.3.4 Arithmetic mutation</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_95"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-104" playOrder="104">
+        <navLabel>
+          <text>5.4 Order encoding: Working with sequences</text>
+        </navLabel>
+        <content src="OEBPS/Text/05.htm#sigil_toc_id_96"/>
+        <navPoint class="chapter" id="navPoint-105" playOrder="105">
+          <navLabel>
+            <text>5.4.1 Importance of the fitness function</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_97"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-106" playOrder="106">
+          <navLabel>
+            <text>5.4.2 Order encoding at its core</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_98"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-107" playOrder="107">
+          <navLabel>
+            <text>5.4.3 Order mutation: Order/permutation encoding</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_99"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-108" playOrder="108">
+        <navLabel>
+          <text>5.5 Tree encoding: Working with hierarchies</text>
+        </navLabel>
+        <content src="OEBPS/Text/05.htm#sigil_toc_id_100"/>
+        <navPoint class="chapter" id="navPoint-109" playOrder="109">
+          <navLabel>
+            <text>5.5.1 Tree encoding at its core</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_101"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-110" playOrder="110">
+          <navLabel>
+            <text>5.5.2 Tree crossover: Inheriting portions of a tree</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_102"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-111" playOrder="111">
+          <navLabel>
+            <text>5.5.3 Change node mutation: Changing the value of a node</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_103"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-112" playOrder="112">
+        <navLabel>
+          <text>5.6 Common types of evolutionary algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/05.htm#sigil_toc_id_104"/>
+        <navPoint class="chapter" id="navPoint-113" playOrder="113">
+          <navLabel>
+            <text>5.6.1 Genetic programming</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_105"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-114" playOrder="114">
+          <navLabel>
+            <text>5.6.2 Evolutionary programming</text>
+          </navLabel>
+          <content src="OEBPS/Text/05.htm#sigil_toc_id_106"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-115" playOrder="115">
+        <navLabel>
+          <text>5.7 Glossary of evolutionary algorithm terms</text>
+        </navLabel>
+        <content src="OEBPS/Text/05.htm#sigil_toc_id_107"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-116" playOrder="116">
+        <navLabel>
+          <text>5.8 More use cases for evolutionary algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/05.htm#sigil_toc_id_108"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-117" playOrder="117">
+      <navLabel>
+        <text>6 Swarm intelligence: Ants</text>
+      </navLabel>
+      <content src="OEBPS/Text/06.htm"/>
+      <navPoint class="chapter" id="navPoint-118" playOrder="118">
+        <navLabel>
+          <text>6.1 What is swarm intelligence?</text>
+        </navLabel>
+        <content src="OEBPS/Text/06.htm#sigil_toc_id_109"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-119" playOrder="119">
+        <navLabel>
+          <text>6.2 Problems applicable to ant colony optimization</text>
+        </navLabel>
+        <content src="OEBPS/Text/06.htm#sigil_toc_id_110"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-120" playOrder="120">
+        <navLabel>
+          <text>6.3 Representing state: What do paths and ants look like?</text>
+        </navLabel>
+        <content src="OEBPS/Text/06.htm#sigil_toc_id_111"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-121" playOrder="121">
+        <navLabel>
+          <text>6.4 The ant colony optimization algorithm life cycle</text>
+        </navLabel>
+        <content src="OEBPS/Text/06.htm#sigil_toc_id_112"/>
+        <navPoint class="chapter" id="navPoint-122" playOrder="122">
+          <navLabel>
+            <text>6.4.1 Initialize the pheromone trails</text>
+          </navLabel>
+          <content src="OEBPS/Text/06.htm#sigil_toc_id_113"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-123" playOrder="123">
+          <navLabel>
+            <text>6.4.2 Set up the population of ants</text>
+          </navLabel>
+          <content src="OEBPS/Text/06.htm#sigil_toc_id_114"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-124" playOrder="124">
+          <navLabel>
+            <text>6.4.3 Choose the next visit for each ant</text>
+          </navLabel>
+          <content src="OEBPS/Text/06.htm#sigil_toc_id_115"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-125" playOrder="125">
+          <navLabel>
+            <text>6.4.4 Update the pheromone trails</text>
+          </navLabel>
+          <content src="OEBPS/Text/06.htm#sigil_toc_id_116"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-126" playOrder="126">
+          <navLabel>
+            <text>6.4.5 Update the best solution</text>
+          </navLabel>
+          <content src="OEBPS/Text/06.htm#sigil_toc_id_117"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-127" playOrder="127">
+          <navLabel>
+            <text>6.4.6 Determine the stopping criteria</text>
+          </navLabel>
+          <content src="OEBPS/Text/06.htm#sigil_toc_id_118"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-128" playOrder="128">
+        <navLabel>
+          <text>6.5 Use cases for ant colony optimization algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/06.htm#sigil_toc_id_119"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-129" playOrder="129">
+      <navLabel>
+        <text>7 Swarm intelligence: Particles</text>
+      </navLabel>
+      <content src="OEBPS/Text/07.htm"/>
+      <navPoint class="chapter" id="navPoint-130" playOrder="130">
+        <navLabel>
+          <text>7.1 What is particle swarm optimization?</text>
+        </navLabel>
+        <content src="OEBPS/Text/07.htm#sigil_toc_id_120"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-131" playOrder="131">
+        <navLabel>
+          <text>7.2 Optimization problems: A slightly more technical perspective</text>
+        </navLabel>
+        <content src="OEBPS/Text/07.htm#sigil_toc_id_121"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-132" playOrder="132">
+        <navLabel>
+          <text>7.3 Problems applicable to particle swarm optimization</text>
+        </navLabel>
+        <content src="OEBPS/Text/07.htm#sigil_toc_id_122"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-133" playOrder="133">
+        <navLabel>
+          <text>7.4 Representing state: What do particles look like?</text>
+        </navLabel>
+        <content src="OEBPS/Text/07.htm#sigil_toc_id_123"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-134" playOrder="134">
+        <navLabel>
+          <text>7.5 Particle swarm optimization life cycle</text>
+        </navLabel>
+        <content src="OEBPS/Text/07.htm#sigil_toc_id_124"/>
+        <navPoint class="chapter" id="navPoint-135" playOrder="135">
+          <navLabel>
+            <text>7.5.1 Initialize the population of particles</text>
+          </navLabel>
+          <content src="OEBPS/Text/07.htm#sigil_toc_id_125"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-136" playOrder="136">
+          <navLabel>
+            <text>7.5.2 Calculate the fitness of each particle</text>
+          </navLabel>
+          <content src="OEBPS/Text/07.htm#sigil_toc_id_126"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-137" playOrder="137">
+          <navLabel>
+            <text>7.5.3 Update the position of each particle</text>
+          </navLabel>
+          <content src="OEBPS/Text/07.htm#sigil_toc_id_127"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-138" playOrder="138">
+          <navLabel>
+            <text>7.5.4 Determine the stopping criteria</text>
+          </navLabel>
+          <content src="OEBPS/Text/07.htm#sigil_toc_id_128"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-139" playOrder="139">
+        <navLabel>
+          <text>7.6 Use cases for particle swarm optimization algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/07.htm#sigil_toc_id_129"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-140" playOrder="140">
+      <navLabel>
+        <text>8 Machine learning</text>
+      </navLabel>
+      <content src="OEBPS/Text/08_split_000.htm"/>
+      <navPoint class="chapter" id="navPoint-141" playOrder="141">
+        <navLabel>
+          <text>8.1 What is machine learning?</text>
+        </navLabel>
+        <content src="OEBPS/Text/08_split_000.htm#sigil_toc_id_130"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-142" playOrder="142">
+        <navLabel>
+          <text>8.2 Problems applicable to machine learning</text>
+        </navLabel>
+        <content src="OEBPS/Text/08_split_000.htm#sigil_toc_id_131"/>
+        <navPoint class="chapter" id="navPoint-143" playOrder="143">
+          <navLabel>
+            <text>8.2.1 Supervised learning</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_000.htm#sigil_toc_id_132"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-144" playOrder="144">
+          <navLabel>
+            <text>8.2.2 Unsupervised learning</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_000.htm#sigil_toc_id_133"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-145" playOrder="145">
+          <navLabel>
+            <text>8.2.3 Reinforcement learning</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_000.htm#sigil_toc_id_134"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-146" playOrder="146">
+        <navLabel>
+          <text>8.3 A machine learning workflow</text>
+        </navLabel>
+        <content src="OEBPS/Text/08_split_000.htm#sigil_toc_id_135"/>
+        <navPoint class="chapter" id="navPoint-147" playOrder="147">
+          <navLabel>
+            <text>8.3.1 Collecting and understanding data: Know your context</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_000.htm#sigil_toc_id_136"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-148" playOrder="148">
+          <navLabel>
+            <text>8.3.2 Preparing data: Clean and wrangle</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_000.htm#sigil_toc_id_137"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-149" playOrder="149">
+          <navLabel>
+            <text>8.3.3 Training a model: Predict with linear regression</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_001.htm"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-150" playOrder="150">
+          <navLabel>
+            <text>8.3.4 Testing the model: Determine the accuracy of the model</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_139"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-151" playOrder="151">
+          <navLabel>
+            <text>8.3.5 Improving accuracy</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_140"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-152" playOrder="152">
+        <navLabel>
+          <text>8.4 Classification with decision trees</text>
+        </navLabel>
+        <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_141"/>
+        <navPoint class="chapter" id="navPoint-153" playOrder="153">
+          <navLabel>
+            <text>8.4.1 Classification problems: Either this or that</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_142"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-154" playOrder="154">
+          <navLabel>
+            <text>8.4.2 The basics of decision trees</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_143"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-155" playOrder="155">
+          <navLabel>
+            <text>8.4.3 Training decision trees</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_144"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-156" playOrder="156">
+          <navLabel>
+            <text>8.4.4 Classifying examples with decision trees</text>
+          </navLabel>
+          <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_145"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-157" playOrder="157">
+        <navLabel>
+          <text>8.5 Other popular machine learning algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_146"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-158" playOrder="158">
+        <navLabel>
+          <text>8.6 Use cases for machine learning algorithms</text>
+        </navLabel>
+        <content src="OEBPS/Text/08_split_001.htm#sigil_toc_id_147"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-159" playOrder="159">
+      <navLabel>
+        <text>9 Artificial neural networks</text>
+      </navLabel>
+      <content src="OEBPS/Text/09.htm"/>
+      <navPoint class="chapter" id="navPoint-160" playOrder="160">
+        <navLabel>
+          <text>9.1 What are artificial neural networks?</text>
+        </navLabel>
+        <content src="OEBPS/Text/09.htm#sigil_toc_id_148"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-161" playOrder="161">
+        <navLabel>
+          <text>9.2 The perceptron: A representation of a neuron</text>
+        </navLabel>
+        <content src="OEBPS/Text/09.htm#sigil_toc_id_149"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-162" playOrder="162">
+        <navLabel>
+          <text>9.3 Defining artificial neural networks</text>
+        </navLabel>
+        <content src="OEBPS/Text/09.htm#sigil_toc_id_150"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-163" playOrder="163">
+        <navLabel>
+          <text>9.4 Forward propagation: Using a trained ANN</text>
+        </navLabel>
+        <content src="OEBPS/Text/09.htm#sigil_toc_id_151"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-164" playOrder="164">
+        <navLabel>
+          <text>9.5 Back propagation: Training an ANN</text>
+        </navLabel>
+        <content src="OEBPS/Text/09.htm#sigil_toc_id_152"/>
+        <navPoint class="chapter" id="navPoint-165" playOrder="165">
+          <navLabel>
+            <text>9.5.1 Phase A: Setup</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_153"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-166" playOrder="166">
+          <navLabel>
+            <text>9.5.2 Phase B: Forward propagation</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_154"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-167" playOrder="167">
+          <navLabel>
+            <text>9.5.3 Phase C: Training</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_155"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-168" playOrder="168">
+        <navLabel>
+          <text>9.6 Options for activation functions</text>
+        </navLabel>
+        <content src="OEBPS/Text/09.htm#sigil_toc_id_156"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-169" playOrder="169">
+        <navLabel>
+          <text>9.7 Designing artificial neural networks</text>
+        </navLabel>
+        <content src="OEBPS/Text/09.htm#sigil_toc_id_157"/>
+        <navPoint class="chapter" id="navPoint-170" playOrder="170">
+          <navLabel>
+            <text>9.7.1 Inputs and outputs</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_158"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-171" playOrder="171">
+          <navLabel>
+            <text>9.7.2 Hidden layers and nodes</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_159"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-172" playOrder="172">
+          <navLabel>
+            <text>9.7.3 Weights</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_160"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-173" playOrder="173">
+          <navLabel>
+            <text>9.7.4 Bias</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_161"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-174" playOrder="174">
+          <navLabel>
+            <text>9.7.5 Activation functions</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_162"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-175" playOrder="175">
+          <navLabel>
+            <text>9.7.6 Cost function and learning rate</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_163"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-176" playOrder="176">
+        <navLabel>
+          <text>9.8 Artificial neural network types and use cases</text>
+        </navLabel>
+        <content src="OEBPS/Text/09.htm#sigil_toc_id_164"/>
+        <navPoint class="chapter" id="navPoint-177" playOrder="177">
+          <navLabel>
+            <text>9.8.1 Convolutional neural network</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_165"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-178" playOrder="178">
+          <navLabel>
+            <text>9.8.2 Recurrent neural network</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_166"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-179" playOrder="179">
+          <navLabel>
+            <text>9.8.3 Generative adversarial network</text>
+          </navLabel>
+          <content src="OEBPS/Text/09.htm#sigil_toc_id_167"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="navPoint-180" playOrder="180">
+      <navLabel>
+        <text>10 Reinforcement learning with Q-learning</text>
+      </navLabel>
+      <content src="OEBPS/Text/10.htm"/>
+      <navPoint class="chapter" id="navPoint-181" playOrder="181">
+        <navLabel>
+          <text>10.1 What is reinforcement learning?</text>
+        </navLabel>
+        <content src="OEBPS/Text/10.htm#sigil_toc_id_168"/>
+        <navPoint class="chapter" id="navPoint-182" playOrder="182">
+          <navLabel>
+            <text>10.1.1 The inspiration for reinforcement learning</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_169"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-183" playOrder="183">
+        <navLabel>
+          <text>10.2 Problems applicable to reinforcement learning</text>
+        </navLabel>
+        <content src="OEBPS/Text/10.htm#sigil_toc_id_170"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-184" playOrder="184">
+        <navLabel>
+          <text>10.3 The life cycle of reinforcement learning</text>
+        </navLabel>
+        <content src="OEBPS/Text/10.htm#sigil_toc_id_171"/>
+        <navPoint class="chapter" id="navPoint-185" playOrder="185">
+          <navLabel>
+            <text>10.3.1 Simulation and data: Make the environment come alive</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_172"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-186" playOrder="186">
+          <navLabel>
+            <text>10.3.2 Training with the simulation using Q-learning</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_173"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-187" playOrder="187">
+          <navLabel>
+            <text>10.3.3 Testing with the simulation and Q-table</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_174"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-188" playOrder="188">
+          <navLabel>
+            <text>10.3.4 Measuring the performance of training</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_175"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-189" playOrder="189">
+          <navLabel>
+            <text>10.3.5 Model-free and model-based learning</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_176"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-190" playOrder="190">
+        <navLabel>
+          <text>10.4 Deep learning approaches to reinforcement learning</text>
+        </navLabel>
+        <content src="OEBPS/Text/10.htm#sigil_toc_id_177"/>
+      </navPoint>
+      <navPoint class="chapter" id="navPoint-191" playOrder="191">
+        <navLabel>
+          <text>10.5 Use cases for reinforcement learning</text>
+        </navLabel>
+        <content src="OEBPS/Text/10.htm#sigil_toc_id_178"/>
+        <navPoint class="chapter" id="navPoint-192" playOrder="192">
+          <navLabel>
+            <text>10.5.1 Robotics</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_179"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-193" playOrder="193">
+          <navLabel>
+            <text>10.5.2 Recommendation engines</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_180"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-194" playOrder="194">
+          <navLabel>
+            <text>10.5.3 Financial trading</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_181"/>
+        </navPoint>
+        <navPoint class="chapter" id="navPoint-195" playOrder="195">
+          <navLabel>
+            <text>10.5.4 Game playing</text>
+          </navLabel>
+          <content src="OEBPS/Text/10.htm#sigil_toc_id_182"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

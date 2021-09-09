@@ -1,0 +1,4552 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" class="calibre">
+  <head>
+    <meta content="Microsoft Word 15 (filtered)" name="Generator"/>
+    <title>Style A ReadMe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre8">
+  <div class="wordsection">
+    <h1 class="cochapternumber">8<span class="calibre16">  </span> Machine learning</h1>
+
+    <p class="cosummaryhead">This chapter covers</p>
+
+    <p class="cosummarybulletcxspfirst"><span class="calibre17">·<span class="calibre14">    </span></span> Solving problems with machine learning algorithms</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Grasping a machine learning life cycle, preparing data, and selecting algorithms</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Understanding and implementing a linear-regression algorithm for predictions</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Understanding and implementing a decision-tree learning algorithm for classification</p>
+
+    <p class="cosummarybulletcxsplast"><span class="calibre17">·<span class="calibre14">    </span></span> Gaining intuition about other machine learning algorithms and their usefulness</p>
+
+    <h2 class="head" id="sigil_toc_id_130">8.1<span class="calibre10">     </span> What is machine learning?</h2>
+
+    <p class="body1">Machine learning can seem like a daunting concept to learn and apply, but with the right framing and understanding of the process and algorithms, it can be interesting and fun.</p>
+
+    <p class="body1">Suppose that you’re looking for a new apartment. You speak to friends and family, and do some online searches for apartments in the city. You notice that apartments in different areas are priced differently. Here are some of your observations from all your research:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> A one-bedroom apartment in the city center (close to work) costs $5,000 per month.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> A two-bedroom apartment in the city center costs $7,000 per month.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> A one-bedroom apartment in the city center with a garage costs $6,000 per month.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> A one-bedroom apartment outside the city center, where you will need to travel to work, costs $3,000 per month.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> A two-bedroom apartment outside the city center costs $4,500 per month.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> A one-bedroom apartment outside the city center costs $3,800 per month.</p>
+
+    <p class="body1">You notice some patterns. Apartments in the city center are most expensive and are usually between $5,000 and $7,000 per month. Apartments outside the city are cheaper. Increasing the number of rooms adds between $1,500 and $2,000 per month, and access to a garage adds between $800 and $1,000 per month.</p>
+
+    <p class="figure"><img alt="08_01" class="calibre11" src="../Images/08_01.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.1 An illustration of property prices and features in different regions</p>
+
+    <p class="body1">This example shows how we use data to find patterns and make decisions. If you encounter a two-bedroom apartment in the city center with a garage, it’s reasonable to assume that the price would be approximately $8,000 per month.</p>
+
+    <p class="body1">Machine learning aims to find patterns in data for useful applications in the real world. We could spot the pattern in this small dataset, but machine learning spots them for us in large, complex datasets. Figure 8.2 depicts the relationships among different attributes of the data. Each dot represents an individual property.</p>
+
+    <p class="body1">Notice that there are more dots closer to the city center and that there is a clear pattern related to price per month: the price gradually drops as distance to the city center increases. There is also a pattern in the price per month related to the number of rooms; the gap between the bottom cluster of dots and the top cluster shows that the price jumps significantly. We could naïvely assume that this effect may be related to the distance from the city center. Machine learning algorithms can help us validate or invalidate this assumption. We dive into how this process works throughout this chapter.</p>
+
+    <p class="figure"><img alt="08_02" class="calibre11" src="../Images/08_02.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.2 Example visualization of relationships among data</p>
+
+    <p class="body1">Typically, data is represented in tables. The columns are referred to as <span class="italics">features</span> of the data, and the rows are referred to as <span class="italics">examples</span>. When we compare two features, the feature being measured is sometimes represented as y, and the features being changed are grouped as x. We will get a better intuition for this terminology as we work through some problems.</p>
+
+    <h2 class="head" id="sigil_toc_id_131">8.2<span class="calibre10">     </span> Problems applicable to machine learning</h2>
+
+    <p class="body1">Machine learning is useful only if you have data and have questions to ask that the data might answer. Machine learning algorithms find patterns in data but cannot do useful things magically. Different categories of machine learning algorithms use different approaches for different scenarios to answer different questions. These broad categories are supervised learning, unsupervised learning, and reinforcement learning, which we explore in sections 8.2.1 through 8.2.3.</p>
+
+    <p class="figure"><img alt="08_03" class="calibre11" src="../Images/08_03.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.3 Categorization of machine learning and uses</p>
+
+    <h3 class="head1" id="sigil_toc_id_132">8.2.1<span class="calibre15">  </span> Supervised learning</h3>
+
+    <p class="body1">One of the most common techniques in traditional machine learning is <span class="italics">supervised learning</span>. We want to look at data, understand the patterns and relationships among the data, and predict the results if we are given new examples of different data in the same format. The apartment-finding problem (section 8.1) is an example of supervised learning to find the pattern. We also see this example in action when we type a search that autocompletes or when music applications suggest new songs to listen to based on our activity and preference.</p>
+
+    <p class="body1">Supervised learning has two subcategories: regression and classification.</p>
+
+    <p class="body1"><span class="italics">Regression</span> involves drawing a line through a set of data points to most closely fits the overall shape of the data. Regression can be used for applications such as trends between marketing initiatives and sales. (Is there a direct relationship between marketing through online ads and actual sales of a product?) It can also be used to determine factors that affect something. (Is there a direct relationship between time and the value of cryptocurrency, and will cryptocurrency increase exponentially in value as time passes?) We tackle supervised learning in section 8.3.</p>
+
+    <p class="body1"><span class="italics">Classification</span> aims to predict categories of examples based on their features. (Can we determine whether something is a car, or a truck based on its number of wheels, weight, and top speed?) We explore classification later in section 8.4.</p>
+
+    <h3 class="head1" id="sigil_toc_id_133">8.2.2<span class="calibre15">  </span> Unsupervised learning</h3>
+
+    <p class="body1"><span class="italics">Unsupervised learning</span> involves finding underlying patterns in data that may be difficult to find by inspecting the data manually. Unsupervised learning is useful for clustering data that has similar features and uncovering features that are important in the data. On an e-commerce site, for example, products might be clustered based on customer purchase behavior. If many customers purchase soap, sponges, and towels together, it is likely that more customers would want that combination of products, so soap, sponges, and towels would be clustered and recommended to new customers.</p>
+
+    <h3 class="head1" id="sigil_toc_id_134">8.2.3<span class="calibre15">  </span> Reinforcement learning</h3>
+
+    <p class="body1"><span class="italics">Reinforcement learning</span> is inspired by behavioral psychology and operates by rewarding or punishing an algorithm based on its actions in an environment. It has similarities to supervised learning and unsupervised learning, as well as many differences. Reinforcement learning aims to train an agent in an environment based on rewards and penalties. Imagine rewarding a pet for good behavior with treats; the more it is rewarded for a specific behavior, the more it will exhibit that behavior. We discuss reinforcement learning in chapter 10.</p>
+
+    <h2 class="head" id="sigil_toc_id_135">8.3<span class="calibre10">     </span> A machine learning workflow</h2>
+
+    <p class="body1">Machine learning isn’t just about algorithms. In fact, it is often about the context of the data, the preparation of the data, and the questions that are asked.</p>
+
+    <p class="body1">We can find questions in two ways:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> A problem can be solved with machine learning, and the right data needs to be collected to help solve it. Suppose that a bank has a vast amount of transaction data for legitimate and fraudulent transactions, and it wants to train a model with this question: “Can we detect fraudulent transactions in real time?”</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> We have data in a specific context and want to determine how it can be used to solve several problems. An agriculture company, for example, might have data about the weather in different locations, nutrition required for different plants, and the soil content in different locations. The question might be “What correlations and relationships can we find among the different types of data?” These relationships may inform a more concrete question, such as “Can we determine the best location for growing a specific plant based on the weather and soil in that location?”</p>
+
+    <p class="body1">Figure 8.4 is a simplified view of the steps involved in a typical machine learning endeavor.</p>
+
+    <p class="figure"><img alt="08_04" class="calibre11" src="../Images/08_04.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.4 A workflow for machine learning experiments and projects</p>
+
+    <h3 class="head1" id="sigil_toc_id_136">8.3.1<span class="calibre15">  </span> Collecting and understanding data: Know your context</h3>
+
+    <p class="body1">Collecting and understanding the data you’re working with is paramount to a successful machine learning endeavor. If you’re working in a specific area in the finance industry, knowledge of the terminology and workings of the processes and data in that area is important for sourcing the data that is best to help answer questions for the goal you’re trying to achieve. If you want to build a fraud detection system, understanding what data is stored about transactions and what it means is critical to identifying fraudulent transactions. Data may also need to be sourced from various systems and combined to be effective. Sometimes, the data we use is augmented with data from outside the organization to enhance accuracy; more about this topic in section 8.3.5.</p>
+
+    <p class="body1">In this section, we use an example dataset about diamond measurements to understand the machine learning workflow and explore various algorithms.</p>
+
+    <p class="figure"><img alt="08_05" class="calibre11" src="../Images/08_05.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 8.5 Terminology of diamond measurements</p>
+
+    <p class="body1">Table 8.1 describes several diamonds and their properties. X, Y, and Z describe the size of a diamond in the three spatial dimensions.</p>
+
+    <p class="tablecaption">Table 8.1 The diamond dataset (Only a subset is used in the examples)</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="525" class="msotablegrid4">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="45" class="calibre81">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre82">
+          <div class="calibre26">
+            <p class="tablehead">Cut</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Color</p>
+          </div>
+        </td>
+
+        <td char="54" class="calibre84">
+          <div class="calibre26">
+            <p class="tablehead">Clarity</p>
+          </div>
+        </td>
+
+        <td char="51" class="calibre85">
+          <div class="calibre26">
+            <p class="tablehead">Depth</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre86">
+          <div class="calibre26">
+            <p class="tablehead">Table</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre87">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre88">
+          <div class="calibre26">
+            <p class="tablehead">X</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre88">
+          <div class="calibre26">
+            <p class="tablehead">Y</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre88">
+          <div class="calibre26">
+            <p class="tablehead">Z</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">0.30</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.25</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.28</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">2.73</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Ideal</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">61.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.77</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.80</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">2.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">0.75</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">D</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.80</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.75</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">3.65</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">0.91</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">65.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">6.03</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.99</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">3.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.20</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">F</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.6</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">6.73</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">6.66</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.33</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.31</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">59.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">59</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.06</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.20</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.50</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.9</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.31</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.22</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.57</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.74</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.59</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.80</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.96</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">66.8</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.60</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.08</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">2.21</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">58</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">8.31</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">8.27</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.16</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">The diamond dataset consists of 10 columns of data, which are referred to as features. This dataset has more than 50,000 rows. Here’s what each feature means:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Carat</span>—The weight of the diamond. Out of interest: 1 carat equals 200 mg.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Cut</span>—The quality of the diamond, by increasing quality: fair, good, very good, premium, and ideal.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Color</span>—The color of the diamond, ranging from D to J, where D is the best color and J is the worst color. D indicates a clear diamond, and J indicates a foggy one.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Clarity</span>—The imperfections of the diamond, by decreasing quality: FL, IF, VVS1, VVS2, VS1, VS2, SI1, SI2, I1, I2, and I3. (Don’t worry about understanding these code names; they represent different levels of perfection.)</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Depth</span>—The percentage of depth, which is measured from the culet to the table of the diamond. Typically, the table-to-depth ratio is important for the “sparkle” aesthetic of a diamond.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Table</span>—The percentage of the flat end of the diamond relative to the X dimension.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Price</span>—The price of the diamond when it was sold.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">X</span>—The x dimension of the diamond, in millimeters.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Y</span>—The y dimension of the diamond, in millimeters.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Z</span>—The z dimension of the diamond, in millimeters.</p>
+
+    <p class="body1">Keep this dataset in mind; we will be using it to see how data is prepared and processed by machine learning algorithms.</p>
+
+    <h3 class="head1" id="sigil_toc_id_137">8.3.2<span class="calibre15">  </span> Preparing data: Clean and wrangle</h3>
+
+    <p class="body1">Real-world data is never ideal to work with. Data might be sourced from different systems and different organizations, which may have different standards and rules for data integrity. There are always missing data, inconsistent data, and data in a format that is difficult to work with for the algorithms that we want to use.</p>
+
+    <p class="body1">In the sample diamond dataset in table 8.2, it is important to understand that the columns are referred to as the features of the data and that each row is an example.</p>
+
+    <p class="tablecaption">Table 8.2 The diamond dataset with missing data</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="525" class="msotablegrid4">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre99">
+          <div class="calibre26">
+            <p class="tablehead">Cut</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Color</p>
+          </div>
+        </td>
+
+        <td char="54" class="calibre84">
+          <div class="calibre26">
+            <p class="tablehead">Clarity</p>
+          </div>
+        </td>
+
+        <td char="51" class="calibre85">
+          <div class="calibre26">
+            <p class="tablehead">Depth</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre86">
+          <div class="calibre26">
+            <p class="tablehead">Table</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">X</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Y</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Z</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.30</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.25</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.28</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.73</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Ideal</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">si1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">61.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.77</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.75</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">D</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.75</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.65</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.91</p>
+        </td>
+
+        <td char="85" class="calibre105">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre106">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.03</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.99</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.20</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">F</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.6</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.73</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.66</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.33</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.21</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">E</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">57.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">62</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3144</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.96</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.99</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.31</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">59.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">59</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.06</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.20</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.50</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.9</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.31</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.22</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.57</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.74</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">i1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.59</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.83</p>
+        </td>
+
+        <td char="85" class="calibre105">
+          <p class="tablebody">fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">70.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">58</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">5083</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.34</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.28</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.12</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">11</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.96</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">66.8</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.60</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.08</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">12</p>
+        </td>
+
+        <td char="47" class="calibre107">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">i1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.2</p>
+        </td>
+
+        <td char="48" class="calibre108">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">8.31</p>
+        </td>
+
+        <td char="41" class="calibre109">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.16</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="head2">Missing data</p>
+
+    <p class="body1">In table 8.2, example 4 is missing a value for the Depth feature, and example 12 is missing values for Cut, Table, and Y. To compare examples, we need complete understanding of the data, and missing values make this understanding difficult. A goal for a machine learning project might be to estimate these values; we cover estimations in the upcoming material. Assume that missing data will be problematic in our goal to use it for something useful. Here are some ways to deal with missing data:</p>
+
+    <p class="listbullet"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Remove</span>—Remove the examples that have missing values for features—in this case, examples 4 and 12. The benefit of this approach is that the data is more reliable because nothing is assumed, however the removed examples may have been important to the goal we’re trying to achieve.</p>
+
+    <p class="tablecaption">Table 8.3 The diamond dataset with missing data</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="525" class="msotablegrid4">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre99">
+          <div class="calibre26">
+            <p class="tablehead">Cut</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Color</p>
+          </div>
+        </td>
+
+        <td char="54" class="calibre84">
+          <div class="calibre26">
+            <p class="tablehead">Clarity</p>
+          </div>
+        </td>
+
+        <td char="51" class="calibre85">
+          <div class="calibre26">
+            <p class="tablehead">Depth</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre86">
+          <div class="calibre26">
+            <p class="tablehead">Table</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">X</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Y</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Z</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.30</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.25</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.28</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.73</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Ideal</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">si1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">61.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.77</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.75</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">D</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.75</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.65</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre110">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre111">
+          <p class="tablebody">0.91</p>
+        </td>
+
+        <td char="85" class="calibre112">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="46" class="calibre113">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre114">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre115">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="48" class="calibre116">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre113">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="41" class="calibre117">
+          <p class="tablebody">6.03</p>
+        </td>
+
+        <td char="41" class="calibre117">
+          <p class="tablebody">5.99</p>
+        </td>
+
+        <td char="41" class="calibre117">
+          <p class="tablebody">3.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.20</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">F</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.6</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.73</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.66</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.33</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.21</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">E</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">57.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">62</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3144</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.96</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.99</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.31</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">59.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">59</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.06</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.20</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.50</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.9</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.31</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.22</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.57</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.74</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">i1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.59</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.83</p>
+        </td>
+
+        <td char="85" class="calibre105">
+          <p class="tablebody">fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">70.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">58</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">5083</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.34</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.28</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.12</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">11</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.96</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">66.8</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.60</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.08</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre110">
+          <p class="tablebody">12</p>
+        </td>
+
+        <td char="47" class="calibre111">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="85" class="calibre112">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre113">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre114">
+          <p class="tablebody">i1</p>
+        </td>
+
+        <td char="51" class="calibre115">
+          <p class="tablebody">62.2</p>
+        </td>
+
+        <td char="48" class="calibre116">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="46" class="calibre113">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="41" class="calibre117">
+          <p class="tablebody">8.31</p>
+        </td>
+
+        <td char="41" class="calibre117">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="41" class="calibre117">
+          <p class="tablebody">5.16</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="listbullet"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Mean or median</span>—Another option is to replace the missing values with the mean or median for the respective feature.</p>
+
+    <p class="listbody">The <span class="italics">mean</span> is the average calculated by adding all the values and dividing by the number of examples. The <span class="italics">median</span> is calculated by ordering the examples by value ascending and choosing the value in the middle.</p>
+
+    <p class="listbody">Using the mean is easy and efficient to do but doesn’t take into account possible correlations between features. This approach cannot be used with categorical features such as the Cut, Clarity, and Depth features in the diamond dataset.</p>
+
+    <p class="tablecaption">Table 8.4 The diamond dataset with missing data</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="525" class="msotablegrid4">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"><span xml:lang="EN-ZA"> </span></p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre99">
+          <div class="calibre26">
+            <p class="tablehead">Cut</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Color</p>
+          </div>
+        </td>
+
+        <td char="54" class="calibre84">
+          <div class="calibre26">
+            <p class="tablehead">Clarity</p>
+          </div>
+        </td>
+
+        <td char="51" class="calibre85">
+          <div class="calibre26">
+            <p class="tablehead">Depth</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre86">
+          <div class="calibre26">
+            <p class="tablehead">Table</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">X</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Y</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Z</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.30</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.25</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.28</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.73</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Ideal</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">si1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">61.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.77</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.75</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">D</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.75</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.65</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.91</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.03</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.99</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.20</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">F</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.6</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.73</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.66</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.33</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.21</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">E</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">57.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">62</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3144</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.96</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.99</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.31</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">59.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">59</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.06</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.20</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.50</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.9</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.31</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.22</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.57</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.74</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">i1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.59</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.83</p>
+        </td>
+
+        <td char="85" class="calibre105">
+          <p class="tablebody">fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">70.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">58</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">5083</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.34</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.28</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.12</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">11</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.96</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">66.8</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.60</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.08</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">12</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody"><span class="bold">1.19</span></p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">i1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody"><span class="bold">57</span></p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">8.31</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.16</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="listbody">To calculate the mean of the Table feature, we add every available value and divide the total by the number of values used:</p>
+
+    <p class="figure"><img alt="08_05a" class="calibre11" src="../Images/08_05a.png"/><br class="calibre12"/></p>
+
+    <p class="listbody">Using the table mean for the missing values seems to make sense, because the table size doesn’t seem to differ radically among different examples of data. But there could be correlations that we do not see, such as the relationship between the table size and the width of the diamond (X dimension).</p>
+
+    <p class="listbody">On the other hand, using the carat mean does not make sense, because we can see a correlation between the Carat feature and the Price feature if we plot the data on a graph. The price seems to increase as the carat value increases.</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Most frequent</span>—Replace the missing values with the value that occurs most often for that feature, which is known as the mode of the data. This approach works well with categorical features but doesn’t take into account possible correlations among features, and it can introduce bias by using the most frequent values.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">(Advanced) Statistical approaches</span>—Use k nearest neighbor, or neural networks. K nearest neighbor uses many features of the data to find an estimated value. Similar to K nearest neighbor, a neural network can predict the missing values accurately, given enough data. Both algorithms are computationally expensive for the purpose of handling missing data.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">(Advanced) Do nothing</span>—Some algorithms handle missing data without any preparation, such as XGBoost, but the algorithms that we will be exploring will fail.</p>
+
+    <p class="head2">Ambiguous values</p>
+
+    <p class="body1">Another problem is values that mean the same thing but are represented differently. Examples in the diamond dataset are rows 2, 9, 10, and 12. The values for the Cut and Clarity features are lowercase instead of uppercase. Note that we know this only because we understand these features and the possible values for them. Without this knowledge, we might see Fair and fair as different categories. To fix this problem, we can standardize these values to uppercase or lowercase to maintain consistency.</p>
+
+    <p class="tablecaption">Table 8.5 The diamond dataset with ambiguous data</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="525" class="msotablegrid4">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre99">
+          <div class="calibre26">
+            <p class="tablehead">Cut</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Color</p>
+          </div>
+        </td>
+
+        <td char="54" class="calibre84">
+          <div class="calibre26">
+            <p class="tablehead">Clarity</p>
+          </div>
+        </td>
+
+        <td char="51" class="calibre85">
+          <div class="calibre26">
+            <p class="tablehead">Depth</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre86">
+          <div class="calibre26">
+            <p class="tablehead">Table</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">X</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Y</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Z</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.30</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.25</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.28</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.73</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Ideal</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">61.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.77</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.75</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">D</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.75</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.65</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.91</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.03</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.99</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.20</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">F</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.6</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.73</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.66</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.33</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.21</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">E</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">57.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">62</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3144</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.96</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.99</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.31</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">SI2</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">59.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">59</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.06</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.20</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.50</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.9</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.31</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.22</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.57</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.74</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Very Good</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre104">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.59</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.83</p>
+        </td>
+
+        <td char="85" class="calibre105">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">J</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">70.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">58</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">5083</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.34</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.28</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.12</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">11</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.96</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Fair</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">I</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">I1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">66.8</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.60</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.08</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">12</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody"><span class="bold">1.19</span></p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Premium</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">H</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">i1</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody"><span class="bold2">57</span></p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">8.31</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">-</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.16</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="head2">Encoding categorical data</p>
+
+    <p class="body1">Because computers and statistical models work with numeric values, there will be a problem with modeling string values and categorical values such as Fair, Good, SI1, and I1. We need to represent these categorical values as numerical values. Here are ways to accomplish this task:</p>
+
+    <p class="listbullet"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">One-hot encoding</span>—Think about one-hot encoding as switches, all of which are off except one. The one that is on represents the presence of the feature at that position. If we were to represent Cut with one-hot encoding, the Cut feature becomes five different features, and each value is 0 except for the one that represents the Cut value for each respective example. Note that the other features have been removed in the interest of space in table 8.6.</p>
+
+    <p class="tablecaption">Table 8.6 The diamond dataset with encoded values</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="527" class="msotablegrid5">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"><span xml:lang="EN-ZA"> </span></p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="72" class="calibre118">
+          <div class="calibre26">
+            <p class="tablehead">Cut: Fair</p>
+          </div>
+        </td>
+
+        <td char="78" class="calibre119">
+          <div class="calibre26">
+            <p class="tablehead">Cut: Good</p>
+          </div>
+        </td>
+
+        <td char="113" class="calibre120">
+          <div class="calibre26">
+            <p class="tablehead">Cut: Very Good</p>
+          </div>
+        </td>
+
+        <td char="104" class="calibre121">
+          <div class="calibre26">
+            <p class="tablehead">Cut: Premium</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre122">
+          <div class="calibre26">
+            <p class="tablehead">Cut: Ideal</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.30</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.75</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.91</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.20</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.31</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.50</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.74</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.96</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">2.21</p>
+        </td>
+
+        <td char="72" class="calibre123">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="78" class="calibre124">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="113" class="calibre125">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="104" class="calibre126">
+          <p class="tablebody"><span class="bold">1</span></p>
+        </td>
+
+        <td char="85" class="calibre127">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="listbullet"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Label encoding</span>—Represent each category as a number between 0 and the number of categories. This approach should be used only for ratings or labels; otherwise, the model that we will be training will assume that the number carries weight for the example and can introduce unintended bias.</p>
+
+    <p class="body1">Once the dataset has been cleaned, it’s ready for use, as seen in table 8.7.</p>
+
+    <p class="tablecaption">Table 8.7 The diamond dataset prepared for use</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="525" class="msotablegrid4">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"><span xml:lang="EN-ZA"> </span></p>
+          </div>
+        </td>
+
+        <td char="45" class="calibre81">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre82">
+          <div class="calibre26">
+            <p class="tablehead">Cut</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Color</p>
+          </div>
+        </td>
+
+        <td char="54" class="calibre84">
+          <div class="calibre26">
+            <p class="tablehead">Clarity</p>
+          </div>
+        </td>
+
+        <td char="51" class="calibre85">
+          <div class="calibre26">
+            <p class="tablehead">Depth</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre86">
+          <div class="calibre26">
+            <p class="tablehead">Table</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre87">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre88">
+          <div class="calibre26">
+            <p class="tablehead">X</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre88">
+          <div class="calibre26">
+            <p class="tablehead">Y</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre88">
+          <div class="calibre26">
+            <p class="tablehead">Z</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">0.30</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">339</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.25</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.28</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">2.73</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">0.41</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">61.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">561</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.77</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.80</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">2.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">0.75</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2760</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.80</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.75</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">3.65</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">0.91</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">65.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2763</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">6.03</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.99</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">3.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.20</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.6</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">2809</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">6.73</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">6.66</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.33</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.31</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">59.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">59</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">3697</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.06</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.20</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.50</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.9</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">4022</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.31</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.22</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.57</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.74</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">4677</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.59</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">4.80</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">1.96</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">66.8</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">6147</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">7.60</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.08</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="45" class="calibre90">
+          <p class="tablebody">2.21</p>
+        </td>
+
+        <td char="85" class="calibre91">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="54" class="calibre93">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">58</p>
+        </td>
+
+        <td char="46" class="calibre96">
+          <p class="tablebody">6535</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">8.31</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">8.27</p>
+        </td>
+
+        <td char="41" class="calibre97">
+          <p class="tablebody">5.16</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="head2">Exercise: Identify and fix the problem data in this example</p>
+
+    <p class="body1">Decide which data preparation techniques can be used to fix the following dataset. Decide which rows to delete, what values to use the mean for, and how categorical values will be encoded. Note that it is a slightly different dataset to what we’ve been working through thus far.</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="426" class="msotablegrid6">
+      <tr class="calibre54">
+        <td char="28" class="calibre80">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="47" class="calibre98">
+          <div class="calibre26">
+            <p class="tablehead">Carat</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre99">
+          <div class="calibre26">
+            <p class="tablehead">Origin</p>
+          </div>
+        </td>
+
+        <td char="51" class="calibre85">
+          <div class="calibre26">
+            <p class="tablehead">Depth</p>
+          </div>
+        </td>
+
+        <td char="48" class="calibre86">
+          <div class="calibre26">
+            <p class="tablehead">Table</p>
+          </div>
+        </td>
+
+        <td char="46" class="calibre83">
+          <div class="calibre26">
+            <p class="tablehead">Price</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">X</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Y</p>
+          </div>
+        </td>
+
+        <td char="41" class="calibre100">
+          <div class="calibre26">
+            <p class="tablehead">Z</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.35</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">South Africa</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.0</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">450</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.25</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.73</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.42</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Canada</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">61.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">680</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">2.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.87</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Canada</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2689</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.80</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.75</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.65</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">0.99</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Botswana</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">65.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2734</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.03</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.99</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">3.95</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.34</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Botswana</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">64.6</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">56</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">2901</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.73</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">6.66</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody"> </p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.45</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">South Africa</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">59.7</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">59</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">3723</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.06</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.01</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.20</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.65</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Botswana</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.9</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">60</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4245</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.31</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.22</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.57</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.79</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody"> </p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">63.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">4734</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.59</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">4.80</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">1.81</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">Botswana</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">66.8</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">55</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">6093</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.62</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">7.60</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.08</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="28" class="calibre89">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="47" class="calibre101">
+          <p class="tablebody">2.01</p>
+        </td>
+
+        <td char="85" class="calibre102">
+          <p class="tablebody">South Africa</p>
+        </td>
+
+        <td char="51" class="calibre94">
+          <p class="tablebody">62.2</p>
+        </td>
+
+        <td char="48" class="calibre95">
+          <p class="tablebody">58</p>
+        </td>
+
+        <td char="46" class="calibre92">
+          <p class="tablebody">7452</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">8.31</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">8.27</p>
+        </td>
+
+        <td char="41" class="calibre103">
+          <p class="tablebody">5.16</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="head2">Solution: Identify and fix the problem data in this example</p>
+
+    <p class="body1">One approach for fixing this dataset involves the following three tasks:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Remove row 8 due to missing Origin.</span> We don’t know what the dataset will be used for. If the Origin feature is important, this row will be missing it and may cause issues. Alternatively, the value for this feature could be estimated if it has a relationship with other features.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Use one-hot encoding to encode the Origin column value.</span> In the example explored thus far in the chapter, we used label encoding to convert string values to numeric values. This approach worked because the values indicated more superior cut, clarity, or color. In the case of Origin, the value identifies where the diamond was sourced. By using label encoding, we introduce bias to the dataset, because no Origin location is better than another in this dataset.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Find the mean for missing values.</span> Row 1, 2, 4, and 5 are missing values for Y, X, Table, and Z, respectively. Using a mean value should be a good technique because, as we know about diamonds, the dimensions and table are related.</p>
+
+    <p class="head2">Testing and training data</p>
+
+    <p class="body1">Before we jump into training a linear regression model, we need to ensure that we have data to teach (or train) the model, as well as some data to test how well it does in predicting new examples. Think back to the property-price example in section 8.1. After gaining a feel for the attributes that affect price, we could make a price prediction by looking at the distance and number of rooms. For this example, we will use table 8.7 as the training data because we have more real-world data to use for training later.</p>
+  </div>
+
+  </body>
+</html>

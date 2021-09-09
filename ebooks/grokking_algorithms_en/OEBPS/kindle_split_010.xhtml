@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2002/06/xhtml2/ http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+<link href="Styles/Style00.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style01.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style02.css" rel="stylesheet" type="text/css" />
+<link href="Styles/Style03.css" rel="stylesheet" type="text/css" />
+<style type="text/css" title="ibis-book">
+    #sbo-rt-content .calibre{display:block;font-size:1em;margin-bottom:0;margin-left:5pt;margin-right:5pt;margin-top:0;padding-left:0;padding-right:0}#sbo-rt-content .calibre1{display:block;font-size:2em;font-weight:bold;line-height:1.2;margin-bottom:.67em;margin-left:0;margin-right:0;margin-top:.67em;text-align:center}#sbo-rt-content .calibre10{display:table-row-group;vertical-align:middle}#sbo-rt-content .calibre11{display:table-row;vertical-align:inherit}#sbo-rt-content .calibre12{display:block;font-family:"Liberation Mono",monospace;font-size:.77778em;margin-bottom:1em;margin-left:5px;margin-right:0;margin-top:1em;white-space:pre-wrap}#sbo-rt-content .calibre13{display:block;font-size:1.125em;font-weight:bold;line-height:1.2;margin-bottom:0;margin-left:0;margin-right:0;margin-top:40px}#sbo-rt-content .calibre14{display:block}#sbo-rt-content .calibre15{display:block;margin-bottom:1em;margin-left:1em;margin-right:1em;margin-top:1em}#sbo-rt-content .calibre16{display:block}#sbo-rt-content .calibre17{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em}#sbo-rt-content .calibre18{display:block;list-style-type:disc;margin-bottom:1em;margin-right:0;margin-top:1em}#sbo-rt-content .calibre19{display:list-item}#sbo-rt-content .calibre2{height:auto;width:auto}#sbo-rt-content .calibre20{font-weight:bold}#sbo-rt-content .calibre21{font-family:"Liberation Mono",monospace}#sbo-rt-content .calibre22{display:block;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:30px}#sbo-rt-content .calibre23{display:table-column-group}#sbo-rt-content .calibre24{display:table-cell;padding-bottom:1px;padding-left:1px;padding-right:1px;padding-top:1px;text-align:inherit;vertical-align:inherit}#sbo-rt-content .calibre25{font-size:.75em;line-height:normal;vertical-align:sub}#sbo-rt-content .calibre26{font-size:.75em;line-height:normal;vertical-align:super}#sbo-rt-content .calibre27{display:block;list-style-type:decimal;margin-bottom:1em;margin-right:0;margin-top:1em}#sbo-rt-content .calibre28{font-size:smaller;line-height:normal;vertical-align:super}#sbo-rt-content .calibre29{font-size:.75em}#sbo-rt-content .calibre3{font-family:"Times";line-height:1.2}#sbo-rt-content .calibre30{font-size:.77778em;line-height:normal;vertical-align:super}#sbo-rt-content .calibre31{font-size:.71429em}#sbo-rt-content .calibre4{font-family:"Times"}#sbo-rt-content .calibre5{display:block;font-family:"Liberation Mono",monospace;font-size:.75em;margin-bottom:1em;margin-left:5px;margin-right:0;margin-top:1em;white-space:pre-wrap}#sbo-rt-content .calibre6{font-style:italic}#sbo-rt-content .calibre7{border-collapse:separate;border-spacing:2px;display:table;margin-bottom:0;margin-top:0;text-indent:0}#sbo-rt-content .calibre8{display:table-column-group;text-align:left}#sbo-rt-content .calibre9{display:table-column}#sbo-rt-content .center{display:block;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:30px;text-align:center}#sbo-rt-content .center1{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em;text-align:center}#sbo-rt-content .docTableCell{display:table-cell;font-size:.75em;padding-bottom:1px;padding-left:1px;padding-right:1px;padding-top:1px;text-align:left;vertical-align:inherit}#sbo-rt-content .ind{display:block;margin-bottom:8px;margin-right:0;margin-top:0;text-align:left;text-indent:0}#sbo-rt-content .noind{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:25px;text-indent:0}#sbo-rt-content .noindclose{display:block;margin-bottom:1em;margin-left:0;margin-right:0;margin-top:1em;text-indent:0}#sbo-rt-content .notetitle{display:block;font-size:.75em;font-weight:bold;margin-bottom:0;margin-left:0;margin-right:0;margin-top:2px}#sbo-rt-content .part{display:block;font-size:1.41667em;font-weight:bold;line-height:1.2;margin-bottom:0;margin-left:0;margin-right:0;margin-top:.83em}#sbo-rt-content .smaller{display:block;font-size:.75em;margin-bottom:1em;margin-left:1em;margin-right:1em;margin-top:1em}#sbo-rt-content .toc{display:block;margin-bottom:1em;margin-left:15px;margin-right:1em;margin-top:15px;text-indent:0}
+    </style>
+<style type="text/css" title="ibis-book">
+    @page{margin-bottom:5pt;margin-top:5pt}
+    </style>
+<style type="text/css" id="font-styles">#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-size: &lt;%= font_size %&gt; !important; }</style>
+<style type="text/css" id="font-family">#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-family: &lt;%= font_family %&gt; !important; }</style>
+<style type="text/css" id="column-width">#sbo-rt-content { max-width: &lt;%= column_width %&gt;% !important; margin: 0 auto !important; }</style>
+
+<style type="text/css">body{margin:1em;}#sbo-rt-content *{text-indent:0pt!important;}#sbo-rt-content .bq{margin-right:1em!important;}body{background-color:transparent!important;}#sbo-rt-content *{word-wrap:break-word!important;word-break:break-word!important;}#sbo-rt-content table,#sbo-rt-content pre{overflow-x:unset!important;overflow:unset!important;overflow-y:unset!important;white-space:pre-wrap!important;}</style></head>
+<body><div id="sbo-rt-content" class="calibre"><h2 id="ch04" class="part">Chapter 4. <a id="ch04__title" class="calibre3"/>Quicksort
+      </h2>
+      
+      
+      
+      <p class="center1"><img src="Images/common.jpg" alt="" class="calibre2" width="134" height="148"/></p>
+      
+      
+      <p class="noind"><b class="calibre20">In this chapter</b></p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">You learn about divide-and-conquer. Sometimes you’ll come across a problem that can’t be solved by any algorithm you’ve learned.
+            When a good algorithmist comes across such a problem, they don’t just give up. They have a toolbox full of techniques they
+            use on the problem, trying to come up with a solution. Divide-and-conquer is the first general technique you learn.
+            
+         </li>
+         
+         <li class="calibre19">You learn about quicksort, an elegant sorting algorithm that’s often used in practice. Quicksort uses divide-and-conquer.
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">You learned all about recursion in the last chapter. This chapter focuses on using your new skill to solve problems. We’ll
+         explore <i class="calibre6">divide and conquer</i> (D&amp;C), a well-known recursive technique for solving problems.
+      </p>
+      
+      <p class="noind">This chapter really gets into the meat of algorithms. After all, an algorithm isn’t very useful if it can only solve one type
+         of problem. Instead, D&amp;C gives you a new way to think about solving <a id="iddle1118" class="calibre4"/>problems. D&amp;C is another tool in your toolbox. When you get a new problem, you don’t have to be stumped. Instead, you can
+         ask, “Can I solve this if I use divide and conquer?”
+      </p>
+      
+      <p class="noind">At the end of the chapter, you’ll learn your first major D&amp;C algorithm: <i class="calibre6">quicksort</i>. Quicksort is a sorting algorithm, and a much faster one than selection sort (which you learned in <a href="kindle_split_008.xhtml#ch02" class="calibre4">chapter 2</a>). It’s a good example of elegant code.
+      </p>
+      
+      
+      <h3 id="ch04lev1sec1" class="calibre13"><a id="ch04lev1sec1__title" class="calibre3"/>Divide &amp; conquer
+      </h3>
+      
+      <p class="noind">D&amp;C can take some time to grasp. So, we’ll do three examples. First I’ll show you a visual example. Then I’ll do a code example
+         that is less pretty but maybe easier. Finally, we’ll go through quicksort, a sorting algorithm that uses D&amp;C.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/052fig01.jpg" alt="" class="calibre2" width="376" height="318"/></p>
+      
+      
+      <p class="noind">Suppose you’re a farmer with a plot of land.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/052fig02.jpg" alt="" class="calibre2" width="457" height="261"/></p>
+      
+      
+      <p class="noind">You want to divide this farm evenly into <i class="calibre6">square</i> plots. You want the plots to be as big as possible. So none of these will work.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/052fig03.jpg" alt="" class="calibre2" width="500" height="158"/></p>
+      
+      
+      <p class="noind"><a id="iddle1065" class="calibre4"/>How do you figure out the largest square size you can use for a plot of land? Use the D&amp;C strategy! D&amp;C algorithms are recursive
+         algorithms. To solve a problem using D&amp;C, there are two steps:
+      </p>
+      
+      <p class="calibre17"><a id="ch04pro01" class="calibre4"/></p>
+      
+      <blockquote class="calibre15">
+         <p class="calibre17"><b class="calibre20">1</b>.  Figure out the base case. This should be the simplest possible case.
+            
+         </p>
+      </blockquote>
+      
+      <blockquote class="calibre15">
+         <p class="calibre17"><b class="calibre20">2</b>.  Divide or decrease your problem until it becomes the base case.
+            
+         </p>
+      </blockquote>
+      
+      
+      <p class="noind">Let’s use D&amp;C to find the solution to this problem. What is the largest square size you can use?</p>
+      
+      <p class="noind">First, figure out the base case. The easiest case would be if one side was a multiple of the other side.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/053fig01.jpg" alt="" class="calibre2" width="500" height="138"/></p>
+      
+      
+      <p class="noind">Suppose one side is 25 meters (m) and the other side is 50 m. Then the largest box you can use is 25 m × 25 m. You need two
+         of those boxes to divide up the land.
+      </p>
+      
+      <p class="noind">Now you need to figure out the recursive case. This is where D&amp;C comes in. According to D&amp;C, with every recursive call, you
+         have to reduce your problem. How do you reduce the problem here? Let’s start by marking out the biggest boxes you can use.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/053fig02.jpg" alt="" class="calibre2" width="500" height="277"/></p>
+      
+      
+      <p class="noind"><a id="iddle1031" class="calibre4"/><a id="iddle1165" class="calibre4"/><a id="iddle1221" class="calibre4"/>You can fit two 640 × 640 boxes in there, and there’s some land still left to be divided. Now here comes the “Aha!” moment.
+         There’s a farm segment left to divide. <i class="calibre6">Why don’t you apply the same algorithm to this segment?</i></p>
+      
+      <p class="center1"><img src="Images/054fig01_alt.jpg" alt="" class="calibre2" width="590" height="257"/></p>
+      
+      <p class="noind">So you started out with a 1680 × 640 farm that needed to be split up. But now you need to split up a smaller segment, 640
+         × 400. If you <i class="calibre6">find the biggest box that will work for this size, that will be the biggest box that will work for the entire farm.</i> You just reduced the problem from a 1680 × 640 farm to a 640 × 400 farm!
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <div class="calibre14">
+         
+         <b id="ch04sb01" class="calibre20">Euclid’s algorithm</b>
+         
+         <p class="noind">“If you find the biggest box that will work for this size, that will be the biggest box that will work for the entire farm.”
+            If it’s not obvious to you why this statement is true, don’t worry. It isn’t obvious. Unfortunately, the proof for why it
+            works is a little too long to include in this book, so you’ll just have to believe me that it works. If you want to understand
+            the proof, look up Euclid’s algorithm. The Khan academy has a good explanation here: <a href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm" class="calibre4">https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm</a>.
+         </p>
+         
+      </div>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      
+      
+      <p class="center1"><img src="Images/054fig02.jpg" alt="" class="calibre2" width="198" height="204"/></p>
+      
+      
+      <p class="noind">Let’s apply the same algorithm again. Starting with a 640 × 400m farm, the biggest box you can create is 400 × 400 m.</p>
+      
+      <p class="noind">And that leaves you with a smaller segment, 400 × 240 m.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/055fig01.jpg" alt="" class="calibre2" width="467" height="178"/></p>
+      
+      
+      <p class="noind">And you can draw a box on that to get an even smaller segment, 240 × 160 m.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/055fig02.jpg" alt="" class="calibre2" width="473" height="169"/></p>
+      
+      
+      <p class="noind">And then you draw a box on that to get an even <i class="calibre6">smaller</i> segment.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/055fig03.jpg" alt="" class="calibre2" width="402" height="187"/></p>
+      
+      
+      <p class="noind">Hey, you’re at the base case: 80 is a factor of 160. If you split up this segment using boxes, you don’t have anything left
+         over!
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/055fig04.jpg" alt="" class="calibre2" width="239" height="168"/></p>
+      
+      
+      <p class="noind">So, for the original farm, the biggest plot size you can use is 80 × 80 m.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/056fig01.jpg" alt="" class="calibre2" width="422" height="240"/></p>
+      
+      
+      <p class="noind">To recap, here’s how D&amp;C works:</p>
+      
+      <p class="calibre17"/>
+      <ol class="calibre27">
+         
+         <li class="calibre19">Figure out a simple case as the base case.
+            
+         </li>
+         
+         <li class="calibre19">Figure out how to reduce your problem and get to the base case.
+            
+         </li>
+         
+      </ol>
+      
+      <p class="noind">D&amp;C isn’t a simple algorithm that you can apply to a problem. Instead, it’s a way to think about a problem. Let’s do one more
+         example.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/056fig02.jpg" alt="" class="calibre2" width="198" height="82"/></p>
+      
+      
+      <p class="noind">You’re given an array of numbers.</p>
+      
+      <p class="noind">You have to add up all the numbers and return the total. It’s pretty easy to do this with a loop:</p>
+      
+      <pre id="PLd0e4048" class="calibre5"><b class="calibre20">def</b> sum(arr):
+  total = 0
+  <b class="calibre20">for</b> x in arr:
+    total += x
+  <b class="calibre20">return</b> total
+
+print sum([1, 2, 3, 4])</pre>
+      
+      <p class="noind">But how would you do this with a recursive function?</p>
+      
+      <p class="noind"><b class="calibre20">Step 1:</b> Figure out the base case. What’s the simplest array you could get? Think about the simplest case, and then read on. If you
+         get an array with 0 or 1 element, that’s pretty easy to sum up.
+      </p>
+      
+      
+      
+      
+      <p class="center1"><img src="Images/057fig01.jpg" alt="" class="calibre2" width="430" height="118"/></p>
+      
+      
+      <p class="noind"><a id="iddle1161" class="calibre4"/><a id="iddle1353" class="calibre4"/>So that will be the base case.
+      </p>
+      
+      <p class="noind"><b class="calibre20">Step 2:</b> You need to move closer to an empty array with every recursive call. How do you reduce your problem size? Here’s one way.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/057fig02.jpg" alt="" class="calibre2" width="355" height="70"/></p>
+      
+      
+      <p class="noind">It’s the same as this.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/057fig03.jpg" alt="" class="calibre2" width="500" height="58"/></p>
+      
+      
+      <p class="noind">In either case, the result is 12. But in the second version, you’re passing a smaller array into the <kbd class="calibre21">sum</kbd> function. That is, <i class="calibre6">you decreased the size of your problem!</i></p>
+      
+      <p class="noind">Your <kbd class="calibre21">sum</kbd> function could work like this.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/057fig04.jpg" alt="" class="calibre2" width="500" height="239"/></p>
+      
+      
+      <p class="noind"><a id="iddle1162" class="calibre4"/>Here it is in action.
+      </p>
+      
+      <p class="center1"><img src="Images/058fig01_alt.jpg" alt="" class="calibre2" width="590" height="290"/></p>
+      
+      <p class="noind">Remember, recursion keeps track of the state.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/058fig02.jpg" alt="" class="calibre2" width="500" height="429"/></p>
+      
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <h5 id="ch04note01" class="notetitle">Tip</h5>
+      
+      
+      <p class="noindclose">When you’re writing a recursive function involving an array, the base case is often an empty array or an array with one element.
+         If you’re stuck, try that first.
+      </p>
+      
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      
+      <p class="noind"/>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <div class="calibre14">
+         
+         <b id="ch04sb02" class="calibre20">Sneak peak at functional programming</b>
+         
+         <p class="noind"><a id="iddle1212" class="calibre4"/><a id="iddle1354" class="calibre4"/>“Why would I do this recursively if I can do it easily with a loop?” you may be thinking. Well, this is a sneak peek into
+            functional programming! Functional programming languages like Haskell don’t have loops, so you have to use recursion to write
+            functions like this. If you have a good understanding of recursion, functional languages will be easier to learn. For example,
+            here’s how you’d write a <kbd class="calibre21">sum</kbd> function in Haskell:
+         </p>
+         
+         
+         
+         <p class="center1"><img src="Images/059fig01.jpg" alt="" class="calibre2" width="471" height="35"/></p>
+         
+         
+         <p class="noind">Notice that it looks like you have two definitions for the function. The first definition is run when you hit the base case.
+            The second definition runs at the recursive case. You can also write this function in Haskell using an if statement:
+         </p>
+         
+         <pre id="PLd0e4200" class="calibre5">sum arr = if arr == []
+            then 0
+            else (head arr) + (sum (tail arr))</pre>
+         
+         <p class="noind">But the first definition is easier to read. Because Haskell makes heavy use of recursion, it includes all kinds of niceties
+            like this to make recursion easy. If you like recursion, or you’re interested in learning a new language, check out Haskell.
+         </p>
+         
+      </div>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      
+      
+      <h3 id="ch04lev1sec2" class="calibre13"><a id="ch04lev1sec2__title" class="calibre3"/>Exercises
+      </h3>
+      
+      <p class="calibre17"><a id="ch04qa1" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch04qa1qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch04qa1q1" class="calibre4"/><b class="calibre20">4.1 </b></p><p class="noind">Write out the code for the earlier <kbd class="calibre21">sum</kbd> function.
+            </p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch04qa1qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch04qa1q2" class="calibre4"/><b class="calibre20">4.2 </b></p><p class="noind">Write a recursive function to count the number of items in a list.</p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch04qa1qe3" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch04qa1q3" class="calibre4"/><b class="calibre20">4.3 </b></p><p class="noind">Find the maximum number in a list.</p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch04qa1qe4" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch04qa1q4" class="calibre4"/><b class="calibre20">4.4 </b></p><p class="noind">Remember binary search from <a href="kindle_split_007.xhtml#ch01" class="calibre4">chapter 1</a>? It’s a divide-and-conquer algorithm, too. Can you come up with the base case and recursive case for binary search?
+            </p>
+            
+            
+            
+            <p class="center1"><img src="Images/059fig02.jpg" alt="" class="calibre2" width="159" height="252"/></p>
+            
+            
+         <p class="calibre17"/>
+      </blockquote>
+      
+      
+      
+      
+      <h3 id="ch04lev1sec3" class="calibre13"><a id="ch04lev1sec3__title" class="calibre3"/>Quicksort
+      </h3>
+      
+      <p class="noind"><a id="iddle1279" class="calibre4"/>Quicksort is a sorting algorithm. It’s much faster than selection sort and is frequently used in real life. For example, the
+         C standard library has a function called <kbd class="calibre21">qsort</kbd>, which is its implementation of quicksort. Quicksort also uses D&amp;C.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/060fig01.jpg" alt="" class="calibre2" width="184" height="371"/></p>
+      
+      
+      <p class="noind">Let’s use quicksort to sort an array. What’s the simplest array that a sorting algorithm can handle (remember my tip from
+         the previous section)? Well, some arrays don’t need to be sorted at all.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/060fig02.jpg" alt="" class="calibre2" width="500" height="151"/></p>
+      
+      
+      <p class="noind">Empty arrays and arrays with just one element will be the base case. You can just return those arrays as is—there’s nothing
+         to sort:
+      </p>
+      
+      <pre id="PLd0e4304" class="calibre5"><b class="calibre20">def</b> quicksort(array):
+  <b class="calibre20">if</b> len(array) &lt; 2:
+    <b class="calibre20">return</b> array</pre>
+      
+      <p class="noind">Let’s look at bigger arrays. An array with two elements is pretty easy to sort, too.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/060fig03.jpg" alt="" class="calibre2" width="348" height="107"/></p>
+      
+      
+      <p class="noind">What about an array of three elements?</p>
+      
+      
+      
+      <p class="center1"><img src="Images/060fig00.jpg" alt="" class="calibre2" width="200" height="64"/></p>
+      
+      
+      <p class="noind">Remember, you’re using D&amp;C. So you want to break down this array until you’re at the base case. Here’s how quicksort works.
+         First, pick an element from the array. This element is called the <i class="calibre6">pivot.</i></p>
+      
+      
+      
+      <p class="center1"><img src="Images/060fig04.jpg" alt="" class="calibre2" width="113" height="114"/></p>
+      
+      
+      <p class="noind">We’ll talk about how to pick a good pivot later. For now, let’s say the first item in the array is the pivot.</p>
+      
+      <p class="noind"><a id="iddle1276" class="calibre4"/>Now find the elements smaller than the pivot and the elements larger than the pivot.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/061fig01.jpg" alt="" class="calibre2" width="500" height="212"/></p>
+      
+      
+      <p class="noind">This is called <i class="calibre6">partitioning.</i> Now you have
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">A sub-array of all the numbers less than the pivot
+            
+         </li>
+         
+         <li class="calibre19">The pivot
+            
+         </li>
+         
+         <li class="calibre19">A sub-array of all the numbers greater than the pivot
+            
+         </li>
+         
+      </ul>
+      
+      <p class="noind">The two sub-arrays aren’t sorted. They’re just partitioned. But if they <i class="calibre6">were</i> sorted, then sorting the whole array would be pretty easy.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/061fig02.jpg" alt="" class="calibre2" width="347" height="100"/></p>
+      
+      
+      <p class="noind">If the sub-arrays are sorted, then you can combine the whole thing like this—<kbd class="calibre21">left array + pivot + right array</kbd>—and you get a sorted array. In this case, it’s <kbd class="calibre21">[10, 15] + [33] + [] = [10, 15, 33]</kbd>, which is a sorted array.
+      </p>
+      
+      <p class="noind">How do you sort the sub-arrays? Well, the quicksort base case already knows how to sort arrays of two elements (the left sub-array)
+         and empty arrays (the right sub-array). So if you call quicksort on the two sub-arrays and then combine the results, you get
+         a sorted array!
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/061fig03.jpg" alt="" class="calibre2" width="441" height="37"/></p>
+      
+      
+      <p class="noind">This will work with any pivot. Suppose you choose 15 as the pivot instead.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/062fig01.jpg" alt="" class="calibre2" width="298" height="106"/></p>
+      
+      
+      <p class="noind">Both sub-arrays have only one element, and you know how to sort those. So now you know how to sort an array of three elements.
+         Here are the steps:
+      </p>
+      
+      <p class="calibre17"><a id="ch04pro02" class="calibre4"/></p>
+      
+      <blockquote class="calibre15">
+         <p class="calibre17"><b class="calibre20">1</b>.  Pick a pivot.
+            
+         </p>
+      </blockquote>
+      
+      <blockquote class="calibre15">
+         <p class="calibre17"><b class="calibre20">2</b>.  Partition the array into two sub-arrays: elements less than the pivot and elements greater than the pivot.
+            
+         </p>
+      </blockquote>
+      
+      <blockquote class="calibre15">
+         <p class="calibre17"><b class="calibre20">3</b>.  Call quicksort recursively on the two sub-arrays.
+            
+         </p>
+      </blockquote>
+      
+      
+      <p class="noind">What about an array of four elements?</p>
+      
+      
+      
+      <p class="center1"><img src="Images/062fig02.jpg" alt="" class="calibre2" width="272" height="97"/></p>
+      
+      
+      <p class="noind">Suppose you choose 33 as the pivot again.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/062fig03.jpg" alt="" class="calibre2" width="393" height="91"/></p>
+      
+      
+      <p class="noind">The array on the left has three elements. You already know how to sort an array of three elements: call quicksort on it recursively.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/062fig04.jpg" alt="" class="calibre2" width="500" height="219"/></p>
+      
+      
+      <p class="noind">So you can sort an array of four elements. And if you can sort an array of four elements, you can sort an array of five elements.
+         Why is that? Suppose you have this array of five elements.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/063fig01.jpg" alt="" class="calibre2" width="298" height="70"/></p>
+      
+      
+      <p class="noind">Here are all the ways you can partition this array, depending on what pivot you choose.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/063fig02.jpg" alt="" class="calibre2" width="500" height="430"/></p>
+      
+      
+      <p class="noind">Notice that all of these sub-arrays have somewhere between 0 and 4 elements. And you already know how to sort an array of
+         0 to 4 elements using quicksort! So no matter what pivot you pick, you can call quicksort recursively on the two sub-arrays.
+      </p>
+      
+      <p class="noind">For example, suppose you pick 3 as the pivot. You call quicksort on the sub-arrays.</p>
+      
+      
+      
+      <p class="center1"><img src="Images/064fig01.jpg" alt="" class="calibre2" width="499" height="322"/></p>
+      
+      
+      <p class="noind">The sub-arrays get sorted, and then you combine the whole thing to get a sorted array. This works even if you choose 5 as
+         the pivot.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/064fig02.jpg" alt="" class="calibre2" width="500" height="298"/></p>
+      
+      
+      <p class="noind">This works with any element as the pivot. So you can sort an array of five elements. Using the same logic, you can sort an
+         array of six elements, and so on.
+      </p>
+      
+      
+      <p class="noind"/>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      <div class="calibre14">
+         
+         <b id="ch04sb03" class="calibre20">Inductive proofs</b>
+         
+         <p class="noind"><a id="iddle1214" class="calibre4"/>You just got a sneak peak into <i class="calibre6">inductive proofs!</i> Inductive proofs are one way to prove that your algorithm works. Each inductive proof has two steps: the base case and the
+            inductive case. Sound familiar? For example, suppose I want to prove that I can climb to the top of a ladder. In the inductive
+            case, if my legs are on a rung, I can put my legs on the next rung. So if I’m on rung 2, I can climb to rung 3. That’s the
+            inductive case. For the base case, I’ll say that my legs are on rung 1. Therefore, I can climb the entire ladder, going up
+            one rung at a time.
+         </p>
+         
+         <p class="noind">You use similar reasoning for quicksort. In the base case, I showed that the algorithm works for the base case: arrays of
+            size 0 and 1. In the inductive case, I showed that if quicksort works for an array of size 1, it will work for an array of
+            size 2. And if it works for arrays of size 2, it will work for arrays of size 3, and so on. Then I can say that quicksort
+            will work for all arrays of any size. I won’t go deeper into inductive proofs here, but they’re fun and go hand-in-hand with
+            D&amp;C.
+         </p>
+         
+      </div>
+      <table width="100%" border="1" cellspacing="5" class="calibre7">
+         <colgroup class="calibre23">
+            <col width="550" class="calibre9"/>
+         </colgroup>
+         <tbody class="calibre10">
+            <tr class="calibre11">
+               <td class="calibre24"/>
+            </tr>
+         </tbody>
+      </table>
+      
+      
+      
+      <p class="center1"><img src="Images/065fig01.jpg" alt="" class="calibre2" width="223" height="263"/></p>
+      
+      
+      <p class="noind">Here’s the code for quicksort:</p>
+      
+      <p class="center1"><img src="Images/065fig02_alt.jpg" alt="" class="calibre2" width="590" height="177"/></p>
+      
+      
+      
+      
+      <h3 id="ch04lev1sec4" class="calibre13"><a id="ch04lev1sec4__title" class="calibre3"/>Big O notation revisited
+      </h3>
+      
+      <p class="noind"><a id="iddle1075" class="calibre4"/><a id="iddle1079" class="calibre4"/><a id="iddle1292" class="calibre4"/>Quicksort is unique because its speed depends on the pivot you choose. Before I talk about quicksort, let’s look at the most
+         common Big O run times again.
+      </p>
+      
+      <p class="center1"><img src="Images/066fig01_alt.jpg" alt="" class="calibre2" width="590" height="256"/></p>
+      <p class="calibre17">
+         </p><p class="noind">Estimates based on a slow computer that performs 10 operations per second</p>
+      <p class="calibre17"/>
+      
+      <p class="noind">The example times in this chart are estimates if you perform 10 operations per second. These graphs aren’t precise—they’re
+         just there to give you a sense of how different these run times are. In reality, your computer can do way more than 10 operations
+         per second.
+      </p>
+      
+      <p class="noind">Each run time also has an example algorithm attached. Check out selection sort, which you learned in <a href="kindle_split_008.xhtml#ch02" class="calibre4">chapter 2</a>. It’s O(<i class="calibre6">n</i><sup class="calibre26">2</sup>). That’s a pretty slow algorithm.
+      </p>
+      
+      <p class="noind">There’s another sorting algorithm called <i class="calibre6">merge sort</i>, which is O(<i class="calibre6">n</i> log <i class="calibre6">n</i>). Much faster! Quicksort is a tricky case. In the worst case, quicksort takes O(<i class="calibre6">n</i><sup class="calibre26">2</sup>) time.
+      </p>
+      
+      <p class="noind">It’s as slow as selection sort! But that’s the worst case. In the average case, quicksort takes O(<i class="calibre6">n</i> log <i class="calibre6">n</i>) time. So you might be wondering:
+      </p>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">What do <i class="calibre6">worst case</i> and <i class="calibre6">average case</i> mean here?
+            
+         </li>
+         
+         <li class="calibre19">If quicksort is O(<i class="calibre6">n</i> log <i class="calibre6">n</i>) on average, but merge sort is O(<i class="calibre6">n</i> log <i class="calibre6">n</i>) always, why not use merge sort? Isn’t it faster?
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      <h4 id="ch04lev2sec1" class="calibre22"><a id="ch04lev2sec1__title" class="calibre4"/>Merge sort vs. quicksort
+      </h4>
+      
+      <p class="noind"><a id="iddle1078" class="calibre4"/><a id="iddle1264" class="calibre4"/><a id="iddle1282" class="calibre4"/><a id="iddle1295" class="calibre4"/>Suppose you have this simple function to print every item in a list:
+      </p>
+      
+      <pre id="PLd0e4725" class="calibre5"><b class="calibre20">def</b> print_items(list):
+  <b class="calibre20">for</b> item in list:
+    print item</pre>
+      
+      <p class="noind">This function goes through every item in the list and prints it out. Because it loops over the whole list once, this function
+         runs in O(<i class="calibre6">n</i>) time. Now, suppose you change this function so it sleeps for 1 second before it prints out an item:
+      </p>
+      
+      <pre id="PLd0e4742" class="calibre5"><b class="calibre20">from</b> time import sleep
+<b class="calibre20">def</b> print_items2(list):
+  <b class="calibre20">for</b> item in list:
+    sleep(1)
+    print item</pre>
+      
+      <p class="noind">Before it prints out an item, it will pause for 1 second. Suppose you print a list of five items using both functions.</p>
+      
+      <p class="center1"><img src="Images/067fig01_alt.jpg" alt="" class="calibre2" width="590" height="131"/></p>
+      
+      <p class="noind">Both functions loop through the list once, so they’re both O(<i class="calibre6">n</i>) time. Which one do you think will be faster in practice? I think <kbd class="calibre21">print_items</kbd> will be much faster because it doesn’t pause for 1 second before printing an item. So even though both functions are the
+         same speed in Big O notation, <kbd class="calibre21">print_items</kbd> is faster in practice. When you write Big O notation like O(<i class="calibre6">n</i>), it really means this.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/067fig02.jpg" alt="" class="calibre2" width="258" height="138"/></p>
+      
+      
+      <p class="noind"><kbd class="calibre21">c</kbd> is some fixed amount of time that your algorithm takes. It’s called the <i class="calibre6">constant</i>. For example, it might be <kbd class="calibre21">10 milliseconds *</kbd> <i class="calibre6"><kbd class="calibre21">n</kbd></i> for <kbd class="calibre21">print_items</kbd> versus <kbd class="calibre21">1 second</kbd> * <i class="calibre6"><kbd class="calibre21">n</kbd></i> for <kbd class="calibre21">print_items2</kbd>.
+      </p>
+      
+      <p class="noind"><a id="iddle1076" class="calibre4"/><a id="iddle1293" class="calibre4"/>You usually ignore that constant, because if two algorithms have different Big O times, the constant doesn’t matter. Take
+         binary search and simple search, for example. Suppose both algorithms had these constants.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/068fig01.jpg" alt="" class="calibre2" width="410" height="80"/></p>
+      
+      
+      <p class="noind">You might say, “Wow! Simple search has a constant of 10 milliseconds, but binary search has a constant of 1 second. Simple
+         search is way faster!” Now suppose you’re searching a list of 4 billion elements. Here are the times.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/068fig02.jpg" alt="" class="calibre2" width="500" height="105"/></p>
+      
+      
+      <p class="noind">As you can see, binary search is still way faster. That constant didn’t make a difference at all.</p>
+      
+      <p class="noind">But sometimes the constant <i class="calibre6">can</i> make a difference. Quicksort versus merge sort is one example. Quicksort has a smaller constant than merge sort. So if they’re
+         both O(<i class="calibre6">n</i> log <i class="calibre6">n</i>) time, quicksort is faster. And quicksort is faster in practice because it hits the average case way more often than the
+         worst case.
+      </p>
+      
+      <p class="noind">So now you’re wondering: what’s the average case versus the worst case?</p>
+      
+      
+      
+      <h4 id="ch04lev2sec2" class="calibre22"><a id="ch04lev2sec2__title" class="calibre4"/>Average case vs. worst case
+      </h4>
+      
+      <p class="noind">The performance of quicksort heavily depends on the pivot you choose. Suppose you always choose the first element as the pivot.
+         And you call quicksort with an array that is <i class="calibre6">already sorted.</i> Quicksort doesn’t check to see whether the input array is already sorted. So it will still try to sort it.
+      </p>
+      
+      
+      <p class="center1"><img src="Images/069fig01_alt.jpg" alt="" class="calibre2" width="590" height="516"/></p>
+      
+      <p class="noind">Notice how you’re not splitting the array into two halves. Instead, one of the sub-arrays is always empty. So the call stack
+         is really long. Now instead, suppose you always picked the middle element as the pivot. Look at the call stack now.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/069fig02.jpg" alt="" class="calibre2" width="500" height="267"/></p>
+      
+      
+      <p class="noind">It’s so short! Because you divide the array in half every time, you don’t need to make as many recursive calls. You hit the
+         base case sooner, and the call stack is much shorter.
+      </p>
+      
+      <p class="noind">The first example you saw is the worst-case scenario, and the second example is the best-case scenario. In the worst case,
+         the stack size is O(<i class="calibre6">n</i>). In the best case, the stack size is O(log <i class="calibre6">n</i>).
+      </p>
+      
+      <p class="noind">Now look at the first level in the stack. You pick one element as the pivot, and the rest of the elements are divided into
+         sub-arrays. You touch all eight elements in the array. So this first operation takes O(<i class="calibre6">n</i>) time. You touched all eight elements on this level of the call stack. But actually, you touch O(<i class="calibre6">n</i>) elements on every level of the call stack.
+      </p>
+      
+      
+      
+      <p class="center1"><img src="Images/070fig01.jpg" alt="" class="calibre2" width="500" height="612"/></p>
+      
+      
+      <p class="noind">Even if you partition the array differently, you’re still touching O(<i class="calibre6">n</i>) elements every time.
+      </p>
+      
+      <p class="center1"><img src="Images/071fig01_alt.jpg" alt="" class="calibre2" width="590" height="270"/></p>
+      
+      <p class="noind">So each level takes O(<i class="calibre6">n</i>) time to complete.
+      </p>
+      
+      <p class="center1"><img src="Images/071fig02_alt.jpg" alt="" class="calibre2" width="590" height="238"/></p>
+      
+      <p class="noind">In this example, there are O(log <i class="calibre6">n</i>) levels (the technical way to say that is, “The height of the call stack is O(log <i class="calibre6">n</i>)”). And each level takes O(<i class="calibre6">n</i>) time. The entire algorithm will take O(<i class="calibre6">n</i>) * O(log <i class="calibre6">n</i>) = O(<i class="calibre6">n</i> log <i class="calibre6">n</i>) time. This is the best-case scenario.
+      </p>
+      
+      <p class="noind">In the worst case, there are O(<i class="calibre6">n</i>) levels, so the algorithm will take O(<i class="calibre6">n</i>) * O(<i class="calibre6">n</i>) = O(<i class="calibre6">n</i><sup class="calibre26">2</sup>) time.
+      </p>
+      
+      <p class="noind">Well, guess what? I’m here to tell you that the best case is also the average case. <i class="calibre6">If you always choose a random element in the array as the pivot</i>, quicksort will complete in O(<i class="calibre6">n</i> log <i class="calibre6">n</i>) time on average. Quicksort is one of the fastest sorting algorithms out there, and it’s a very good example of D&amp;C.
+      </p>
+      
+      
+      
+      
+      
+      <h3 id="ch04lev1sec5" class="calibre13"><a id="ch04lev1sec5__title" class="calibre3"/>Exercises
+      </h3>
+      
+      <p class="noind"><a id="iddle1077" class="calibre4"/><a id="iddle1294" class="calibre4"/>How long would each of these operations take in Big O notation?
+      </p>
+      
+      <p class="calibre17"><a id="ch04qa2" class="calibre4"/></p>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch04qa2qe1" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch04qa2q1" class="calibre4"/><b class="calibre20">4.5 </b></p><p class="noind">Printing the value of each element in an array.</p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch04qa2qe2" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch04qa2q2" class="calibre4"/><b class="calibre20">4.6 </b></p><p class="noind">Doubling the value of each element in an array.</p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch04qa2qe3" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch04qa2q3" class="calibre4"/><b class="calibre20">4.7 </b></p><p class="noind">Doubling the value of just the first element in an array.</p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      <blockquote class="calibre15">
+         <p class="calibre17"><a id="ch04qa2qe4" class="calibre4"/></p>
+         <p class="calibre17"><a id="ch04qa2q4" class="calibre4"/><b class="calibre20">4.8 </b></p><p class="noind">Creating a multiplication table with all the elements in the array. So if your array is [2, 3, 7, 8, 10], you first multiply
+               every element by 2, then multiply every element by 3, then by 7, and so on.
+            </p>
+            
+         <p class="calibre17"/>
+      </blockquote>
+      
+      
+      
+      <h3 id="ch04lev1sec6" class="calibre13"><a id="ch04lev1sec6__title" class="calibre3"/>Recap
+      </h3>
+      
+      <p class="calibre17"/>
+      <ul class="calibre18">
+         
+         <li class="calibre19">D&amp;C works by breaking a problem down into smaller and smaller pieces. If you’re using D&amp;C on a list, the base case is probably
+            an empty array or an array with one element.
+            
+         </li>
+         
+         <li class="calibre19">If you’re implementing quicksort, choose a random element as the pivot. The average runtime of quicksort is O(<i class="calibre6">n</i> log <i class="calibre6">n</i>)!
+            
+         </li>
+         
+         <li class="calibre19">The constant in Big O notation can matter sometimes. That’s why quicksort is faster than merge sort.
+            
+         </li>
+         
+         <li class="calibre19">The constant almost never matters for simple search versus binary search, because O(log <i class="calibre6">n</i>) is so much faster than O(<i class="calibre6">n</i>) when your list gets big.
+            
+         </li>
+         
+      </ul>
+      
+      
+      
+      <p class="center1"><img src="Images/072fig01.jpg" alt="" class="calibre2" width="400" height="215"/></p>
+      
+      
+      
+      
+      
+      <div class="calibre16" id="calibre_pb_16"/>
+</div>
+
+
+
+  </body>
+</html>

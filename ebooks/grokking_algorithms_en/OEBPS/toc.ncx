@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+<head>
+<meta content="ID:ISBN:9781617292231" name="dtb:uid"/>
+<meta content="1" name="dtb:depth"/>
+<meta content="0" name="dtb:totalPageCount"/>
+<meta content="0" name="dtb:maxPageNumber"/>
+</head>
+<docTitle><text>Grokking Algorithms: An illustrated guide for programmers and other curious people</text></docTitle>
+<docAuthor><text>Aditya Y. Bhargava</text></docAuthor>
+<navMap><navPoint id="html19" playOrder="1"><navLabel><text>Copyright</text></navLabel><content src="kindle_split_001.xhtml"/></navPoint>
+<navPoint id="html18" playOrder="2"><navLabel><text>Brief Table of Contents</text></navLabel><content src="kindle_split_002.xhtml"/></navPoint>
+<navPoint id="html17" playOrder="3"><navLabel><text>Table of Contents</text></navLabel><content src="kindle_split_003.xhtml"/></navPoint>
+<navPoint id="html16" playOrder="4"><navLabel><text>Preface</text></navLabel><content src="kindle_split_004.xhtml"/></navPoint>
+<navPoint id="html15" playOrder="5"><navLabel><text>Acknowledgments</text></navLabel><content src="kindle_split_005.xhtml"/></navPoint>
+<navPoint id="html14" playOrder="6"><navLabel><text>About this Book</text></navLabel><content src="kindle_split_006.xhtml"/></navPoint>
+<navPoint id="html13" playOrder="7"><navLabel><text>Chapter 1. Introduction to Algorithms</text></navLabel><content src="kindle_split_007.xhtml"/></navPoint>
+<navPoint id="html12" playOrder="8"><navLabel><text>Chapter 2. Selection Sort</text></navLabel><content src="kindle_split_008.xhtml"/></navPoint>
+<navPoint id="html11" playOrder="9"><navLabel><text>Chapter 3. Recursion</text></navLabel><content src="kindle_split_009.xhtml"/></navPoint>
+<navPoint id="html10" playOrder="10"><navLabel><text>Chapter 4. Quicksort</text></navLabel><content src="kindle_split_010.xhtml"/></navPoint>
+<navPoint id="html9" playOrder="11"><navLabel><text>Chapter 5. Hash Tables</text></navLabel><content src="kindle_split_011.xhtml"/></navPoint>
+<navPoint id="html8" playOrder="12"><navLabel><text>Chapter 6. Breadth-first Search</text></navLabel><content src="kindle_split_012.xhtml"/></navPoint>
+<navPoint id="html7" playOrder="13"><navLabel><text>Chapter 7. Dijkstra’s algorithm</text></navLabel><content src="kindle_split_013.xhtml"/></navPoint>
+<navPoint id="html6" playOrder="14"><navLabel><text>Chapter 8. Greedy algorithms</text></navLabel><content src="kindle_split_014.xhtml"/></navPoint>
+<navPoint id="html5" playOrder="15"><navLabel><text>Chapter 9. Dynamic programming</text></navLabel><content src="kindle_split_015.xhtml"/></navPoint>
+<navPoint id="html4" playOrder="16"><navLabel><text>Chapter 10. K-nearest neighbors</text></navLabel><content src="kindle_split_016.xhtml"/></navPoint>
+<navPoint id="html3" playOrder="17"><navLabel><text>Chapter 11. Where to go next</text></navLabel><content src="kindle_split_017.xhtml"/></navPoint>
+<navPoint id="html2" playOrder="18"><navLabel><text>Appendix. Answers to Exercises</text></navLabel><content src="kindle_split_018.xhtml"/></navPoint>
+<navPoint id="html1" playOrder="19"><navLabel><text>Index</text></navLabel><content src="kindle_split_019.xhtml"/></navPoint>
+</navMap>
+</ncx>

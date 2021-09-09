@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+   <head>
+      <meta name="dtb:uid" content="bookid"/>
+      <meta name="dtb:depth" content="0"/>
+      <meta name="dtb:totalPageCount" content="0"/>
+      <meta name="dtb:maxPageNumber" content="0"/>
+   </head>
+   <docTitle>
+      <text>UnKnown</text>
+   </docTitle>
+   <navMap>
+     <navPoint id="navPoint-1" playOrder="00">
+       <navLabel>
+         <text>版權聲明</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_0"/>
+     </navPoint>
+     <navPoint id="navPoint-2" playOrder="01">
+       <navLabel>
+         <text>前言</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_1"/>
+     </navPoint>
+     <navPoint id="navPoint-3" playOrder="02">
+       <navLabel>
+         <text>致謝</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_2"/>
+     </navPoint>
+     <navPoint id="navPoint-4" playOrder="03">
+       <navLabel>
+         <text>關於本書</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_3"/>
+     </navPoint>
+     <navPoint id="navPoint-5" playOrder="04">
+       <navLabel>
+         <text>路線圖</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_4"/>
+     </navPoint>
+     <navPoint id="navPoint-6" playOrder="05">
+       <navLabel>
+         <text>如何閱讀本書</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_5"/>
+     </navPoint>
+     <navPoint id="navPoint-7" playOrder="06">
+       <navLabel>
+         <text>讀者對象</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_6"/>
+     </navPoint>
+     <navPoint id="navPoint-8" playOrder="07">
+       <navLabel>
+         <text>程式碼約定和下載</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_7"/>
+     </navPoint>
+     <navPoint id="navPoint-9" playOrder="08">
+       <navLabel>
+         <text>作者在線</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_8"/>
+     </navPoint>
+     <navPoint id="navPoint-10" playOrder="09">
+       <navLabel>
+         <text>第 1 章　算法簡介</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_9"/>
+     </navPoint>
+     <navPoint id="navPoint-11" playOrder="0A">
+       <navLabel>
+         <text>1.1　引言</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_10"/>
+     </navPoint>
+     <navPoint id="navPoint-12" playOrder="0B">
+       <navLabel>
+         <text>1.1.1　性能方面</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_11"/>
+     </navPoint>
+     <navPoint id="navPoint-13" playOrder="0C">
+       <navLabel>
+         <text>1.1.2　問題解決技巧</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_12"/>
+     </navPoint>
+     <navPoint id="navPoint-14" playOrder="0D">
+       <navLabel>
+         <text>1.2　二分搜尋</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_13"/>
+     </navPoint>
+     <navPoint id="navPoint-15" playOrder="0E">
+       <navLabel>
+         <text>1.2.1　更佳的搜尋方式</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_14"/>
+     </navPoint>
+     <navPoint id="navPoint-16" playOrder="0F">
+       <navLabel>
+         <text>1.2.2　運行時間</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_15"/>
+     </navPoint>
+     <navPoint id="navPoint-17" playOrder="10">
+       <navLabel>
+         <text>1.3　大O表示法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_16"/>
+     </navPoint>
+     <navPoint id="navPoint-18" playOrder="11">
+       <navLabel>
+         <text>1.3.1　算法的運行時間以不同的速度增加</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_17"/>
+     </navPoint>
+     <navPoint id="navPoint-19" playOrder="12">
+       <navLabel>
+         <text>1.3.2　理解不同的大O運行時間</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_18"/>
+     </navPoint>
+     <navPoint id="navPoint-20" playOrder="13">
+       <navLabel>
+         <text>1.3.3　大O表示法指出了最糟情況下的運行時間</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_19"/>
+     </navPoint>
+     <navPoint id="navPoint-21" playOrder="14">
+       <navLabel>
+         <text>1.3.4　一些常見的大O運行時間</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_20"/>
+     </navPoint>
+     <navPoint id="navPoint-22" playOrder="15">
+       <navLabel>
+         <text>1.3.5　旅行商</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_21"/>
+     </navPoint>
+     <navPoint id="navPoint-23" playOrder="16">
+       <navLabel>
+         <text>1.4　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_22"/>
+     </navPoint>
+     <navPoint id="navPoint-24" playOrder="17">
+       <navLabel>
+         <text>第 2 章　選擇排序</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_23"/>
+     </navPoint>
+     <navPoint id="navPoint-25" playOrder="18">
+       <navLabel>
+         <text>2.1　記憶體的工作原理</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_24"/>
+     </navPoint>
+     <navPoint id="navPoint-26" playOrder="19">
+       <navLabel>
+         <text>2.2　陣列和鏈結串列</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_25"/>
+     </navPoint>
+     <navPoint id="navPoint-27" playOrder="1A">
+       <navLabel>
+         <text>2.2.1　鏈結串列</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_26"/>
+     </navPoint>
+     <navPoint id="navPoint-28" playOrder="1B">
+       <navLabel>
+         <text>2.2.2　陣列</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_27"/>
+     </navPoint>
+     <navPoint id="navPoint-29" playOrder="1C">
+       <navLabel>
+         <text>2.2.3　術語</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_28"/>
+     </navPoint>
+     <navPoint id="navPoint-30" playOrder="1D">
+       <navLabel>
+         <text>2.2.4　在中間插入</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_29"/>
+     </navPoint>
+     <navPoint id="navPoint-31" playOrder="1E">
+       <navLabel>
+         <text>2.2.5　刪除</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_30"/>
+     </navPoint>
+     <navPoint id="navPoint-32" playOrder="1F">
+       <navLabel>
+         <text>2.3　選擇排序</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_31"/>
+     </navPoint>
+     <navPoint id="navPoint-33" playOrder="20">
+       <navLabel>
+         <text>範例程式碼</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_32"/>
+     </navPoint>
+     <navPoint id="navPoint-34" playOrder="21">
+       <navLabel>
+         <text>2.4　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_33"/>
+     </navPoint>
+     <navPoint id="navPoint-35" playOrder="22">
+       <navLabel>
+         <text>第 3 章　遞歸</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_34"/>
+     </navPoint>
+     <navPoint id="navPoint-36" playOrder="23">
+       <navLabel>
+         <text>3.1　遞歸</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_35"/>
+     </navPoint>
+     <navPoint id="navPoint-37" playOrder="24">
+       <navLabel>
+         <text>3.2　基線條件和遞歸條件</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_36"/>
+     </navPoint>
+     <navPoint id="navPoint-38" playOrder="25">
+       <navLabel>
+         <text>3.3　堆疊</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_37"/>
+     </navPoint>
+     <navPoint id="navPoint-39" playOrder="26">
+       <navLabel>
+         <text>3.3.1　呼叫堆疊</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_38"/>
+     </navPoint>
+     <navPoint id="navPoint-40" playOrder="27">
+       <navLabel>
+         <text>3.3.2　遞歸呼叫堆疊</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_39"/>
+     </navPoint>
+     <navPoint id="navPoint-41" playOrder="28">
+       <navLabel>
+         <text>3.4　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_40"/>
+     </navPoint>
+     <navPoint id="navPoint-42" playOrder="29">
+       <navLabel>
+         <text>第 4 章　快速排序</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_41"/>
+     </navPoint>
+     <navPoint id="navPoint-43" playOrder="2A">
+       <navLabel>
+         <text>4.1　分而治之</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_42"/>
+     </navPoint>
+     <navPoint id="navPoint-44" playOrder="2B">
+       <navLabel>
+         <text>4.2　快速排序</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_43"/>
+     </navPoint>
+     <navPoint id="navPoint-45" playOrder="2C">
+       <navLabel>
+         <text>4.3　再談大O表示法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_44"/>
+     </navPoint>
+     <navPoint id="navPoint-46" playOrder="2D">
+       <navLabel>
+         <text>4.3.1　比較合併排序和快速排序</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_45"/>
+     </navPoint>
+     <navPoint id="navPoint-47" playOrder="2E">
+       <navLabel>
+         <text>4.3.2　平均情況和最糟情況</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_46"/>
+     </navPoint>
+     <navPoint id="navPoint-48" playOrder="2F">
+       <navLabel>
+         <text>4.4　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_47"/>
+     </navPoint>
+     <navPoint id="navPoint-49" playOrder="30">
+       <navLabel>
+         <text>第 5 章　雜湊表</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_48"/>
+     </navPoint>
+     <navPoint id="navPoint-50" playOrder="31">
+       <navLabel>
+         <text>5.1　散列函數</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_49"/>
+     </navPoint>
+     <navPoint id="navPoint-51" playOrder="32">
+       <navLabel>
+         <text>5.2　應用案例</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_50"/>
+     </navPoint>
+     <navPoint id="navPoint-52" playOrder="33">
+       <navLabel>
+         <text>5.2.1　將雜湊表用於搜尋</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_51"/>
+     </navPoint>
+     <navPoint id="navPoint-53" playOrder="34">
+       <navLabel>
+         <text>5.2.2　防止重複</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_52"/>
+     </navPoint>
+     <navPoint id="navPoint-54" playOrder="35">
+       <navLabel>
+         <text>5.2.3　將雜湊表用作緩存</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_53"/>
+     </navPoint>
+     <navPoint id="navPoint-55" playOrder="36">
+       <navLabel>
+         <text>5.2.4　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_54"/>
+     </navPoint>
+     <navPoint id="navPoint-56" playOrder="37">
+       <navLabel>
+         <text>5.3　衝突</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_55"/>
+     </navPoint>
+     <navPoint id="navPoint-57" playOrder="38">
+       <navLabel>
+         <text>5.4　性能</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_56"/>
+     </navPoint>
+     <navPoint id="navPoint-58" playOrder="39">
+       <navLabel>
+         <text>5.4.1　填裝因子</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_57"/>
+     </navPoint>
+     <navPoint id="navPoint-59" playOrder="3A">
+       <navLabel>
+         <text>5.4.2　良好的散列函數</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_58"/>
+     </navPoint>
+     <navPoint id="navPoint-60" playOrder="3B">
+       <navLabel>
+         <text>5.5　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_59"/>
+     </navPoint>
+     <navPoint id="navPoint-61" playOrder="3C">
+       <navLabel>
+         <text>第 6 章　廣度優先搜索</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_60"/>
+     </navPoint>
+     <navPoint id="navPoint-62" playOrder="3D">
+       <navLabel>
+         <text>6.1　圖簡介</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_61"/>
+     </navPoint>
+     <navPoint id="navPoint-63" playOrder="3E">
+       <navLabel>
+         <text>6.2　圖是什麼</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_62"/>
+     </navPoint>
+     <navPoint id="navPoint-64" playOrder="3F">
+       <navLabel>
+         <text>6.3　廣度優先搜索</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_63"/>
+     </navPoint>
+     <navPoint id="navPoint-65" playOrder="40">
+       <navLabel>
+         <text>6.3.1　搜尋最短路徑</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_64"/>
+     </navPoint>
+     <navPoint id="navPoint-66" playOrder="41">
+       <navLabel>
+         <text>6.3.2　佇列</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_65"/>
+     </navPoint>
+     <navPoint id="navPoint-67" playOrder="42">
+       <navLabel>
+         <text>6.4　實現圖</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_66"/>
+     </navPoint>
+     <navPoint id="navPoint-68" playOrder="43">
+       <navLabel>
+         <text>6.5　實現算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_67"/>
+     </navPoint>
+     <navPoint id="navPoint-69" playOrder="44">
+       <navLabel>
+         <text>運行時間</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_68"/>
+     </navPoint>
+     <navPoint id="navPoint-70" playOrder="45">
+       <navLabel>
+         <text>6.6　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_69"/>
+     </navPoint>
+     <navPoint id="navPoint-71" playOrder="46">
+       <navLabel>
+         <text>第 7 章　狄克斯特拉算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_70"/>
+     </navPoint>
+     <navPoint id="navPoint-72" playOrder="47">
+       <navLabel>
+         <text>7.1　使用狄克斯特拉算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_71"/>
+     </navPoint>
+     <navPoint id="navPoint-73" playOrder="48">
+       <navLabel>
+         <text>7.2　術語</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_72"/>
+     </navPoint>
+     <navPoint id="navPoint-74" playOrder="49">
+       <navLabel>
+         <text>7.3　換鋼琴</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_73"/>
+     </navPoint>
+     <navPoint id="navPoint-75" playOrder="4A">
+       <navLabel>
+         <text>7.4　負權邊</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_74"/>
+     </navPoint>
+     <navPoint id="navPoint-76" playOrder="4B">
+       <navLabel>
+         <text>7.5　實現</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_75"/>
+     </navPoint>
+     <navPoint id="navPoint-77" playOrder="4C">
+       <navLabel>
+         <text>7.6　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_76"/>
+     </navPoint>
+     <navPoint id="navPoint-78" playOrder="4D">
+       <navLabel>
+         <text>第 8 章　貪婪算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_77"/>
+     </navPoint>
+     <navPoint id="navPoint-79" playOrder="4E">
+       <navLabel>
+         <text>8.1　教室調度問題</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_78"/>
+     </navPoint>
+     <navPoint id="navPoint-80" playOrder="4F">
+       <navLabel>
+         <text>8.2　背包問題</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_79"/>
+     </navPoint>
+     <navPoint id="navPoint-81" playOrder="50">
+       <navLabel>
+         <text>8.3　集合覆蓋問題</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_80"/>
+     </navPoint>
+     <navPoint id="navPoint-82" playOrder="51">
+       <navLabel>
+         <text>近似算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_81"/>
+     </navPoint>
+     <navPoint id="navPoint-83" playOrder="52">
+       <navLabel>
+         <text>8.4　NP完全問題</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_82"/>
+     </navPoint>
+     <navPoint id="navPoint-84" playOrder="53">
+       <navLabel>
+         <text>8.4.1　旅行商問題詳解</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_83"/>
+     </navPoint>
+     <navPoint id="navPoint-85" playOrder="54">
+       <navLabel>
+         <text>8.4.2　如何識別NP完全問題</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_84"/>
+     </navPoint>
+     <navPoint id="navPoint-86" playOrder="55">
+       <navLabel>
+         <text>8.5　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_85"/>
+     </navPoint>
+     <navPoint id="navPoint-87" playOrder="56">
+       <navLabel>
+         <text>第 9 章　動態規劃</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_86"/>
+     </navPoint>
+     <navPoint id="navPoint-88" playOrder="57">
+       <navLabel>
+         <text>9.1　背包問題</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_87"/>
+     </navPoint>
+     <navPoint id="navPoint-89" playOrder="58">
+       <navLabel>
+         <text>9.1.1　簡單算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_88"/>
+     </navPoint>
+     <navPoint id="navPoint-90" playOrder="59">
+       <navLabel>
+         <text>9.1.2　動態規劃</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_89"/>
+     </navPoint>
+     <navPoint id="navPoint-91" playOrder="5A">
+       <navLabel>
+         <text>9.2　背包問題FAQ</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_90"/>
+     </navPoint>
+     <navPoint id="navPoint-92" playOrder="5B">
+       <navLabel>
+         <text>9.2.1　再增加一件商品將如何呢</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_91"/>
+     </navPoint>
+     <navPoint id="navPoint-93" playOrder="5C">
+       <navLabel>
+         <text>9.2.2　行的排列順序發生變化時結果將如何</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_92"/>
+     </navPoint>
+     <navPoint id="navPoint-94" playOrder="5D">
+       <navLabel>
+         <text>9.2.3　可以逐列而不是逐行填充網格嗎</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_93"/>
+     </navPoint>
+     <navPoint id="navPoint-95" playOrder="5E">
+       <navLabel>
+         <text>9.2.4　增加一件更小的商品將如何呢</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_94"/>
+     </navPoint>
+     <navPoint id="navPoint-96" playOrder="5F">
+       <navLabel>
+         <text>9.2.5　可以偷商品的一部分嗎</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_95"/>
+     </navPoint>
+     <navPoint id="navPoint-97" playOrder="60">
+       <navLabel>
+         <text>9.2.6　旅遊行程最優化</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_96"/>
+     </navPoint>
+     <navPoint id="navPoint-98" playOrder="61">
+       <navLabel>
+         <text>9.2.7　處理相互依賴的情況</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_97"/>
+     </navPoint>
+     <navPoint id="navPoint-99" playOrder="62">
+       <navLabel>
+         <text>9.2.8　計算最終的解時會涉及兩個以上的子背包嗎</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_98"/>
+     </navPoint>
+     <navPoint id="navPoint-100" playOrder="63">
+       <navLabel>
+         <text>9.2.9　最優解可能導致背包沒裝滿嗎</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_99"/>
+     </navPoint>
+     <navPoint id="navPoint-101" playOrder="64">
+       <navLabel>
+         <text>9.3　最長公共子串</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_100"/>
+     </navPoint>
+     <navPoint id="navPoint-102" playOrder="65">
+       <navLabel>
+         <text>9.3.1　繪製網格</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_101"/>
+     </navPoint>
+     <navPoint id="navPoint-103" playOrder="66">
+       <navLabel>
+         <text>9.3.2　填充網格</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_102"/>
+     </navPoint>
+     <navPoint id="navPoint-104" playOrder="67">
+       <navLabel>
+         <text>9.3.3　揭曉答案</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_103"/>
+     </navPoint>
+     <navPoint id="navPoint-105" playOrder="68">
+       <navLabel>
+         <text>9.3.4　最長公共子序列</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_104"/>
+     </navPoint>
+     <navPoint id="navPoint-106" playOrder="69">
+       <navLabel>
+         <text>9.3.5　最長公共子序列之解決方案</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_105"/>
+     </navPoint>
+     <navPoint id="navPoint-107" playOrder="6A">
+       <navLabel>
+         <text>9.4　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_106"/>
+     </navPoint>
+     <navPoint id="navPoint-108" playOrder="6B">
+       <navLabel>
+         <text>第 10 章　K最近鄰算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_107"/>
+     </navPoint>
+     <navPoint id="navPoint-109" playOrder="6C">
+       <navLabel>
+         <text>10.1　橙子還是柚子</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_108"/>
+     </navPoint>
+     <navPoint id="navPoint-110" playOrder="6D">
+       <navLabel>
+         <text>10.2　建立推薦系統</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_109"/>
+     </navPoint>
+     <navPoint id="navPoint-111" playOrder="6E">
+       <navLabel>
+         <text>10.2.1　特徵抽取</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_110"/>
+     </navPoint>
+     <navPoint id="navPoint-112" playOrder="6F">
+       <navLabel>
+         <text>10.2.2　回歸</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_111"/>
+     </navPoint>
+     <navPoint id="navPoint-113" playOrder="70">
+       <navLabel>
+         <text>10.2.3　挑選合適的特徵</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_112"/>
+     </navPoint>
+     <navPoint id="navPoint-114" playOrder="71">
+       <navLabel>
+         <text>10.3　機器學習簡介</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_113"/>
+     </navPoint>
+     <navPoint id="navPoint-115" playOrder="72">
+       <navLabel>
+         <text>10.3.1　OCR</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_114"/>
+     </navPoint>
+     <navPoint id="navPoint-116" playOrder="73">
+       <navLabel>
+         <text>10.3.2　建立垃圾郵件過濾器</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_115"/>
+     </navPoint>
+     <navPoint id="navPoint-117" playOrder="74">
+       <navLabel>
+         <text>10.3.3　預測股票市場</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_116"/>
+     </navPoint>
+     <navPoint id="navPoint-118" playOrder="75">
+       <navLabel>
+         <text>10.4　小結</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_117"/>
+     </navPoint>
+     <navPoint id="navPoint-119" playOrder="76">
+       <navLabel>
+         <text>第 11 章　接下來如何做</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_118"/>
+     </navPoint>
+     <navPoint id="navPoint-120" playOrder="77">
+       <navLabel>
+         <text>11.1　樹</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_119"/>
+     </navPoint>
+     <navPoint id="navPoint-121" playOrder="78">
+       <navLabel>
+         <text>11.2　反向索引</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_120"/>
+     </navPoint>
+     <navPoint id="navPoint-122" playOrder="79">
+       <navLabel>
+         <text>11.3　傅立葉變換</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_121"/>
+     </navPoint>
+     <navPoint id="navPoint-123" playOrder="7A">
+       <navLabel>
+         <text>11.4　並行算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_122"/>
+     </navPoint>
+     <navPoint id="navPoint-124" playOrder="7B">
+       <navLabel>
+         <text>11.5　MapReduce</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_123"/>
+     </navPoint>
+     <navPoint id="navPoint-125" playOrder="7C">
+       <navLabel>
+         <text>11.5.1　分散式算法為何很有用</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_124"/>
+     </navPoint>
+     <navPoint id="navPoint-126" playOrder="7D">
+       <navLabel>
+         <text>11.5.2　映射函數</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_125"/>
+     </navPoint>
+     <navPoint id="navPoint-127" playOrder="7E">
+       <navLabel>
+         <text>11.5.3　歸並函數</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_126"/>
+     </navPoint>
+     <navPoint id="navPoint-128" playOrder="7F">
+       <navLabel>
+         <text>11.6　布隆過濾器和HyperLogLog</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_127"/>
+     </navPoint>
+     <navPoint id="navPoint-129" playOrder="80">
+       <navLabel>
+         <text>11.6.1　布隆過濾器</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_128"/>
+     </navPoint>
+     <navPoint id="navPoint-130" playOrder="81">
+       <navLabel>
+         <text>11.6.2　HyperLogLog</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_129"/>
+     </navPoint>
+     <navPoint id="navPoint-131" playOrder="82">
+       <navLabel>
+         <text>11.7　SHA算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_130"/>
+     </navPoint>
+     <navPoint id="navPoint-132" playOrder="83">
+       <navLabel>
+         <text>11.7.1　比較檔案</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_131"/>
+     </navPoint>
+     <navPoint id="navPoint-133" playOrder="84">
+       <navLabel>
+         <text>11.7.2　檢查密碼</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_132"/>
+     </navPoint>
+     <navPoint id="navPoint-134" playOrder="85">
+       <navLabel>
+         <text>11.8　局部敏感的散列算法</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_133"/>
+     </navPoint>
+     <navPoint id="navPoint-135" playOrder="86">
+       <navLabel>
+         <text>11.9　Diffie-Hellman密鑰交換</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_134"/>
+     </navPoint>
+     <navPoint id="navPoint-136" playOrder="87">
+       <navLabel>
+         <text>11.10　線性規劃</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_135"/>
+     </navPoint>
+     <navPoint id="navPoint-137" playOrder="88">
+       <navLabel>
+         <text>11.11　結語</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_136"/>
+     </navPoint>
+     <navPoint id="navPoint-138" playOrder="89">
+       <navLabel>
+         <text>練習答案</text>
+       </navLabel>
+       <content src="text00000.html#nav_point_137"/>
+     </navPoint>
+   </navMap>
+</ncx>

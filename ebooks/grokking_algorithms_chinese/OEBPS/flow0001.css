@@ -1,0 +1,262 @@
+p{
+    text-indent:0;
+    margin: 1em 0;
+}
+
+p.editing-tag {
+    border: none;
+    border-radius: 2px;
+    float: left;
+    font-size:70%;
+    font-weight: bold;
+    white-space: nowrap;
+    padding:0 4px 0 4px;
+    margin:0 3px 0 10px;
+    background-color:#333;
+    color:#fff;
+}
+
+.editing-block {
+padding: 0 0 0 5px;
+margin: 1.4em 0;
+border-left: 5px solid #999;
+font-size: 75%;
+}
+
+
+p.超强提示{
+
+} 
+
+p.超强提示标签 {
+
+}
+
+p.提示{
+
+} 
+
+
+p.提示标签 {
+
+}
+
+p.强提示{
+
+} 
+
+p.强提示标签 {
+
+}
+
+.注释编号{
+  font-size: 85%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.5em;
+  font-weight:bold;
+  text-decoration:none;
+  font-style:normal;
+}
+.注释编号下{
+  font-size:85%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.5em;
+  font-weight:bold;
+}
+
+.注释内容 {
+    border-left:4px solid #999;
+    padding-left:5px;
+    margin: 0 0 1.4em 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size:75%;
+}
+
+
+.图{
+    text-align:center;
+}
+
+.图题{
+    text-align:center;
+    font-size:85%;
+}
+
+.表题{
+    text-align:center;
+    font-size:85%;
+    font-weight:bold;
+}
+
+.代码清单标题{
+    text-align:right;
+    font-size:85%;
+}
+
+.strong-code-line{
+    font-weight:bold;
+    background-color:#c7daf2 
+}
+
+acronym{
+    color:#009900;
+    font-weight:bold;
+}
+
+ul
+{
+    list-style-type:disc;
+}
+
+ul ul
+{
+    list-style-type:circle;
+}
+
+ul ul ul
+{
+    list-style-type:square;
+}
+
+ul ul ul ul
+{
+    list-style-type:disc;
+}
+
+ol
+{
+    list-style-type:decimal-leading-zero;
+}
+
+ol ol
+{
+    list-style-type:lower-alpha;
+}
+
+ol ol ol
+{
+    list-style-type:lower-roman;
+}
+
+ol ol ol ol
+{
+    list-style-type:lower-greek;
+}
+
+
+.代码编号分隔,
+.列表编号分隔
+{
+    display:none;
+}
+
+.编注{
+color: #fff;
+background-color: #890707;
+}
+
+
+table {  
+margin: 15px auto 30px auto !important;
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+a{
+   text-decoration:none;
+}
+
+code
+{
+    font-family: Courier, Menlo, Monaco, Consolas, monospace;
+}
+
+tr:nth-of-type(even) 
+{
+  background-color: #f1f6fc;
+}
+
+th{
+  font-weight: bold;
+  text-align:center;
+  padding: 0.3em;
+  
+vertical-align:auto;
+  
+font-size: 75%;
+  
+border: 1px solid #000;
+  
+page-break-inside: avoid;
+}
+
+.toc-level-1
+{
+text-indent:0;
+margin:0 0;
+line-height:1.5;
+}
+
+.toc-level-2
+{
+text-indent:2em;
+margin:0 0;
+line-height:1.5;
+}
+
+.toc-level-3
+{
+text-indent:4em;
+margin:0 0;
+line-height:1.5;
+}
+
+td {
+  
+padding: 0.3em;
+  
+text-align: left;
+  
+vertical-align: auto;
+  
+font-size: 75%;
+  
+border: 1px solid #000;
+  
+page-break-inside: avoid;
+
+}
+
+
+
+table code {
+  font-size: smaller;
+}
+
+pre{
+font-family: Courier, Menlo, Monaco, Consolas, monospace;
+border:1px solid #000;
+font-size:75%;
+padding:0.3em;
+margin: 1.3em 0;
+}
+
+td pre{
+border:none;
+padding:0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1em 0 0 0;
+  padding: 0;
+}
+

@@ -1,0 +1,1157 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" class="calibre">
+  <head>
+    <meta content="Microsoft Word 15 (filtered)" name="Generator"/>
+    <title>Style A ReadMe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre8">
+  <div class="wordsection">
+    <h1 class="cochapternumber">4<span class="calibre16">  </span> Evolutionary algorithms</h1>
+
+    <p class="cosummaryhead">This chapter covers</p>
+
+    <p class="cosummarybulletcxspfirst"><span class="calibre17">·<span class="calibre14">    </span></span> The inspiration for evolutionary algorithms</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Solving problems with evolutionary algorithms</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Understanding the life cycle of a genetic algorithm</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Designing and developing a genetic algorithm to solve optimization problems</p>
+
+    <p class="cosummarybulletcxsplast"><span class="calibre17">·<span class="calibre14">    </span></span> Configuring a genetic algorithm life cycle</p>
+
+    <h2 class="head" id="sigil_toc_id_64">4.1<span class="calibre10">     </span> What is evolution?</h2>
+
+    <p class="body1">When we look at the world around us, we sometimes wonder how everything we see and interact with came to be. One way to explain this is the theory of evolution. The theory of evolution suggests that the living organisms that we see today did not suddenly exist that way, but evolved through millions of years of subtle changes, with each generation adapting to their environments. This implies that the physical and cognitive characteristics of each living organism is a result of best fitting to their environment for survival. Evolution suggests that organisms evolve through reproduction by producing children of mixed genes from their parents. Given the fitness of these individuals in their environment, stronger individuals have a higher likelihood of survival.</p>
+
+    <p class="body1">We often make the mistake of thinking that evolution is a linear process, with clear changes in successors. In reality, evolution is far more chaotic, with divergence in a species. A multitude of variants of a species is created through reproduction and mixing of genes. Noticeable differences in a species could take thousands of years to manifest and be realized only by comparing the average individual in each of those time points. Figure 4.1 depicts actual evolution versus the commonly mistaken version of evolution of humans.</p>
+
+    <p class="figure"><img alt="04_01" class="calibre11" src="../Images/04_01.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.1 The idea of linear human evolution vs. actual human evolution</p>
+
+    <p class="body1">Charles Darwin proposed a theory of evolution that centers on natural selection. <span class="italics">Natural selection</span> is the concept that stronger members of a population are more likely to survive due to being more fit for their environment, which means they reproduce more and, thus, carry traits that are beneficial to survival to future generations - that could potentially perform better than their ancestors.</p>
+
+    <p class="body1">A classic example of evolution for adaption is the peppered moth. The peppered moth was originally light in color, which made for good camouflage against predators as the moth could blend in with light-colored surfaces in its environment. Only around 2 percent of the moth population was darker in color. After the Industrial Revolution, around 95 percent of the species were of the darker color variant. One explanation is that the lighter-colored moths could not blend in with as many surfaces anymore because pollution had darkened surfaces; thus lighter-colored moths were eaten more by predators because those moths were more visible. The darker moths had a greater advantage in blending in with the darker surfaces, so they survived longer and reproduced more, and their genetic information was more widely spread to successors.</p>
+
+    <p class="body1">Among the peppered moths, the attribute that changed on a high level was the color of the moth. This property didn’t just magically switch, however. For the change to happen, genes in moths with the darker color had to be carried to successors.</p>
+
+    <p class="body1">In other examples of natural evolution, we may see dramatic changes in more than simply color between different individuals, but in actuality, these changes are influenced by lower-level genetic differences over many generations.</p>
+
+    <p class="figure"><img alt="04_02" class="calibre11" src="../Images/04_02.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.2 The evolution of the peppered moth</p>
+
+    <p class="body1">Evolution encompasses the idea that in a population of species, pairs of organisms reproduce. The offspring are a combination of the parent’s genes, but small changes are made in that offspring through a process called <span class="italics">mutation</span>. Then the offspring become part of the population. Not all members of a population live on, however. As we know, disease, injury, and other factors cause individuals to die. Individuals that are more adaptive to the environment around them are more likely to live on, a situation that gave rise to the term <span class="italics">survival of the fittest</span>. Based on Darwinian evolution theory, a population has the following attributes:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Variety</span>—Individuals in the population have different genetic traits.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Hereditary</span>—A child inherits genetic properties from its parents.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Selection</span>—A mechanism that measures the fitness of individuals, and stronger individuals have the highest likelihood of survival (survival of the fittest).</p>
+
+    <p class="body1">These properties imply that the following things happen during the process of evolution:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Reproduction</span>—Usually, two individuals in the population reproduce to create offspring.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Crossover and mutation</span>—The offspring created through reproduction contain a mix of their parents’ genes and have slight random changes in their genetic code.</p>
+
+    <p class="figure"><img alt="04_03" class="calibre11" src="../Images/04_03.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.3 A simple example of reproduction and mutation</p>
+
+    <p class="body1">In summary, evolution is a marvelous and chaotic system that produces variations of life forms, some of which are better than others for specific things in specific environments. This theory also applies to evolutionary algorithms; learnings from biological evolution are harnessed for finding optimal solutions to practical problems by generating diverse solutions and converging on better performing ones over many generations.</p>
+
+    <p class="body1">This chapter and chapter 5 are dedicated to exploring evolutionary algorithms, which are powerful but underrated approaches to solving hard problems. Evolutionary algorithms can be used in isolation or in conjunction with constructs such as neural networks. Having a solid grasp of this concept opens many possibilities for solving different novel problems.</p>
+
+    <h2 class="head" id="sigil_toc_id_65">4.2<span class="calibre10">     </span> Problems applicable to evolutionary algorithms</h2>
+
+    <p class="body1">Evolutionary algorithms aren’t applicable to solving all problems, but they are powerful for solving optimization problems in which the solution consists of a large number of permutations or choices. These problems typically consist of many valid solutions, with some being more optimal than others.</p>
+
+    <p class="body1">Consider the Knapsack Problem, a classic problem used in computer science to explore how algorithms work and how efficient they are.</p>
+
+    <p class="body1">In the Knapsack Problem, a knapsack has a specific maximum weight that it can hold. Several items are available to be stored in the knapsack, and each item has a different weight and value. The goal is to fit as many items into the knapsack as possible so that the total value is maximized and the total weight does not exceed the knapsack’s limit. The physical size and dimensions of the items are ignored in the simplest variation of the problem.</p>
+
+    <p class="figure"><img alt="04_04" class="calibre11" src="../Images/04_04.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.4 A simple Knapsack Problem example</p>
+
+    <p class="body1">As a trivial example, given the specification of the problem in table 4.1, a knapsack can hold a total weight capacity of 9 kg, and it could contain either of the eight items of varying weight and value.</p>
+
+    <p class="tablecaption">Table 4.1 Knapsack weight capacity: 9 kg</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="501" class="msotablegrid">
+      <tr class="calibre24">
+        <td char="83" class="calibre25" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item ID</p>
+          </div>
+        </td>
+
+        <td char="153" class="calibre27" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item name</p>
+          </div>
+        </td>
+
+        <td char="132" class="calibre28" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Weight (kg)</p>
+          </div>
+        </td>
+
+        <td char="133" class="calibre29" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Value</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody">Pearls</p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody">4</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody">Gold</p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody">7</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody">Crown</p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody">5</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody">Coin</p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody">1</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody">Axe</p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody">4</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody">Sword</p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody">3</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody">Ring</p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody">5</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody">Cup</p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody">1</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">This problem has 255 possible solutions, including the following:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Solution 1</span>—Include Item 1, Item 4, and Item 6. The total weight is 8 kg, and the total value is 8.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Solution 2</span>—Include Item 1, Item 3, and Item 7. The total weight is 9 kg, and the total value is 14.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Solution 3</span>—Include Item 2, Item 3, and Item 6. The total weight is 15 kg, which exceeds the knapsack’s capacity.</p>
+
+    <p class="figure"><img alt="04_05" class="calibre11" src="../Images/04_05.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.5 The optimal solution for the simple Knapsack Problem example</p>
+
+    <p class="body1">Clearly, the solution with the most value is <span class="italics">Solution 2</span>. Don’t concern yourself too much about how the number of possibilities is calculated, but understand that the possibilities explode as the number of potential items increases.</p>
+
+    <p class="body1">Although this trivial example can be solved by hand, the Knapsack Problem could have varying weight constraints, a varying number of items, and varying weights and values for each item, making it impossible to solve by hand as the variables grow larger. It will also be computationally expensive to try to brute-force every combination of items when the variables grow; thus, we look for algorithms that are efficient at finding a desirable solution.</p>
+
+    <p class="body1">Note that we qualify the best solution we can find as a <span class="italics">desirable</span> solution rather than the <span class="italics">optimal</span> solution. Although some algorithms attempt to find the one true optimal solution to the Knapsack Problem, an evolutionary algorithm attempts to find the optimal solution but is not guaranteed to find it. The algorithm will find a solution that is acceptable for the use case, however—a subjective opinion of what an acceptable solution is based on the problem. For a mission-critical health system, for example, a “good enough” solution may not cut it, but for a song-recommender system, it may be acceptable.</p>
+
+    <p class="body1">Now consider a larger dataset (yes, a giant knapsack) in table 4.2, in which the number of items and varying weights and values make the problem difficult to solve by hand. By understanding the complexity of this dataset, you can easily see why many computer science algorithms are measured by their performance in solving such problems. Performance is defined as how well a specific solution solves a problem, not necessarily computational performance. In the Knapsack Problem, a solution that yields a higher total value would be better-performing. Evolutionary algorithms provide one method of finding solutions to the Knapsack Problem.</p>
+
+    <p class="tablecaption">Table 4.2 Knapsack capacity: 6,404,180 kg</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="501" class="msotablegrid">
+      <tr class="calibre24">
+        <td char="83" class="calibre25" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item ID</p>
+          </div>
+        </td>
+
+        <td char="153" class="calibre27" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item name</p>
+          </div>
+        </td>
+
+        <td char="132" class="calibre28" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Weight (kg)</p>
+          </div>
+        </td>
+
+        <td char="133" class="calibre29" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Value</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Axe</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">32252</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">68674</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Bronze coin</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">225790</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">471010</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">3</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Crown</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">468164</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">944620</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">4</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Diamond statue</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">489494</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">962094</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Emerald belt</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">35384</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">78344</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">6</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Fossil</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">265590</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">579152</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">7</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Gold coin</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">497911</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">902698</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">8</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Helmet</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">800493</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1686515</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">9</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Ink</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">823576</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1688691</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Jewel box</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">552202</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1056157</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">11</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Knife</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">323618</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">677562</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">12</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Long sword</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">382846</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">833132</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">13</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Mask</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">44676</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">99192</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">14</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Necklace</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">169738</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">376418</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Opal badge</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">610876</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1253986</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">16</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Pearls</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">854190</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1853562</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">17</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Quiver</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">671123</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1320297</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">18</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Ruby ring</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">698180</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1301637</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">19</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Silver bracelet</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">446517</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">859835</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Timepiece</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">909620</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1677534</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">21</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Uniform</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">904818</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1910501</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">22</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Venom potion</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">730061</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1528646</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">23</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Wool scarf</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">931932</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1827477</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">24</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Crossbow</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">952360</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2068204</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">25</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Yesteryear book</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">926023</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1746556</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="83" class="calibre30" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">26</span></p>
+        </td>
+
+        <td char="153" class="calibre31" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Zinc cup</span></p>
+        </td>
+
+        <td char="132" class="calibre32" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">978724</span></p>
+        </td>
+
+        <td char="133" class="calibre33" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2100851</span></p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">One way to solve this problem is to use a brute-force approach. This approach involves calculating every possible combination of items and determining the value of each combination that satisfies the knapsack’s weight constraint until the best solution is encountered.</p>
+
+    <p class="body1">Figure 4.6 shows some benchmark analytics for the brute-force approach. Note that the computation is based on the hardware of an average personal computer.</p>
+
+    <p class="figure"><img alt="04_06" class="calibre11" src="../Images/04_06.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.6 Performance analytics of brute-forcing the Knapsack Problem</p>
+
+    <p class="body1">Keep the Knapsack Problem in mind, as it will be used throughout this chapter as we attempt to understand, design, and develop a genetic algorithm to find acceptable solutions to this problem.</p>
+
+    <p class="callout"><span class="callouthead">NOTE</span> <span xml:lang="X-NONE">A note about the term <span class="italics">performance</span>: From the perspective of an individual solution, performance is how well the solution solves the problem. From the perspective of the algorithm, performance may be how well a specific configuration does in finding a solution. Finally, performance may mean computational cycles. Bear in mind that this term is used differently based on the context.</span></p>
+
+    <p class="body1">The thinking of using a genetic algorithm to solve the Knapsack Problem can be applied to a range of practical problems. If a logistics company wants to optimize the packing of trucks based on their destinations, for example, a genetic algorithm would be useful. If that same company wanted to find the shortest route between several destinations, a genetic algorithm would be useful as well. If a factory refined items into raw material via a conveyor-belt system, and the order of the items influenced productivity, a genetic algorithm would be useful in determining that order.</p>
+
+    <p class="body1">When we dive into the thinking, approach, and life cycle of the genetic algorithm, it should become clear where this powerful algorithm can be applied, and perhaps you will think of other uses in your work.</p>
+
+    <p class="body1">It is important to keep in mind that a genetic algorithm is <span class="italics">stochastic</span>, which means that the output of the algorithm is likely to be different each time it is run.</p>
+
+    <h2 class="head" id="sigil_toc_id_66">4.3<span class="calibre10">     </span> Genetic algorithm: Life cycle</h2>
+
+    <p class="body1">The genetic algorithm is a specific algorithm in the family of evolutionary algorithms. Each algorithm works on the same premise of evolution but has small tweaks in the different parts of the life cycle to cater to different problems. We explore some of these parameters in chapter 5.</p>
+
+    <p class="body1">Genetic algorithms are used to evaluate large search spaces for a good solution. It is important to note that a genetic algorithm is not guaranteed to find the absolute best solution; it attempts to find the global best while avoiding local best solutions.</p>
+
+    <p class="body1">A <span class="italics">global best</span> is the best possible solution, and a <span class="italics">local best</span> is a solution that is less optimal. Figure 4.7 represents the possible best solutions if the solution must be minimized—that is, the smaller the value, the better. If the goal was to maximize a solution, the larger the value, the better. Optimization algorithms like genetic algorithms aim to incrementally find local best solutions in search of the global best solution.</p>
+
+    <p class="figure"><img alt="04_07" class="calibre11" src="../Images/04_07.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.7 Local best vs. global best</p>
+
+    <p class="body1">Careful attention is needed when configuring the parameters of the algorithm so that it strives for diversity in solutions at the start and gradually gravitates toward better solutions through each generation. At the start, potential solutions should vary widely in individual genetic attributes. Without divergence at the start, the risk of getting stuck in a local best increases.</p>
+
+    <p class="figure"><img alt="04_08" class="calibre11" src="../Images/04_08.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.8 Diversity to convergence</p>
+
+    <p class="body1">The configuration for a genetic algorithm is based on the problem space. Each problem has a unique context and a different domain in which data is represented, and solutions are evaluated differently.</p>
+
+    <p class="body1">The general life cycle of a genetic algorithm is as follows:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Creating a population</span>—Creating a random population of potential solutions.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Measuring fitness of individuals in the population</span>—Determining how good a specific solution is. This task is accomplished by using a fitness function that scores solutions to determine how good they are.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Selecting parents based on their fitness</span>—Selecting pairs of parents that will reproduce offspring.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Reproducing individuals from parents</span>—Creating offspring from their parents by mixing genetic information and applying slight mutations to the offspring.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Populating the next generation</span>—Selecting individuals and offspring from the population that will survive to the next generation.</p>
+
+    <p class="body1">Several steps are involved in implementing a genetic algorithm. These steps encompass the stages of the algorithm life cycle.</p>
+
+    <p class="figure"><img alt="04_09" class="calibre11" src="../Images/04_09.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.9 Genetic algorithm life cycle</p>
+
+    <p class="body1">With the Knapsack Problem in mind, how would we use a genetic algorithm to find solutions to the problem? Section 4.4 dives into the process.</p>
+
+    <h2 class="head" id="sigil_toc_id_67">4.4<span class="calibre10">     </span> Encoding the solution space</h2>
+
+    <p class="body1">When we use a genetic algorithm, it is paramount to do the encoding step correctly, which requires careful design of the representation of possible states. The <span class="italics">state</span> is a data structure with specific rules that represents possible solutions to a problem. Furthermore, a collection of states comprises a population.</p>
+
+    <p class="figure"><img alt="04_10" class="calibre11" src="../Images/04_10.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.10 Encoding the solution</p>
+
+    <div class="calibre18">
+      <p class="sidebarhead">Terminology</p>
+    </div>
+
+    <p class="sidebara"><span class="calibre19">With respect to evolutionary algorithms, an individual candidate solution is called a <span class="italics">chromosome</span>. A chromosome is comprised of genes. The <span class="italics">gene</span> is the logical type for the unit, and the <span class="italics">allele</span> is the actual value stored in that unit. A <span class="italics">genotype</span> is a representation of a solution, and a <span class="italics">phenotype</span> is a unique solution itself. Each chromosome always has the same number of genes. A collection of chromosomes forms a <span class="italics">population</span>.</span></p>
+
+    <div class="calibre20">
+      <p class="sidebaraend"> </p>
+    </div>
+
+    <p class="figure"><img alt="04_11" class="calibre11" src="../Images/04_11.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.11 Terminology of the data structures representing a population of solutions</p>
+
+    <p class="body1">In the Knapsack Problem, several items can be placed in the knapsack. A simple way to describe a possible solution that contains some items but not others is binary encoding. <span class="italics">Binary encoding</span> represents excluded items with 0s and included items with 1s. If the value at gene index 3 is 1, for example, that item is marked to be included. The complete binary string is always be the same size: the number of items available for selection. Several alternative encoding schemes exist, however, and are described in Chapter 5.</p>
+
+    <p class="figure"><img alt="04_12" class="calibre11" src="../Images/04_12.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.12 Binary-encoding the Knapsack Problem</p>
+
+    <h3 class="head1" id="sigil_toc_id_68">4.4.1<span class="calibre15">  </span> Binary encoding: Representing possible solutions with zeros and ones</h3>
+
+    <p class="body1">Binary encoding represents a gene in terms of 0 or 1, so a chromosome is represented by a string of binary bits. Binary encoding can be used in versatile ways to express the presence of a specific element or even encoding numeric values as binary numbers. The advantage of binary encoding is that it is usually more performant due to the use of the primitive type used. Using binary encoding places less demand on working memory, and depending on the language used, binary operations are computationally faster. But critical thought must be used to ensure that the encoding makes sense for the respective problem and represents potential solutions well; otherwise, the algorithm may perform poorly.</p>
+
+    <p class="figure"><img alt="04_13" class="calibre11" src="../Images/04_13.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.13 Binary-encoding the larger dataset for the Knapsack Problem</p>
+
+    <p class="body1">Given the Knapsack Problem with a dataset that consists of 26 items of varying weight and value, a binary string can be used to represent the inclusion of each item. The result is a 26-character string in which for each index, 0 means that the respective item is excluded and 1 means that the respective item is included.</p>
+
+    <p class="body1">Other encoding schemes—including real-value encoding, order encoding, and tree encoding—are discussed in chapter 5.</p>
+
+    <p class="head2">Exercise: What is a possible encoding for the following problem?</p>
+
+    <p class="figure"><img alt="04_13a" class="calibre11" src="../Images/04_13a.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: What is a possible encoding for the following problem?</p>
+
+    <p class="body1">Because the number of possible words is always the same, and the words are always in the same position, binary encoding can be used to describe which words are included and which are excluded. The chromosome consists of 9 genes, each gene indicating a word in the phrase.</p>
+
+    <p class="figure"><img alt="04_13b" class="calibre11" src="../Images/04_13b.png"/><br class="calibre12"/></p>
+
+    <h2 class="head" id="sigil_toc_id_69">4.5<span class="calibre10">     </span> Creating a population of solutions</h2>
+
+    <p class="body1">In the beginning, the population was created. The first step in a genetic algorithm is initializing random potential solutions to the problem at hand. In the process of initializing the population, although the chromosomes are generated randomly, the constraints of the problem must be taken into consideration, and the potential solutions should be valid or assigned a terrible fitness score if they violate the constraints. Each individual in the population may not solve the problem well, but the solution is valid. As mentioned in an earlier example of packing items into a knapsack, a solution that specifies packing the same item more than once should be an invalid solution and should not form part of the population of potential solutions.</p>
+
+    <p class="figure"><img alt="04_14" class="calibre11" src="../Images/04_14.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.14 Create initial population</p>
+
+    <p class="body1">Given how the Knapsack Problem’s solution state is represented, this implementation randomly decides whether each item should be is included in the bag. That said, only solutions that satisfy the weight-limit constraint should be considered. The problem with simply moving from left to right and randomly choosing whether the item is included a bias toward the items on the left end of the chromosome. Similarly, if we start from the right, we will be biased toward items on the right. One possible way to get around this is to generate an entire individual with random genes and then determine whether the solution is valid and does not violate any constraints. Assigning a terrible score to invalid solutions can solve this problem.</p>
+
+    <p class="figure"><img alt="04_15" class="calibre11" src="../Images/04_15.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.15 An example of a population of solutions</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">To generate an initial population of possible solutions, an empty array is created to hold the individuals. Then, for each individual in the population, an empty array is created to hold the genes of the individual. Each gene is randomly set to 1 or 0, indicating if whether the item at that gene index is included.</p>
+
+    <p class="figure"><img alt="04_15a" class="calibre11" src="../Images/04_15a.png"/><br class="calibre12"/></p>
+
+    <h2 class="head" id="sigil_toc_id_70">4.6<span class="calibre10">     </span> Measuring fitness of individuals in a population</h2>
+
+    <p class="body1">When a population has been created, the fitness of each individual in the population needs to be determined. Fitness defines how well a solution performs. The fitness function is critical to the life cycle of a genetic algorithm. If the fitness of the individuals is measured incorrectly or in a way that does not attempt to strive for the optimal solution, the selection process for parents of new individuals and new generations will be influenced - the algorithm will be flawed and cannot strive to find the best possible solution.</p>
+
+    <p class="body1">Fitness functions are similar to the heuristics that we explored in Chapter 3. They are guidelines for finding good solutions.</p>
+
+    <p class="figure"><img alt="04_16" class="calibre11" src="../Images/04_16.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.16 Measure fitness of individuals</p>
+
+    <p class="body1">In our example, the solution attempts to maximize the value of the items in the knapsack while respecting the weight-limit constraints. The fitness function measures the total value of the items in the knapsack for each individual. The result is that individuals with higher total values are more fit. Note that an invalid individual appears in figure 4.17 to highlight that its fitness score would result in 0—a terrible score, because it exceeds the weight capacity for this instance of the problem, which is 6,404,180.</p>
+
+    <p class="figure"><img alt="04_17" class="calibre11" src="../Images/04_17.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.17 Measuring the fitness of individuals</p>
+
+    <p class="body1">Depending on the problem being solved, the result of the fitness function may be required to be minimized or maximized. In the Knapsack Problem, the contents of the knapsack can be maximized within constraints, or the empty space in the knapsack could be minimized. The approach depends on the interpretation of the problem.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">To calculate the fitness of an individual in the Knapsack Problem, the sum of the value of each item that the respective individual includes must be determined. This task is accomplished by setting the total value to 0 and then iterating over each gene to determine whether the item it represents it is included. If the item is included, the value of the item represented by that gene is added to the total value. Similarly, the total weight is calculated to ensure that the solution is valid. The concepts of calculating fitness and checking constraints can be split for clearer separation of concerns.</p>
+
+    <p class="figure"><img alt="04_17a" class="calibre11" src="../Images/04_17a.png"/><br class="calibre12"/></p>
+
+    <h2 class="head" id="sigil_toc_id_71">4.7<span class="calibre10">     </span> Selecting parents based on their fitness</h2>
+
+    <p class="body1">The next step in a genetic algorithm is selecting parents that will produce new individuals. In Darwinian theory, the individuals that are more fit have a higher likelihood of reproduction than others because they typically live longer. Furthermore, these individuals contain desirable attributes for inheritance due to their superior performance in their environment. That said, some individuals are likely to reproduce even if they are not the fittest in the entire group, and these individuals may contain strong traits even though they are not strong in their entirety.</p>
+
+    <p class="body1">Each individual has a calculated fitness that is used to determine the probability of it being selected to be a parent to a new individual. This attribute makes the genetic algorithm stochastic in nature.</p>
+
+    <p class="figure"><img alt="04_18" class="calibre11" src="../Images/04_18.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.18 Select parents</p>
+
+    <p class="body1">A popular technique in choosing parents based on their fitness is <span class="italics">Roulette Wheel Selection</span>. This strategy gives different individuals portions of a wheel based on their fitness. The wheel is “spun,” and an individual is selected. Higher fitness gives an individual a larger slice of the wheel. This process is repeated until the number of desired parents is reached.</p>
+
+    <p class="body1">By calculating the probabilities of 16 individuals of varying fitness, the wheel allocates a slice to each. Because many individuals perform similarly, there are many slices of similar size.</p>
+
+    <p class="figure"><img alt="04_19" class="calibre11" src="../Images/04_19.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.19 Determining the probability of selection for each individual</p>
+
+    <p class="body1">The number of parents selected to be used for reproducing new offspring is determined by the intended total number of offspring required, which is determined by the desired population size for each generation. Two parents are selected, and offspring are created. This process repeats with different parents selected (with a chance of the same individual’s being a parent more than once) until the desired number of offspring has been generated. Two parents can reproduce a single mixed child or two mixed children. This concept will be made clearer later in this chapter.</p>
+
+    <p class="body1">In our Knapsack Problem example, the individuals with greater fitness are those that fill the bag with the most combined value while respecting the weight-limit constraint.</p>
+
+    <p class="body1">Population models are ways to control diversity of the population, steady state and generational are two population models that have their own advantages and disadvantages.</p>
+
+    <h3 class="head1" id="sigil_toc_id_72">4.7.1<span class="calibre15">  </span> Steady state: Replacing a portion of the population each generation</h3>
+
+    <p class="body1">This high-level approach to population management is not an alternative to the other selection strategies, but a scheme that uses them. The idea is that the majority of the population is retained, and a small group of weaker individuals are removed and replaced with new offspring. This process mimics the cycle of life and death, in which weaker individuals die and new individuals are made through reproduction. If there were 100 individuals in the population, a portion of the population would be existing individuals, and a smaller portion would be new individuals created via reproduction. There may be 80 individuals from the current generation and 20 new individuals.</p>
+
+    <h3 class="head1" id="sigil_toc_id_73">4.7.2<span class="calibre15">  </span> Generational: Replacing the entire population each generation</h3>
+
+    <p class="body1">This high-level approach to population management is similar to the Steady State model but is not an alternative to selection strategies. The Generational model creates offspring individuals equal to the population size and replaces the entire population with the new offspring. If there were 100 individuals in the population, each generation would result in 100 new individuals via reproduction.</p>
+
+    <p class="body1">Steady State and Generational are overarching ideas for designing the configuration of the algorithm.</p>
+
+    <h3 class="head1" id="sigil_toc_id_74">4.7.3<span class="calibre15">  </span> Roulette Wheel: Selecting parents and surviving individuals</h3>
+
+    <p class="body1">Chromosomes with higher fitness scores are more likely to be selected, but chromosomes with lower fitness scores still have a small chance of being selected. The term <span class="italics">Roulette Wheel Selection</span> comes from a roulette wheel at a casino, which is divided into slices. Typically, the wheel is spun, and a marble is released into the wheel. The selected slice is the one that the marble lands on when the wheel stops turning.</p>
+
+    <p class="body1">In this analogy, chromosomes are assigned to slices of the wheel. Chromosomes with higher fitness scores have larger slices of the wheel, and chromosomes with lower fitness scores have smaller slices. A chromosome is selected randomly, much as a ball randomly lands on a slice.</p>
+
+    <p class="body1">This analogy is an example of probabilistic selection. Each individual has a chance of being selected, whether that chance is small or high. The chance of selection of individuals influences the diversity of the population and convergence rates mentioned in 4.7.1 and 4.7.2. Figure 4.19, earlier in this chapter, illustrates this concept.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">First, the probability of selection for each individual needs to be determined. This probability is calculated for each individual by dividing its fitness by the total fitness of the population. Roulette wheel selection can be used. The “wheel” is “spun” until the desired number of individuals has been selected. For each selection, a random decimal number between 0 and 1 is calculated. If an individual’s fitness is within that probability, it is selected. Other probabilistic approaches may be used to determine the probability of each individual, including standard deviation, in which an individual’s value is compared with the mean value of the group.</p>
+
+    <p class="figure"><img alt="04_19a" class="calibre11" src="../Images/04_19a.png"/><br class="calibre12"/></p>
+
+    <h2 class="head" id="sigil_toc_id_75">4.8<span class="calibre10">     </span> Reproducing individuals from parents</h2>
+
+    <p class="body1">When parents are selected, reproduction needs to happen to create new offspring from the parents. Generally, two steps are related to creating children from two parents. The first concept is <span class="italics">crossover</span>, which means mixing part of the chromosome of the first parent with part of the chromosome of the second parent, and vice versa. This process results in two offspring that contain inversed mixes of their parents. The second concept is <span class="italics">mutation</span>, which means randomly changing the offspring slightly to create variation in the population.</p>
+
+    <p class="figure"><img alt="04_20" class="calibre11" src="../Images/04_20.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.20 Reproduce offspring</p>
+
+    <div class="calibre18">
+      <p class="sidebarhead">Crossover</p>
+    </div>
+
+    <p class="sidebara"><span class="calibre19">Crossover involves mixing genes between two individuals to create one or more offspring individuals. Crossover is inspired by the concept of reproduction. The offspring individuals are parts of their parents depending on the crossover strategy used. The crossover strategy is highly affected by the encoding used.</span></p>
+
+    <div class="calibre20">
+      <p class="sidebaraend"> </p>
+    </div>
+
+    <h3 class="head1" id="sigil_toc_id_76">4.8.1<span class="calibre15">  </span> Single-point crossover: Inheriting one part from each parent</h3>
+
+    <p class="body1">One point in the chromosome structure is selected. Then, by referencing the two parents in question, the first part of the first parent is used, and the second part of the second parent is used. These two parts combined create a new offspring. A second offspring can be made by using the first part of the second parent and the second part of the first parent.</p>
+
+    <p class="body1">Single-point crossover is applicable to binary encoding, order/permutation encoding, and real-value encoding. These encoding schemes are discussed in later in Chapter 5.</p>
+
+    <p class="figure"><img alt="04_21" class="calibre11" src="../Images/04_21.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.21 Single-point crossover</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">To create two new offspring individuals, an empty array is created to hold the new individuals. All genes from index 0 to the desired index of parent A are concatenated with all genes from the desired index to the end of the chromosome of parent B, creating one offspring individual. The inverse creates the second offspring individual.</p>
+
+    <p class="figure"><img alt="04_21a" class="calibre11" src="../Images/04_21a.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_77">4.8.2<span class="calibre15">  </span> Two-point crossover: Inheriting more parts from each parent</h3>
+
+    <p class="body1">Two points in the chromosome structure are selected; then, referencing the two parents in question, parts are chosen in an alternating manner to make a complete offspring individual. This process is similar to single-point crossover in section 4.8.1. To describe the process completely, the offspring consist of the first part of the first parent, the second part of the second parent, and the third part of the first parent. Think about two-point crossover as splicing arrays to create new ones. Again, a second individual can be made by using the inverse parts of each parent.</p>
+
+    <p class="body1">Two-point crossover is applicable to binary encoding and real-value encoding.</p>
+
+    <p class="figure"><img alt="04_22" class="calibre11" src="../Images/04_22.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.22 Two-point crossover</p>
+
+    <h3 class="head1" id="sigil_toc_id_78">4.8.3<span class="calibre15">  </span> Uniform crossover: Inheriting many parts from each parent</h3>
+
+    <p class="body1">Uniform crossover is a step beyond two-point crossover. In uniform crossover, a mask is created that represents which genes from each parent will be used to generate the child offspring. The inverse process can be used to make a second offspring. The mask can be generated randomly each time offspring are created to maximize diversity. Generally speaking, uniform crossover creates more-diverse individuals because the attributes of the offspring are quite different compared with any of their parents.</p>
+
+    <p class="body1">Uniform crossover is applicable to binary encoding and real-value encoding.</p>
+
+    <p class="figure"><img alt="04_23" class="calibre11" src="../Images/04_23.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.23 Uniform crossover</p>
+
+    <div class="calibre18">
+      <p class="sidebarhead">Mutation</p>
+    </div>
+
+    <p class="sidebara"><span class="calibre19">Mutation involves changing offspring individuals slightly to encourage diversity in the population. Several approaches to mutation are used based on the nature of the problem and the encoding method.</span></p>
+
+    <p class="sidebara"><span class="calibre19">One parameter in mutation is the mutation rate—the likelihood that an offspring chromosome will be mutated. Similarly to living organisms, some chromosomes are mutated more than others; an offspring is not an exact combination of its parents’ chromosomes but contains minor genetic differences. Mutation can be critical to encouraging diversity in a population and preventing the algorithm from getting stuck in local best solutions.</span></p>
+
+    <p class="sidebara"><span class="calibre19">A high mutation rate means that individuals have a high chance of being selected to be mutated or that genes in the chromosome of an individual have a high chance of being mutated, depending on the mutation strategy. High mutation means more diversity, but too much diversity may result in deterioration of good solutions.</span></p>
+
+    <div class="calibre20">
+      <p class="sidebaraend"> </p>
+    </div>
+
+    <p class="head2">Exercise: What outcome would uniform crossover generate for these chromosomes?</p>
+
+    <p class="figure"><img alt="04_23a" class="calibre11" src="../Images/04_23a.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: What outcome would uniform crossover generate for these chromosomes?</p>
+
+    <p class="figure"><img alt="04_23b" class="calibre11" src="../Images/04_23b.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_79">4.8.4<span class="calibre15">  </span> Bit-string mutation for binary encoding</h3>
+
+    <p class="body1">In bit-string mutation, a gene in a binary-encoded chromosome is selected randomly and changed to another valid value. Other mutation mechanisms are applicable when nonbinary encoding is used. The topic of mutation mechanisms will be explored in Chapter 5.</p>
+
+    <p class="figure"><img alt="04_24" class="calibre11" src="../Images/04_24.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.24 Bit-string mutation</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">To mutate a single gene of an individual’s chromosome, a random gene index is selected. If that gene represents 1, change it to represent 0, and vice versa.</p>
+
+    <p class="figure"><img alt="04_24a" class="calibre11" src="../Images/04_24a.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_80">4.8.5<span class="calibre15">  </span> Flip-bit mutation for binary encoding</h3>
+
+    <p class="body1">In flip-bit mutation, all genes in a binary-encoded chromosome are inverted to the opposite value. Where there were 1s are 0s, and where there were 0s are 1s. This type of mutation could degrade good performing solutions dramatically and usually is used when diversity needs to be introduced into the population constantly.</p>
+
+    <p class="figure"><img alt="04_25" class="calibre11" src="../Images/04_25.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.25 Flip-bit mutation</p>
+
+    <h2 class="head" id="sigil_toc_id_81">4.9<span class="calibre10">     </span> Populating the next generation</h2>
+
+    <p class="body1">When the fitness of the individuals in the population has been measured and offspring have been reproduced, the next step is selecting which individuals live on to the next generation. The size of the population is usually fixed, and because more individuals have been introduced through reproduction, some individuals must die off and be removed from the population.</p>
+
+    <p class="body1">It may seem like a good idea to take the top individuals that fit into the population size and eliminate the rest. This strategy, however, could create stagnation in diversity of individuals if the individuals that survive are similar in genetic makeup.</p>
+
+    <p class="figure"><img alt="04_26" class="calibre11" src="../Images/04_26.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.26 Populate next generation</p>
+
+    <p class="body1">The selection strategies mentioned in this section can be used to determine the individuals that are selected to form part of the population for the next generation.</p>
+
+    <h3 class="head1" id="sigil_toc_id_82">4.9.1<span class="calibre15">  </span> Exploration vs. exploitation</h3>
+
+    <p class="body1">Running a genetic algorithm always involves striking a balance between exploration and exploitation. The ideal situation is one in which there is diversity in individuals and the population as a whole seeks out wildly different potential solutions in the search space; then stronger local solution spaces are exploited to find the most desirable solution. The beauty of this situation is that the algorithm explores as much of the search space as possible while exploiting strong solutions as individuals evolve.</p>
+
+    <p class="figure"><img alt="04_27" class="calibre11" src="../Images/04_27.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.27 Measure fitness of individuals</p>
+
+    <h3 class="head1" id="sigil_toc_id_83">4.9.2<span class="calibre15">  </span> Stopping conditions</h3>
+
+    <p class="body1">Because a genetic algorithm is iterative in finding better solutions through each generation, a stopping condition needs to be established; otherwise, the algorithm might run forever. A <span class="italics">stopping condition</span> is the condition that is met where the algorithm ends; the strongest individual of the population at that generation is selected as the best solution.</p>
+
+    <p class="body1">The simplest stopping condition is a <span class="italics">constant</span>—a constant value that indicates the number of generations for which the algorithm will run.</p>
+
+    <p class="body1">Another approach stops when a certain fitness is achieved. This method is useful when a desired minimum fitness is known but the solution is unknown.</p>
+
+    <p class="body1"><span class="italics">Stagnation</span> is a problem in evolutionary algorithms in which the population yields solutions of similar strength for several generations. If a population stagnates, the likelihood of generating strong solutions in future generations is low. A stopping condition could look at the change in the fitness of the best individual in each generation and, if the fitness changes only marginally, choose to stop the algorithm.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The various steps of a genetic algorithm are used in a main function that outlines the life cycle in its entirety. The variable parameters include the population size, the number of generations for the algorithm to run, and the knapsack capacity for the fitness function, in addition to the variable crossover position and mutation rate for the crossover and mutation steps.</p>
+
+    <p class="figure"><img alt="04_27a" class="calibre11" src="../Images/04_27a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">As mentioned at the beginning of this chapter, the Knapsack Problem could be solved using a brute-force approach, which requires more than 60 million combinations to be generated and analyzed. When comparing genetic algorithms that aim to solve the same problem, we can see far more efficiency in computation if the parameters for exploration and exploitation are configured correctly. Remember, in some cases, a genetic algorithm produces a “good enough” solution that is not necessarily the best possible solution but is desirable. Again, using a genetic algorithm for a problem depends on the context.</p>
+
+    <p class="figure"><img alt="04_28" class="calibre11" src="../Images/04_28.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.28 Brute force performance vs. Genetic algorithm performance</p>
+
+    <h2 class="head" id="sigil_toc_id_84">4.10<span class="calibre10"> </span> Configuring the parameters of a genetic algorithm</h2>
+
+    <p class="body1">In designing and configuring a genetic algorithm, several decisions need to be made that influence the performance of the algorithm. The performance concerns fall into in two areas: the algorithm should strive to perform well in finding good solutions to the problem, and the algorithm should perform efficiently from a computation perspective. It would be pointless to design a genetic algorithm to solve a problem if the solution will be more computationally expensive than other traditional techniques. The approach used in encoding, the fitness function used, and the other algorithmic parameters influence both types of performances in achieving a good solution and computation. Here are some parameters to consider.</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Chromosome encoding</span>—The chromosome encoding method requires thought to ensure that it is applicable to the problem and that the potential solutions strive for global maxima. The encoding scheme is at the heart of the success of the algorithm.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Population size</span>—The population size is configurable. A larger population encourages more diversity in possible solutions. Larger populations, however, require more computation at each generation. Sometimes, a larger population balances out the need for mutation, which results in diversity at the start but no diversity during generations. A valid approach is to start with a smaller population and grow it based on performance.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Population initialization</span>—Although the individuals in a population are initialized randomly, ensuring that the solutions are valid is important for optimizing the computation of the genetic algorithm and initializing individuals with the right constraints.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Number of offspring</span>—The number of offspring created in each generation can be configured. Given that after reproduction, part of the population is killed off to ensure that the population size is fixed, more offspring means more diversity, but there is a risk that good solutions will be killed off to accommodate those offspring. If the population is dynamic, the population size may change after every generation, but this approach requires more parameters to configure and control.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Parent selection method</span>—The selection method used to choose parents can be configured. The selection method must be based on the problem and the desired exportability versus exploitability.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Crossover method</span>—The crossover method is associated with the encoding method used but can be configured to encourage or discourage diversity in the population. The offspring individuals must still yield a valid solution.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Mutation rate</span>—The mutation rate is another configurable parameter that induces more diversity in offspring and potential solutions. A higher mutation rate means more diversity, but too much diversity may deteriorate good-performing individuals. The mutation rate can change over time to create more diversity in earlier generation, and less in later generations. This result can be described as exploration at the start followed by exploitation.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Mutation method</span>—The mutation method is similar to the crossover method in that it is dependent on the encoding method used. An important attribute of the mutation method is that it must still yield a valid solution after the modification or assigned a terrible fitness score.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Generation selection method</span>—Much like the selection method used to choose parents, a generation selection method must choose the individuals that will survive the generation. Depending on the selection method used, the algorithm may converge too quickly and stagnate or explore too long.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Stopping condition</span>—The stopping condition for the algorithm must make sense based on the problem and desired outcome. Computational complexity and time are the main concerns for the stopping condition.</p>
+
+    <h2 class="head" id="sigil_toc_id_85">4.11<span class="calibre10"> </span> Use cases for evolutionary algorithms</h2>
+
+    <p class="body1">Evolutionary algorithms have a wide variety of uses. Some algorithms address isolated problems; others combine evolutionary algorithms with other techniques to create novel approaches to solving difficult problems, such as the following:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Predicting investor behavior in the stock market</span>—Consumers who invest make decisions every day about whether to buy more of a specific stock, hold on to what they have, or sell stock. Sequences of these actions can be evolved and mapped to outcomes of an investor’s portfolio. Financial institutions can use this insight to proactively provide valuable customer service and guidance.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Feature selection in machine learning</span>—Machine learning is discussed in Chapter 8, but a key aspect of machine learning is given a number of features about something, determining what it is classified as. If we’re looking at houses, we may find many attributes related to houses, such as age, building material, size, color, and location. But to predict market value, perhaps only age, size, and location matter. A genetic algorithm can uncover the isolated features that matter the most.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Code breaking and ciphers</span>—A <span class="italics">cipher</span> is a message encoded in a certain way to look like something else and is often used to hide information. If the receiver does not know how to decipher the message, it cannot be understood. Evolutionary algorithms can generate many possibilities for changing the ciphered message to uncover the original message.</p>
+
+    <p class="body1">Chapter 5 dives into advanced concepts of genetic algorithms that adapt them to different problem spaces. We explore different techniques for encoding, crossover, mutation, and selection, as well as uncover effective alternatives.</p>
+
+    <p class="figure"><img alt="04_29" class="calibre11" src="../Images/04_29.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 4.29 Summary of Evolutionary algorithms</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" class="calibre">
+  <head>
+    <meta content="Microsoft Word 15 (filtered)" name="Generator"/>
+    <title>Style A ReadMe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre8">
+  <div class="wordsection">
+    <h1 class="cochapternumber">2<span class="calibre16">  </span>  Search fundamentals</h1>
+
+    <p class="cosummaryhead">This chapter covers</p>
+
+    <p class="cosummarybulletcxspfirst"><span class="calibre17">·<span class="calibre14">    </span></span> The intuition of planning and searching</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Identifying problems suited to be solved using search algorithms</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Representing problem spaces in a way suitable to be processed by search algorithms</p>
+
+    <p class="cosummarybulletcxsplast"><span class="calibre17">·<span class="calibre14">    </span></span> Understanding and designing fundamental search algorithms to solve problems</p>
+
+    <h2 class="head" id="sigil_toc_id_40">2.1<span class="calibre10">           </span> What is planning and searching?</h2>
+
+    <p class="body1">When we think about what makes us intelligent, the ability to plan before carrying out actions is a prominent attribute. Before embarking on a trip to a different country, before starting a new project, before writing functions in code, planning happens. Planning happens at different levels of detail in different contexts to strive for the best possible outcome when carrying out the tasks involved in accomplishing goals.</p>
+
+    <p class="figure"><img alt="02_01" class="calibre11" src="../Images/02_01.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.1 Example of how plans change in projects</p>
+
+    <p class="body1">Plans rarely work out perfectly in the way we envision at the start of an endeavor. We live in a world in which environments are constantly changing, so it is impossible to account for all the variables and unknowns along the way. Regardless of the plan we started with, we almost always deviate due to changes in the problem space. We need to make a new plan from our current point going forward, yet again, after we take more steps, unexpected events occur that require another iteration of planning to meet the goals. As a result, the final plan that is carried out is usually different from the original one.</p>
+
+    <p class="body1">Searching is a way to guide planning by creating steps in a plan. When we plan a trip, for example, we search for routes to take, evaluate the stops along the way and what they offer, and search for accommodations and activities that align with our liking and budget. Depending on the results of these searches, the plan changes.</p>
+
+    <p class="body1">Suppose that we have settled on a trip to the beach, which is 500 kilometers away, with two stops: one at a petting zoo and one at a pizza restaurant. We will sleep at a lodge close to the beach on arrival and partake in three activities. The trip to the destination will take approximately 8 hours. We’re also taking a shortcut private road after the restaurant, but it’s open only until 14:00.</p>
+
+    <p class="body1">We start the trip, and everything is going according to plan. We stop at the petting zoo and see some wonderful animals. We drive on and start getting hungry; it’s time for the stop at the restaurant. But to our surprise, the restaurant recently went out of business. We need to adjust our plan and find another place to eat, which involves searching for a close-by establishment of our liking and adjusting our plan.</p>
+
+    <p class="body1">After driving around for a while, we find a restaurant, enjoy a pizza, and get back on the road. Upon approaching the shortcut private road, we realize that it’s 14:20. The road is closed; yet again, we need to adjust our plan. We search for a detour and find that it will add 120 kilometers to our drive, and we will need to find accommodations for the night at a different lodge before we even get to the beach. We search for a place to sleep and plot out our new route. Due to lost time, we can partake of only two activities at the destination. The plan has been adjusted heavily through searching for different options that satisfy the new situation, but we end up having a great adventure on route to the beach.</p>
+
+    <p class="body1">This example shows how search is used for planning, and influences planning towards desirable outcomes. As the environment changes, our goals may change slightly, and our path to them inevitably needs to be adjusted. Adjustments in plans can almost never be anticipated and need to be made as required.</p>
+
+    <p class="figure"><img alt="02_02" class="calibre11" src="../Images/02_02.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.2 Original plan versus adjusted plan for a road trip</p>
+
+    <p class="body1">Searching involves evaluating future states toward a goal with the aim of finding an optimal path of states until the goal is reached. This chapter centers on different approaches to searching depending on different types of problems. Searching is an old but powerful tool for developing intelligent algorithms to solve problems.</p>
+
+    <h2 class="head" id="sigil_toc_id_41">2.2<span class="calibre10">     </span> Cost of computation: The reason for smart algorithms</h2>
+
+    <p class="body1">In programming, functions consist of operations, and due to the way that traditional computers work, different functions use different amounts of processing time. The more computation required, the more expensive the function is. <span class="italics">Big O notation</span> is used to describe the complexity of a function or algorithm. Big O notation models the number of operations required as the input size increases. Here are some examples and associated complexities:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">A single operation that prints</span> <span><code class="codeintext"><span class="calibre21">Hello World</span></code></span>—This operation is a single operation, so the cost of computation is O(1).</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">A function that iterates over a list and prints each item in the list</span>—The number of operations is dependent on the number of items in the list. The cost is O(n).</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">A function that compares every item in a list with every item in another list</span>—This operation costs O(n<span xml:lang="EN-ZA">²</span>).</p>
+
+    <p class="body1">Figure 2.3 depicts different costs of algorithms. Algorithms that require operations to explore as the size of input increases are the worst performing; algorithms that require a more constant number of operations as the number of inputs increases are better.</p>
+
+    <p class="figure"><img alt="02_03" class="calibre11" src="../Images/02_03.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.3 Big O complexity</p>
+
+    <p class="body1">Understanding that different algorithms have different computation costs is important because addressing this is the entire purpose of intelligent algorithms that solve problems well and quickly. Theoretically, we can solve almost any problem by brute-forcing every possible option until we find the best one, but in reality, the computation could take hours or even years, which makes it infeasible for real-world scenarios.</p>
+
+    <h2 class="head" id="sigil_toc_id_42">2.3<span class="calibre10">     </span> Problems applicable to searching algorithms</h2>
+
+    <p class="body1">Almost any problem that requires a series of decisions to be made can be solved with search algorithms. Depending on the problem and the size of the search space, different algorithms may be employed to help solve them. Depending on the search algorithm selected and the configuration used, the optimal solution or a best available solution may be found. In other words, a good solution will be found, but it might not necessarily be the best solution. When we speak about a “good solution” or “optimal solution”, we are referring to the performance of the solution in addressing the problem at hand.</p>
+
+    <p class="body1">One scenario in which search algorithms are useful is being stuck in a maze and attempting to find the shortest path to a goal. Suppose that we’re in a square maze consisting of an area of 10 blocks by 10 blocks (figure 2.4). There exists a goal that we want to reach and barriers that we cannot step into. The objective is to find a path to the goal while avoiding barriers with as few steps as possible by moving north, south, east, or west. In this example, the player cannot move diagonally.</p>
+
+    <p class="figure"><img alt="02_04" class="calibre11" src="../Images/02_04.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.4 An example of the maze problem</p>
+
+    <p class="body1">How can we find the shortest path to the goal while avoiding barriers? By evaluating the problem as a human, we can try each possibility and count the moves. Using trial and error, we can find the paths that are the shortest, given that this maze is relatively small.</p>
+
+    <p class="body1">Using the example maze, figure 2.5 depicts some possible paths to reach the goal.</p>
+
+    <p class="figure"><img alt="02_05" class="calibre11" src="../Images/02_05.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.5 Examples of possible solutions to the maze problem</p>
+
+    <p class="body1">By looking at the maze and counting blocks in different directions, we can find several solutions to the problem. Five attempts have been made to find four successful solutions out of an unknown number of solutions. It will take exhaustive effort to attempt to compute all possible solutions by hand:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> Attempt 1 is not a valid solution. It took 4 actions, and the goal was not found.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> Attempt 2 is a valid solution, taking 17 actions to find the goal.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> Attempt 3 is a valid solution, taking 23 actions to find the goal.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> Attempt 4 is a valid solution, taking 17 actions to find the goal.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> Attempt 5 is the best valid solution, taking 15 actions to find the goal. Although this attempt is the best one, it was found by chance.</p>
+
+    <p class="body1">If the maze were a lot larger, like the one in figure 2.6, it would take an immense amount of time to compute the best possible path manually. Search algorithms can help.</p>
+
+    <p class="figure"><img alt="02_06" class="calibre11" src="../Images/02_06.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.6 A large example of the maze problem</p>
+
+    <p class="body1">Our power as humans is to perceive a problem visually, understand it, and find solutions given the parameters. As humans, we understand and interpret data and information in an abstract way. A computer cannot yet understand generalized information in the natural form that we do. The problem space needs to be represented in a form that is applicable to computation and can be processed with search algorithms. Section 2.4 explores how the problem can be represented.</p>
+
+    <h2 class="head" id="sigil_toc_id_43">2.4<span class="calibre10">     </span> Representing state: Creating a framework to represent problem spaces and solutions</h2>
+
+    <p class="body1">When representing data and information in a way that a computer can understand, we need to encode it logically so that it can be understood objectively. Although the data will be encoded subjectively by the person who performs the task, there should be a concise, and consistent way to represent it.</p>
+
+    <p class="body1">Let’s clarify the difference between data and information. <span class="italics">Data</span> is raw facts about something, and <span class="italics">information</span> is an interpretation of those facts that provides insight of the data in the specific domain. Information requires context and processing of data to provide meaning. As an example, each individual distance traveled in the maze example is data, and the sum of the total distance traveled is information. Depending on the perspective, level of detail, and desired outcome, classifying something as data or information can be subjective to the context and person or team.</p>
+
+    <p class="figure"><img alt="02_07" class="calibre11" src="../Images/02_07.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.7 Data versus information</p>
+
+    <p class="body1"><span class="italics">Data structures</span> are concepts in computer science used to represent data in a way that is suitable for efficient processing by algorithms. A data structure is an abstract data type consisting of data and operations organized in a specific way. The data structure we use is influenced by the context of the problem and the desired goal.</p>
+
+    <p class="body1">An example of a data structure is an <span class="italics">array</span>, which is simply a collection of data. Different types of arrays have different properties that make them efficient for different purposes. Depending on the programming language used, an array could allow each value to be of a different type or require each value to be the same type, or the array may disallow duplicate values. These different types of arrays usually have different names. The features and constraints of different data structures also enable more efficient computation.</p>
+
+    <p class="figure"><img alt="02_08" class="calibre11" src="../Images/02_08.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.8 Data structures used with algorithms</p>
+
+    <p class="body1">Other data structures are useful in planning and searching. Trees and graphs are ideal for representing data in a way that search algorithms can use.</p>
+
+    <h3 class="head1" id="sigil_toc_id_44">2.4.1<span class="calibre15">  </span> Graphs: Representing search problems and solutions</h3>
+
+    <p class="body1">A <span class="italics">graph</span> is a data structure containing several states with connections among them. Each state in a graph is called a <span class="italics">node</span> (or sometimes a <span class="italics">vertex</span>), and a connection between two states is called an <span class="italics">edge</span>. Graphs are derived from graph theory in mathematics and used to model relationships among objects. Graphs are useful data structures that are easy for humans to understand, due to the ease of representing them visually as well as to their strong logical nature, which is ideal for processing via various algorithms.</p>
+
+    <p class="figure"><img alt="02_09" class="calibre11" src="../Images/02_09.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.9 The notation used to represent graphs</p>
+
+    <p class="body1">Figure 2.10 is a graph of the trip to the beach discussed in section 2.1. Each stop is a node on the graph; each edge between nodes represent points traveled between; and the weights on each edge indicate the distance traveled.</p>
+
+    <p class="figure"><img alt="02_10" class="calibre11" src="../Images/02_10.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.10 The example road trip represented as a graph</p>
+
+    <h3 class="head1" id="sigil_toc_id_45">2.4.2<span class="calibre15">  </span> Representing a graph as a concrete data structure</h3>
+
+    <p class="body1">A graph can be represented in several ways for efficient processing by algorithms. At its core, a graph can be represented by an array of arrays that indicates relationships among nodes, as shown in figure 2.11. It is sometimes useful to have another array that simply lists all nodes in the graph so that the distinct nodes do not need to be inferred from the relationships.</p>
+
+    <p class="figure"><img alt="02_11" class="calibre11" src="../Images/02_11.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.11 Representing a graph as an array of arrays</p>
+
+    <p class="body1">Other representations of graphs include an incidence matrix, an adjacency matrix, and an adjacency list. By looking at the names of these representations, you see that the adjacency of nodes in a graph is important. An <span class="italics">adjacent node</span> is a node that is connected directly to another node.</p>
+  </div>
+
+  <div class="wordsection">
+    <span class="calibre22"><br class="calibre12" id="calibre_pb_0"/></span>
+
+    <p class="msonormal"><span class="calibre23"> </span></p>
+
+    <p class="head2">Exercise: Represent a Graph as a Matrix</p>
+
+    <p class="body1">How would you represent the following graph using edge arrays?</p>
+
+    <p class="figure"><img alt="02_11a" class="calibre11" src="../Images/02_11a.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: Represent a Graph as a Matrix</p>
+
+    <p class="figure"><img alt="02_11b" class="calibre11" src="../Images/02_11b.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_46">2.4.3<span class="calibre15">  </span> Trees: The concrete structures used to represent search solutions</h3>
+
+    <p class="body1">A <span class="italics">tree</span> is a popular data structure that simulates a hierarchy of values or objects. A <span class="italics">hierarchy</span> is an arrangement of things in which a single object is related to several other objects below it. A tree is a <span class="italics">connected acyclic graph</span> - every node has an edge to another node, and no cycles exist.</p>
+
+    <p class="body1">In a tree, the value or object represented at a specific point is called a <span class="italics">node</span>. Trees typically have a single root node with zero or more child nodes that could contain subtrees. Let’s take a deep breath and jump into some terminology. When a node has connected nodes, the root node is called the <span class="italics">parent</span>. You can apply this thinking recursively. A child node may have its own child nodes, which may also contain subtrees. Each child node has a single parent node. A node without any children is a leaf node.</p>
+
+    <p class="body1">Trees also have a total height. The level of specific nodes is called a <span class="italics">depth</span>.</p>
+
+    <p class="body1">The terminology used to relate family members is heavily used in working with trees. Keep this analogy in mind, as it will help you connect the concepts in the tree data structure. Note that in figure 2.12 the height and depth are indexed from 0 from the root node.</p>
+
+    <p class="figure"><img alt="02_12" class="calibre11" src="../Images/02_12.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.12 The main attributes of a tree</p>
+
+    <p class="body1">The topmost node in a tree is called the <span class="italics">root node</span>. A node directly connected to one or more other nodes is called a <span class="italics">parent node</span>. The nodes connected to a parent node are called <span class="italics">child nodes</span> or <span class="italics">neighbors</span>. Nodes connected to the same parent node are called <span class="italics">siblings</span>. A connection between two nodes is called an <span class="italics">edge</span>.</p>
+
+    <p class="body1">A <span class="italics">path</span> is a sequence of nodes and edges connecting nodes that are not directly connected. A node connected to another node by following a path away from the root node is called a <span class="italics">descendent</span>, and a node connected to another node by following a path toward the root node is called an <span class="italics">ancestor</span>. A node with no children is called a <span class="italics">leaf node</span>. The term <span class="italics">degree</span> is used to describe the number of children a node has; therefore, a leaf node has degree zero.</p>
+
+    <p class="body1">Figure 2.13 represents a path from the start point to the goal for the maze problem (section 2.3). This path contains nine nodes that represent different moves being made in the maze.</p>
+
+    <p class="figure"><img alt="02_13" class="calibre11" src="../Images/02_13.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.13 A solution to the maze problem represented as a tree</p>
+
+    <p class="body1">Trees are the fundamental data structure for search algorithms which we will be diving into next. Sorting algorithms are also useful in solving certain problems and computing solutions more efficiently. If you’re interested in learning more about sorting algorithms, take a look at <span class="italics">Grokking Algorithms</span> by Manning Publications.</p>
+
+    <h2 class="head" id="sigil_toc_id_47">2.5<span class="calibre10">     </span> Uninformed search: Looking blindly for solutions</h2>
+
+    <p class="body1"><span class="italics">Uninformed search</span> is also known as <span class="italics">unguided search</span>, <span class="italics">blind search</span>, or <span class="italics">brute-force search</span>. Uninformed search algorithms have no additional information about the domain of the problem apart from the representation of the problem, which is usually a tree.</p>
+
+    <p class="body1">Think about exploring things you want to learn. Some people might look at a wide breadth of different topics and learn the basics of each, whereas other people might choose one narrow topic and explore its subtopics in depth. This is what Breadth-first Search (BFS) and Depth-first Search (DFS) involve, respectively. <span class="italics">Depth-first search</span> explores a specific path from the start till it finds a goal at the utmost depth. <span class="italics">Breadth-first search</span> explores all options at a specific depth before moving to options deeper in the tree.</p>
+
+    <p class="body1">Consider the maze scenario. In attempting to find an optimal path to the goal, assume the following simple constraint to prevent getting stuck in an endless loop and prevent cycles in our tree. Because uninformed algorithms attempt every possible option at every node, creating a cycle will cause the algorithm to fail catastrophically.</p>
+
+    <p class="body1"><span class="italics">The player cannot move into a block that they have previously occupied.</span></p>
+
+    <p class="figure"><img alt="02_14" class="calibre11" src="../Images/02_14.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.14 The constraints for the maze problem</p>
+
+    <p class="body1">This constraint prevents cycles in the path to the goal in our scenario. But this constraint will introduce problems if, in a different maze with different constraints or rules, moving into a previously occupied block more than once is required for the optimal solution.</p>
+
+    <p class="body1">In figure 2.15, all possible paths in the tree are represented to highlight the different options available. It’s important to understand that in this small maze, representing all the possibilities is feasible to do. The entire point of search algorithms, however, is to search or generate these trees iteratively, because generating the entire tree of possibilities up front is inefficient due to being computationally expensive.</p>
+
+    <p class="body1">This tree contains seven paths that lead to the goal and one path that results in an invalid solution, given the constraint of not moving to previously occupied blocks.</p>
+
+    <p class="body1">It is also important to note that the term <span class="italics">visiting</span> is used to indicate different things. The player visits blocks in the maze. The algorithm also visits nodes in the tree. The order of choices will influence the order of nodes being visited in the tree. In the maze example, the priority order of movement is north, south, east, and then west.</p>
+
+    <p class="figure"><img alt="02_15" class="calibre11" src="../Images/02_15.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.15 All possible movement options represented as a tree</p>
+
+    <p class="body1">Now that we understand the ideas behind trees and the maze example, let’s explore how search algorithms can generate trees that seek out paths to the goal.</p>
+
+    <h2 class="head" id="sigil_toc_id_48">2.6<span class="calibre10">     </span> Breadth-first search: Looking wide before looking deep</h2>
+
+    <p class="body1"><span class="italics">Breadth-first search</span> is an algorithm used to traverse or generate a tree. This algorithm starts at a specific node, called the <span class="italics">root</span>, and explores every node at that depth before exploring the next depth of nodes. It essentially visits all children of nodes at a specific depth before visiting the next depth of child until it finds a <span class="italics">goal</span> leaf node.</p>
+
+    <p class="body1">The breadth-first search algorithm is best implemented by using a first-in, first-out queue in which the current depths of nodes are processed, and their children are queued to be processed later. This order of processing is exactly what we require when implementing this algorithm.</p>
+
+    <p class="body1">Figure 2.16 is a flow chart describing the sequence of steps involved in the breadth-first search algorithm.</p>
+
+    <p class="figure"><img alt="02_16" class="calibre11" src="../Images/02_16.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.16 Flow of the breadth-first search algorithm</p>
+
+    <p class="body1">Here are some notes and additional remarks about each step in the process:</p>
+
+    <p class="listnumbered1">1.<span class="calibre14">    </span> <span class="italics">Enqueue root node.</span> The breadth-first search algorithm is best implemented with a queue. Objects are processed in the sequence in which they are added to the queue. This process is also known as <span class="italics">first in, first out</span> (FIFO). The first step is adding the root node to the queue. This node will represent the starting position of the player on the map.</p>
+
+    <p class="listnumbered1">2.<span class="calibre14">    </span> <span class="italics">Mark root node as visited.</span> Now that the root node has been added to the queue for processing, it is marked as visited to prevent it from being revisited it for no reason.</p>
+
+    <p class="listnumbered1">3.<span class="calibre14">    </span> <span class="italics">Is queue empty?</span> If the queue is empty (all nodes have been processed after many iterations), and if no path has been returned in step 12 of the algorithm, there is no path to the goal. If there are still nodes in the queue, the algorithm can continue its search to find the goal.</p>
+
+    <p class="listnumbered1">4.<span class="calibre14">    </span> <span class="italics">Return</span> <span><code class="codeintext"><span class="calibre21">No path to goal</span></code></span><span class="italics">.</span> This message is the one possible exit from the algorithm if no path to the goal exists.</p>
+
+    <p class="listnumbered1">5.<span class="calibre14">    </span> <span class="italics">Dequeue node as current node.</span> By pulling the next object from the queue and setting it as the current node of interest, we can explore its possibilities. When the algorithm starts, the current node will be the root node.</p>
+
+    <p class="listnumbered1">6.<span class="calibre14">    </span> <span class="italics">Get next neighbor of current node.</span> This step involves getting the next possible move in the maze from the current position by referencing the maze and determining whether a north, south, east, or west movement is possible.</p>
+
+    <p class="listnumbered1">7.<span class="calibre14">    </span> <span class="italics">Is neighbor visited?</span> If the current neighbor has not been visited, it hasn’t been explored yet and can be processed now.</p>
+
+    <p class="listnumbered1">8.<span class="calibre14">    </span> <span class="italics">Mark neighbor as visited.</span> This step indicates that this neighbor node has been visited.</p>
+
+    <p class="listnumbered1">9.<span class="calibre14">    </span> <span class="italics">Set current node as parent of neighbor.</span> Set the origin node as the parent of the current neighbor. This step is important for tracing the path from the current neighbor to the root node. From a map perspective, the origin is the position that the player moved from, and the current neighbor is the position that the player moved to.</p>
+
+    <p class="listnumbered1">10.<span class="calibre14"> </span> <span class="italics">Enqueue neighbor.</span> The neighbor node is queued for its children to be explored later. This queuing mechanism allows nodes from each depth to be processed in that order.</p>
+
+    <p class="listnumbered1">11.<span class="calibre14"> </span> <span class="italics">Is goal reached?</span> This step determines whether the current neighbor contains the goal that the algorithm is searching for.</p>
+
+    <p class="listnumbered1">12.<span class="calibre14"> </span> <span class="italics">Return path using neighbor.</span> By referencing the parent of the neighbor node, then the parent of that node, and so on, the path from the goal to the root will be described. The root node will be a node without a parent.</p>
+
+    <p class="listnumbered1">13.<span class="calibre14"> </span> <span class="italics">Current has next neighbor.</span> If the current node has more possible moves to make in the maze, jump to step 6 for that move.</p>
+
+    <p class="body1">Let’s walk through what that would look like in a simple tree. Notice that as the tree is explored and nodes are added to the FIFO queue, the nodes are processed in the order desired by leveraging the queue.</p>
+
+    <p class="figure"><img alt="02_17" class="calibre11" src="../Images/02_17.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.17 The sequence of tree processing using breadth-first search (part 1)</p>
+
+    <p class="figure"><img alt="02_18" class="calibre11" src="../Images/02_18.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.18 The sequence of tree processing using breadth-first search ( part 2)</p>
+
+    <p class="head2">Exercise: Determine the path to the solution</p>
+
+    <p class="body1">What would be the order of visits using breadth-first search for the following tree?</p>
+
+    <p class="figure"><img alt="02_18a" class="calibre11" src="../Images/02_18a.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: Determine the path to the solution</p>
+
+    <p class="figure"><img alt="02_18b" class="calibre11" src="../Images/02_18b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">In the maze example, the algorithm needs to understand the current position of the player in the maze, evaluate all possible choices for movement, and repeat that logic for each choice of movement made until the goal is reached. By doing this, the algorithm generates a tree with a single path to the goal.</p>
+
+    <p class="body1">It is important to understand that the processes of visiting nodes in a tree is used to generate nodes in a tree. We are simply finding related nodes through a mechanism.</p>
+
+    <p class="body1">Each path to the goal consists of a series of moves to reach the goal. The number of moves in the path is the distance to reach the goal for that path, which we will call the <span class="italics">cost</span>. The number of moves also equals the number of nodes visited in the path, from the root node to the leaf node that contains the goal. The algorithm moves down the tree depth by depth until it finds a goal; then it returns the first path that got it to the goal as the solution.</p>
+
+    <p class="body1">There may be a more optimal path to the goal, but because breadth-first search is uninformed, it is not guaranteed to find it.</p>
+
+    <p class="callout"><span class="callouthead">NOTE</span> <span xml:lang="X-NONE">In the maze example, all search algorithms used terminate when they’ve found a solution to the goal. It is possible to allow these algorithms to find multiple solutions with a small tweak to each algorithm, but the best use cases for search algorithms find a single goal, as it is often too expensive to explore the entire tree of possibilities.</span></p>
+
+    <p class="body1">Figure 2.19 shows the generation of a tree using movements in the maze. Because the tree is generated using breadth-first search, each depth is generated to completion before looking at the next depth.</p>
+
+    <p class="figure"><img alt="02_19" class="calibre11" src="../Images/02_19.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.19 Maze movement tree generation using breadth-first search</p>
+
+    <p class="figure"><img alt="02_20" class="calibre11" src="../Images/02_20.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.20 Nodes visited in the entire tree after breadth-first search</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">As mentioned previously, the breadth-first search algorithm uses a queue to generate a tree one depth at a time. Having a structure to store visited nodes is critical to prevent getting stuck in cyclic loops; and setting the parent of each node is important for determining a path from the starting point in the maze to the goal.</p>
+
+    <p class="figure"><img alt="02_20a" class="calibre11" src="../Images/02_20a.png"/><br class="calibre12"/></p>
+
+    <h2 class="head" id="sigil_toc_id_49">2.7<span class="calibre10">     </span> Depth-first search: Looking deep before looking wide</h2>
+
+    <p class="body1"><span class="italics">Depth-first search</span> is another algorithm used to traverse a tree or generate nodes and paths in a tree. This algorithm starts at a specific node and explores paths of connected nodes of the first child, doing this recursively until it reaches the farthest leaf node before backtracking and exploring other paths to leaf nodes via other child nodes that have been visited. Figure 2.21 illustrates the general flow of the depth-first search algorithm.</p>
+
+    <p class="figure"><img alt="02_21" class="calibre11" src="../Images/02_21.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.21 Flow of the depth-first search algorithm</p>
+
+    <p class="body1">Let’s walk through the flow of the depth-first search algorithm:</p>
+
+    <p class="listnumbered1">1.<span class="calibre14">    </span> <span class="italics">Add root node to stack.</span> The depth-first search algorithm can be implemented by using a stack, in which the last object added is processed first. This process is known as <span class="italics">last in, first out</span> (LIFO). The first step is adding the root node to the stack.</p>
+
+    <p class="listnumbered1">2.<span class="calibre14">    </span> <span class="italics">Is stack empty?</span> If the stack is empty and no path has been returned in step 8 of the algorithm, there is no path to the goal. If there are still nodes in the stack, the algorithm can continue its search to find the goal.</p>
+
+    <p class="listnumbered1">3.<span class="calibre14">    </span> <span class="italics">Return</span> <span><code class="codeintext"><span class="calibre21">No path to goal</span></code></span><span class="italics">.</span> This return is the one possible exit from the algorithm if no path to the goal exists.</p>
+
+    <p class="listnumbered1">4.<span class="calibre14">    </span> <span class="italics">Pop node from stack as current node.</span> By pulling the next object from the stack and setting it as the current node of interest, we can explore its possibilities.</p>
+
+    <p class="listnumbered1">5.<span class="calibre14">    </span> <span class="italics">Is current node visited?</span> If the current node has not been visited, it hasn’t been explored yet and can be processed now.</p>
+
+    <p class="listnumbered1">6.<span class="calibre14">    </span> <span class="italics">Mark current node as visited.</span> This step indicates that this node has been visited to prevent unnecessary repeat processing of it.</p>
+
+    <p class="listnumbered1">7.<span class="calibre14">    </span> <span class="italics">Is goal reached?</span> This step determines whether the current neighbor contains the goal that the algorithm is searching for.</p>
+
+    <p class="listnumbered1">8.<span class="calibre14">    </span> <span class="italics">Return path using current node.</span> By referencing the parent of the current node, then the parent of that node, and so on, the path from the goal to the root is described. The root node will be a node without a parent.</p>
+
+    <p class="listnumbered1">9.<span class="calibre14">    </span> <span class="italics">Current has next neighbor.</span> If the current node has more possible moves to make in the maze, that move can be added to the stack to be processed. Otherwise, the algorithm can jump to step 2, where the next object in the stack can be processed if the stack is not empty. The nature of the LIFO stack allows the algorithm to process all nodes to a leaf node depth before backtracking to visit other children of the root node.</p>
+
+    <p class="listnumbered1">10.<span class="calibre14"> </span> <span class="italics">Set current node as parent of neighbor.</span> Set the origin node as the parent of the current neighbor. This step is important for tracing the path from the current neighbor to the root node. From a map perspective, the origin is the position that the player moved from, and the current neighbor is the position that the player moved to.</p>
+
+    <p class="listnumbered1">11.<span class="calibre14"> </span> <span class="italics">Add neighbor to stack.</span> The neighbor node is added to the stack for its children to be explored later. Again, this stacking mechanism allows nodes to be processed to the utmost depth before processing neighbors at shallow depths.</p>
+
+    <p class="body1">Figures 2.22 and 2.23 explore how the LIFO stack is used to visit nodes in the order desired by depth-first search. Notice that nodes get pushed and popped from the stack as the depths of the nodes visited progress. <span class="italics">Push</span> is the term used to add objects to a stack, and the term <span class="italics">pop</span> is used to remove the topmost object from the stack.</p>
+
+    <p class="figure"><img alt="02_22" class="calibre11" src="../Images/02_22.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.22 The sequence of tree processing using depth-first search (part 1)</p>
+
+    <p class="figure"><img alt="02_23" class="calibre11" src="../Images/02_23.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.23 The sequence of tree processing using depth-first search (part 2)</p>
+
+    <p class="head2">Exercise: Determine the path to the solution</p>
+
+    <p class="body1">What would the order of visits be in depth-first search for the following tree?</p>
+
+    <p class="figure"><img alt="02_23a" class="calibre11" src="../Images/02_23a.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: Determine the path to the solution</p>
+
+    <p class="figure"><img alt="02_23b" class="calibre11" src="../Images/02_23b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">It is important to understand the order of children matter substantially when using depth-first search, as the algorithm explores the first child until it finds leaf nodes before backtracking.</p>
+
+    <p class="body1">In the maze example, the order of movement (north, south, east, and west) influences the path to the goal that the algorithm finds. A change in order will result in a different solution. The forks represented in the figure don’t matter; what matters is the order of the movement choices in our maze example.</p>
+
+    <p class="figure"><img alt="02_24" class="calibre11" src="../Images/02_24.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.24 Maze movement tree generation using depth-first search</p>
+
+    <p class="figure"><img alt="02_25" class="calibre11" src="../Images/02_25.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.25 Nodes visited in the entire tree after depth-first search</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">Although the depth-first search algorithm can be implemented with a recursive function, we’re looking at an implementation that is achieved with a stack to better represent the order in which nodes are visited and processed. It is important to keep track of the visited points so that the same nodes do not get visited unnecessarily, creating cyclic loops.</p>
+
+    <p class="figure"><img alt="02_25a" class="calibre11" src="../Images/02_25a.png"/><br class="calibre12"/></p>
+
+    <h2 class="head" id="sigil_toc_id_50">2.8<span class="calibre10">     </span> Use cases for uninformed search algorithms</h2>
+
+    <p class="body1">Uninformed search algorithms are versatile and useful in several real-world use cases, such as</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Finding paths between nodes in a network</span>—When two computers need to communicate over a network, the connection passes through many connected computers and devices. Search algorithms can be used to establish a path in that network between two devices.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Crawling web pages</span>—Web searches allow us to find information on the internet across a vast number of web pages. To index these web pages, crawlers typically read the information on each page, as well as follow each link in that page recursively. Search algorithms are useful for creating crawlers, metadata structures, and relationships between content.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Finding social network connections</span>—Social media applications contain many people and their relationships. Bob may be friends with Alice, for example, but not direct friends with John, so Bob and John are indirectly related via Alice. A social media application can suggest that Bob and John should become friends because they may know each other through their mutual friendship with Alice.</p>
+
+    <h2 class="head" id="sigil_toc_id_51">2.9<span class="calibre10">     </span> Optional: More about graph categories</h2>
+
+    <p class="body1">Graphs are useful for many computer science and mathematical problems, and due to the nature of different types of graphs, different principles and algorithms may apply to specific categories of graphs. A graph is categorized based on its overall structure, number of nodes, number of edges, and interconnectivity between nodes.</p>
+
+    <p class="body1">These categories of graphs are good to know about, as they are common and sometimes referenced in search and other AI algorithms:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Undirected graph</span>—No edges are directed. Relationships between two nodes are mutual. As with roads between cities, there are roads traveling in both directions.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Directed graph</span>—Edges indicate direction. Relationships between two nodes are explicit. As in a graph representing a child of a parent, the child cannot be the parent of its parent.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Disconnected graph</span>—One or more nodes are not connected by any edges. As in a graph representing physical contact between continents, some nodes are not connected. Like continents, some are connected by land, and others are separated by the ocean.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Acyclic graph</span>—A graph that contains no cycles. As with time as we know it, the graph does not loop back to any point in the past (yet).</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Complete graph</span>—Every node is connected to every other node by an edge. As in the lines of communication in a small team, everyone talks to everyone else to collaborate.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Complete bipartite graph</span>—A <span class="italics">vertex partition</span> is a grouping of vertices. Given a vertex partition, every node from one partition is connected to every node of the other partition with edges. As at a cheese-tasting event, typically, every person tastes every type of cheese.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Weighted graph</span>—A graph in which the edges between nodes have a weight. As in the distance between cities, some cities are farther than others. The connections “weigh” more.</p>
+
+    <p class="body1">It is useful to understand the different types of graphs to best describe the problem and use the most efficient algorithm for processing. Some of these categories of graphs are discussed in upcoming chapters such as chapter 6 on ant colony optimization, and chapter 8 on neural networks.</p>
+
+    <p class="figure"><img alt="02_26" class="calibre11" src="../Images/02_26.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.26 Types of graphs</p>
+
+    <h2 class="head" id="sigil_toc_id_52">2.10<span class="calibre10"> </span> Optional: More ways to represent graphs</h2>
+
+    <p class="body1">Depending on the context, other encodings of graphs may be more efficient for processing or easier to work with, depending on the programming language and tools you’re using.</p>
+
+    <h3 class="head1" id="sigil_toc_id_53">2.10.1<span class="calibre15">   </span> Incidence matrix</h3>
+
+    <p class="body1">An <span class="italics">incidence matrix</span> uses a matrix in which the height is the number of nodes in the graph and the width is the number of edges. Each row represents a node’s relationship with a specific edge. If a node is not connected by a specific edge, the value <span><code class="codeintext"><span class="calibre21">0</span></code></span> is stored. If a node is connected by a specific edge as the receiving node in the case of a directed graph, the value <span><code class="codeintext"><span class="calibre21">-1</span></code></span> is stored. If a node is connected by a specific edge as an outgoing node or connected in an undirected graph, the value <span><code class="codeintext"><span class="calibre21">1</span></code></span> is stored. An incidence matrix can be used to represent both directed and undirected graphs.</p>
+
+    <p class="figure"><img alt="02_27" class="calibre11" src="../Images/02_27.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.27 Representing a graph as an incidence matrix</p>
+
+    <h3 class="head1" id="sigil_toc_id_54">2.10.2<span class="calibre15">   </span> Adjacency list</h3>
+
+    <p class="body1">An <span class="italics">adjacency list</span> uses linked lists in which the size of the initial list is the number of nodes in the graph and each value represents the connected nodes for a specific node. An adjacency list can be used to represent both directed and undirected graphs.</p>
+
+    <p class="figure"><img alt="02_28" class="calibre11" src="../Images/02_28.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.28 Representing a graph as an adjacency list</p>
+
+    <p class="body1">Graphs are also interesting and useful data structures because they can easily be represented as mathematical equations which are the backing for all algorithms we use – more about this throughout the book.</p>
+
+    <p class="figure"><img alt="02_29" class="calibre11" src="../Images/02_29.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 2.29 Summary of Search fundamentals</p>
+  </div>
+</body>
+</html>

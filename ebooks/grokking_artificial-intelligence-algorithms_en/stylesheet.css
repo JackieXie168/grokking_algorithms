@@ -1,0 +1,2777 @@
+.body {
+    color: black;
+    display: block;
+    font-family: "Verdana", "sans-serif";
+    font-size: 0.775em;
+    line-height: 1.4;
+    margin: 1em 0
+    }
+.body1 {
+    color: black;
+    display: block;
+    font-family: "Verdana", "sans-serif";
+    font-size: 0.77419em;
+    line-height: 1.4;
+    margin: 1em 0
+    }
+.body1char {
+    color: black;
+    font-family: "Verdana", sans-serif
+    }
+.body1char1 {
+    color: black;
+    font-family: Symbol
+    }
+.bold {
+    font-weight: bold
+    }
+.bold1 {
+    font-weight: bold;
+    line-height: 1.4
+    }
+.bold2 {
+    font-style: italic;
+    font-weight: bold
+    }
+.bold3 {
+    font-weight: normal
+    }
+.bold4 {
+    font-family: "Segoe UI Symbol", sans-serif;
+    font-weight: bold
+    }
+.calibre {
+    line-height: 1.4
+    }
+.calibre1 {
+    display: block;
+    font-size: 1em;
+    line-height: 1.4;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 5pt
+    }
+.calibre2 {
+    height: 224px;
+    width: 226px
+    }
+.calibre3 {
+    display: block;
+    line-height: 1.4;
+    text-align: center
+    }
+.calibre4 {
+    font-family: "New Baskerville";
+    line-height: 1.4
+    }
+.calibre5 {
+    display: block;
+    font-size: 1.66667em;
+    line-height: 1.4;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 5pt
+    }
+.calibre6 {
+    height: auto;
+    width: auto
+    }
+.calibre7 {
+    display: block
+    }
+.calibre8 {
+    display: block;
+    font-size: 1.29167em;
+    line-height: 1.4;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 5pt
+    }
+.calibre9 {
+    display: block;
+    line-height: 1.4;
+    padding: 0 0 1pt;
+    border-top: currentColor none medium;
+    border-right: currentColor none medium;
+    border-bottom: #005 solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre10 {
+    font-family: "Times New Roman";
+    font-size: 0.77419em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.4
+    }
+.calibre11 {
+    height: auto;
+    line-height: 1.4;
+    width: auto
+    }
+.calibre12 {
+    display: block;
+    line-height: 1.4
+    }
+.calibre13 {
+    font-family: Wingdings
+    }
+.calibre14 {
+    font-family: "Times New Roman";
+    font-size: 0.75em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.4
+    }
+.calibre15 {
+    font-family: "Times New Roman";
+    font-size: 0.64516em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.4
+    }
+.calibre16 {
+    font-family: "Times New Roman";
+    font-size: 0.775em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.4
+    }
+.calibre17 {
+    font-family: Symbol
+    }
+.calibre18 {
+    background: #E6E6E6;
+    display: block;
+    line-height: 1.4;
+    padding: 1pt 0 0;
+    border-top: #005 solid 2.25pt;
+    border-right: currentColor none medium;
+    border-bottom: currentColor none medium;
+    border-left: currentColor none medium
+    }
+.calibre19 {
+    color: black
+    }
+.calibre20 {
+    background: #E6E6E6;
+    display: block;
+    line-height: 1.4;
+    padding: 0 0 1pt;
+    border-top: currentColor none medium;
+    border-right: currentColor none medium;
+    border-bottom: #005 solid 2.25pt;
+    border-left: currentColor none medium
+    }
+.calibre21 {
+    font-size: 0.83333em;
+    line-height: 1.4
+    }
+.calibre22 {
+    font-family: "Calibri", sans-serif;
+    font-size: 1em;
+    line-height: 1.4
+    }
+.calibre23 {
+    color: black;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em
+    }
+.calibre24 {
+    display: table-row;
+    height: 16pt;
+    line-height: 1.4;
+    vertical-align: middle
+    }
+.calibre25 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 62.5pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre26 {
+    display: block;
+    line-height: 1.4;
+    padding: 0 0 1pt;
+    border-top: currentColor none medium;
+    border-right: currentColor none medium;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre27 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 114.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre28 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 99.2pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre29 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 99.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre30 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 62.5pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre31 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 114.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre32 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 99.2pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre33 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 99.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre34 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 60.8pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre35 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 95.15pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre36 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 70.85pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre37 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 70.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre38 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 78.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre39 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 60.8pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre40 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 95.15pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre41 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 70.85pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre42 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 70.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre43 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 78.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre44 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 56.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre45 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 63.75pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre46 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 99.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre47 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 56.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre48 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 63.75pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre49 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 99.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre50 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 49.65pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre51 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 50.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre52 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 49.65pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre53 {
+    display: table-cell;
+    height: 16pt;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 50.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre54 {
+    display: table-row;
+    line-height: 1.4;
+    vertical-align: middle
+    }
+.calibre55 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 66.45pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre56 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.1pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre57 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.95pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre58 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 52.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre59 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 52.75pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre60 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.8pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre61 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.2pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre62 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 66.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre63 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.1pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre64 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.95pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre65 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 52.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre66 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 52.75pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre67 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.8pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre68 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.2pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre69 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 188.9pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre70 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 188.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre71 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 188.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre72 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 188.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre73 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 47.35pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre74 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 47.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre75 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 47.35pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre76 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 47.35pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre77 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 47.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre78 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 47.35pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre79 {
+    font-family: "Courier New"
+    }
+.calibre80 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 21pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre81 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.05pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre82 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.05pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre83 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.3pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre84 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 40.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre85 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 37.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre86 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.85pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre87 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.35pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre88 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 30.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre89 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 21pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre90 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.05pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre91 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.05pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre92 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.3pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre93 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 40.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre94 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 37.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre95 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.85pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre96 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.35pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre97 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 30.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre98 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre99 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 63.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre100 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 30.65pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre101 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre102 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 63.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre103 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 30.65pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre104 {
+    background: #D9D9D9;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 40.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre105 {
+    background: #D9D9D9;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 63.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre106 {
+    background: #D9D9D9;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 37.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre107 {
+    background: #D9D9D9;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre108 {
+    background: #D9D9D9;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.85pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre109 {
+    background: #D9D9D9;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 30.65pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre110 {
+    background: #A6A6A6;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 21pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre111 {
+    background: #A6A6A6;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre112 {
+    background: #A6A6A6;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 63.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre113 {
+    background: #A6A6A6;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 34.3pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre114 {
+    background: #A6A6A6;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 40.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre115 {
+    background: #A6A6A6;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 37.9pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre116 {
+    background: #A6A6A6;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.85pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre117 {
+    background: #A6A6A6;
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 30.65pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre118 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 53.85pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre119 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 58.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre120 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 85.05pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre121 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 77.95pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre122 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 63.8pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre123 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 53.85pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre124 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 58.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre125 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 85.05pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre126 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 77.95pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre127 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 63.8pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre128 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre129 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 62.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre130 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 29.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre131 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre132 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre133 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 62.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre134 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 29.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre135 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre136 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 69.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre137 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 47.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre138 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 47.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre139 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.75pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre140 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 51.75pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre141 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 99.2pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre142 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 33.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre143 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 33.4pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre144 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.65pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre145 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.55pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre146 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 56.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre147 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 35.65pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre148 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.55pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre149 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 56.7pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre150 {
+    font-size: 1em;
+    line-height: 1.4;
+    vertical-align: super
+    }
+.calibre151 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 21.05pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre152 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 41.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre153 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 21.05pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre154 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 41.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre155 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 42.55pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre156 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 57.35pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre157 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 42.55pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre158 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 57.35pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre159 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 19.6pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre160 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 21.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre161 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 19.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre162 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 21.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre163 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 48.2pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre164 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 48.2pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre165 {
+    font-family: "Segoe UI Symbol", sans-serif
+    }
+.calibre166 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 0.9in;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre167 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 0.9in;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre168 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 0.9in;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre169 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 0.9in;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre170 {
+    font-size: 1em;
+    line-height: 1.4;
+    vertical-align: sub
+    }
+.calibre171 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.25pt;
+    padding: 0 5.4pt;
+    border: currentColor solid 1pt
+    }
+.calibre172 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre173 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.5pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre174 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor solid 1pt;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre175 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.25pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor solid 1pt
+    }
+.calibre176 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.45pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre177 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.5pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.calibre178 {
+    display: table-cell;
+    line-height: 1.4;
+    text-align: inherit;
+    vertical-align: top;
+    width: 64.6pt;
+    padding: 0 5.4pt;
+    border-top: currentColor none medium;
+    border-right: currentColor solid 1pt;
+    border-bottom: currentColor solid 1pt;
+    border-left: currentColor none medium
+    }
+.callout {
+    color: black;
+    display: block;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    margin: 12pt 0 12pt 28.35pt
+    }
+.callouthead {
+    color: #141464;
+    font-family: "Franklin Gothic Heavy", sans-serif;
+    font-size: 1em;
+    line-height: 1.4;
+    text-transform: uppercase
+    }
+.cochapternumber {
+    display: block;
+    font-family: "Arial", sans-serif;
+    font-size: 1.29032em;
+    font-weight: bold;
+    line-height: 1.4;
+    page-break-after: avoid;
+    text-align: left;
+    margin: 12pt 0 3pt
+    }
+.codeb {
+    background-color: #F2F2F2;
+    display: block;
+    font-family: monospace;
+    font-size: 0.64516em;
+    text-indent: 0;
+    margin: 0.6em 0 1em;
+    padding: 10px 5px
+    }
+.codebcxspfirst {
+    background-color: #F2F2F2;
+    display: block;
+    font-family: monospace;
+    font-size: 0.64516em;
+    text-indent: 0;
+    margin: 0.6em 0 0;
+    padding: 10px 10px 0
+    }
+.codebcxsplast {
+    background-color: #F2F2F2;
+    display: block;
+    font-family: monospace;
+    font-size: 0.64516em;
+    text-indent: 0;
+    margin: 0 0 1em;
+    padding: 0 10px 20px
+    }
+.codebcxspmiddle {
+    background-color: #F2F2F2;
+    display: block;
+    font-family: monospace;
+    font-size: 0.64516em;
+    text-indent: 0;
+    margin: 0;
+    padding: 0 10px
+    }
+.codeinitalic {
+    font-family: "Monospac821 BT";
+    font-style: italic
+    }
+.codeintext {
+    color: windowtext;
+    font-family: "Courier New";
+    text-decoration: none
+    }
+.codelistingcaption {
+    background: #141464;
+    color: #EAEAEA;
+    display: block;
+    font-family: "Franklin Gothic Heavy", sans-serif;
+    font-size: 1em;
+    line-height: 1.4;
+    page-break-after: avoid;
+    margin: 10pt 0 6pt
+    }
+.copyright {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0.67em 0
+    }
+.copyrightsmall {
+    color: black;
+    display: block;
+    font-family: "New Baskerville";
+    font-size: 0.625em;
+    line-height: 12pt;
+    text-align: center;
+    margin: 0 0 0.0001pt
+    }
+.cosummarybulletcxspfirst {
+    display: block;
+    font-family: "Franklin Gothic Medium", "sans-serif";
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: -1.4em;
+    margin: 0.3em 0 0 3em
+    }
+.cosummarybulletcxsplast {
+    display: block;
+    font-family: "Franklin Gothic Medium", "sans-serif";
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: -1.4em;
+    margin: 0 0 0.6em 3em
+    }
+.cosummarybulletcxspmiddle {
+    display: block;
+    font-family: "Franklin Gothic Medium", "sans-serif";
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: -1.4em;
+    margin: 0 0 0 3em
+    }
+.cosummaryhead {
+    color: black;
+    display: block;
+    font-family: "Franklin Gothic Demi", "sans-serif";
+    font-size: 1em;
+    line-height: 1.4;
+    page-break-after: avoid;
+    margin: 1.8em 0 0.6em
+    }
+.figure {
+    color: #00B050;
+    display: block;
+    font-family: "Times New Roman", "serif";
+    font-size: 1.29032em;
+    line-height: 1.4;
+    page-break-after: avoid;
+    margin: 1.2em 0 0.8em
+    }
+.figurea {
+    color: #00B050;
+    display: block;
+    font-family: "Times New Roman", "serif";
+    font-size: 1.1em;
+    line-height: 1.4;
+    page-break-after: avoid;
+    margin: 1.2em 0 0.8em
+    }
+.figurecaption {
+    color: #005;
+    display: block;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    margin: 8pt 0 0.25in
+    }
+.head {
+    color: #141464;
+    display: block;
+    font-family: "Franklin Gothic Demi", sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.4;
+    page-break-after: avoid;
+    text-indent: -28.35pt;
+    margin: 12pt 0 2pt 28.35pt
+    }
+.head1 {
+    color: #141464;
+    display: block;
+    font-family: "Franklin Gothic Demi", sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.4;
+    page-break-after: avoid;
+    text-indent: -28.35pt;
+    margin: 10pt 0 2pt 28.35pt
+    }
+.head2 {
+    color: #141464;
+    display: block;
+    font-family: "Franklin Gothic Demi", sans-serif;
+    font-size: 1em;
+    font-style: italic;
+    line-height: 1.4;
+    page-break-after: avoid;
+    text-transform: uppercase;
+    margin: 10pt 0 2pt
+    }
+.italics {
+    font-style: italic
+    }
+.italics1 {
+    font-family: Symbol;
+    font-style: italic
+    }
+.listbody {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    margin: 4pt 0 4pt 27pt
+    }
+.listbullet {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -14.2pt;
+    margin: 4pt 0 4pt 28.4pt
+    }
+.listbulletcxspfirst {
+    color: black;
+    display: block;
+    font-family: "Verdana", "sans-serif";
+    font-size: 0.775em;
+    line-height: 1.4;
+    text-indent: -1.4em;
+    margin: 0.4em 0 0 2.8em
+    }
+.listbulletcxspfirst1 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -14.2pt;
+    margin: 4pt 0 0.0001pt 28.4pt
+    }
+.listbulletcxspfirst2 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -13.5pt;
+    margin: 4pt 0 0.0001pt 27pt
+    }
+.listbulletcxspfirst3 {
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -14.2pt;
+    margin: 4pt 0 0.0001pt 28.4pt
+    }
+.listbulletcxsplast {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -14.2pt;
+    margin: 0 0 4pt 28.4pt
+    }
+.listbulletcxsplast1 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -13.5pt;
+    margin: 0 0 4pt 27pt
+    }
+.listbulletcxsplast2 {
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -14.2pt;
+    margin: 0 0 4pt 28.4pt
+    }
+.listbulletcxsplast3 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -0.25in;
+    margin: 0 0 4pt 1in
+    }
+.listbulletcxspmiddle {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -14.2pt;
+    margin: 0 0 0.0001pt 28.4pt
+    }
+.listbulletcxspmiddle1 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -13.5pt;
+    margin: 0 0 0.0001pt 27pt
+    }
+.listbulletcxspmiddle2 {
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -14.2pt;
+    margin: 0 0 0.0001pt 28.4pt
+    }
+.listbulletcxspmiddle3 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -0.25in;
+    margin: 0 0 0.0001pt 1in
+    }
+.listbulletcxspmiddle4 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -0.25in;
+    margin: 0 0 0.0001pt 1.5in
+    }
+.listbulletsubcxspfirst {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -0.25in;
+    margin: 4pt 0 0.0001pt 63pt
+    }
+.listbulletsubcxsplast {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -0.25in;
+    margin: 0 0 4pt 63pt
+    }
+.listbulletsubcxspmiddle {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -0.25in;
+    margin: 0 0 0.0001pt 63pt
+    }
+.listnumbered {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: -13.3pt;
+    margin: 4pt 0 4pt 27pt
+    }
+.listnumbered1 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-align: left;
+    text-indent: -0.25in;
+    margin: 4pt 0 4pt 0.5in
+    }
+.listnumbered2 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: -0.25in;
+    margin: 4pt 0 4pt 0.25in
+    }
+.listnumbered3 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: -13.3pt;
+    margin: 4pt 0 4pt 13.3pt
+    }
+.listnumbered4 {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: -0.25in;
+    margin: 4pt 0 4pt 0.5in
+    }
+.listnumberedsub {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: -0.25in;
+    margin: 4pt 0 4pt 63pt
+    }
+.manning {
+    color: black;
+    display: block;
+    font-family: "Verdana", sans-serif;
+    font-size: 0.625em;
+    text-align: center;
+    margin: 0 0 0.0001pt
+    }
+.meap {
+    color: black;
+    display: block;
+    font-family: "Cambria", serif;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0 0 0.0001pt
+    }
+.meapa {
+    color: black;
+    display: block;
+    font-family: "Cambria", serif;
+    font-size: 1.29167em;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0 0 0.0001pt
+    }
+.msohyperlink {
+    color: blue;
+    font-family: "Times New Roman", serif;
+    line-height: 1.4;
+    text-decoration: underline
+    }
+.msonormal {
+    display: block;
+    font-family: "Calibri", sans-serif;
+    font-size: 1em;
+    line-height: 1.4;
+    margin: 0 0 0.0001pt
+    }
+.msotablegrid {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-left: 12.5pt;
+    margin-top: 0;
+    text-indent: 0;
+    width: 376.1pt;
+    border: currentColor none medium
+    }
+.msotablegrid1 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-left: 12.5pt;
+    margin-top: 0;
+    text-indent: 0;
+    width: 376.3pt;
+    border: currentColor none medium
+    }
+.msotablegrid2 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    border: currentColor none medium
+    }
+.msotablegrid3 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 379.1pt;
+    border: currentColor none medium
+    }
+.msotablegrid4 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 393.85pt;
+    border: currentColor none medium
+    }
+.msotablegrid5 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 395.25pt;
+    border: currentColor none medium
+    }
+.msotablegrid6 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 319.3pt;
+    border: currentColor none medium
+    }
+.msotablegrid7 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    text-indent: 0;
+    width: 90.25pt;
+    margin: 0 auto;
+    border: currentColor none medium
+    }
+.msotablegrid8 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 90.25pt;
+    border: currentColor none medium
+    }
+.msotablegrid9 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 281.85pt;
+    border: currentColor none medium
+    }
+.msotablegrid10 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 329.3pt;
+    border: currentColor none medium
+    }
+.msotablegrid11 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 381.05pt;
+    border: currentColor none medium
+    }
+.msotablegrid12 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 89.3pt;
+    border: currentColor none medium
+    }
+.msotablegrid13 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 189.7pt;
+    border: currentColor none medium
+    }
+.msotablegrid14 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    width: 325pt;
+    border: currentColor none medium
+    }
+.msotablegrid15 {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    display: table;
+    line-height: 1.4;
+    text-indent: 0;
+    margin: 0 auto;
+    border: currentColor none medium
+    }
+.sgc {
+    display: block;
+    line-height: 1.4;
+    padding: 0 0 0.1em;
+    border-top: currentColor none medium;
+    border-right: currentColor none medium;
+    border-bottom: #005 solid 0.1em;
+    border-left: currentColor none medium
+    }
+.sidebara {
+    background: #E6E6E6;
+    display: block;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    text-indent: 10.35pt;
+    margin: 0 0 0.0001pt
+    }
+.sidebaraend {
+    background: #E6E6E6;
+    display: block;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    margin: 0 0 12pt;
+    padding: 0;
+    border: currentColor none medium
+    }
+.sidebarhead {
+    background: #E6E6E6;
+    color: #005;
+    display: block;
+    font-family: "Franklin Gothic Heavy", sans-serif;
+    font-size: 1em;
+    line-height: 1.4;
+    page-break-after: avoid;
+    margin: 0.25in 0 0.0001pt;
+    padding: 0;
+    border: currentColor none medium
+    }
+.superscript {
+    vertical-align: super
+    }
+.tablebody {
+    color: black;
+    display: block;
+    font-family: "Arial", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    margin: 6pt 0
+    }
+.tablebody1 {
+    color: black;
+    display: block;
+    font-family: "Arial", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    margin: 6pt 0 0.0001pt
+    }
+.tablecaption {
+    color: #141464;
+    display: block;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 1em;
+    line-height: 1.4;
+    page-break-after: avoid;
+    text-align: left;
+    margin: 12pt 0 6pt
+    }
+.tablehead {
+    color: #141464;
+    display: block;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-size: 0.77419em;
+    line-height: 1.4;
+    page-break-after: avoid;
+    margin: 6pt 0;
+    padding: 0;
+    border: currentColor none medium
+    }
+.tocchapters {
+    color: #005;
+    display: block;
+    font-family: "NACNO F+ A Garamond", "serif";
+    font-size: 1em;
+    font-style: italic;
+    line-height: 1.4;
+    text-indent: -2.1em;
+    margin: 0.6em 0 0.6em 2.1em
+    }
+.tochead {
+    color: #005;
+    display: block;
+    font-family: "Franklin Gothic Medium", "sans-serif";
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.4;
+    page-break-after: avoid;
+    margin: 1.2em 0 0.3em
+    }
+.tochead1 {
+    display: block;
+    font-size: 1.54839em;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: left;
+    margin: 0.67em 0
+    }
+.wordsection {
+    display: block;
+    line-height: 1.4;
+    page: WordSection1
+    }
+.pcalibre1:visited {
+    color: purple;
+    text-decoration: underline
+    }
+.pcalibre2:link {
+    color: #00C;
+    text-decoration: underline
+    }
+.pcalibre3:link {
+    color: blue;
+    text-decoration: underline
+    }
+.pcalibre:link {
+    color: blue;
+    font-family: "Times New Roman", serif;
+    text-decoration: underline
+    }

@@ -1,0 +1,2197 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" class="calibre">
+  <head>
+    <meta content="Microsoft Word 15 (filtered)" name="Generator"/>
+    <title>Style A ReadMe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre8">
+  <div class="wordsection">
+    <h1 class="cochapternumber">5<span class="calibre16">  </span> Advanced evolutionary approaches</h1>
+
+    <p class="cosummaryhead">This chapter covers</p>
+
+    <p class="cosummarybulletcxspfirst"><span class="calibre17">·<span class="calibre14">    </span></span> Considering options for the various steps in the genetic algorithm life cycle</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Adjusting a genetic algorithm to solve varying problems</p>
+
+    <p class="cosummarybulletcxsplast"><span class="calibre17">·<span class="calibre14">    </span></span> The advanced parameters for configuring a genetic algorithm life cycle based on different scenarios, problems, and datasets.</p>
+
+    <p class="body1">Note: Chapter 4 is a prerequisite to this chapter.</p>
+
+    <h2 class="head" id="sigil_toc_id_86">5.1<span class="calibre10">     </span> Evolutionary algorithm life cycle</h2>
+
+    <p class="body1">The general life cycle of a genetic algorithm is outlined in chapter 4. In this chapter, we consider other problems that may be suitable to be solved with a genetic algorithm, why some of the approaches demonstrated thus far won’t work, and alternative approaches.</p>
+
+    <p class="body1">As a reminder, the general life cycle of a genetic algorithm is as follows:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Creating a population</span>—Creating a random population of potential solutions.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Measuring fitness of individuals in the population</span>—Determining how good a specific solution is. This task is accomplished by using a fitness function that scores solutions to determine how good they are.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Selecting parents based on their fitness</span>—Selecting pairs of parents that will reproduce offspring.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Reproducing individuals from parents</span>—Creating offspring from their parents by mixing genetic information and applying slight mutations to the offspring.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Populating the next generation</span>—Selecting individuals and offspring from the population that will survive to the next generation.</p>
+
+    <p class="body1">Keep the life cycle flow (depicted in figure 5.1) in mind as we work through this chapter.</p>
+
+    <p class="figure"><img alt="05_01" class="calibre11" src="../Images/05_01.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.1 Genetic algorithm life cycle</p>
+
+    <p class="body1">This chapter starts by exploring alternative selection strategies; these individual approaches can be generically swapped in and out for any genetic algorithm. Then it follows three scenarios that are tweaks of the Knapsack Problem (chapter 4) to highlight the utility of the alternative encoding, crossover, and mutation approaches.</p>
+
+    <p class="figure"><img alt="05_02" class="calibre11" src="../Images/05_02.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.2 The example Knapsack Problem</p>
+
+    <h2 class="head" id="sigil_toc_id_87">5.2<span class="calibre10">     </span> <span class="bold1">Alternative selection strategies</span></h2>
+
+    <p class="body1">In chapter 4, we explored one selection strategy: roulette-wheel selection, which is one of the simplest methods for selecting individuals. The following three selection strategies help mitigate the problems of roulette-wheel selection; each has advantages and disadvantages that affect the diversity of the population, which ultimately affects whether an optimal solution is found.</p>
+
+    <h3 class="head1" id="sigil_toc_id_88">5.2.1<span class="calibre15">  </span> Rank selection: Even the playing field</h3>
+
+    <p class="body1">One problem with roulette-wheel selection is the vast differences in magnitude of fitness between chromosomes. This heavily biases the selection towards choosing individuals with high fitness scores or give poor performing individuals a larger chance of selection than desired. This problem affects the diversity of the population. More diversity means more exploration of the search space, but it can also make finding optimal solutions take too many generations.</p>
+
+    <p class="body1">Rank selection aims to solve this problem by ranking individuals based on their fitness and then using each individual’s rank as the value for calculating the size of its slice on the wheel. In the Knapsack Problem, this value is a number between 1 and 16, because we’re choosing among 16 individuals. Although strong individuals are more likely to be selected and weaker ones are less likely to be selected even though they are average, each individual has a fairer chance of being selected based on rank rather than exact fitness.</p>
+
+    <p class="body1">When 16 individuals are ranked, the wheel looks slightly different from roulette-wheel selection.</p>
+
+    <p class="figure"><img alt="05_03" class="calibre11" src="../Images/05_03.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.3 Example of rank selection</p>
+
+    <p class="body1">Figure 5.4 compares roulette-wheel selection and rank selection. It is clear that rank selection gives better-performing solutions a better chance of selection.</p>
+
+    <p class="figure"><img alt="05_04" class="calibre11" src="../Images/05_04.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.4 Roulette-wheel selection vs. rank selection</p>
+
+    <h3 class="head1" id="sigil_toc_id_89">5.2.2<span class="calibre15">  </span> Tournament selection: Let them fight</h3>
+
+    <p class="body1">Tournament selection plays chromosomes against one other. Tournament selection randomly chooses a set number of individuals from the population and places them in a group. This process is performed for a predetermined number of groups. The individual with the highest fitness score in each respective group is selected. The larger the group, the less diverse it is, because only one individual from each group is selected. As with rank selection, the actual fitness score of each individual is not the key factor in selecting individuals globally.</p>
+
+    <p class="body1">When 16 individuals are allocated to four groups, selecting only 1 individual from each group results in the choice of 4 of the strongest individuals from those groups. Then the 4 winning individuals can be paired to reproduce.</p>
+
+    <p class="figure"><img alt="05_05" class="calibre11" src="../Images/05_05.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.5 Example of tournament selection</p>
+
+    <h3 class="head1" id="sigil_toc_id_90">5.2.3<span class="calibre15">  </span> Elitism selection: Choose only the best</h3>
+
+    <p class="body1">The elitism approach selects the best individuals in the population. Elitism is useful for retaining strong-performing individuals and eliminating the risk that they will be lost through other selection methods. The disadvantage of elitism is that the population can fall into a best local solution space and never be diverse enough to find global bests.</p>
+
+    <p class="body1">Elitism is often used in conjunction with roulette-wheel selection, rank selection, and tournament selection. The idea is that several elite individuals are selected to reproduce, and the rest of the population is filled with individuals by means of one of the other selection strategies.</p>
+
+    <p class="figure"><img alt="05_06" class="calibre11" src="../Images/05_06.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.6 Example of elitism selection</p>
+
+    <p class="body1">Chapter 4 explores a problem in which including items in or excluding items from the knapsack was important. A variety of problem spaces require different encoding, however, because binary encoding won’t make sense. The following three sections describe these scenarios.</p>
+
+    <h2 class="head" id="sigil_toc_id_91">5.3<span class="calibre10">     </span> Real-value encoding: Working with real numbers</h2>
+
+    <p class="body1">Consider that the Knapsack Problem has changed slightly. The problem remains choosing the most valuable items to fill the weight capacity of the knapsack. But the choice involves more than one unit of each item. As shown in table 5.1, the weight and values remain the same as the original dataset, but a quantity of each item is included. With this slight adjustment, a plethora of new solutions is possible, and one or more of those solutions may be more optimal, because a specific item can be selected more than once. Binary encoding is a poor choice in this scenario. Real-value encoding is better suited to representing the state of potential solutions.</p>
+
+    <p class="tablecaption">Table 5.1 Knapsack capacity: 6404180 kg</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="502" class="msotablegrid1">
+      <tr class="calibre24">
+        <td char="81" class="calibre34" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item ID</p>
+          </div>
+        </td>
+
+        <td char="127" class="calibre35" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item name</p>
+          </div>
+        </td>
+
+        <td char="94" class="calibre36" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Weight</p>
+          </div>
+        </td>
+
+        <td char="95" class="calibre37" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Value</p>
+          </div>
+        </td>
+
+        <td char="105" class="calibre38">
+          <div class="calibre26">
+            <p class="tablehead">Quantity</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">1</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Axe</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">32252</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">68674</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">19</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Bronze coin</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">225790</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">471010</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">14</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Crown</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">468164</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">944620</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">2</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Diamond statue</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">489494</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">962094</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">9</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Emerald belt</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">35384</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">78344</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">11</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Fossil</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">265590</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">579152</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">6</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Gold coin</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">497911</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">902698</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">4</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Helmet</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">800493</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1686515</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">10</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Ink</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">823576</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1688691</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">7</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Jewel box</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">552202</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1056157</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">3</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">11</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Knife</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">323618</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">677562</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">5</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">12</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Long sword</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">382846</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">833132</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">13</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">13</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Mask</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">44676</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">99192</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">15</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">14</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Necklace</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">169738</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">376418</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">8</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">15</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Opal badge</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">610876</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1253986</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">4</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">16</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Pearls</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">854190</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1853562</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">9</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">17</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Quiver</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">671123</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1320297</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">12</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">18</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Ruby ring</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">698180</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1301637</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">17</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">19</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Silver bracelet</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">446517</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">859835</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">16</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">20</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Timepiece</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">909620</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1677534</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">7</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">21</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Uniform</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">904818</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1910501</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">6</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">22</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Venom potion</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">730061</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1528646</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">9</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">23</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Wool scarf</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">931932</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1827477</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">3</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">24</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Crossbow</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">952360</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">2068204</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">1</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">25</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Yesteryear book</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">926023</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">1746556</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">7</p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody">26</p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody">Zinc cup</p>
+        </td>
+
+        <td char="94" class="calibre41" nowrap="nowrap">
+          <p class="tablebody">978724</p>
+        </td>
+
+        <td char="95" class="calibre42" nowrap="nowrap">
+          <p class="tablebody">2100851</p>
+        </td>
+
+        <td char="105" class="calibre43">
+          <p class="tablebody">2</p>
+        </td>
+      </tr>
+    </table>
+
+    <h3 class="head1" id="sigil_toc_id_92">5.3.1<span class="calibre15">  </span> Real-value encoding at its core</h3>
+
+    <p class="body1">Real-value encoding represents a gene in terms of numeric values, strings, or symbols, and expresses potential solutions in the natural state respective to the problem. This encoding is used when potential solutions contain continuous values that cannot be encoded easily with binary encoding. As an example, because more than one item is available to be carried in the knapsack, each item index cannot indicate only whether the item is included; it must indicate the quantity of that item in the knapsack.</p>
+
+    <p class="figure"><img alt="05_07" class="calibre11" src="../Images/05_07.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.7 Example of real-value encoding</p>
+
+    <p class="body1">Because the encoding scheme has been changed, new crossover and mutation options become available. The crossover approaches discussed for binary encoding are still valid options to real-value encoding, but mutation should be approached differently.</p>
+
+    <h3 class="head1" id="sigil_toc_id_93">5.3.2<span class="calibre15">  </span> Arithmetic crossover: Reproduce with math</h3>
+
+    <p class="body1">Arithmetic crossover involves an arithmetic operation to be computed by using each parent as variables in the expression. The result of applying an arithmetic operation using both parents is the new offspring. When we use this strategy with binary encoding, it is important to ensure that the result of the operation is still a valid chromosome.</p>
+
+    <p class="body1">Arithmetic crossover is applicable to binary encoding and real-value encoding.</p>
+
+    <p class="callout"><span class="callouthead">NOTE</span> <span xml:lang="X-NONE">Be wary: this approach can create very diverse offspring, which can be problematic.</span></p>
+
+    <p class="figure"><img alt="05_08" class="calibre11" src="../Images/05_08.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.8 Example of arithmetic crossover</p>
+
+    <h3 class="head1" id="sigil_toc_id_94">5.3.3<span class="calibre15">  </span> Boundary mutation</h3>
+
+    <p class="body1">In boundary mutation, a gene randomly selected from a real-value encoded chromosome is set randomly to a lower bound value or upper bound value.</p>
+
+    <p class="body1">Given 26 genes in a chromosome, a random index is selected, and the value is set to either a minimum value or maximum value. In figure 5.9, the original value happens to be 0 and will be adjusted to 6, which is the maximum for that item. The minimum and maximum can be the same for all indexes or set uniquely for each index if knowledge of the problem informs the decision. This approach attempts to evaluate the impact of individual genes on the chromosome.</p>
+
+    <p class="figure"><img alt="05_09" class="calibre11" src="../Images/05_09.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.9 Example of boundary mutation</p>
+
+    <h3 class="head1" id="sigil_toc_id_95">5.3.4<span class="calibre15">  </span> Arithmetic mutation</h3>
+
+    <p class="body1">In arithmetic mutation, a randomly selected gene in a real-value-encoded chromosome is changed by adding or subtracting a small number. Note that although the example figure includes whole numbers, the numbers could be decimal numbers, including fractions.</p>
+
+    <p class="figure"><img alt="05_10" class="calibre11" src="../Images/05_10.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.10 Example of arithmetic mutation</p>
+
+    <h2 class="head" id="sigil_toc_id_96">5.4<span class="calibre10">     </span> Order encoding: Working with sequences</h2>
+
+    <p class="body1">We still have the same items as in the Knapsack Problem. We won’t be determining the items that will fit into a knapsack, instead; all the items need to be processed in a refinery in which each item is broken down to extract its source material. Perhaps the gold coin, silver bracelet, and other items are smelted to extract only the source compounds. In this scenario, items are not selected to be included, but all are included.</p>
+
+    <p class="body1">To make things interesting, the refinery requires a steady rate of extraction, given the extraction time and the value of the item. It’s assumed that the value of the refined material is more or less the same as the value of the item. The problem becomes an ordering problem. In what order should the items be processed to maintain a constant rate of value? Table 5.2 describes the items with their respective extraction time.</p>
+
+    <p class="tablecaption">Table 5.2 Factory value per hour: 600,000</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="502" class="msotablegrid1">
+      <tr class="calibre24">
+        <td char="81" class="calibre34" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item ID</p>
+          </div>
+        </td>
+
+        <td char="127" class="calibre35" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item name</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre44" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Weight</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre45" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Value</p>
+          </div>
+        </td>
+
+        <td char="133" class="calibre46">
+          <div class="calibre26">
+            <p class="tablehead">Extraction time</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Axe</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">32252</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">68674</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">60</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Bronze coin</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">225790</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">471010</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">3</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Crown</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">468164</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">944620</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">45</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">4</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Diamond statue</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">489494</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">962094</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">90</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Emerald belt</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">35384</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">78344</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">70</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">6</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Fossil</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">265590</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">579152</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">7</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Gold coin</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">497911</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">902698</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">8</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Helmet</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">800493</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1686515</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">9</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Ink</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">823576</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1688691</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Jewel box</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">552202</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1056157</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">40</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">11</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Knife</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">323618</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">677562</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">12</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Long sword</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">382846</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">833132</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">60</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">13</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Mask</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">44676</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">99192</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">14</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Necklace</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">169738</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">376418</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Opal badge</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">610876</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1253986</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">60</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">16</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Pearls</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">854190</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1853562</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">25</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">17</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Quiver</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">671123</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1320297</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">18</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Ruby ring</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">698180</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1301637</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">70</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">19</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Silver bracelet</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">446517</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">859835</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">50</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Timepiece</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">909620</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1677534</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">45</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">21</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Uniform</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">904818</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1910501</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">22</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Venom potion</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">730061</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1528646</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">23</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Wool scarf</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">931932</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1827477</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">24</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Crossbow</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">952360</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2068204</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">25</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">25</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Yesteryear book</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">926023</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1746556</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">26</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Zinc cup</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">978724</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2100851</span></p>
+        </td>
+
+        <td char="133" class="calibre49">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+      </tr>
+    </table>
+
+    <h3 class="head1" id="sigil_toc_id_97">5.4.1<span class="calibre15">  </span> Importance of the fitness function</h3>
+
+    <p class="body1">With the change in the Knapsack Problem to the Refinery Problem, a key difference is the measurement of successful solutions. Because the factory requires a constant minimum rate of value per hour, the accuracy of the fitness function used becomes paramount to finding optimal solutions. In the Knapsack Problem, the fitness of a solution is trivial to compute, as involves only two things: ensuring that the knapsack’s weight limit is respected and summing the selected items’ value. In the Refinery Problem, the fitness function must calculate the rate of value provided, given the extraction time for each item as well as the value of each item. This calculation is more complex, and an error in the logic of this fitness function directly influences the quality of solutions.</p>
+
+    <h3 class="head1" id="sigil_toc_id_98">5.4.2<span class="calibre15">  </span> Order encoding at its core</h3>
+
+    <p class="body1">Order encoding, also known as permutation encoding, represents a chromosome as a sequence of elements. Order encoding usually requires all elements to be present in the chromosome, which implies that corrections might need to be made when performing crossover and mutation to ensure that no elements are missing or duplicated.</p>
+
+    <p class="body1">Figure 5.11 depicts how a chromosome represents the order of processing of the available items.</p>
+
+    <p class="figure"><img alt="05_11" class="calibre11" src="../Images/05_11.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.11 Example of order encoding</p>
+
+    <p class="body1">Another example in which order encoding is sensible is representing potential solutions to route optimization problems. Given a certain number of destinations, each of which must be visited at least once while minimizing the total distance traveled, the route can be represented as a string of the destinations in the order in which they are visited. We will use this example when covering swarm intelligence in chapter 6.</p>
+
+    <h3 class="head1" id="sigil_toc_id_99">5.4.3<span class="calibre15">  </span> Order mutation: Order/permutation encoding</h3>
+
+    <p class="body1">In order mutation, two randomly selected genes in an order-encoded chromosome swap positions, ensuring that all items remain in the chromosome while introducing diversity.</p>
+
+    <p class="figure"><img alt="05_12" class="calibre11" src="../Images/05_12.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.12 Example of order mutation</p>
+
+    <h2 class="head" id="sigil_toc_id_100">5.5<span class="calibre10">     </span> Tree encoding: Working with hierarchies</h2>
+
+    <p class="body1">The preceding sections show that binary encoding is useful for selecting items from a set, real-value encoding is useful when real numbers are important to the solution, and order encoding is useful for determining priority and sequences. Suppose that the items in the Knapsack Problem are placed in packages to be shipped to homes around the town. Each delivery wagon can hold a specific volume. The requirement is to determine the optimal positioning of packages to minimize empty space in each wagon.</p>
+
+    <p class="tablecaption">Table 5.3 Wagon capacity: 1000 wide x 1000 high</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" char="502" class="msotablegrid1">
+      <tr class="calibre24">
+        <td char="81" class="calibre34" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item ID</p>
+          </div>
+        </td>
+
+        <td char="127" class="calibre35" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Item name</p>
+          </div>
+        </td>
+
+        <td char="76" class="calibre44" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Weight</p>
+          </div>
+        </td>
+
+        <td char="85" class="calibre45" nowrap="nowrap">
+          <div class="calibre26">
+            <p class="tablehead">Value</p>
+          </div>
+        </td>
+
+        <td char="66" class="calibre50">
+          <div class="calibre26">
+            <p class="tablehead">W</p>
+          </div>
+        </td>
+
+        <td char="67" class="calibre51">
+          <div class="calibre26">
+            <p class="tablehead">H</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Axe</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">32252</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">68674</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">60</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Bronze coin</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">225790</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">471010</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">3</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Crown</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">468164</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">944620</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">4</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Diamond statue</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">489494</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">962094</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">70</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Emerald belt</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">35384</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">78344</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">6</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Fossil</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">265590</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">579152</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">7</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Gold coin</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">497911</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">902698</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">8</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Helmet</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">800493</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1686515</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">40</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">50</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">9</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Ink</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">823576</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1688691</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Jewel box</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">552202</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1056157</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">40</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">11</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Knife</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">323618</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">677562</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">12</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Long sword</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">382846</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">833132</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">50</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">13</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Mask</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">44676</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">99192</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">14</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Necklace</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">169738</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">376418</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Opal badge</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">610876</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1253986</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">16</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Pearls</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">854190</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1853562</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">17</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Quiver</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">671123</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1320297</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">70</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">18</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Ruby ring</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">698180</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1301637</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">5</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">19</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Silver bracelet</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">446517</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">859835</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">10</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Timepiece</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">909620</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1677534</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">21</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Uniform</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">904818</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1910501</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">40</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">22</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Venom potion</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">730061</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1528646</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">23</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Wool scarf</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">931932</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1827477</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">20</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">24</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Crossbow</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">952360</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2068204</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">50</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">70</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">25</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Yesteryear book</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">926023</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">1746556</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">25</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">30</span></p>
+        </td>
+      </tr>
+
+      <tr class="calibre24">
+        <td char="81" class="calibre39" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">26</span></p>
+        </td>
+
+        <td char="127" class="calibre40" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">Zinc cup</span></p>
+        </td>
+
+        <td char="76" class="calibre47" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">978724</span></p>
+        </td>
+
+        <td char="85" class="calibre48" nowrap="nowrap">
+          <p class="tablebody"><span xml:lang="EN-ZA">2100851</span></p>
+        </td>
+
+        <td char="66" class="calibre52">
+          <p class="tablebody"><span xml:lang="EN-ZA">15</span></p>
+        </td>
+
+        <td char="67" class="calibre53">
+          <p class="tablebody"><span xml:lang="EN-ZA">25</span></p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="body1">In interest of simplicity, suppose that the wagon’s volume is a two-dimensional rectangle and that the packages are rectangular rather than 3D boxes.</p>
+
+    <h3 class="head1" id="sigil_toc_id_101">5.5.1<span class="calibre15">  </span> Tree encoding at its core</h3>
+
+    <p class="body1">Tree encoding represents a chromosome as a tree of elements. Tree encoding is versatile for representing potential solutions in which the hierarchy of elements is important and/or required. Tree encoding can even represent functions, which consist of a tree of expressions. As a result, tree encoding could be used to evolve program functions in which the function solves a specific problem; the solution may work but look bizarre.</p>
+
+    <p class="body1">Here is an example in which tree encoding makes sense. We have a wagon with a specific height and width, and a certain number of packages must fit in the wagon. The goal is to fit the packages in the wagon so that empty space is minimized. A tree-encoding approach would work well in representing potential solutions to this problem.</p>
+
+    <p class="body1">In figure 5.13, the root node, Node A, represents the packing of the wagon from top to bottom. Node B represents all packages horizontally, similarly to node C and node D. Node E represents packages packed vertically in its slice of the wagon.</p>
+
+    <p class="figure"><img alt="05_13" class="calibre11" src="../Images/05_13.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.13 Example of a tree used to represent the Wagon Packing Problem</p>
+
+    <h3 class="head1" id="sigil_toc_id_102">5.5.2<span class="calibre15">  </span> Tree crossover: Inheriting portions of a tree</h3>
+
+    <p class="body1">Tree crossover is similar to single-point crossover (chapter 4) in that a single point in the tree structure is selected and then the parts are exchanged and combined with copies of the parent individuals to create an offspring individual. The inverse process can be used to make a second offspring. The resulting children must be verified to be valid solutions that obey the constraints of the problem. More than one point can be used for crossover if using multiple points makes sense in solving the problem.</p>
+
+    <p class="figure"><img alt="05_14" class="calibre11" src="../Images/05_14.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.14 Example of tree crossover</p>
+
+    <h3 class="head1" id="sigil_toc_id_103">5.5.3<span class="calibre15">  </span> Change node mutation: Changing the value of a node</h3>
+
+    <p class="body1">In Change object node mutation, a randomly selected node in a tree-encoded chromosome is changed to a randomly selected valid object for that node.</p>
+
+    <p class="body1">Given a tree representing an organization of items, we can change an item to another valid item.</p>
+
+    <p class="figure"><img alt="05_15" class="calibre11" src="../Images/05_15.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.15 Change node mutation in a tree</p>
+
+    <p class="body1">This chapter and chapter 4 cover several encoding schemes, crossover schemes, and selection strategies. You could substitute your own approaches for these steps in your genetic algorithms if doing so makes sense for the problem you’re solving.</p>
+
+    <h2 class="head" id="sigil_toc_id_104">5.6<span class="calibre10">     </span> Common types of evolutionary algorithms</h2>
+
+    <p class="body1">This chapter focuses on the life cycle and alternative approaches for a genetic algorithm. Variations of the algorithm can be useful for solving different problems. Now that we have a grounding in how a genetic algorithm works, we’ll look at these variations and possible use cases for them.</p>
+
+    <h3 class="head1" id="sigil_toc_id_105">5.6.1<span class="calibre15">  </span> Genetic programming</h3>
+
+    <p class="body1">Genetic programming follows a process similar to that of genetic algorithms but is used primarily to generate computer programs to solve problems. The process described in section 5.5 also applies here. The fitness of potential solutions in a genetic programming algorithm is how well the generated program solves a computational problem. With this in mind, we see that the tree-encoding method would work well here, because most computer programs are graphs consisting of nodes that indicate operations and processes. These trees of logic can be evolved, so the computer program will be evolved to solve a specific problem. One thing to note: these computer programs usually evolve to look like a mess of code that’s difficult for people to understand debug.</p>
+
+    <h3 class="head1" id="sigil_toc_id_106">5.6.2<span class="calibre15">  </span> Evolutionary programming</h3>
+
+    <p class="body1">Evolutionary programming is similar to genetic programming, but the potential solution is parameters for a predefined fixed computer program, not a generated computer program. If a program requires finely tuned inputs, and determining a good combination of inputs is difficult, a genetic algorithm can be used to evolve these inputs. The fitness of potential solutions in an evolutionary programming algorithm is determined by how well the fixed computer program performs based on the parameters encoded in an individual. Perhaps an evolutionary programming approach could be used to find good parameters for an artificial neural network (chapter 9).</p>
+
+    <h2 class="head" id="sigil_toc_id_107">5.7<span class="calibre10">     </span> Glossary of evolutionary algorithm terms</h2>
+
+    <p class="body1">Here is a useful glossary of evolutionary algorithms terms for future research and learning:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Allele</span>—The value of a specific gene in a chromosome</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Chromosome</span>—A collection of genes that represents a possible solution</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Individual</span>—A single chromosome in a population</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Population</span>—A collection of individuals</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Genotype</span>—The artificial representation of the potential solution population in the computation space</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Phenotype</span>—The actual representation of the potential solution population in the real world</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Generation</span>—A single iteration of the algorithm</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Exploration</span>—The process of finding a variety of possible solutions, some of which may be good and some of which may be bad</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Exploitation</span>—The process of honing in on good solutions and iteratively refining them</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Fitness function</span>—A particular type of objective function</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Objective function</span>—A function that attempts to maximize or minimize</p>
+
+    <h2 class="head" id="sigil_toc_id_108">5.8<span class="calibre10">     </span> More use cases for evolutionary algorithms</h2>
+
+    <p class="body1">Some of the use cases for evolutionary algorithms are listed in chapter 4, but many more exist. The following use cases are particularly interesting because they use one or more of the concepts discussed in this chapter:</p>
+
+    <p class="listbulletcxspfirst1"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Adjusting weights in artificial neural networks</span>—Artificial neural networks are discussed later in chapter 9, but a key concept is adjusting weights in the network to learn patterns and relationships in data. Several mathematic techniques adjust weights, but evolutionary algorithms are more efficient alternatives in the right scenarios.</p>
+
+    <p class="listbulletcxspmiddle"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Electronic circuit design</span>—Electronic circuits with the same components can be designed in many configurations. Some configurations are more efficient than others. If two components that work together often are closer together, this configuration may improve efficiency. Evolutionary algorithms can be used to evolve different circuit configurations to find the most optimal design.</p>
+
+    <p class="listbulletcxsplast"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Molecular structure simulation and design</span>—As in electronic circuit design, different molecules behave differently and have their own advantages and disadvantages. Evolutionary algorithms can be used to generate different molecular structures to be simulated and studied to determine their behavioral properties.</p>
+
+    <p class="body1">Now that we’ve been through the general genetic algorithm life cycle in chapter 4 and some advanced approaches in this chapter, you should be equipped to apply evolutionary algorithms in your contexts and solutions.</p>
+
+    <p class="figure"><img alt="05_16" class="calibre11" src="../Images/05_16.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 5.16 Summary of Advanced evolutionary approaches</p>
+  </div>
+</body>
+</html>

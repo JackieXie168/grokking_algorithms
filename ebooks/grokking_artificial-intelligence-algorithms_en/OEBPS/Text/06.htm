@@ -1,0 +1,877 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" class="calibre">
+  <head>
+    <meta content="Microsoft Word 15 (filtered)" name="Generator"/>
+    <title>Style A ReadMe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre8">
+  <div class="wordsection">
+    <h1 class="cochapternumber">6<span class="calibre16">  </span> Swarm intelligence: Ants</h1>
+
+    <p class="cosummaryhead">This chapter covers</p>
+
+    <p class="cosummarybulletcxspfirst"><span class="calibre17">·<span class="calibre14">    </span></span> Seeing and understanding what inspired swarm intelligence algorithms</p>
+
+    <p class="cosummarybulletcxspmiddle"><span class="calibre17">·<span class="calibre14">    </span></span> Solving problems with swarm intelligence algorithms</p>
+
+    <p class="cosummarybulletcxsplast"><span class="calibre17">·<span class="calibre14">    </span></span> Designing and implementing an ant colony optimization algorithm</p>
+
+    <h2 class="head" id="sigil_toc_id_109">6.1<span class="calibre10">     </span> What is swarm intelligence?</h2>
+
+    <p class="body1">Swarm intelligence algorithms are a subset of evolutionary algorithms that were discussed in chapter 5 and are also known as nature-inspired algorithms. As with the theory of evolution, the observation of the behavior of life forms in nature is the inspiration for the concepts behind swarm intelligence. When we observe the world around us, we see many lifeforms that are seemingly primitive and unintelligent as individuals, yet exhibit intelligent emergent behavior when acting in groups.</p>
+
+    <p class="body1">An example of these life forms is ants. A single ant can carry 10 to 50 times its own body weight and run 700 times its body length per minute. These are impressive qualities; however, when acting in a group, that single ant can accomplish much more. In a group, ants are able to build colonies; find and retrieve food; and even warn other ants, show recognition to other ants, and use peer pressure to influence others in the colony. They achieve these tasks by means of <span class="italics">pheromones</span>—essentially perfumes that ants drop wherever they go. Other ants can sense these perfumes and change their behavior based on them. Ants have access to between 10 and 20 types of pheromones that can be used to communicate different intentions. Because individual ants use pheromones to indicate their intentions and needs, we can observe emergent intelligent behavior in groups of ants.</p>
+
+    <p class="body1">Figure 6.1 shows an example of ants working as a team to create a bridge between two points to enable other ants to carry out tasks. These tasks may be to retrieve food or materials for their colony.</p>
+
+    <p class="figure"><img alt="06_01" class="calibre11" src="../Images/06_01.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.1 A group of ants working together to cross a chasm</p>
+
+    <p class="body1">An experiment based on real-life harvesting ants showed that they always converged to the shortest path between the nest and the food source.</p>
+
+    <p class="body1">Figure 6.2 depicts the difference in the colony movement from the start to when ants have walked their paths and increased the pheromone intensity on those paths. This outcome was observed in a classical asymmetric bridge experiment with real ants. Notice that the ants converge to the shortest path after just eight minutes.</p>
+
+    <p class="figure"><img alt="06_02" class="calibre11" src="../Images/06_02.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.2 Asymmetric bridge experiment</p>
+
+    <p class="body1">Ant Colony Optimization (ACO) algorithms simulate the emergent behavior shown in this experiment. In the case of finding the shortest path, the algorithm converges to a similar state, as observed with real ants.</p>
+
+    <p class="body1">Swarm intelligence algorithms are useful for solving optimization problems when several constraints need to be met in a specific problem space and an absolute best solution is difficult to find due to a vast number of possible solutions - some better and some worse. These problems represent the same class of problems that genetic algorithms aim to solve; the choice of algorithm depends on how the problem can be represented and reasoned about. We dive into the technicalities of optimization problems in particle swarm optimization, chapter 6.</p>
+
+    <p class="body1">Swarm intelligence is useful in several real-world contexts, some of which are represented in figure 6.3.</p>
+
+    <p class="figure"><img alt="06_03" class="calibre11" src="../Images/06_03.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.3 Problems addressed by swarm optimization</p>
+
+    <p class="body1">Given the general understanding of swam intelligence in ants, the following sections explore specific implementations that are inspired by these concepts.</p>
+
+    <p class="body1">The ant colony optimization algorithm is inspired by the behavior of ants moving between destinations, dropping pheromones, and acting on pheromones that they come across. The emergent behavior is ants converging to paths of least resistance.</p>
+
+    <h2 class="head" id="sigil_toc_id_110">6.2<span class="calibre10">     </span> Problems applicable to ant colony optimization</h2>
+
+    <p class="body1">Imagine that you are visiting a carnival that has many attractions to experience. Each attraction is located in a different area, with varying distances between attractions. Because we don’t feel like wasting time walking too much, we will attempt to find the shortest paths between all the attractions.</p>
+
+    <p class="body1">Figure 6.4 illustrates the attractions at a small carnival and the distances between them. Notice that taking different paths to the attractions involves different total lengths of travel.</p>
+
+    <p class="figure"><img alt="06_04" class="calibre11" src="../Images/06_04.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.4 Carnival attractions and paths between them</p>
+
+    <p class="body1">The figure shows six attractions to visit, with 15 paths between them. This example should look familiar. This problem is represented by a fully connected graph, as described earlier in chapter 2. The attractions are vertices or nodes, and the paths between attractions are edges. The following formula is used to calculate the number of edges in a fully connected graph. As the number of attractions gets larger, the number of edges explodes.</p>
+
+    <p class="figure"><img alt="06_04a" class="calibre11" src="../Images/06_04a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">Attractions have different distances between them. Figure 6.5 depicts the distance on each path between every attraction; it also shows a possible path between all attractions. Note that the lines in the figure showing the distances between the attractions are not drawn to scale.</p>
+
+    <p class="figure"><img alt="06_05" class="calibre11" src="../Images/06_05.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.5 Distances between attractions and a possible path</p>
+
+    <p class="body1">If we spend some time analyzing the distances between all the attractions, we will find that figure 6.6 shows an optimal path between all the attractions. We visit the attractions in this sequence: swings, Ferris wheel, circus, carousel, balloons, and bumper cars.</p>
+
+    <p class="figure"><img alt="06_06" class="calibre11" src="../Images/06_06.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.6 Distances between attractions and an optimal path</p>
+
+    <p class="body1">The small dataset with six attractions is trivial to solve by hand, but if we increase the number of attractions to 15, the number of possibilities explodes. Suppose that the attractions are servers, and the paths are network connections. Smart algorithms are needed to solve these problems.</p>
+
+    <p class="figure"><img alt="06_07" class="calibre11" src="../Images/06_07.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.7 A larger dataset of attractions and paths between them</p>
+
+    <p class="head2">Exercise: Find the shortest path in this carnival configuration</p>
+
+    <p class="figure"><img alt="06_07a" class="calibre11" src="../Images/06_07a.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: Find the shortest path in this carnival configuration by hand</p>
+
+    <p class="figure"><img alt="06_07b" class="calibre11" src="../Images/06_07b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">One way to solve this problem computationally is to attempt a brute-force approach: every combination of tours (a tour is a sequence of visits in which every attraction is visited once) of the attractions is generated and evaluated until the shortest total distance is found. Again, this solution may seem to be reasonable solution, but in a large dataset, this computation is expensive and time-consuming. A brute-force approach with 48 attractions runs for tens of hours before finding an optimal solution.</p>
+
+    <h2 class="head" id="sigil_toc_id_111">6.3<span class="calibre10">     </span> Representing state: What do paths and ants look like?</h2>
+
+    <p class="body1">Given the carnival problem, we need to represent the data of the problem in a way that is suitable to be processed by the ant colony optimization algorithm. Because we have several attractions and all the distances between them, we can use a distance matrix to represent the problem space accurately and simply.</p>
+
+    <p class="body1">A <span class="italics">distance matrix</span> is a 2D array in which every index represents an entity; the related set is the distance between that entity and another entity. Similarly, each index in the list denotes a unique entity. This matrix is similar to the adjacency matrix that we dived into in chapter 2.</p>
+
+    <p class="figure"><img alt="06_08" class="calibre11" src="../Images/06_08.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.8 An example of the carnival problem</p>
+
+    <p class="tablecaption">Table 6.1 Distances between attractions</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" class="msotablegrid2">
+      <tr class="calibre54">
+        <td char="89" class="calibre55">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="68" class="calibre56">
+          <div class="calibre26">
+            <p class="tablehead">Circus</p>
+          </div>
+        </td>
+
+        <td char="69" class="calibre57">
+          <div class="calibre26">
+            <p class="tablehead">Balloon</p>
+          </div>
+        </td>
+
+        <td char="70" class="calibre58">
+          <div class="calibre26">
+            <p class="tablehead">Bumper cars</p>
+          </div>
+        </td>
+
+        <td char="70" class="calibre59">
+          <div class="calibre26">
+            <p class="tablehead">Carousel</p>
+          </div>
+        </td>
+
+        <td char="69" class="calibre60">
+          <div class="calibre26">
+            <p class="tablehead">Swings</p>
+          </div>
+        </td>
+
+        <td char="68" class="calibre61">
+          <div class="calibre26">
+            <p class="tablehead">Ferris wheel</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Circus</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">4</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Balloon</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">11</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">5</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Bumper cars</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">7</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Carousel</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">9</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">6</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Swings</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">11</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">3</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Ferris wheel</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">4</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">5</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">7</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">3</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The distances between attractions can be represented as a distance matrix, an array of arrays in which a reference to x, y in the array references the distance between attractions x and y. Notice that the distance between the same attraction will be 0 because it’s in the same position. This array can also be created programmatically by iterating through data from a file and creating each element.</p>
+
+    <p class="figure"><img alt="06_08a" class="calibre11" src="../Images/06_08a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">The next element to represent is the ants. Ants move to different attractions and leave pheromones behind. Ants also make a judgment about which attraction to visit next. Finally, ants have knowledge about their respective total distance traveled. Here are the basic properties of an ant:</p>
+
+    <p class="listbulletcxspfirst3"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Memory</span>—In the ACO algorithm, this is the list of attractions already visited.</p>
+
+    <p class="listbulletcxspmiddle2"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Best fitness</span>—This is the shortest total distance traveled across all attractions.</p>
+
+    <p class="listbulletcxsplast2"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Action</span>—Choose the next destination to visit, and drop pheromones along the way.</p>
+
+    <p class="figure"><img alt="06_09" class="calibre11" src="../Images/06_09.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.9 Properties of an ant</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">Although the abstract concept of an ant entails memory, best fitness, and action, specific data and functions are required to solve the carnival problem. To encapsulate the logic for an ant, we can use a class. When an instance of the ant class is initialized, an empty array is initialized to represent a list of attractions that the ant will visit. Furthermore, a random attraction will be selected to be the starting point for that specific ant.</p>
+
+    <p class="figure"><img alt="06_09a" class="calibre11" src="../Images/06_09a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">The ant class also contains several functions used for ant movement. The <span><code class="codeintext"><span class="calibre21">visit_*</span></code></span> functions are used to determine to which attraction the ant moves to next. The <span><code class="codeintext"><span class="calibre21">visit_attraction</span></code></span> function generates a random chance of visiting a random attraction. In this case, <span><code class="codeintext"><span class="calibre21">visit_random_attraction</span></code></span> is called; otherwise, <span><code class="codeintext"><span class="calibre21">roulette_wheel_selection</span></code></span> is used with a calculated list of probabilities. More details are coming up in section 6.4.</p>
+
+    <p class="figure"><img alt="06_09b" class="calibre11" src="../Images/06_09b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">Lastly, the <span><code class="codeintext"><span class="calibre21">get_distance_traveled</span></code></span> function is used to calculate the total distance traveled by a specific ant, using its list of visited attractions. This distance must be minimized to find the shortest path and is used as the fitness for the ants.</p>
+
+    <p class="figure"><img alt="06_09c" class="calibre11" src="../Images/06_09c.png"/><br class="calibre12"/></p>
+
+    <p class="body1">The final data structure to design is the concept of pheromone trails. Similarly to the distances between attractions, pheromone intensity on each path can be represented as a distance matrix, but instead of containing distances, the matrix contains pheromone intensities. In figure 6.10, thicker lines indicate more-intense pheromone trails. Table 6.2 describes the pheromone trains between different attractions.</p>
+
+    <p class="figure"><img alt="06_10" class="calibre11" src="../Images/06_10.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.10 Example pheromone intensity on paths</p>
+
+    <p class="tablecaption">Table 6.2 Pheromone intensity between attractions</p>
+
+    <table border="1" cellpadding="0" cellspacing="0" class="msotablegrid2">
+      <tr class="calibre54">
+        <td char="89" class="calibre55">
+          <div class="calibre26">
+            <p class="tablehead"> </p>
+          </div>
+        </td>
+
+        <td char="68" class="calibre56">
+          <div class="calibre26">
+            <p class="tablehead">Circus</p>
+          </div>
+        </td>
+
+        <td char="69" class="calibre57">
+          <div class="calibre26">
+            <p class="tablehead">Balloon</p>
+          </div>
+        </td>
+
+        <td char="70" class="calibre58">
+          <div class="calibre26">
+            <p class="tablehead">Bumper cars</p>
+          </div>
+        </td>
+
+        <td char="70" class="calibre59">
+          <div class="calibre26">
+            <p class="tablehead">Carousel</p>
+          </div>
+        </td>
+
+        <td char="69" class="calibre60">
+          <div class="calibre26">
+            <p class="tablehead">Swings</p>
+          </div>
+        </td>
+
+        <td char="68" class="calibre61">
+          <div class="calibre26">
+            <p class="tablehead">Ferris wheel</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Circus</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">8</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Balloon</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">2</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Bumper cars</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">2</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Carousel</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">2</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Swings</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">6</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">0</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">10</p>
+        </td>
+      </tr>
+
+      <tr class="calibre54">
+        <td char="89" class="calibre62">
+          <p class="tablebody">Ferris wheel</p>
+        </td>
+
+        <td char="68" class="calibre63">
+          <p class="tablebody">8</p>
+        </td>
+
+        <td char="69" class="calibre64">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="70" class="calibre65">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="70" class="calibre66">
+          <p class="tablebody">2</p>
+        </td>
+
+        <td char="69" class="calibre67">
+          <p class="tablebody">10</p>
+        </td>
+
+        <td char="68" class="calibre68">
+          <p class="tablebody">0</p>
+        </td>
+      </tr>
+    </table>
+
+    <h2 class="head" id="sigil_toc_id_112">6.4<span class="calibre10">     </span> The ant colony optimization algorithm life cycle</h2>
+
+    <p class="body1">Now that we understand the data structures required, we can dive into the workings of the ant colony optimization algorithm. The approach in designing an ant colony optimization algorithm is based on the problem space being addressed. Each problem has a unique context and a different domain in which data is represented, but the principles remain the same.</p>
+
+    <p class="body1">That said, let’s look into how an ant colony optimization algorithm can be configured to solve the carnival problem. The general life cycle of such an algorithm is as follows:</p>
+
+    <p class="listnumbered">1.<span class="calibre14">  </span> <span class="italics">Initialize the pheromone trails.</span> Create the concept of pheromone trails between attractions, and initialize their intensity values.</p>
+
+    <p class="listnumbered">2.<span class="calibre14">  </span> <span class="italics">Set up the population of ants.</span> Create a population of ants in which each ant starts at a different attraction.</p>
+
+    <p class="listnumbered">3.<span class="calibre14">  </span> <span class="italics">Choose the next visit for each ant.</span> Choose the next attraction to visit for each ant until each ant has visited all attractions once.</p>
+
+    <p class="listnumbered">4.<span class="calibre14">  </span> <span class="italics">Update the pheromone trails.</span> Update the intensity of pheromone trails based on the ants’ movements on them, as well as factor in evaporation of pheromones.</p>
+
+    <p class="listnumbered">5.<span class="calibre14">  </span> <span class="italics">Update the best solution.</span> Update the best solution, given the total distance covered by each ant.</p>
+
+    <p class="listnumbered">6.<span class="calibre14">  </span> <span class="italics">Determine the stopping criteria.</span> The process of ants visiting attractions repeats for several iterations. One iteration is every ant visiting all attractions once. The stopping criteria determines the total number of iterations to run. More iterations allow ants to make better decisions based on the pheromone trails.</p>
+
+    <p class="listnumbered">Figure 6.11 describes the general life cycle of the ant colony optimization algorithm.</p>
+
+    <p class="figure"><img alt="06_11" class="calibre11" src="../Images/06_11.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.11 The ant colony optimization algorithm life cycle</p>
+
+    <h3 class="head1" id="sigil_toc_id_113">6.4.1<span class="calibre15">  </span> Initialize the pheromone trails</h3>
+
+    <p class="body1">The first step in the ant colony optimization algorithm is to initialize the pheromone trails. Because no ants have walked on the paths between attractions yet, the pheromone trails will be initialized to 1. When we set all pheromone trails to 1, no trail has any advantage over the others. The important aspect is defining a reliable data structure to contain the pheromone trails, which we look at next.</p>
+
+    <p class="figure"><img alt="06_12" class="calibre11" src="../Images/06_12.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.12 Setup pheromones</p>
+
+    <p class="body1">This concept can be applied to other problems in which instead of distances between locations, the pheromone intensity is defined by another heuristic.</p>
+
+    <p class="body1">In figure 6.13, the heuristic is the distance between two destinations.</p>
+
+    <p class="figure"><img alt="06_13" class="calibre11" src="../Images/06_13.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.13 Initialization of pheromones</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">Similarly to the attraction distances, the pheromone trails can be represented by a distance matrix, but referencing x, y in this array provides the pheromone intensity on the path between attractions x and y. The initial pheromone intensity on every path is initialized to 1. Values for all paths should initialize with the same number to prevent biasing any paths from the start.</p>
+
+    <p class="figure"><img alt="06_13a" class="calibre11" src="../Images/06_13a.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_114">6.4.2<span class="calibre15">  </span> Set up the population of ants</h3>
+
+    <p class="body1">The next step of the ACO algorithm is creating a population of ants that will move between the attractions and leave pheromone trails between them.</p>
+
+    <p class="figure"><img alt="06_14" class="calibre11" src="../Images/06_14.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.14 Setup the population of ants</p>
+
+    <p class="body1">Ants will start at randomly assigned attractions (figure 6.15)—at a random point in a potential sequence because the ant colony optimization algorithm can be applied to problems in which actual distance doesn’t exist.</p>
+
+    <p class="body1">After touring all the destinations, ants are set to their respective starting points.</p>
+
+    <p class="figure"><img alt="06_15" class="calibre11" src="../Images/06_15.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.15 Ants start at random attractions</p>
+
+    <p class="body1">We can adapt this principle to a different problem. In a task-scheduling problem, each ant starts at a different task.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">Setting up the colony of ants includes initializing several ants and appending them to a list where they can be referenced later. Remember that the initialization function of the ant class chooses a random attraction to start at.</p>
+
+    <p class="figure"><img alt="06_15a" class="calibre11" src="../Images/06_15a.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_115">6.4.3<span class="calibre15">  </span> Choose the next visit for each ant</h3>
+
+    <p class="body1">Ants need to select the next attraction to visit. They visit new attractions until they have visited all attractions once, which is called a tour. Ants choose the next destination based on two factors:</p>
+
+    <p class="listbulletcxspfirst3"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Pheromone intensities</span>—The pheromone intensity on all available paths</p>
+
+    <p class="listbulletcxsplast2"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Heuristic value</span>—A result from a defined heuristic for all available paths, which is the distance of the path between attractions in the carnival example</p>
+
+    <p class="figure"><img alt="06_16" class="calibre11" src="../Images/06_16.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.16 Choose the next visit for each ant</p>
+
+    <p class="body1">Ants will not travel to destinations they have already visited. If an ant has already visited the bumper cars, it will not travel to it again in the current tour.</p>
+
+    <p class="head2">The stochastic nature of ants</p>
+
+    <p class="body1">The ant colony optimization algorithm has an element of randomness. The intention is to allow ants the possibility of exploring less-optimal immediate paths, which might result in a better overall tour distance.</p>
+
+    <p class="body1">First, an ant has a random probability of deciding to choose a random destination. We could generate a random number between 0 and 1, and if the result is 0.1 or less, the ant will decide to choose a random destination – this is a 10 percent chance of choosing a random destination.</p>
+
+    <p class="body1">If an ant decides that it will choose a random destination, it needs to randomly select a destination to visit, which is a random selection between all available destinations.</p>
+
+    <p class="head2">Selecting destination based on a heuristic</p>
+
+    <p class="body1">When an ant faces the decision of choosing the next destination that is not random, it determines the pheromone intensity on that path and the heuristic value by using the following formula.</p>
+
+    <p class="figure"><img alt="06_16a" class="calibre11" src="../Images/06_16a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">After it applies this function to every possible path toward its respective destination, the ant selects the destination with the best overall value to travel on. Figure 6.17 illustrates the possible paths from the circus with their respective distances and pheromone intensities.</p>
+
+    <p class="figure"><img alt="06_17" class="calibre11" src="../Images/06_17.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.17 Example of possible paths from the circus</p>
+
+    <p class="body1">Let’s work through the formula to demystify the calculations are happening and how the results affect decision-making:</p>
+
+    <p class="figure"><img alt="06_18" class="calibre11" src="../Images/06_18.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.18 The pheromone influence and heuristic influence of the formula</p>
+
+    <p class="body1">The variables <span class="italics">alpha(a)</span> and <span class="italics">beta(b)</span> are used to give greater weight to either the pheromone influence or the heuristic influence. These variables can be adjusted to balance the ant’s judgment between making a move based on what it knows versus pheromone trails, which represents what the colony knows about that path. These parameters are defined upfront and are usually not adjusted while the algorithm runs.</p>
+
+    <p class="body1">The following example works through each path starting at the circus and calculates the probabilities of moving to each respective attraction.</p>
+
+    <p class="listbulletcxspfirst3"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">a(alpha)</span> is set to 1,</p>
+
+    <p class="listbulletcxsplast2"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">b(beta)</span> is set to 2,</p>
+
+    <p class="body1">Because <span class="italics">b</span> is greater than a, the heuristic influence is favored in this example.</p>
+
+    <p class="body1">Let’s work through an example of the calculations used to determine the probability of choosing a specific path in figure 6.19.</p>
+
+    <p class="figure"><img alt="06_19" class="calibre11" src="../Images/06_19.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.19 Probability calculations for paths</p>
+
+    <p class="body1">After applying this calculation, given all the available destinations, the ant is left with the options shown in figure 6.20.</p>
+
+    <p class="figure"><img alt="06_20" class="calibre11" src="../Images/06_20.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.20 The final probability of each attraction being selected</p>
+
+    <p class="body1">Remember that only the available paths are considered; these paths have not been explored yet. Figure 6.21 illustrates the possible paths from the circus excluding the Ferris wheel, since it’s been visited already.</p>
+
+    <p class="figure"><img alt="06_21" class="calibre11" src="../Images/06_21.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.21 Example of possible paths from the circus, excluding visited attractions</p>
+
+    <p class="figure"><img alt="06_22" class="calibre11" src="../Images/06_22.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.22 Probability calculations for paths</p>
+
+    <p class="body1">The ant’s decision now looks like figure 6.23.</p>
+
+    <p class="figure"><img alt="06_23" class="calibre11" src="../Images/06_23.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.23 The final probability of each attraction being selected</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The pseudocode for calculating the probabilities of visiting the possible attractions is closely aligned with the mathematical functions that we have worked through. Some interesting aspects of this implementation include</p>
+
+    <p class="listbulletcxspfirst3"><span class="calibre17">·<span class="calibre14">     </span></span> Determining the available attractions to visit. Because the ant would have visited several attractions, it should not return to those attractions. The <span><code class="codeintext"><span class="calibre21">possible_attractions</span></code></span> array stores this value by removing <span><code class="codeintext"><span class="calibre21">visited_attractions</span></code></span> from the complete list of attractions: <span><code class="codeintext"><span class="calibre21">all_attractions</span></code></span>.</p>
+
+    <p class="listbulletcxsplast2"><span class="calibre17">·<span class="calibre14">     </span></span> Using three variables to store the outcome of the probability calculations. <span><code class="codeintext"><span class="calibre21">possible_indexes</span></code></span> stores the attraction indexes; <span><code class="codeintext"><span class="calibre21">possible_probabilities</span></code></span> stores the probabilities for the respective index; and <span><code class="codeintext"><span class="calibre21">total_probabilities</span></code></span> stores the sum of all probabilities, which should equal 1 when the function is complete. These three data structures could be represented by a class for a cleaner code convention.</p>
+
+    <p class="figure"><img alt="06_23a" class="calibre11" src="../Images/06_23a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">We meet roulette-wheel selection again. The roulette-wheel selection function takes the possible probabilities and attraction indexes as input. It generates a list of slices, each of which includes the index of the attraction in element 0, the start of the slice in index 1, and the end of the slice in index 2. All slices contain a start and end between 0 and 1. A random number between 0 and 1 is generated, and the slices that it falls into is selected as the winner.</p>
+
+    <p class="figure"><img alt="06_23b" class="calibre11" src="../Images/06_23b.png"/><br class="calibre12"/></p>
+
+    <p class="body1">Now that we have probabilities of selecting the different attractions to visit, we will use roulette-wheel selection.</p>
+
+    <p class="body1">To recap, roulette-wheel selection (from chapter 3 and chapter 4) gives different possibilities portions of a wheel based on their fitness. Then the wheel is “spun,” and an individual is selected. A higher fitness gives an individual a larger slice of the wheel, as shown in figure 6.23 earlier in this chapter.</p>
+
+    <p class="body1">The process of choosing attractions and visiting them continues for every ant until each one has visited all the attractions once.</p>
+
+    <p class="head2">Exercise: Determine the probabilities of visiting the attractions with the following information</p>
+
+    <p class="figure"><img alt="06_23c" class="calibre11" src="../Images/06_23c.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: Determine the probabilities of visiting the attractions with the following information</p>
+
+    <p class="figure"><img alt="06_23d" class="calibre11" src="../Images/06_23d.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_116">6.4.4<span class="calibre15">  </span> Update the pheromone trails</h3>
+
+    <p class="body1">Now that the ants have completed a tour of all the attractions, they have all left pheromones behind, which changes the pheromone trails between all the attractions.</p>
+
+    <p class="figure"><img alt="06_24" class="calibre11" src="../Images/06_24.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.24 Update the pheromone trails</p>
+
+    <p class="body1">Two steps are involved in updating the pheromone trails: evaporation and depositing new pheromones.</p>
+
+    <p class="head2">Updating pheromones due to evaporation</p>
+
+    <p class="body1">The concept of evaporation is also inspired by nature. Over time, the pheromone trails lose their intensity. Pheromones are updated by multiplying their respective current values by an evaporation factor—a parameter that can be adjusted to tweak the performance of the algorithm in terms of exploration and exploitation. Figure 6.25 illustrates the updated pheromone trails due to evaporation.</p>
+
+    <p class="figure"><img alt="06_25" class="calibre11" src="../Images/06_25.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.25 Example of updating pheromone trails for evaporation</p>
+
+    <p class="head2">Updating pheromones based on ant tours</p>
+
+    <p class="body1">Pheromones are updated based on the ants that have moved along their paths. If more ants move on a specific path, there will be more pheromones on that path.</p>
+
+    <p class="body1">Each ant contributes its fitness value to the pheromones on every path it has moved on. The effect is that ants with better solutions have greater influence on the best paths. Figure 6.26 illustrates the updating pheromone trails based on ant movements on the paths.</p>
+
+    <p class="figure"><img alt="06_26" class="calibre11" src="../Images/06_26.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.26 Pheromone updates based on ant movements</p>
+
+    <p class="head2">Exercise: Calculate the pheromone update given the following scenario</p>
+
+    <p class="figure"><img alt="06_26a" class="calibre11" src="../Images/06_26a.png"/><br class="calibre12"/></p>
+
+    <p class="head2">Solution: Calculate the pheromone update given the following scenario</p>
+
+    <p class="figure"><img alt="06_26b" class="calibre11" src="../Images/06_26b.png"/><br class="calibre12"/></p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The <span><code class="codeintext"><span class="calibre21">update_pheromones</span></code></span> function applies two important concepts to the pheromone trails. First, the current pheromone intensity is evaporated based on the evaporation rate. If the evaporation rate is 0.5, for example, the intensity decreases by half. The second operation adds pheromones based on ant movements on that path. The amount of pheromones contributed by each ant is determined by the ant’s fitness, which in this case is each respective ant’s total distance traveled.</p>
+
+    <p class="figure"><img alt="06_26c" class="calibre11" src="../Images/06_26c.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_117">6.4.5<span class="calibre15">  </span> Update the best solution</h3>
+
+    <p class="body1">The best solution is described by the sequence of attraction visits that has the lowest total distance.</p>
+
+    <p class="figure"><img alt="06_27" class="calibre11" src="../Images/06_27.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.27 Update the best solution</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">After an iteration, after every ant has completed a tour (a tour is complete when an ant visits every attraction), the best ant in the colony must be determined. To make this determination, we find the ant that has the lowest total distance traveled and set it as the new best ant in the colony.</p>
+
+    <p class="figure"><img alt="06_27a" class="calibre11" src="../Images/06_27a.png"/><br class="calibre12"/></p>
+
+    <h3 class="head1" id="sigil_toc_id_118">6.4.6<span class="calibre15">  </span> Determine the stopping criteria</h3>
+
+    <p class="body1">The algorithm stops after several iterations, conceptually, the number of tours that the group of ants concludes. Ten iterations means that each ant does ten tours; each ant would visit each attraction once and do that ten times.</p>
+
+    <p class="figure"><img alt="06_28" class="calibre11" src="../Images/06_28.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.28 Reached stopping condition?</p>
+
+    <p class="body1">The stopping criteria for the ant colony optimization algorithm can differ based on the domain of the problem being solved. In some cases, realistic limits are known, and when they’re unknown, the following options are available:</p>
+
+    <p class="listbulletcxspfirst3"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Stop when a predefined number of iterations is reached.</span> In this scenario, we define a total number of iterations for which the algorithm will always run. If 100 iterations are defined, each ant completes 100 tours before the algorithm terminates.</p>
+
+    <p class="listbulletcxsplast2"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Stop when the best solution stagnates.</span> In this scenario, the best solution after each iteration is compared with the previous best solution. If the solution doesn’t improve after a defined number of iterations, the algorithm terminates. If iteration 20 resulted in a solution with fitness 100, and that iteration is repeated up until iteration 30, it is likely (but not guaranteed) that no better solution exists.</p>
+
+    <p class="codelistingcaption">Pseudocode</p>
+
+    <p class="body1">The <span><code class="codeintext"><span class="calibre21">solve</span></code></span> function ties everything together and should give you a better idea of the sequence of operations and the overall life cycle of the algorithm. Notice that the algorithm runs for several defined total iterations. The ant colony is also initialized to its starting point at the beginning of each iteration, and a new best ant is determined after each iteration.</p>
+
+    <p class="figure"><img alt="06_28a" class="calibre11" src="../Images/06_28a.png"/><br class="calibre12"/></p>
+
+    <p class="body1">We can tweak several parameters to alter the exploration and exploitation of the ant colony optimization algorithm. These parameters influence how long the algorithm will take to find a good solution. Some randomness is good for exploring. Balancing the weighting between heuristics and pheromones influences whether ants attempt a greedy search (when favoring heuristics) or trust pheromones more. The evaporation rate also influences this balance. The number of ants and the total number of iterations they have influences the quality of a solution. When we add more ants and more iterations, more computation is required. Based on the problem at hand, time to compute may influence these parameters.</p>
+
+    <p class="figure"><img alt="06_30" class="calibre11" src="../Images/06_30.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.30 Parameters that can be tweaked in the ant colony optimization algorithm</p>
+
+    <p class="body1">Now you have insight into how ant colony optimization algorithms work and how they can be used to solve the carnival problem. Section 6.5 describes some other possible use cases. Perhaps these examples may help you find uses for the algorithm in your work.</p>
+
+    <h2 class="head" id="sigil_toc_id_119">6.5<span class="calibre10">     </span> Use cases for ant colony optimization algorithms</h2>
+
+    <p class="body1">Ant colony optimization algorithms are versatile and useful in several real-world applications. These applications usually center on complex optimization problems such as the following:</p>
+
+    <p class="listbulletcxspfirst3"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Route optimization</span>—Routing problems usually include several destinations that need to be visited with several constraints. In a logistics example, perhaps the distance between destinations, traffic conditions, types of packages being delivered, and times of day are important constraints that need to be considered to optimize the operations of the business. Ant colony optimization algorithms can be used to address this problem. The problem is similar to the carnival problem explored in this chapter, but the heuristic function is likely to be more complex and context specific.</p>
+
+    <p class="listbulletcxspmiddle2"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Job scheduling</span>—Job scheduling is present in almost any industry. Nurse shifts are important to ensure that good health care can be provided. Computational jobs on servers must be scheduled in an optimal manner to maximize the use of the hardware without waste. Ant colony optimization algorithms can be used to solve these problems. Instead of looking at the entities that ants visit as locations, we see that ants visit tasks in different sequences. The heuristic function includes constraints and desired rules specific to the context of the jobs being scheduled. Nurses, for example, need off days to prevent fatigue, and jobs with high priorities on a server should be favored.</p>
+
+    <p class="listbulletcxsplast2"><span class="calibre17">·<span class="calibre14">     </span></span> <span class="italics">Image processing</span>—The ant colony optimization algorithm can be used for edge detection in image processing. An image is composed of several adjacent pixels, and the ants move from pixel to pixel, leaving behind pheromone trails. Ants drop stronger pheromones based on the pixel colors’ intensity, resulting in pheromone trails along the edges of objects containing the highest density of pheromones. This algorithm essentially traces the outline of the image by performing edge detection. The images may require preprocessing to decolorize the image to grayscale so that the pixel-color values can be compared consistently.</p>
+
+    <p class="figure"><img alt="06_31" class="calibre11" src="../Images/06_31.png"/><br class="calibre12"/></p>
+
+    <p class="figurecaption">Figure 6.31 Summary of Ant colony optimization</p>
+  </div>
+</body>
+</html>
