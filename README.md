@@ -1,4 +1,4 @@
-![](ebooks/grokking_algorithms_chinese/OEBPS/Image00464.jpg)
+![](ebooks/grokking_algorithms_chinese/OEBPS/grokking_algorithms_cover-tw.png)
 # Grokking Algorithms
 
 This is the code in my book [Grokking Algorithms](https://www.manning.com/bhargava).
