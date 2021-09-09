@@ -1,6 +1,9 @@
+![](ebooks/grokking_algorithms_chinese/OEBPS/Image00464.jpg)
 # Grokking Algorithms
 
 This is the code in my book [Grokking Algorithms](https://www.manning.com/bhargava).
+
+example codes can download from [here](https://github.com/egonschiele/grokking_algorithms) 
 
 Also check out [Python Tutor](http://pythontutor.com/), a great website that helps you step through Python code line by line.
 
