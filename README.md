@@ -11,7 +11,7 @@ Also check out [Python Tutor](http://pythontutor.com/), a great website that hel
 
 [Here's the errata page](http://adit.io/errata.html).
 
-[Here's the errata page in local](ebooks/grokking_algorithms_en/OEBPS/errata.html).
+[Here's the errata page in local](ebooks/grokking_algorithms_en/OEBPS/errata.md).
 
 
 ## Images
