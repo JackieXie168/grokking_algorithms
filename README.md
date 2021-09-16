@@ -6,29 +6,23 @@
 * [Images](#Images)<br />
 * [Contributing](#Contributing)<br />
 
-
 # Grokking Algorithms
 <div id="Introduction"></div>
 #Introduction
 
 This is the code in my book [Grokking Algorithms](https://www.manning.com/bhargava).
-
 example codes could be download from [here](https://github.com/egonschiele/grokking_algorithms) 
-
 Also check out [Python Tutor](http://pythontutor.com/), a great website that helps you step through Python code line by line.
-
 
 <div id="Errata"></div>
 #Errata
+
 [Here's the errata page](http://adit.io/errata.html).
-
 [Here's the errata page in local](ebooks/grokking_algorithms_en/OEBPS/errata.md).
-
 
 <div id="Images"></div>
 #Images
 This repo also contains every image in Grokking Algorithms, in hi-res. These images are available for free for non-commercial use. If you use an image, please add "copyright Manning Publications, drawn by adit.io". You are welcome to use these images in any non-commercial teaching materials, presentations, etc.
-
 
 <div id="Contributing"></div>
 #Contributing
