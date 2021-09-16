@@ -4,8 +4,7 @@
 * [Introduction](#Introduction)<br />
 * [Errata](#Errata)<br />
 * [Images](#Images)<br />
-* [Contributing](#Contributing)<br />
-<br>
+* [Contributing](#Contributing)<br /><br />
 # Grokking Algorithms
 <br><span id="Introduction"></span>
 ## Introduction
