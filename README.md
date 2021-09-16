@@ -1,15 +1,16 @@
 ![](ebooks/grokking_algorithms_chinese-tw/OEBPS/cover.jpg)
 
-<br />##Contents
-<br />*[Introduction](#Introduction)
-<br />*[Errata](#Errata)
-<br />*[Images](#Images)
-<br />*[Contributing](#Contributing)
+##Contents<br />
+*[Introduction](#Introduction)<br />
+*[Errata](#Errata)<br />
+*[Images](#Images)<br />
+*[Contributing](#Contributing)<br />
 
 
 # Grokking Algorithms
-##Introduction
+
 <div id="Introduction"></div>
+##Introduction
 
 This is the code in my book [Grokking Algorithms](https://www.manning.com/bhargava).
 
@@ -19,8 +20,8 @@ Also check out [Python Tutor](http://pythontutor.com/), a great website that hel
 
 
 
-<div id="Errata"></div>
 ## Errata
+<div id="Errata"></div>
 
 [Here's the errata page](http://adit.io/errata.html).
 
@@ -28,15 +29,14 @@ Also check out [Python Tutor](http://pythontutor.com/), a great website that hel
 
 
 
-<div id="Images"></div>
 ## Images
+<div id="Images"></div>
 
 This repo also contains every image in Grokking Algorithms, in hi-res. These images are available for free for non-commercial use. If you use an image, please add "copyright Manning Publications, drawn by adit.io". You are welcome to use these images in any non-commercial teaching materials, presentations, etc.
 
 
-<div id="Contributing"></div>
 ## Contributing
-
+<div id="Contributing"></div>
 
 - The examples in this book are in Python, but I'd like to get examples in Ruby, JavaScript, C, and other languages too. Please add examples in other languages!
 - I'm pretty responsive to PRs. That is the quickest way to contribute to this repo.
