@@ -1,10 +1,10 @@
 ![](ebooks/grokking_algorithms_chinese-tw/OEBPS/cover.jpg)
 
-##Contents
-*[Introduction](#Introduction)
-*[Errata](#Errata)
-*[Images](#Images)
-*[]
+<br />##Contents <br />
+*[Introduction](#Introduction) <br />
+*[Errata](#Errata) <br />
+*[Images](#Images) <br />
+*[Contributing](#Contributing) <br />
 
 
 # Grokking Algorithms
